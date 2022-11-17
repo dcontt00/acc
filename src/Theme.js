@@ -16,13 +16,13 @@ const Theme = createTheme({
 
 Theme.typography.h1 = {
   fontSize: "2.5rem",
-  paddingBottom: "0.5rem",
-  paddingTop: "0.5rem",
+  paddingBottom: "0.1rem",
+  paddingTop: "0.1rem",
 
   [Theme.breakpoints.up("md")]: {
     fontSize: "3rem",
-    paddingBottom: "1rem",
-    paddingTop: "1rem",
+    paddingBottom: "0.1rem",
+    paddingTop: "0.1rem",
   },
 };
 
@@ -33,8 +33,8 @@ Theme.typography.h2 = {
 
   [Theme.breakpoints.up("md")]: {
     fontSize: "2.5rem",
-    paddingBottom: "0.2rem",
-    paddingTop: "0.2rem",
+    paddingBottom: "0.1rem",
+    paddingTop: "0.1rem",
   },
 };
 
