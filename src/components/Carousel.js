@@ -1,12 +1,12 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Button, Typography, Grid } from "@mui/material";
-import Coches from "../coches.json";
+import Cars from "../data/Cars.json";
 
 export default function Carousel_comp(props) {
   return (
     <Carousel>
-      {Coches.map((item, i) => (
+      {Cars.map((item, i) => (
         <Item key={i} item={item} />
       ))}
     </Carousel>
