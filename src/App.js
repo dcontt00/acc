@@ -10,6 +10,7 @@ import {
 import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./Theme";
 import Appbar from "./components/Appbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
         </Routes>
+        <Footer />
       </Router>
     </ThemeProvider>
   );
