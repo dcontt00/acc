@@ -18,9 +18,7 @@ export default function Home() {
           <Typography variant="h1">Más vendidos</Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Grid container spacing={2}>
-            <Gallery />
-          </Grid>
+          <Gallery />
         </Grid>
       </Grid>
     </Container>

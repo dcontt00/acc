@@ -23,7 +23,7 @@ function Item(props) {
         <Typography variant="p">{props.item.description}</Typography>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <img src={props.item.image} alt="coche" width={"100%"} />
+        <img src={props.item.img} alt="coche" width={"100%"} />
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Button>Check it out!</Button>
