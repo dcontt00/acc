@@ -18,6 +18,8 @@ import Brands from "../data/Brands.json";
 import Cars from "../data/Cars.json";
 
 export default function Catalog() {
+  const [selectedCars, setSelectedCars] = React.useState(Cars);
+
   const label = { inputProps: { "aria-label": "Switch demo" } };
   const [type, setType] = React.useState("");
   const [brand, setBrand] = React.useState("");
@@ -45,8 +47,12 @@ export default function Catalog() {
   };
 
   const handleSearch = (event) => {
+    // filter by name
+    var temp = Cars.filter((car) => {
+      return car.name.toLowerCase().includes(event.target.value.toLowerCase());
+    });
+    setSelectedCars(temp);
     setSearch(event.target.value);
-    console.log(search);
   };
   return (
     <Container maxWidth="xl">
@@ -137,7 +143,7 @@ export default function Catalog() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Gallery cars={Cars} />
+          <Gallery cars={selectedCars} />
         </Grid>
       </Grid>
     </Container>
