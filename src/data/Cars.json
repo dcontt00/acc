@@ -1,22 +1,22 @@
 [
-    {
-      "name": "Coche 1",
-      "description": "Este es un coche muy bonito",
-      "img": "imgs/coche1.jpg"
-    },
-    {
-      "name": "Coche 2",
-      "description": "Otro coche muy bonito",
-      "img": "imgs/coche2.jpg"
-    },
-    {
-      "name": "Coche 3",
-      "description": "Este es un coche muy bonito",
-      "img": "imgs/coche3.jpg"
-    },
-    {
-      "name": "Coche 4",
-      "description": "Otro coche muy bonito",
-      "img": "imgs/coche4.jpg"
-    }
-  ]
+  {
+    "name": "Coche 1",
+    "description": "Este es un coche muy bonito",
+    "img": "imgs/cars/coche1.jpg"
+  },
+  {
+    "name": "Coche 2",
+    "description": "Otro coche muy bonito",
+    "img": "imgs/cars/coche2.jpg"
+  },
+  {
+    "name": "Coche 3",
+    "description": "Este es un coche muy bonito",
+    "img": "imgs/cars/coche3.jpg"
+  },
+  {
+    "name": "Coche 4",
+    "description": "Otro coche muy bonito",
+    "img": "imgs/cars/coche4.jpg"
+  }
+]
