@@ -1,7 +1,11 @@
 import { createTheme } from "@mui/material/styles";
 import { height } from "@mui/system";
 
-const Theme = createTheme({});
+const Theme = createTheme({
+  typography: {
+    fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
+  },
+});
 
 Theme.typography.h1 = {
   fontSize: "2.5rem",
