@@ -1,17 +1,28 @@
-import logo from "../logo.svg";
 import "../App.css";
-import Grid from "@mui/material/Grid";
+import { Paper, Button, Typography, Grid } from "@mui/material";
 import Carousel from "../components/Carousel";
+import Container from "@mui/material/Container";
+import Gallery from "../components/Gallery";
 
 export default function Home() {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} sm={12} md={8}>
-        <Carousel />
+    <Container maxWidth="xl">
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Typography variant="h1">Destacados</Typography>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Carousel />
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Typography variant="h1">Más vendidos</Typography>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Grid container spacing={2}>
+            <Gallery />
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid item md={12}>
-        <p>texto</p>
-      </Grid>
-    </Grid>
+    </Container>
   );
 }
