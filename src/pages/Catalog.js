@@ -56,7 +56,7 @@ export default function Catalog() {
             variant="standard"
             sx={{ width: "100%" }}
           />
-          <Button>Buscar</Button>
+          <Button variant="contained">Buscar</Button>
           <Switch
             {...label}
             sx={{ color: "#fff" }}

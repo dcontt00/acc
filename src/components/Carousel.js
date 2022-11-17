@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Button, Typography, Grid } from "@mui/material";
 import Cars from "../data/Cars.json";
+console.log(Cars["highlights"]);
 
 export default function Carousel_comp(props) {
   return (
@@ -26,7 +27,7 @@ function Item(props) {
         <img src={props.item.img} alt="coche" width={"100%"} />
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Button>Saber más</Button>
+        <Button variant="contained">Saber más</Button>
       </Grid>
     </Grid>
   );
