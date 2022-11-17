@@ -1,4 +1,6 @@
 import Home from "./pages/Home";
+import Catalog from "./pages/Catalog";
+
 import {
   BrowserRouter as Router,
   Navigate,
@@ -12,11 +14,11 @@ import Appbar from "./components/Appbar";
 function App() {
   return (
     <ThemeProvider theme={Theme}>
-      <Appbar />
-
       <Router>
+        <Appbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/catalog" element={<Catalog />} />
         </Routes>
       </Router>
     </ThemeProvider>

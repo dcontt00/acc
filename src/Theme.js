@@ -1,7 +1,14 @@
 import { createTheme } from "@mui/material/styles";
-import { height } from "@mui/system";
 
 const Theme = createTheme({
+  palette: {
+    primary: {
+      main: "#000000",
+    },
+    secondary: {
+      main: "#ffffff",
+    },
+  },
   typography: {
     fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
   },
