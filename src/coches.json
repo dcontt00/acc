@@ -8,5 +8,15 @@
       "name": "Coche 2",
       "description": "Otro coche muy bonito",
       "image": "imgs/coche2.jpg"
+    },
+    {
+      "name": "Coche 3",
+      "description": "Este es un coche muy bonito",
+      "image": "imgs/coche3.jpg"
+    },
+    {
+      "name": "Coche 4",
+      "description": "Otro coche muy bonito",
+      "image": "imgs/coche4.jpg"
     }
   ]
