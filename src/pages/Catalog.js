@@ -15,12 +15,14 @@ import Carousel from "../components/Carousel";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
 import Brands from "../data/Brands.json";
+import Cars from "../data/Cars.json";
 
 export default function Catalog() {
   const label = { inputProps: { "aria-label": "Switch demo" } };
   const [type, setType] = React.useState("");
   const [brand, setBrand] = React.useState("");
   const [fuel, setFuel] = React.useState("");
+  const [search, setSearch] = React.useState("");
 
   const [displayFilters, setDisplayFilters] = React.useState("none");
 
@@ -41,6 +43,11 @@ export default function Catalog() {
       setDisplayFilters("none");
     }
   };
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    console.log(search);
+  };
   return (
     <Container maxWidth="xl">
       <Grid container spacing={2}>
@@ -55,6 +62,7 @@ export default function Catalog() {
             label="Buscar por nombre de coche"
             variant="standard"
             sx={{ width: "100%" }}
+            onChange={handleSearch}
           />
           <Button variant="contained">Buscar</Button>
           <Switch
@@ -129,7 +137,7 @@ export default function Catalog() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Gallery />
+          <Gallery cars={Cars} />
         </Grid>
       </Grid>
     </Container>
