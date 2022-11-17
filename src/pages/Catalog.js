@@ -14,6 +14,7 @@ import {
 import Carousel from "../components/Carousel";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
+import Brands from "../data/Brands.json";
 
 export default function Catalog() {
   const label = { inputProps: { "aria-label": "Switch demo" } };
@@ -88,9 +89,9 @@ export default function Catalog() {
                 onChange={handleChangeBrand}
                 sx={{ width: "100%" }}
               >
-                <MenuItem value={10}>Audi</MenuItem>
-                <MenuItem value={20}>Ferrari</MenuItem>
-                <MenuItem value={30}>Seat</MenuItem>
+                {Brands.map((item, i) => (
+                  <MenuItem value={item.id}>{item.name}</MenuItem>
+                ))}
               </Select>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={3}>
