@@ -56,16 +56,17 @@ export default function Catalog() {
             sx={{ width: "100%" }}
           />
           <Button>Buscar</Button>
+          <Switch
+            {...label}
+            sx={{ color: "#fff" }}
+            onChange={() => {
+              handleDisplayFilters();
+            }}
+          />
         </Grid>
 
         {/* Filtros*/}
-        <Switch
-          {...label}
-          sx={{ color: "green" }}
-          onChange={() => {
-            handleDisplayFilters();
-          }}
-        />
+
         <Grid
           item
           xs={12}
