@@ -1,0 +1,12 @@
+[
+    {
+      "name": "Coche 1",
+      "description": "Este es un coche muy bonito",
+      "image": "coche1.jpg"
+    },
+    {
+      "name": "Coche 2",
+      "description": "Otro coche muy bonito",
+      "image": "coche2.jpg"
+    }
+  ]
