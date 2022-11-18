@@ -6,8 +6,14 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 
 export default function MultiActionAreaCard(props) {
+  var description = props.description;
+
+  if (description.length > 150) {
+    description = description.substring(0, 150) + "...";
+  }
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, maxHeight: 400 }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -17,10 +23,18 @@ export default function MultiActionAreaCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
+            <img
+              src={
+                "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
+                props.brand.toLowerCase() +
+                ".png"
+              }
+              width={"10%"}
+            />
             {props.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.description}
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>
