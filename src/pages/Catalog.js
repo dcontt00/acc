@@ -117,7 +117,7 @@ export default function Catalog() {
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <Typography variant="h2">Filtrar por:</Typography>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={3}>
+            <Grid item xs={12} sm={12} md={12} lg={4}>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -131,7 +131,7 @@ export default function Catalog() {
                 ))}
               </Select>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={3}>
+            <Grid item xs={12} sm={12} md={12} lg={4}>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -140,12 +140,11 @@ export default function Catalog() {
                 onChange={handleChangeType}
                 sx={{ width: "100%" }}
               >
-                <MenuItem value={10}>4x4</MenuItem>
-                <MenuItem value={20}>Sub</MenuItem>
-                <MenuItem value={30}>Deportivo</MenuItem>
+                <MenuItem value={"SUV"}>SUV</MenuItem>
+                <MenuItem value={"Urbano"}>Urbano</MenuItem>
               </Select>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={3}>
+            <Grid item xs={12} sm={12} md={12} lg={4}>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -154,13 +153,10 @@ export default function Catalog() {
                 onChange={handleChangeFuel}
                 sx={{ width: "100%" }}
               >
-                <MenuItem value={10}>Gasolina</MenuItem>
-                <MenuItem value={20}>Diésel</MenuItem>
-                <MenuItem value={30}>Eléctrico</MenuItem>
+                <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
+                <MenuItem value={"Diésel"}>Diésel</MenuItem>
+                <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
               </Select>
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={3}>
-              <Button>Buscar</Button>
             </Grid>
           </Grid>
         </Grid>
