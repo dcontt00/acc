@@ -85,7 +85,7 @@ export default function Catalog() {
 
   return (
     <Container maxWidth="xl">
-      <Grid container spacing={2}>
+      <Grid container spacing={0}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h1">Catálogo</Typography>
         </Grid>
@@ -103,6 +103,8 @@ export default function Catalog() {
         <Grid item xs={2} sm={2} md={2} lg={2}>
           <Button variant="contained">Buscar</Button>
         </Grid>
+
+        {/* Switch de filtros */}
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <FormGroup>
             <FormControlLabel
