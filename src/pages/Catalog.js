@@ -33,6 +33,11 @@ function filterByType(cars, type) {
   return cars.filter((car) => car.type.toLowerCase() === type.toLowerCase());
 }
 
+// filter array by fuel
+function filterByFuel(cars, fuel) {
+  return cars.filter((car) => car.fuel.toLowerCase() === fuel.toLowerCase());
+}
+
 export default function Catalog() {
   const [selectedCars, setSelectedCars] = React.useState(Cars);
 
@@ -45,12 +50,15 @@ export default function Catalog() {
 
   const handleChangeType = (event) => {
     setType(event.target.value);
+    setSelectedCars(filterByType(Cars, event.target.value));
   };
   const handleChangeBrand = (event) => {
     setBrand(event.target.value);
+    setSelectedCars(filterByBrand(Cars, event.target.value));
   };
   const handleChangeFuel = (event) => {
     setFuel(event.target.value);
+    setSelectedCars(filterByFuel(Cars, event.target.value));
   };
 
   const handleDisplayFilters = (event) => {
@@ -67,6 +75,14 @@ export default function Catalog() {
     setSelectedCars(temp);
     setSearch(event.target.value);
   };
+
+  const deleteFilters = () => {
+    setSelectedCars(Cars);
+    setType("");
+    setBrand("");
+    setFuel("");
+  };
+
   return (
     <Container maxWidth="xl">
       <Grid container spacing={2}>
@@ -115,9 +131,9 @@ export default function Catalog() {
         >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Typography variant="h2">Filtrar por:</Typography>
+              <Typography variant="h4">Filtrar por:</Typography>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={4}>
+            <Grid item xs={12} sm={12} md={12} lg={3}>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -131,7 +147,7 @@ export default function Catalog() {
                 ))}
               </Select>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={4}>
+            <Grid item xs={12} sm={12} md={12} lg={3}>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -144,7 +160,7 @@ export default function Catalog() {
                 <MenuItem value={"Urbano"}>Urbano</MenuItem>
               </Select>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={4}>
+            <Grid item xs={12} sm={12} md={12} lg={3}>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -157,6 +173,11 @@ export default function Catalog() {
                 <MenuItem value={"Diésel"}>Diésel</MenuItem>
                 <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
               </Select>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={3}>
+              <Button variant="contained" onClick={deleteFilters}>
+                Borrar filtros
+              </Button>
             </Grid>
           </Grid>
         </Grid>
