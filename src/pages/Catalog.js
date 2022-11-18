@@ -8,7 +8,9 @@ import {
   TextField,
   Select,
   MenuItem,
+  FormControlLabel,
   FormControl,
+  FormGroup,
   Switch,
 } from "@mui/material";
 import Carousel from "../components/Carousel";
@@ -20,7 +22,6 @@ import Cars from "../data/Cars.json";
 export default function Catalog() {
   const [selectedCars, setSelectedCars] = React.useState(Cars);
 
-  const label = { inputProps: { "aria-label": "Switch demo" } };
   const [type, setType] = React.useState("");
   const [brand, setBrand] = React.useState("");
   const [fuel, setFuel] = React.useState("");
@@ -62,7 +63,7 @@ export default function Catalog() {
         </Grid>
 
         {/* Barra búsqueda*/}
-        <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Grid item xs={10} sm={10} md={10} lg={10}>
           <TextField
             id="standard-basic"
             label="Buscar por nombre de coche"
@@ -70,14 +71,24 @@ export default function Catalog() {
             sx={{ width: "100%" }}
             onChange={handleSearch}
           />
+        </Grid>
+        <Grid item xs={2} sm={2} md={2} lg={2}>
           <Button variant="contained">Buscar</Button>
-          <Switch
-            {...label}
-            sx={{ color: "#fff" }}
-            onChange={() => {
-              handleDisplayFilters();
-            }}
-          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  sx={{ color: "#fff" }}
+                  onChange={() => {
+                    handleDisplayFilters();
+                  }}
+                />
+              }
+              label="Filtrar"
+            />
+          </FormGroup>
         </Grid>
 
         {/* Filtros*/}
