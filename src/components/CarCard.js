@@ -16,6 +16,11 @@ export default function MultiActionAreaCard(props) {
     description = description.substring(0, 150) + "...";
   }
 
+  var price = props.price.toLocaleString("en-US", {
+    style: "currency",
+    currency: "EUR",
+  });
+
   return (
     <Card sx={{ maxWidth: 345, maxHeight: 400 }}>
       <CardActionArea>
@@ -52,9 +57,18 @@ export default function MultiActionAreaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" variant="contained">
-          Saber mas
-        </Button>
+        <Grid container>
+          <Grid item xs={7} sm={7} md={7} lg={7}>
+            <Typography variant="h6" color="text.secondary">
+              {price}
+            </Typography>
+          </Grid>
+          <Grid item xs={5} sm={5} md={5} lg={5}>
+            <Button size="small" color="primary" variant="contained">
+              Saber mas
+            </Button>
+          </Grid>
+        </Grid>
       </CardActions>
     </Card>
   );
