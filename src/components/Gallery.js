@@ -1,5 +1,4 @@
 import * as React from "react";
-import Cars from "../data/Cars.json";
 import Grid from "@mui/material/Grid";
 import CarCard from "../components/CarCard";
 

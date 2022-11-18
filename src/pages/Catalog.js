@@ -1,7 +1,6 @@
 import "../App.css";
 import * as React from "react";
 import {
-  Paper,
   Button,
   Typography,
   Grid,
@@ -9,15 +8,30 @@ import {
   Select,
   MenuItem,
   FormControlLabel,
-  FormControl,
   FormGroup,
   Switch,
 } from "@mui/material";
-import Carousel from "../components/Carousel";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
 import Brands from "../data/Brands.json";
 import Cars from "../data/Cars.json";
+
+// filter array by car name
+function filterByName(cars, name) {
+  return cars.filter((car) =>
+    car.name.toLowerCase().includes(name.toLowerCase())
+  );
+}
+
+// filter array by car brand
+function filterByBrand(cars, brand) {
+  return cars.filter((car) => car.brand.toLowerCase() === brand.toLowerCase());
+}
+
+// filter array by car type
+function filterByType(cars, type) {
+  return cars.filter((car) => car.type.toLowerCase() === type.toLowerCase());
+}
 
 export default function Catalog() {
   const [selectedCars, setSelectedCars] = React.useState(Cars);
@@ -49,9 +63,7 @@ export default function Catalog() {
 
   const handleSearch = (event) => {
     // filter by name
-    var temp = Cars.filter((car) => {
-      return car.name.toLowerCase().includes(event.target.value.toLowerCase());
-    });
+    var temp = filterByName(Cars, event.target.value);
     setSelectedCars(temp);
     setSearch(event.target.value);
   };
