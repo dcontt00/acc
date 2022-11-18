@@ -12,6 +12,7 @@ import {
   Switch,
   Slider,
   Box,
+  SliderMarkLabel,
 } from "@mui/material";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
@@ -97,12 +98,16 @@ function filterByFuel(cars, fuel) {
   return cars.filter((car) => car.fuel.toLowerCase() === fuel.toLowerCase());
 }
 
+// filter array by price
+function filterByPrice(cars, price) {
+  return cars.filter(
+    (car) => car.price >= price[0] * 1000 && car.price <= price[1] * 1000
+  );
+}
+
 export default function Catalog() {
   const [price, setPrice] = React.useState([10, 100]);
 
-  const handlePriceChange = (event, newValue) => {
-    setPrice(newValue);
-  };
   const [selectedCars, setSelectedCars] = React.useState(Cars);
 
   const [type, setType] = React.useState("");
@@ -131,6 +136,11 @@ export default function Catalog() {
     } else {
       setDisplayFilters("none");
     }
+  };
+
+  const handleChangePrice = (event) => {
+    setPrice(event.target.value);
+    setSelectedCars(filterByPrice(Cars, event.target.value));
   };
 
   const handleSearch = (event) => {
@@ -245,7 +255,8 @@ export default function Catalog() {
               <Box sx={{ width: 300 }}>
                 <Slider
                   value={price}
-                  onChange={handlePriceChange}
+                  min={10}
+                  onChange={handleChangePrice}
                   valueLabelDisplay="off"
                   marks={priceMarks}
                   step={null}
