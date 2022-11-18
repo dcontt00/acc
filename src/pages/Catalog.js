@@ -18,6 +18,63 @@ import Gallery from "../components/Gallery";
 import Brands from "../data/Brands.json";
 import Cars from "../data/Cars.json";
 
+const priceMarks = [
+  {
+    value: 10,
+    label: "10.000",
+  },
+  {
+    value: 20,
+    label: "20.000",
+  },
+  {
+    value: 30,
+    label: "30.000",
+  },
+  {
+    value: 40,
+    label: "40.000",
+  },
+  {
+    value: 50,
+    label: "50.000",
+  },
+  {
+    value: 60,
+
+    label: "60.000",
+  },
+  {
+    value: 70,
+    label: "70.000",
+  },
+  {
+    value: 80,
+    label: "80.000",
+  },
+  {
+    value: 90,
+    label: "90.000",
+  },
+  {
+    value: 100,
+    label: "100.000",
+  },
+];
+
+// format price
+function formatPrice(price) {
+  var min = (price[0] * 1000).toLocaleString("en-US", {
+    style: "currency",
+    currency: "EUR",
+  });
+  var max = (price[1] * 1000).toLocaleString("en-US", {
+    style: "currency",
+    currency: "EUR",
+  });
+  return min + " - " + max;
+}
+
 // filter array by car name
 function filterByName(cars, name) {
   return cars.filter((car) =>
@@ -41,7 +98,7 @@ function filterByFuel(cars, fuel) {
 }
 
 export default function Catalog() {
-  const [price, setPrice] = React.useState([20, 37]);
+  const [price, setPrice] = React.useState([10, 100]);
 
   const handlePriceChange = (event, newValue) => {
     setPrice(newValue);
@@ -184,15 +241,14 @@ export default function Catalog() {
               </Select>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={3}>
-              <Typography>
-                Precio: {price[0]}-{price[1]}
-              </Typography>
+              <Typography>Precio: {formatPrice(price)}</Typography>
               <Box sx={{ width: 300 }}>
                 <Slider
-                  getAriaLabel={() => "Temperature range"}
                   value={price}
                   onChange={handlePriceChange}
-                  valueLabelDisplay="auto"
+                  valueLabelDisplay="off"
+                  marks={priceMarks}
+                  step={null}
                 />
               </Box>
             </Grid>
