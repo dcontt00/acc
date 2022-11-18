@@ -15,7 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
 
 const pages = [
-  { name: "inicio", link: "/" },
+  { name: "Inicio", link: "/" },
   { name: "Catálogo", link: "/catalog" },
   { name: "Contacto", link: "/contact" },
 ];
