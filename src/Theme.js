@@ -48,4 +48,15 @@ Theme.typography.h3 = {
   },
 };
 
+Theme.typography.body2 = {
+  fontSize: "1rem",
+  textAlign: "justify",
+
+  [Theme.breakpoints.up("md")]: {
+    fontSize: "1rem",
+    paddingBottom: "0.4rem",
+    paddingTop: "0.4rem",
+  },
+};
+
 export default Theme;
