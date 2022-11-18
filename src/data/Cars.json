@@ -48,5 +48,15 @@
     "price": 32100,
     "seats": 5,
     "fuel": "Gasolina"
+  },
+  {
+    "name": "Opel Corsa",
+    "brand": "Opel",
+    "description": "El Opel Corsa es un utilitario urbano, del segmento B, fabricado por Opel desde 1982. Actualmente se comercializa la sexta generación, presentada en 2019",
+    "type": "Urbano",
+    "img": "imgs/cars/opel_corsa.jpg",
+    "price": 17299,
+    "seats": 5,
+    "fuel": "Gasolina"
   }
 ]
