@@ -28,7 +28,16 @@ export default function MultiActionAreaCard(props) {
         <CardContent>
           <Grid container>
             <Grid item xs={2} sm={2} md={2} lg={2}>
-              <img src={brandImg} alt="brand" width={"100%"} />
+              <img
+                src={brandImg}
+                alt="brand"
+                style={{
+                  "object-fit": "cover",
+                  "object-position": "center",
+                  width: "80%",
+                  height: "80%",
+                }}
+              />
             </Grid>
             <Grid item xs={10} sm={10} md={10} lg={10}>
               <Typography gutterBottom variant="h5" component="div">
