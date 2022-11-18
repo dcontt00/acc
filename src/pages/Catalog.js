@@ -10,6 +10,8 @@ import {
   FormControlLabel,
   FormGroup,
   Switch,
+  Slider,
+  Box,
 } from "@mui/material";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
@@ -39,6 +41,11 @@ function filterByFuel(cars, fuel) {
 }
 
 export default function Catalog() {
+  const [price, setPrice] = React.useState([20, 37]);
+
+  const handlePriceChange = (event, newValue) => {
+    setPrice(newValue);
+  };
   const [selectedCars, setSelectedCars] = React.useState(Cars);
 
   const [type, setType] = React.useState("");
@@ -175,6 +182,19 @@ export default function Catalog() {
                 <MenuItem value={"Diésel"}>Diésel</MenuItem>
                 <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
               </Select>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={3}>
+              <Typography>
+                Precio: {price[0]}-{price[1]}
+              </Typography>
+              <Box sx={{ width: 300 }}>
+                <Slider
+                  getAriaLabel={() => "Temperature range"}
+                  value={price}
+                  onChange={handlePriceChange}
+                  valueLabelDisplay="auto"
+                />
+              </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={3}>
               <Button variant="contained" onClick={deleteFilters}>
