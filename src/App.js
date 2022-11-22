@@ -1,5 +1,7 @@
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
+import Description from "./pages/Description";
+import Personalize from "./pages/Personalize";
 
 import {
   BrowserRouter as Router,
@@ -20,6 +22,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
+          <Route path="/description" element={<Description />} />
+          <Route path="/personalize" element={<Personalize />} />
         </Routes>
         <Footer />
       </Router>
