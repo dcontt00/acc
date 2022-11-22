@@ -1,6 +1,6 @@
 import "../App.css";
 import { Grid, Typography, Button} from "@mui/material";
-import Carousel from "../components/Carousel";
+import Carousel from "../components/CarouselCar";
 import Container from "@mui/material/Container";
 import Table from "../components/Table";
 import EditIcon from '@mui/icons-material/Edit';

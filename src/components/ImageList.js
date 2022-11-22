@@ -3,6 +3,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { Button } from '@mui/material';
 
+
 export default function StandardImageList() {
   return (
     <ImageList cols={5} item xs={12} sm={6} md={4} lg={3}>
@@ -24,23 +25,23 @@ export default function StandardImageList() {
 
 const itemData = [
   {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-    title: 'Breakfast',
+    img: 'imgs/llantas/llantas_1.jpg',
+    title: 'Llantas 1',
   },
   {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
+    img: 'imgs/llantas/llantas_2.jpg',
+    title: 'Llantas 2',
   },
   {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
+    img: 'imgs/llantas/llantas_3.jpg',
+    title: 'Llantas 3',
   },
   {
-    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-    title: 'Coffee',
+    img: 'imgs/llantas/llantas_4.jpg',
+    title: 'Llantas 4',
   },
   {
-    img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-    title: 'Hats',
+    img: 'imgs/llantas/llantas_5.jpg',
+    title: 'Llantas 5',
   }
 ];

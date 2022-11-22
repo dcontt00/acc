@@ -49,7 +49,7 @@ export default function BasicTable() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>BMW IX</TableCell>
+            <TableCell>Audi A1</TableCell>
             <TableCell align="right">Valor</TableCell>
           </TableRow>
         </TableHead>

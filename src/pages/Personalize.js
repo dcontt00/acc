@@ -1,6 +1,6 @@
 import "../App.css";
 import { Button, Grid, Typography} from "@mui/material";
-import Carousel from "../components/Carousel";
+import Carousel from "../components/CarouselCar";
 import Container from "@mui/material/Container";
 import ImageList from "../components/ImageList";
 import * as React from 'react';

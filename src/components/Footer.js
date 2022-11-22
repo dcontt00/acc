@@ -36,7 +36,7 @@ function ResponsiveAppBar() {
       justifyContent="center"
     >
       <Grid item xs={12}>
-        <p>Concesionario - 2022</p>
+        <p>DreamCar - 2022</p>
       </Grid>
     </Grid>
   );
