@@ -1,0 +1,24 @@
+[
+    {
+        "id": "2",
+        "name": "BMW IX",
+        "brand": "BMW",
+        "description": "El BMW iX es un SUV 100% eléctrico -con tintes de monovolumen-, del segmento E, fabricado por BMW desde 2021. El BMW iX tiene un tamaño similar al de los BMW X5 y X6, y se caracteriza por contar con un diseño muy polémico, un interior de corte futurista y una autonomía eléctrica que puede alcanzar hasta 600 kilómetros con una sola carga.",
+        "type": "SUV",
+        "img": "imgs/cars/bmw_ix.jpg",
+        "price": 85000,
+        "seats": 5,
+        "fuel": "Eléctrico"
+      },
+      {
+        "id": "5",
+        "name": "Honda Civic",
+        "brand": "Honda",
+        "description": "El Honda Civic es un vehículo compacto, del segmento C, fabricado por Honda desde 1972 y se trata del modelo más importante de Honda en Europa. Actualmente se comercializa la undécima generación, presentada en 2022, con un importante rediseño con respecto a la generación anterior, que mejora su diseño interior y añade importantes sistemas tecnológicos y de conectividad.",
+        "type": "Urbano",
+        "img": "imgs/cars/honda_civic.jpg",
+        "price": 32100,
+        "seats": 5,
+        "fuel": "Gasolina"
+      }
+]
