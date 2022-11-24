@@ -13,6 +13,8 @@ export default function StandardImageList(props) {
             description={coche.description}
             brand={coche.brand}
             price={coche.price}
+            inHistory={props.inHistory}
+            car={coche}
           />
         </Grid>
       ))}

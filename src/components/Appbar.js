@@ -19,7 +19,7 @@ const pages = [
   { name: "Catálogo", link: "/catalog" },
   { name: "Contacto", link: "/contact" },
 ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Favorites", "Order List", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
@@ -38,7 +38,23 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (event, index) => {
+    switch(settings.at(index)) {
+      case "Profile":
+        break;
+      case "Account":
+          break;
+      case "Favorites":
+        navigate("/favorites");
+        break;
+      case "Order List":
+        navigate("/history");
+        break;
+      case "Dashboard":
+        break;
+      default:
+        break;
+    }
     setAnchorElUser(null);
   };
 
@@ -163,8 +179,8 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {settings.map((setting, index) => (
+                <MenuItem key={setting} onClick={event => handleCloseUserMenu(event, index)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

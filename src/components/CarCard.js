@@ -3,10 +3,11 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions, Grid } from "@mui/material";
+import { Button, CardActionArea, CardActions, Grid, Box } from "@mui/material";
 
 export default function MultiActionAreaCard(props) {
   var description = props.description;
+  var choices = props.car.choices;
   var brandImg =
     "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
     props.brand.toLowerCase() +
@@ -16,7 +17,7 @@ export default function MultiActionAreaCard(props) {
     description = description.substring(0, 150) + "...";
   }
 
-  var price = props.price.toLocaleString("en-US", {
+  var price = parseFloat(props.price).toLocaleString("en-US", {
     style: "currency",
     currency: "EUR",
   });
@@ -50,10 +51,20 @@ export default function MultiActionAreaCard(props) {
               </Typography>
             </Grid>
           </Grid>
-
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
+          {props.inHistory ? (
+            <Box>
+              <Typography variant="body2" color="text.secondary">
+                {"Motor: " + choices.motor + " " + props.car.fuel}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {"Acabado: " + choices.bodyWork}
+              </Typography>
+            </Box>
+          ) : (
+            <Typography variant="body2" color="text.secondary">
+              {description}
+            </Typography>
+          )}
         </CardContent>
       </CardActionArea>
       <CardActions>
