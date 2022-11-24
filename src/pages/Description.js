@@ -1,11 +1,11 @@
 import "../App.css";
-import { Grid, Typography, Button} from "@mui/material";
+import { Grid, Typography, Button } from "@mui/material";
 import Carousel from "../components/CarouselCar";
 import Container from "@mui/material/Container";
 import Table from "../components/Table";
-import EditIcon from '@mui/icons-material/Edit';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import EditIcon from "@mui/icons-material/Edit";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 export default function Description() {
   return (
@@ -23,18 +23,24 @@ export default function Description() {
           <Table />
         </Grid>
 
-        <Grid item xs={4} sm={4} md={4} lg={4} >
-            <Button variant="contained">
+        <Grid item xs={4} sm={4} md={4} lg={4}>
+          <Grid container spacing={2}>
+            <Grid item lg={12} md={12} sm={12} xs={12}>
+              <Button variant="contained">
                 Favoritos <FavoriteBorderIcon />
-            </Button>
-       
-            <Button variant="contained">
+              </Button>
+            </Grid>
+            <Grid item lg={12} md={12} sm={12} xs={12}>
+              <Button variant="contained">
                 Personalizar <EditIcon />
-            </Button>
-
-            <Button variant="contained">
+              </Button>
+            </Grid>
+            <Grid item lg={12} md={12} sm={12} xs={12}>
+              <Button variant="contained">
                 Comprar <ShoppingCartIcon />
-            </Button>
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Container>
