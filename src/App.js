@@ -4,6 +4,9 @@ import Description from "./pages/Description";
 import Personalize from "./pages/Personalize";
 import Favorites from "./pages/Favorites";
 import History from "./pages/History";
+import SignIn from "./pages/SignIn";
+import LogIn from "./pages/LogIn";
+import Payment from "./pages/PaymentGateway";
 
 import {
   BrowserRouter as Router,
@@ -27,6 +30,9 @@ function App() {
           <Route path="/personalize" element={<Personalize />} />
           <Route path="/favorites" element={<Favorites/>}/>
           <Route path="/history" element={<History/>}/>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
         <Footer />
       </Router>

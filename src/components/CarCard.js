@@ -4,9 +4,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions, Grid, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function MultiActionAreaCard(props) {
   var description = props.description;
+  const navigate=useNavigate()
   var choices = props.car.choices;
   var brandImg =
     "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
@@ -75,7 +77,7 @@ export default function MultiActionAreaCard(props) {
             </Typography>
           </Grid>
           <Grid item xs={5} sm={5} md={5} lg={5}>
-            <Button size="small" color="primary" variant="contained">
+            <Button size="small" color="primary" variant="contained" onClick={()=>navigate("/description")}>
               Saber mas
             </Button>
           </Grid>
