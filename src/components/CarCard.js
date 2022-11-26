@@ -77,7 +77,7 @@ export default function MultiActionAreaCard(props) {
             </Typography>
           </Grid>
           <Grid item xs={5} sm={5} md={5} lg={5}>
-            <Button size="small" color="primary" variant="contained" onClick={()=>navigate("/description")}>
+            <Button size="small" color="primary" variant="contained" onClick={()=>navigate("/description/"+props.car.id)}>
               Saber mas
             </Button>
           </Grid>

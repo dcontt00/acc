@@ -5,9 +5,10 @@ import Cars from "../data/Cars.json";
 console.log(Cars["highlights"]);
 
 export default function Carousel_comp(props) {
+  console.log(props.cars)
   return (
     <Carousel>
-      {Cars.map((item, i) => (
+      {props.cars.map((item, i) => (
         <Item key={i} item={item} />
       ))}
     </Carousel>
