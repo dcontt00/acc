@@ -8,7 +8,10 @@
     "img": "imgs/cars/seat_leon.jpg",
     "price": 20000,
     "seats": 5,
-    "fuel": "Gasolina"
+    "fuel": "Diesel",
+    "traction": "Delantera",
+    "power": "115 CV",
+    "consumption": "4,7-5,2 l/100 km"
   },
   {
     "id": "2",
@@ -19,7 +22,10 @@
     "img": "imgs/cars/bmw_ix.jpg",
     "price": 85000,
     "seats": 5,
-    "fuel": "Eléctrico"
+    "fuel": "Eléctrico",
+    "traction": "Integral",
+    "power": "306 CV",
+    "consumption": "19,1 kWh/100 km"
   },
   {
     "id": "3",
@@ -30,7 +36,10 @@
     "img": "imgs/cars/dacia_sandero.jpg",
     "price": 12000,
     "seats": 5,
-    "fuel": "Gasolina"
+    "fuel": "Gasolina",
+    "traction": "Delantera",
+    "power": "90 CV",
+    "consumption": "5,3-6,2 l/100 km"
   },
   {
     "id": "4",
@@ -41,7 +50,10 @@
     "img": "imgs/cars/peugeot_208.jpg",
     "price": 16000,
     "seats": 5,
-    "fuel": "Gasolina"
+    "fuel": "Gasolina",
+    "traction": "Delantera",
+    "power": "180 CV",
+    "consumption": "4,3-5,5 l/100 km"
   },
   {
     "id": "5",
@@ -52,7 +64,10 @@
     "img": "imgs/cars/honda_civic.jpg",
     "price": 32100,
     "seats": 5,
-    "fuel": "Gasolina"
+    "fuel": "Gasolina",
+    "traction": "Delantera",
+    "power": "120 CV",
+    "consumption": "4,7-5 l/100 km"
   },
   {
     "id": "6",
@@ -63,6 +78,9 @@
     "img": "imgs/cars/opel_corsa.jpg",
     "price": 17299,
     "seats": 5,
-    "fuel": "Gasolina"
+    "fuel": "Gasolina",
+    "traction": "Delantera",
+    "power": "136 CV",
+    "consumption": "4,1-5,9 l/100 km"
   }
 ]

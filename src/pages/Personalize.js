@@ -17,7 +17,53 @@ function getCar(id) {
   return Cars.find((car) => car.id === id);
 }
 
-const itemData = [
+const itemAsientos = [
+  {
+    img: "/imgs/asientos/asientos_1.jpg",
+    title: "Asientos 1",
+  },
+  {
+    img: "/imgs/asientos/asientos_2.jpg",
+    title: "Asientos 2",
+  },
+  {
+    img: "/imgs/asientos/asientos_3.jpg",
+    title: "Asientos 3",
+  },
+  {
+    img: "/imgs/asientos/asientos_4.jpg",
+    title: "Asientos 4",
+  },
+  {
+    img: "/imgs/asientos/asientos_5.jpg",
+    title: "Asientos 5",
+  },
+];
+
+const itemColor = [
+  {
+    img: "/imgs/color/color_1.jpg",
+    title: "Asientos 1",
+  },
+  {
+    img: "/imgs/color/color_2.jpg",
+    title: "Asientos 2",
+  },
+  {
+    img: "/imgs/color/color_3.jpg",
+    title: "Asientos 3",
+  },
+  {
+    img: "/imgs/color/color_4.jpg",
+    title: "Asientos 4",
+  },
+  {
+    img: "/imgs/color/color_5.jpg",
+    title: "Asientos 5",
+  },
+];
+
+const itemLlantas = [
   {
     img: "/imgs/llantas/llantas_1.jpg",
     title: "Llantas 1",
@@ -40,28 +86,6 @@ const itemData = [
   },
 ];
 
-const itemData2 = [
-  {
-    img: "/imgs/cars/audi_a1_1.jpg",
-    title: "Llantas 1",
-  },
-  {
-    img: "/imgs/llantas/llantas_2.jpg",
-    title: "Llantas 2",
-  },
-  {
-    img: "/imgs/llantas/llantas_3.jpg",
-    title: "Llantas 3",
-  },
-  {
-    img: "/imgs/llantas/llantas_4.jpg",
-    title: "Llantas 4",
-  },
-  {
-    img: "/imgs/llantas/llantas_5.jpg",
-    title: "Llantas 5",
-  },
-];
 
 export default function Personalize() {
   const navigate = useNavigate();
@@ -89,7 +113,7 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={itemData2} />
+          <ImageList data={itemAsientos} />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -97,7 +121,7 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={itemData} />
+          <ImageList data={itemColor} />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -105,7 +129,7 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={itemData} />
+          <ImageList data={itemLlantas} />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -146,7 +170,32 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={itemData} />
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">
+              Tipo de motor
+            </FormLabel>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="hybrid"
+              name="radio-buttons-group"
+            >
+              <FormControlLabel
+                value="LED"
+                control={<Radio />}
+                label="LED"
+              />
+              <FormControlLabel
+                value="Xenón"
+                control={<Radio />}
+                label="Xenón"
+              />
+              <FormControlLabel
+                value="Halógenos"
+                control={<Radio />}
+                label="Halógenos"
+              />
+            </RadioGroup>
+          </FormControl>
         </Grid>
 
         <Typography variant="h4" item xs={8} sm={8} md={8} lg={8} padding={5}>
