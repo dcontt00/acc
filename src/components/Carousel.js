@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Button, Typography, Grid } from "@mui/material";
 import Cars from "../data/Cars.json";
+import { useNavigate } from "react-router-dom";
 console.log(Cars["highlights"]);
 
 export default function Carousel_comp(props) {
@@ -16,6 +17,8 @@ export default function Carousel_comp(props) {
 }
 
 function Item(props) {
+  const navigate=useNavigate();
+
   return (
     <Grid container>
       <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -28,7 +31,7 @@ function Item(props) {
         <img src={props.item.img} alt="coche" width={"100%"} />
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Button variant="contained">Saber más</Button>
+        <Button variant="contained" onClick={()=>navigate("description/" + props.item.id)}>Saber más</Button>
       </Grid>
     </Grid>
   );

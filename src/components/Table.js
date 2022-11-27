@@ -13,7 +13,7 @@ export default function BasicTable(props) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Audi A1</TableCell>
+            <TableCell>{props.car.name}</TableCell>
             <TableCell align="right">Valor</TableCell>
           </TableRow>
         </TableHead>
