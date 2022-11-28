@@ -8,18 +8,17 @@ import { useParams } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Cars from "../data/Cars.json";
 import { useNavigate } from "react-router-dom";
-
+import ImageSliderComponent from "../components/ImageSlider";
 
 function getCar(id) {
   return Cars.find((car) => car.id === id);
 }
 
 export default function Description() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const params = useParams();
   const car = getCar(params.id);
-  const myImage = "/" + car.img;
-  
+
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2}>
@@ -27,7 +26,7 @@ export default function Description() {
           <Typography variant="h2">{car.name}</Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <img src={myImage} style={{ width: "100%" }} />
+          <ImageSliderComponent imgs={car.imgs} />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -45,17 +44,23 @@ export default function Description() {
         <Grid item xs={4} sm={4} md={4} lg={4}>
           <Grid container spacing={2}>
             <Grid item lg={12} md={12} sm={12} xs={12}>
-              <Button variant="contained" onClick={()=>navigate("/favourites")}> 
+              <Button
+                variant="contained"
+                onClick={() => navigate("/favourites")}
+              >
                 Favoritos <FavoriteBorderIcon />
               </Button>
             </Grid>
             <Grid item lg={12} md={12} sm={12} xs={12}>
-              <Button variant="contained" onClick={()=>navigate("/personalize/" + car.id)}>
+              <Button
+                variant="contained"
+                onClick={() => navigate("/personalize/" + car.id)}
+              >
                 Personalizar <EditIcon />
               </Button>
             </Grid>
             <Grid item lg={12} md={12} sm={12} xs={12}>
-              <Button variant="contained" onClick={()=>navigate("/payment")}>
+              <Button variant="contained" onClick={() => navigate("/payment")}>
                 Comprar <ShoppingCartIcon />
               </Button>
             </Grid>
