@@ -76,6 +76,7 @@ function ResponsiveAppBar() {
         break;
       case "Logout":
         handleLogout();
+        break;
       default:
         break;
     }

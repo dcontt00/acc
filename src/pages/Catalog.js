@@ -15,7 +15,7 @@ import {
   SliderMarkLabel,
 } from "@mui/material";
 import Container from "@mui/material/Container";
-import Gallery from "../components/Gallery";
+import Gallery from "../components/CatalogGallery";
 import Brands from "../data/Brands.json";
 import Cars from "../data/Cars.json";
 
