@@ -12,10 +12,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Cookie from "universal-cookie";
 
 // Importo el hook del use navigate para cambiar de vistas
 import { useNavigate } from "react-router-dom";
 
+const cookie = new Cookie();
 const theme = createTheme();
 
 export default function SignIn() {
@@ -29,19 +31,8 @@ export default function SignIn() {
       /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
     }
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-
-    if (data.get("email") == "admin") {
-      // Uso el navigate para cambiar de vista
-      navigate("/" + data.get("email") + "/main/admin");
-    } else {
-      // Uso el navigate para cambiar de vista
-      navigate("/" + data.get("email") + "/main");
-    }
+    cookie.set("loged", true);
+    navigate(cookie.get("pagePreLogin"));
   };
 
   return (

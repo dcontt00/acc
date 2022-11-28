@@ -13,16 +13,26 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
+import Cookie from "universal-cookie";
+const cookie = new Cookie();
 
 const pages = [
   { name: "Inicio", link: "/" },
   { name: "Catálogo", link: "/catalog" },
   { name: "Contacto", link: "/contact" },
 ];
-const settings = ["Profile", "Account", "Favorites", "Order List", "Dashboard", "Logout"];
+const settings = [
+  "Profile",
+  "Account",
+  "Favorites",
+  "Order List",
+  "Dashboard",
+  "Logout",
+];
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
+  const [loged, setLoged] = React.useState(cookie.get("loged"));
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -38,12 +48,24 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  // Handle logout
+  const handleLogout = () => {
+    cookie.remove("loged");
+    setLoged(false);
+  };
+
+  // Handle login
+  const handleLogin = () => {
+    cookie.set("pagePreLogin", window.location.pathname);
+    navigate("/login");
+  };
+
   const handleCloseUserMenu = (event, index) => {
-    switch(settings.at(index)) {
+    switch (settings.at(index)) {
       case "Profile":
         break;
       case "Account":
-          break;
+        break;
       case "Favorites":
         navigate("/favorites");
         break;
@@ -52,6 +74,8 @@ function ResponsiveAppBar() {
         break;
       case "Dashboard":
         break;
+      case "Logout":
+        handleLogout();
       default:
         break;
     }
@@ -156,36 +180,46 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
+          {/*Hide menu if user is not loged*/}
+          {loged ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting, index) => (
-                <MenuItem key={setting} onClick={event => handleCloseUserMenu(event, index)}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting, index) => (
+                  <MenuItem
+                    key={setting}
+                    onClick={(event) => handleCloseUserMenu(event, index)}
+                  >
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          ) : (
+            <Button color="secondary" onClick={() => handleLogin()}>
+              Iniciar sesion
+            </Button>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
