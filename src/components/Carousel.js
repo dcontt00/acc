@@ -1,24 +1,25 @@
 import React from "react";
-import Carousel from "react-material-ui-carousel";
+import { Carousel } from "react-responsive-carousel";
 import { Paper, Button, Typography, Grid } from "@mui/material";
 import Cars from "../data/Cars.json";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
-console.log(Cars["highlights"]);
 
 export default function Carousel_comp(props) {
-  console.log(props.cars)
+  const navigate = useNavigate();
+
   return (
-    <Carousel>
+    <Carousel autoPlay width={"100%"}>
       {props.cars.map((item, i) => (
-        <Item key={i} item={item} />
+        <div onClick={() => navigate("description/" + item.id)}>
+          <Item key={i} item={item} />
+        </div>
       ))}
     </Carousel>
   );
 }
 
 function Item(props) {
-  const navigate=useNavigate();
-
   return (
     <Grid container>
       <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -28,11 +29,9 @@ function Item(props) {
         <Typography variant="p">{props.item.description}</Typography>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <img src={props.item.img} alt="coche" width={"100%"} />
+        <img src={props.item.img} alt="coche" width={"70%"} />
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Button variant="contained" onClick={()=>navigate("description/" + props.item.id)}>Saber más</Button>
-      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={12}></Grid>
     </Grid>
   );
 }
