@@ -5,7 +5,8 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
 import Button from "@mui/material/Button";
-
+import Cars from "../data/Cars.json"
+import { useParams } from "react-router-dom";
 const Img = styled("img")({
   margin: "auto",
   display: "block",
@@ -65,8 +66,14 @@ export default function CartGrid({ product }) {
     </Paper>
   );
 }*/
+function getCar(id) {
+  return Cars.find((car) => car.id === id);
+}
 
 export default function CartGrid() {
+  const params = useParams();
+  const car = getCar(params.id);
+
   return (
     <Paper
       sx={{
@@ -76,50 +83,44 @@ export default function CartGrid() {
         backgroundColor: (theme) =>
           theme.palette.mode === "dark" ? "#1A2027" : "#fff",
       }}
-      
+
     >
       <Grid container spacing={2}>
         <Grid item>
-          <ButtonBase sx={{ width: 450, height: 350 }}>
-            <Img src="https://wallpapercave.com/wp/wp2538996.jpg" />
-          </ButtonBase>
+          <img src={"/" + car.img} width="50%" />
         </Grid>
         <Grid item xs={2} sm container>
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-              {/* gutterBottom es para aniadir un margen en la parte de abajo del texto*/} 
+              {/* gutterBottom es para aniadir un margen en la parte de abajo del texto*/}
               <Typography gutterBottom variant="h4" component="div">
-              Marca: Ferrari
+                Marca: {car.brand}
               </Typography>
               <Typography variant="h4" gutterBottom>
-              Modelo: LaFerrari
+                Modelo: {car.name}
               </Typography>
-              <Typography variant="h4" gutterBottom>                
+              <Typography variant="h4" gutterBottom>
                 Año: 2022
               </Typography>
               <Typography variant="h4" color="text.secondary" gutterBottom>
-                Descripcion: Rapido, elegante y comodo, el coche de tus sueños!
+                Descripcion: {car.description}
               </Typography>
             </Grid>
             <Grid item>
               <Button sx={{ width: 200, height: 80 }}>
                 <Typography variant="h5">
                   Comprar
-              </Typography>
+                </Typography>
               </Button>
               <Button sx={{ width: 200, height: 80 }}>
-                 <Typography variant="h5">
+                <Typography variant="h5">
                   Eliminar
-              </Typography></Button> 
+                </Typography></Button>
             </Grid>
           </Grid>
           <Grid item>
             <Typography variant="h3" component="div">
-              € 15
+              {car.price}
             </Typography>
           </Grid>
         </Grid>

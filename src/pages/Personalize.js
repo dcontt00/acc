@@ -12,6 +12,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Cars from "../data/Cars.json";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import Cookie from "universal-cookie";
+const cookie = new Cookie();
 
 function getCar(id) {
   return Cars.find((car) => car.id === id);
@@ -210,7 +212,7 @@ export default function Personalize() {
           md={4}
           lg={4}
           padding={5}
-          onClick={()=>navigate("/payment")}
+          onClick={() => navigate("/payment/" + params.id)}
         >
           Comprar <ShoppingCartIcon />
         </Button>

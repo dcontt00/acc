@@ -30,13 +30,13 @@ function App() {
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/description/:id" element={<Description />} />
           <Route path="/personalize/:id" element={<Personalize />} />
-          <Route path="/favorites" element={<Favorites/>}/>
-          <Route path="/history" element={<History/>}/>
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/history" element={<History />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/login" element={<LogIn />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/payment/method" element={<PaymentMethod/>} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/payment/:id" element={<Payment />} />
+          <Route path="/payment/method" element={<PaymentMethod />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Router>
