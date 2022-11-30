@@ -60,7 +60,7 @@ export default function Description() {
               </Button>
             </Grid>
             <Grid item lg={12} md={12} sm={12} xs={12}>
-              <Button variant="contained" onClick={() => navigate("/payment")}>
+              <Button variant="contained" onClick={() => navigate("/payment/" + car.id)}>
                 Comprar <ShoppingCartIcon />
               </Button>
             </Grid>
