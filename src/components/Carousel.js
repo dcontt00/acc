@@ -2,6 +2,7 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import { Paper, Button, Typography, Grid } from "@mui/material";
 import Cars from "../data/Cars.json";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
 
@@ -9,13 +10,16 @@ export default function Carousel_comp(props) {
   const navigate = useNavigate();
 
   return (
-    <Carousel autoPlay width={"100%"}>
-      {props.cars.map((item, i) => (
-        <div onClick={() => navigate("description/" + item.id)}>
-          <Item key={i} item={item} />
-        </div>
-      ))}
-    </Carousel>
+    <Paper>
+
+      <Carousel autoPlay width={"100%"} showArrows>
+        {props.cars.map((item, i) => (
+          <div onClick={() => navigate("description/" + item.id)}>
+            <Item key={i} item={item} />
+          </div>
+        ))}
+      </Carousel>
+    </Paper>
   );
 }
 

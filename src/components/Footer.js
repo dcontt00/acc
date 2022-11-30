@@ -30,8 +30,6 @@ function ResponsiveAppBar() {
         paddingBottom: "0.5%",
         paddingTop: "0.5%",
         backgroundColor: "#C8C8C8",
-        bottom: 0,
-        position: "fixed"
       }}
       direction="column"
       alignItems="center"
