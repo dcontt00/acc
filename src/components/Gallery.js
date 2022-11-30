@@ -6,7 +6,7 @@ export default function StandardImageList(props) {
   return (
     <Grid container spacing={2}>
       {props.cars.map((coche) => (
-        <Grid item xs={12} sm={6} md={4} lg={6}>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
           <CarCard
             img={coche.img}
             title={coche.name}

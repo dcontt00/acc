@@ -42,7 +42,7 @@ export default function Contact() {
                     <Typography variant="h7">dreamcar@concesionario.com</Typography>
                 </Grid>
             </Grid>
-            <Box height={600} />
+            <Box height={"35rem"} />
         </Container>
     );
 }
