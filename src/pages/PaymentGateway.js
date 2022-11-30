@@ -2,9 +2,11 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
+import CartProduct from "../components/CartProduct";
 
 function Payment() {
 
+  let product = [];
 
   return (
     <div>
@@ -45,6 +47,7 @@ function Payment() {
       <br />
       <br />
       <br />
+      <CartProduct/>
     </div>
   );
 }

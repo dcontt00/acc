@@ -7,6 +7,7 @@ import History from "./pages/History";
 import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
 import Payment from "./pages/PaymentGateway";
+import PaymentMethod from "./pages/PaymentMethod";
 
 import {
   BrowserRouter as Router,
@@ -33,6 +34,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/payment/method" element={<PaymentMethod/>} />
         </Routes>
         <Footer />
       </Router>
