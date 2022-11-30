@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
 import Payment from "./pages/PaymentGateway";
 import PaymentMethod from "./pages/PaymentMethod";
+import Contact from "./pages/Contact";
 
 import {
   BrowserRouter as Router,
@@ -35,6 +36,7 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/payment/method" element={<PaymentMethod/>} />
+          <Route path="/contact" element={<Contact/>} />
         </Routes>
         <Footer />
       </Router>

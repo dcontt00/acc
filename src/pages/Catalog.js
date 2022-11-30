@@ -214,7 +214,7 @@ export default function Catalog() {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={brand}
-                label="Hola"
+                label="Marca"
                 onChange={handleChangeBrand}
                 sx={{ width: "100%" }}
               >
@@ -228,7 +228,7 @@ export default function Catalog() {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={type}
-                label="Hola"
+                label="Tipo"
                 onChange={handleChangeType}
                 sx={{ width: "100%" }}
               >
@@ -241,7 +241,7 @@ export default function Catalog() {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={fuel}
-                label="Hola"
+                label="Combustible"
                 onChange={handleChangeFuel}
                 sx={{ width: "100%" }}
               >
