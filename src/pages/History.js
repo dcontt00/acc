@@ -15,7 +15,7 @@ export default function History() {
     <Container maxWidth="xl">
       <Grid container spacing={0}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography variant="h1">Coches Favoritos</Typography>
+          <Typography variant="h1">Historial de compras</Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Gallery cars={selectedCars} inHistory={true}/>
