@@ -210,13 +210,14 @@ export default function Catalog() {
               <Typography variant="h4">Filtrar por:</Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={3}>
+              <Typography>Marca</Typography>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={brand}
                 label="Marca"
                 onChange={handleChangeBrand}
-                sx={{ width: "100%" }}
+                sx={{ width: "100%", color: "black" }}
               >
                 {Brands.map((item, i) => (
                   <MenuItem value={item.id}>{item.name}</MenuItem>
@@ -224,6 +225,8 @@ export default function Catalog() {
               </Select>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={3}>
+              <Typography>Tipo</Typography>
+
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -237,6 +240,8 @@ export default function Catalog() {
               </Select>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={3}>
+              <Typography>Combustible</Typography>
+
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
