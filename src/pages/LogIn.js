@@ -33,6 +33,7 @@ export default function SignIn() {
     event.preventDefault();
     cookie.set("loged", true);
     navigate(cookie.get("pagePreLogin"));
+    window.location.reload();
   };
 
   return (
