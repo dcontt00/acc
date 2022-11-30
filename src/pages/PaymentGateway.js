@@ -22,18 +22,21 @@ function Payment() {
       <br />
       <br />
       <br />
-      <Grid container spacing={2}>
-        <Grid item xs={3} >
-          <Typography variant="h5" align="center">Personalizar vehiculo</Typography>
+      <Grid container spacing={1}>
+        <Grid item xs={2.5} >
+          <Typography variant="h5" align="center">Imagen del vehiculo</Typography>
         </Grid>
-        <Grid item xs={3} >
-          <Typography variant="h5" align="center">Personalizar vehiculo</Typography>
+        <Grid item xs={2.5} >
+          <Typography variant="h5" align="center">Resumen Caracteristicas</Typography>
         </Grid>
-        <Grid item xs={3} >
-          <Typography variant="h5" align="center">Personalizar vehiculo</Typography>
+        <Grid item xs={2.5} >
+          <Typography variant="h5" align="center">Precio Basico Vehiculo</Typography>
         </Grid>
-        <Grid item xs={3} >
-          <Typography variant="h5" align="center">Personalizar vehiculo</Typography>
+        <Grid item xs={2.5} >
+          <Typography variant="h5" align="center">Precio Personalizacion</Typography>
+        </Grid>
+        <Grid item xs={2} >
+          <Typography variant="h5" align="center">Precio Total</Typography>
         </Grid>
     </Grid >
       <br />
