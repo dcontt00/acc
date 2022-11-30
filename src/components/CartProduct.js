@@ -16,6 +16,7 @@ function getCar(id) {
 
 export default function CartGrid() {
   const params = useParams();
+  const navigate = useNavigate();
   const car = getCar(params.id);
 
   return (
@@ -57,7 +58,7 @@ export default function CartGrid() {
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </Button>
     </Paper>
   );
 }
