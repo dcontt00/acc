@@ -10,7 +10,6 @@ export default function Carousel_comp(props) {
   const navigate = useNavigate();
 
   return (
-
     <Carousel autoPlay showArrows>
       {props.cars.map((item, i) => (
         <div onClick={() => navigate("description/" + item.id)}>

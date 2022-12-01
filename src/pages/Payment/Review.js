@@ -29,7 +29,7 @@ const products = [
   { name: "Envio", desc: "", price: "Gratis" },
 ];
 
-const car = [
+const cars = [
   {
     brand: "BMW",
     model: "iX",
@@ -53,17 +53,20 @@ export default function Review() {
         Resumen de la compra
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+        {cars.map((car) => (
+          <ListItem key={car.brand} sx={{ py: 1, px: 0 }}>
+            <ListItemText
+              primary={car.brand + " " + car.model}
+              secondary={car.desc}
+            />
+            <Typography variant="body2">{car.price}</Typography>
           </ListItem>
         ))}
 
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            54.000,06 €
+            85.000,00 €
           </Typography>
         </ListItem>
       </List>

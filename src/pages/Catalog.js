@@ -18,8 +18,8 @@ import Container from "@mui/material/Container";
 import Gallery from "../components/CatalogGallery";
 import Brands from "../data/Brands.json";
 import Cars from "../data/Cars.json";
-import InputLabel from "@mui/material/Inputlabel";
-import FormControl from '@mui/material/FormControl';
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 
 const priceMarks = [
   {
@@ -246,7 +246,9 @@ export default function Catalog() {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4}>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Combustible</InputLabel>
+                <InputLabel id="demo-simple-select-label">
+                  Combustible
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -259,11 +261,13 @@ export default function Catalog() {
                   <MenuItem value={"Diésel"}>Diésel</MenuItem>
                   <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
                 </Select>
-                </FormControl>
+              </FormControl>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Typography sx={{ width: "50%" , textAlign: "center"}}>Precio: {formatPrice(price)}</Typography>
-              <Box sx={{ width: "50%" }} >
+              <Typography sx={{ width: "50%", textAlign: "center" }}>
+                Precio: {formatPrice(price)}
+              </Typography>
+              <Box sx={{ width: "50%" }}>
                 <Slider
                   value={price}
                   min={10}
@@ -271,7 +275,6 @@ export default function Catalog() {
                   valueLabelDisplay="off"
                   marks={priceMarks}
                   step={null}
-
                 />
               </Box>
             </Grid>
