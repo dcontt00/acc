@@ -181,7 +181,7 @@ export default function Catalog() {
             onChange={handleSearch}
           />
         </Grid>
-        <Grid item xs={2} sm={2} md={2} lg={2}>
+        <Grid item xs={2} sm={2} md={2} lg={2} paddingLeft={2}>
           <Button variant="contained">Buscar</Button>
         </Grid>
 

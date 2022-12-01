@@ -1,20 +1,9 @@
 import "../App.css";
 import { Grid, Typography, Button, Box } from "@mui/material";
 import Container from "@mui/material/Container";
-import Table from "../components/Table";
-import EditIcon from "@mui/icons-material/Edit";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useParams } from "react-router-dom";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Cars from "../data/Cars.json";
-import { useNavigate } from "react-router-dom";
-import ImageSliderComponent from "../components/ImageSlider";
 
 
 export default function Contact() {
-    const navigate = useNavigate();
-    const params = useParams();
-
     return (
         <Container maxWidth="lg">
             <br />

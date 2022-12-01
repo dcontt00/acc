@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Button, CardActionArea, CardActions, Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +27,7 @@ export default function MultiActionAreaCard(props) {
 
   return (
     <Card sx={{ maxWidth: 345, maxHeight: 400 }}>
-      <CardActionArea>
+      <CardActionArea onClick={() => navigate("/description/" + props.car.id)}>
         <CardMedia
           component="img"
           height="140"
@@ -71,16 +72,21 @@ export default function MultiActionAreaCard(props) {
       </CardActionArea>
       <CardActions>
         <Grid container>
-          <Grid item xs={7} sm={7} md={7} lg={7}>
+          <Grid item xs={5} sm={5} md={5} lg={5}>
             <Typography variant="h6" color="text.secondary">
               {price}
             </Typography>
           </Grid>
-          <Grid item xs={5} sm={5} md={5} lg={5}>
-            <Button size="small" color="primary" variant="contained" onClick={()=>navigate("/description/"+props.car.id)}>
-              Saber mas
-            </Button>
-          </Grid>
+            <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Button size="small" color="primary" variant="contained" onClick={()=>navigate("/description/"+props.car.id)}>
+                Saber mas
+              </Button>
+            </Grid>
+            <Grid item xs={1} sm={1} md={1} lg={1}>
+              <Button size="small" color="primary" variant="contained" onClick={()=>navigate("/favourites")}>
+                <FavoriteBorderIcon/>
+              </Button>
+            </Grid>
         </Grid>
       </CardActions>
     </Card>

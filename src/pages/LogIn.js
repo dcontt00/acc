@@ -20,16 +20,14 @@ import { useNavigate } from "react-router-dom";
 const cookie = new Cookie();
 const theme = createTheme();
 
-export default function SignIn() {
+export default function LogIn() {
   // Funcion que responde al click del login (hanglesubmit)
   // Tengo que utilizar el hook del use navigate
   // lo vamos a renombrar para hacerlo mas facil
   // Para que no de problemas, se debe declarar fuera de la funcion "handleSubmit"
   const navigate = useNavigate();
   const handleSubmit = (event) => {
-    {
       /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
-    }
     event.preventDefault();
     cookie.set("loged", true);
     navigate(cookie.get("pagePreLogin"));

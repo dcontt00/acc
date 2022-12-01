@@ -6,7 +6,6 @@ import {
 } from "@mui/material";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
-import Brands from "../data/Brands.json";
 import Cars from "../data/FavCars.json";
 
 

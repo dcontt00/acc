@@ -1,10 +1,8 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import ButtonBase from "@mui/material/ButtonBase";
 import Button from "@mui/material/Button";
 import Cars from "../data/Cars.json";
 import { useParams } from "react-router-dom";

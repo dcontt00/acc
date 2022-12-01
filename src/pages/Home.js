@@ -1,10 +1,9 @@
 import "../App.css";
-import { Paper, Button, Typography, Grid } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import Carousel from "../components/Carousel";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
 import Cars from "../data/Cars.json";
-import ImageSlider from "../components/ImageSlider";
 
 export default function Home() {
   return (

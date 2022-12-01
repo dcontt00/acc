@@ -1,7 +1,6 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import { Paper, Button, Typography, Grid, Box } from "@mui/material";
-import Cars from "../data/Cars.json";
+import { Typography, Grid } from "@mui/material";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
