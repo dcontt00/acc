@@ -3,10 +3,12 @@ import * as React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem, AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, InputBase } from '@mui/material'
 import AdbIcon from "@mui/icons-material/Adb";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from '@mui/material/styles';
 import Cookie from "universal-cookie";
+import { motion } from "framer-motion";
+
 const cookie = new Cookie();
 
 const pages = [
@@ -69,6 +71,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loged, setLoged] = React.useState(cookie.get("loged"));
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -180,15 +183,17 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page, index) => (
-                <MenuItem
+                <Button
+                  component={motion.div}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }} whileHover={{ scale: 1.080 }}
                   key={index}
                   onClick={function (event) {
                     handleCloseNavMenu();
                     navigate(page.link);
                   }}
                 >
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>
+                  {page.name}
+                </Button>
               ))}
             </Menu>
           </Box>
@@ -214,16 +219,26 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
               <Button
+                size="small"
                 key={index}
+                component={motion.div}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }} whileHover={{ scale: 1.10 }}
                 onClick={function (event) {
                   handleCloseNavMenu();
                   navigate(page.link);
                 }}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  marginRight: 2,
+
+                  backgroundColor: location.pathname === page.link ? "white" : "transparent",
+                  color: location.pathname === page.link ? "black" : "white"
+                }}
               >
                 {page.name}
               </Button>
-            ))}
+            ))
+
+            }
           </Box>
 
 
@@ -282,7 +297,7 @@ function ResponsiveAppBar() {
           )}
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 }
 export default ResponsiveAppBar;
