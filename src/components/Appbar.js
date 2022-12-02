@@ -8,6 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from '@mui/material/styles';
 import Cookie from "universal-cookie";
 import { motion } from "framer-motion";
+import AButton from "./AButton";
 
 const cookie = new Cookie();
 
@@ -296,9 +297,7 @@ function ResponsiveAppBar() {
               </Menu>
             </Box>
           ) : (
-            <Button color="secondary" onClick={() => handleLogin()}>
-              Iniciar sesion
-            </Button>
+            <AButton onClick={handleLogin} text="Iniciar Sesion" />
           )}
         </Toolbar>
       </Container>
