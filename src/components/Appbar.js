@@ -222,16 +222,21 @@ function ResponsiveAppBar() {
                 size="small"
                 key={index}
                 component={motion.div}
-                transition={{ type: "spring", stiffness: 400, damping: 20 }} whileHover={{ scale: 1.10 }}
+                whileHover={{
+                  scale: 1.10,
+                }}
                 onClick={function (event) {
                   handleCloseNavMenu();
                   navigate(page.link);
                 }}
                 sx={{
                   marginRight: 2,
-
                   backgroundColor: location.pathname === page.link ? "white" : "transparent",
-                  color: location.pathname === page.link ? "black" : "white"
+                  color: location.pathname === page.link ? "black" : "white",
+                  "&:hover": {
+                    backgroundColor: "white",
+                    color: "black",
+                  },
                 }}
               >
                 {page.name}
