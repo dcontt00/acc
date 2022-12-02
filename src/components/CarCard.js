@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Button, CardActionArea, CardActions, Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
+import { motion } from "framer-motion";
 export default function MultiActionAreaCard(props) {
   var description = props.description;
   const navigate = useNavigate()
@@ -78,12 +78,20 @@ export default function MultiActionAreaCard(props) {
             </Typography>
           </Grid>
           <Grid item xs={4} sm={4} md={4} lg={4}>
-            <Button size="small" color="primary" variant="contained" onClick={() => navigate("/description/" + props.car.id)}>
+            <Button component={motion.div}
+              whileHover={{ scale: 1.080, }} transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              size="small" color="primary" variant="contained"
+              onClick={() => navigate("/description/" + props.car.id)}
+            >
               Saber mas
             </Button>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <Button size="small" color="primary" variant="contained" onClick={() => navigate("/favourites")}>
+            <Button component={motion.div}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }} whileHover={{ scale: 1.080, }}
+              size="small" color="primary" variant="contained"
+              onClick={() => navigate("/favourites")}
+            >
               <FavoriteBorderIcon />
             </Button>
           </Grid>
