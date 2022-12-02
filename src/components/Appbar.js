@@ -172,9 +172,9 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {pages.map((page, index) => (
                 <MenuItem
-                  key={page}
+                  key={index}
                   onClick={function (event) {
                     handleCloseNavMenu();
                     navigate(page.link);
@@ -205,9 +205,9 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
-                key={page}
+                key={index}
                 onClick={function (event) {
                   handleCloseNavMenu();
                   navigate(page.link);
@@ -259,7 +259,7 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting, index) => (
                   <MenuItem
-                    key={setting}
+                    key={index}
                     onClick={(event) => handleCloseUserMenu(event, index)}
                   >
                     <Typography textAlign="center">{setting}</Typography>
