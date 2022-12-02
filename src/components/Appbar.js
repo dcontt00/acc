@@ -13,6 +13,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
+import { Divider, InputBase, TextField, Paper } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import DirectionsIcon from "@mui/icons-material/Directions";
 import Cookie from "universal-cookie";
 const cookie = new Cookie();
 
@@ -181,6 +184,21 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
+
+          <Paper
+            component="form"
+            sx={{ display: 'flex', alignItems: 'center', width: 400 }}
+          >
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              size="small"
+              placeholder="Buscar un coche"
+              inputProps={{ 'aria-label': 'search google maps' }}
+            />
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          </Paper>
           {/*Hide menu if user is not loged*/}
           {loged ? (
             <Box sx={{ flexGrow: 0 }}>
