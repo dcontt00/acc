@@ -20,6 +20,7 @@ import Brands from "../data/Brands.json";
 import Cars from "../data/Cars.json";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
+import { useParams } from "react-router-dom";
 
 const priceMarks = [
   {
@@ -109,13 +110,15 @@ function filterByPrice(cars, price) {
 
 export default function Catalog() {
   const [price, setPrice] = React.useState([10, 100]);
+  const params = useParams();
+
 
   const [selectedCars, setSelectedCars] = React.useState(Cars);
 
   const [type, setType] = React.useState("");
   const [brand, setBrand] = React.useState("");
   const [fuel, setFuel] = React.useState("");
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = React.useState(params.search);
 
   const [displayFilters, setDisplayFilters] = React.useState("none");
 
@@ -175,6 +178,8 @@ export default function Catalog() {
           <TextField
             id="standard-basic"
             label="Buscar por nombre de coche"
+            defaultValue={search}
+
             variant="outlined"
             size="small"
             sx={{ width: "100%" }}
@@ -223,7 +228,7 @@ export default function Catalog() {
               onChange={handleChangeBrand}
             >
               {Brands.map((item, i) => (
-                <MenuItem value={item.name}>{item.name}</MenuItem>
+                <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
               ))}
             </Select>
           </FormControl>
