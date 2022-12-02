@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function MultiActionAreaCard(props) {
   var description = props.description;
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   var choices = props.car.choices;
   var brandImg =
     "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
@@ -41,8 +41,8 @@ export default function MultiActionAreaCard(props) {
                 src={brandImg}
                 alt="brand"
                 style={{
-                  "object-fit": "cover",
-                  "object-position": "center",
+                  "objectFit": "cover",
+                  "objectPosition": "center",
                   width: "80%",
                   height: "80%",
                 }}
@@ -77,16 +77,16 @@ export default function MultiActionAreaCard(props) {
               {price}
             </Typography>
           </Grid>
-            <Grid item xs={4} sm={4} md={4} lg={4}>
-              <Button size="small" color="primary" variant="contained" onClick={()=>navigate("/description/"+props.car.id)}>
-                Saber mas
-              </Button>
-            </Grid>
-            <Grid item xs={1} sm={1} md={1} lg={1}>
-              <Button size="small" color="primary" variant="contained" onClick={()=>navigate("/favourites")}>
-                <FavoriteBorderIcon/>
-              </Button>
-            </Grid>
+          <Grid item xs={4} sm={4} md={4} lg={4}>
+            <Button size="small" color="primary" variant="contained" onClick={() => navigate("/description/" + props.car.id)}>
+              Saber mas
+            </Button>
+          </Grid>
+          <Grid item xs={1} sm={1} md={1} lg={1}>
+            <Button size="small" color="primary" variant="contained" onClick={() => navigate("/favourites")}>
+              <FavoriteBorderIcon />
+            </Button>
+          </Grid>
         </Grid>
       </CardActions>
     </Card>

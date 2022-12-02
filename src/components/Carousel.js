@@ -11,7 +11,7 @@ export default function Carousel_comp(props) {
   return (
     <Carousel autoPlay showArrows>
       {props.cars.map((item, i) => (
-        <div onClick={() => navigate("description/" + item.id)}>
+        <div key={i} onClick={() => navigate("description/" + item.id)}>
           <Item key={i} item={item} />
         </div>
       ))}
