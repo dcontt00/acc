@@ -8,10 +8,8 @@ import {
   Select,
   MenuItem,
   FormControlLabel,
-  FormGroup,
   Switch,
   Slider,
-  Box,
   SliderMarkLabel,
 } from "@mui/material";
 import Container from "@mui/material/Container";
@@ -22,49 +20,6 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { useParams } from "react-router-dom";
 
-const priceMarks = [
-  {
-    value: 10,
-    label: "10.000",
-  },
-  {
-    value: 20,
-    label: "20.000",
-  },
-  {
-    value: 30,
-    label: "30.000",
-  },
-  {
-    value: 40,
-    label: "40.000",
-  },
-  {
-    value: 50,
-    label: "50.000",
-  },
-  {
-    value: 60,
-
-    label: "60.000",
-  },
-  {
-    value: 70,
-    label: "70.000",
-  },
-  {
-    value: 80,
-    label: "80.000",
-  },
-  {
-    value: 90,
-    label: "90.000",
-  },
-  {
-    value: 100,
-    label: "100.000",
-  },
-];
 
 // format price
 function formatPrice(price) {
@@ -109,16 +64,16 @@ function filterByPrice(cars, price) {
 }
 
 export default function Catalog() {
-  const [price, setPrice] = React.useState([10, 100]);
   const params = useParams();
-
-
-  const [selectedCars, setSelectedCars] = React.useState(Cars);
-
+  const [price, setPrice] = React.useState([10, 100]);
   const [type, setType] = React.useState("");
   const [brand, setBrand] = React.useState("");
   const [fuel, setFuel] = React.useState("");
-  const [search, setSearch] = React.useState(params.search);
+  const [search, setSearch] = React.useState(params.search || "");
+
+  // Selected cars filtered by name if theres a search param in url
+  const [selectedCars, setSelectedCars] = React.useState(Cars.filter((car) =>
+    car.name.toLowerCase().includes(search.toLowerCase())));
 
   const [displayFilters, setDisplayFilters] = React.useState("none");
 
