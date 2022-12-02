@@ -85,6 +85,13 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  // Handle search when user press enter
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      navigate("/catalog/" + event.target.value);
+    }
+  };
+
   // Handle logout
   const handleLogout = () => {
     cookie.remove("loged");
@@ -227,6 +234,7 @@ function ResponsiveAppBar() {
             <StyledInputBase
               placeholder="Buscar..."
               inputProps={{ 'aria-label': 'search' }}
+              onKeyDown={handleKeyDown}
 
             />
           </Search>
