@@ -187,126 +187,115 @@ export default function Catalog() {
 
         {/* Switch de filtros */}
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch
-                  sx={{ color: "#fff" }}
-                  onChange={() => {
-                    handleDisplayFilters();
-                  }}
-                />
-              }
-              label="Filtrar"
-            />
-          </FormGroup>
-        </Grid>
-
-        {/* Filtros*/}
-
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          sx={{ display: displayFilters }}
-        >
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Typography variant="h4">Filtrar por:</Typography>
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={8}>
-              <Grid container>
-                <Grid item lg={4}>
-
-                  <FormControl fullWidth size="small">
-                    <InputLabel id="demo-simple-select-label">Marca</InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={brand}
-                      label="Marca"
-
-                      onChange={handleChangeBrand}
-                      sx={{ width: "100%", color: "black" }}
-                    >
-                      {Brands.map((item, i) => (
-                        <MenuItem value={item.id}>{item.name}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item lg={4}>
-
-                  <FormControl fullWidth size="small">
-                    <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={type}
-                      label="Tipo"
-                      onChange={handleChangeType}
-                      sx={{ width: "100%" }}
-                    >
-                      <MenuItem value={"SUV"}>SUV</MenuItem>
-                      <MenuItem value={"Urbano"}>Urbano</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item lg={4}>
-
-                  <FormControl fullWidth size="small">
-                    <InputLabel id="demo-simple-select-label">
-                      Combustible
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={fuel}
-                      label="Combustible"
-                      onChange={handleChangeFuel}
-                      sx={{ width: "100%" }}
-                    >
-                      <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
-                      <MenuItem value={"Diésel"}>Diésel</MenuItem>
-                      <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item lg={3}>
-
-                  <Typography sx={{ width: "100%", textAlign: "center" }}>
-                    Precio: {formatPrice(price)}
-                  </Typography>
-                  <Box sx={{ width: "100%" }}>
-                    <Slider
-                      size="small"
-                      valueLabelFormat={valuetext}
-                      valueLabelDisplay="auto"
-                      value={price}
-                      min={10}
-                      onChange={handleChangePrice}
-                      step={10}
-                      marks
-                    />
-                  </Box>
-                </Grid>
-              </Grid>
-
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={2}>
-              <Button variant="contained" onClick={deleteFilters}>
-                Borrar filtros
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
-
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Gallery cars={selectedCars} />
+          <FormControlLabel
+            control={
+              <Switch
+                sx={{ color: "#fff" }}
+                onChange={() => {
+                  handleDisplayFilters();
+                }}
+              />
+            }
+            label="Filtrar"
+          />
         </Grid>
       </Grid>
-    </Container>
+
+      {/* Filtros*/}
+      <Grid container sx={{ display: displayFilters }}>
+
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Typography variant="h4">Filtrar por:</Typography>
+        </Grid>
+
+
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <FormControl size="small"
+            sx={{ width: "25%" }}
+
+          >
+            <InputLabel id="demo-simple-select-label">Marca</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={brand}
+              label="Marca"
+              onChange={handleChangeBrand}
+            >
+              {Brands.map((item, i) => (
+                <MenuItem value={item.id}>{item.name}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl size="small"
+            sx={{ width: "25%" }}
+          >
+            <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={type}
+              label="Tipo"
+              onChange={handleChangeType}
+            >
+              <MenuItem value={"SUV"}>SUV</MenuItem>
+              <MenuItem value={"Urbano"}>Urbano</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl size="small"
+
+            sx={{ width: "25%" }}
+          >
+            <InputLabel id="demo-simple-select-label">
+              Combustible
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={fuel}
+              label="Combustible"
+              onChange={handleChangeFuel}
+            >
+              <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
+              <MenuItem value={"Diésel"}>Diésel</MenuItem>
+              <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl
+            sx={{ width: "25%", alignContent: "right" }}
+
+          >
+            <Typography sx={{ width: "100%", textAlign: "center" }}>
+              Precio: {formatPrice(price)}
+            </Typography>
+            <Slider
+              size="small"
+              valueLabelFormat={valuetext}
+              valueLabelDisplay="auto"
+              value={price}
+              min={10}
+              onChange={handleChangePrice}
+              step={10}
+              marks
+            />
+          </FormControl>
+
+        </Grid>
+
+
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={10}>
+        <Button variant="contained" onClick={deleteFilters}>
+          Borrar filtros
+        </Button>
+      </Grid>
+
+
+      <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Gallery cars={selectedCars} />
+      </Grid>
+    </Container >
   );
 }
