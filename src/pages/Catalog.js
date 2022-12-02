@@ -10,7 +10,6 @@ import {
   FormControlLabel,
   Switch,
   Slider,
-  SliderMarkLabel,
 } from "@mui/material";
 import Container from "@mui/material/Container";
 import Gallery from "../components/CatalogGallery";
