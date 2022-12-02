@@ -223,7 +223,7 @@ export default function Catalog() {
               onChange={handleChangeBrand}
             >
               {Brands.map((item, i) => (
-                <MenuItem value={item.id}>{item.name}</MenuItem>
+                <MenuItem value={item.name}>{item.name}</MenuItem>
               ))}
             </Select>
           </FormControl>
