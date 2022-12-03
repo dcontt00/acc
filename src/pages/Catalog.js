@@ -244,11 +244,11 @@ export default function Catalog() {
         </Grid>
 
 
-      </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={10}>
-        <Button variant="contained" onClick={deleteFilters}>
-          Borrar filtros
-        </Button>
+        <Grid item xs={12} sm={12} md={12} lg={10}>
+          <Button variant="contained" onClick={deleteFilters}>
+            Borrar filtros
+          </Button>
+        </Grid>
       </Grid>
 
 
