@@ -34,6 +34,7 @@ export default function MultiActionAreaCard(props) {
           height="140"
           image={props.img}
           alt="green iguana"
+          sx={{ objectFit: "cover" }}
         />
         <CardContent>
           <Grid container>
@@ -42,10 +43,10 @@ export default function MultiActionAreaCard(props) {
                 src={brandImg}
                 alt="brand"
                 style={{
-                  "objectFit": "cover",
-                  "objectPosition": "center",
+                  objectFit: "cover",
+                  objectPosition: "center",
                   width: "80%",
-                  height: "80%",
+                  height: "auto",
                 }}
               />
             </Grid>
