@@ -10,6 +10,7 @@ import Cars from "../data/Cars.json";
 import { useNavigate } from "react-router-dom";
 import ImageSliderComponent from "../components/ImageSlider";
 import { motion } from "framer-motion";
+import {dataName, getData, addData} from "../data/data";
 
 function getCar(id) {
   return Cars.find((car) => car.id === id);
@@ -48,7 +49,10 @@ export default function Description() {
               <Button component={motion.div} whileHover={{ scale: 1.080, }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 variant="contained"
-                onClick={() => navigate("/favourites")}
+                onClick={() => {
+                  addData(dataName.favcars, car);
+                  navigate("/favorites");
+                }}
               >
                 Favoritos <FavoriteBorderIcon />
               </Button>
