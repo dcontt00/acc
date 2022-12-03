@@ -1,21 +1,25 @@
 import * as React from "react";
+import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import { Box } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import ButtonBase from "@mui/material/ButtonBase";
 import Button from "@mui/material/Button";
 import Cars from "../data/Cars.json";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function getCar(id) {
   return Cars.find((car) => car.id === id);
 }
 
 export default function CartGrid() {
+  // Obtenemos los parametrosde la url para poder insertarlos en el navigate
   const params = useParams();
   const car = getCar(params.id);
-
+  const navigate = useNavigate();
   return (
     <Paper
       sx={{
@@ -51,7 +55,9 @@ export default function CartGrid() {
                   </Typography>
                 </Button>
               </Link>
-              <Button>Eliminar</Button>
+              <Button onClick={() => navigate("/description/" + car.id)}>
+                Cancelar
+              </Button>
             </Grid>
           </Grid>
         </Grid>

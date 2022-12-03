@@ -14,7 +14,8 @@
     "fuel": "Diesel",
     "traction": "Delantera",
     "power": "115 CV",
-    "consumption": "4,7-5,2 l/100 km"
+    "consumption": "4,7-5,2 l/100 km",
+    "year": "2020"
   },
   {
     "id": "2",
@@ -31,7 +32,8 @@
     "fuel": "Eléctrico",
     "traction": "Integral",
     "power": "306 CV",
-    "consumption": "19,1 kWh/100 km"
+    "consumption": "19,1 kWh/100 km",
+    "year": "2021"
   },
   {
     "id": "3",
@@ -48,7 +50,8 @@
     "fuel": "Gasolina",
     "traction": "Delantera",
     "power": "90 CV",
-    "consumption": "5,3-6,2 l/100 km"
+    "consumption": "5,3-6,2 l/100 km",
+    "year": "2020"
   },
   {
     "id": "4",
@@ -65,7 +68,8 @@
     "fuel": "Gasolina",
     "traction": "Delantera",
     "power": "180 CV",
-    "consumption": "4,3-5,5 l/100 km"
+    "consumption": "4,3-5,5 l/100 km",
+    "year": "2019"
   },
   {
     "id": "5",
@@ -82,7 +86,8 @@
     "fuel": "Gasolina",
     "traction": "Delantera",
     "power": "120 CV",
-    "consumption": "4,7-5 l/100 km"
+    "consumption": "4,7-5 l/100 km",
+    "year": "2022"
   },
   {
     "id": "6",
@@ -99,7 +104,8 @@
     "fuel": "Gasolina",
     "traction": "Delantera",
     "power": "136 CV",
-    "consumption": "4,1-5,9 l/100 km"
+    "consumption": "4,1-5,9 l/100 km",
+    "year": "2019"
   },
   {
     "id": "7",
@@ -121,6 +127,7 @@
     "fuel": "Gasolina",
     "traction": "Delantera",
     "power": "136 CV",
-    "consumption": "4,1-5,9 l/100 km"
+    "consumption": "4,1-5,9 l/100 km",
+    "year": "2018"
   }
 ]
