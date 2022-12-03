@@ -14,8 +14,8 @@ class ImageSliderComponent extends React.Component {
     // Iterate through the images and add the thumbnail and orignal property
     this.images = this.props.imgs.map((img) => {
       return {
-        original: "/" + img,
-        thumbnail: "/" + img,
+        original: img,
+        thumbnail: img,
       };
     });
     console.log(this.images);

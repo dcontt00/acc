@@ -12,6 +12,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Cars from "../data/Cars.json";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import Cookie from "universal-cookie";
+const cookie = new Cookie();
 
 function getCar(id) {
   return Cars.find((car) => car.id === id);
@@ -20,69 +22,84 @@ function getCar(id) {
 const itemAsientos = [
   {
     img: "/imgs/asientos/asientos_1.jpg",
-    title: "Asientos 1",
+    title: "Asientos de serie",
+    price: "+0€"
   },
   {
     img: "/imgs/asientos/asientos_2.jpg",
-    title: "Asientos 2",
+    title: "Polipiel",
+    price: "+500€"
   },
   {
     img: "/imgs/asientos/asientos_3.jpg",
-    title: "Asientos 3",
+    title: "Alcantara",
+    price: "+1000€"
   },
   {
     img: "/imgs/asientos/asientos_4.jpg",
-    title: "Asientos 4",
+    title: "Piel con negro",
+    price: "+1500€"
   },
   {
     img: "/imgs/asientos/asientos_5.jpg",
-    title: "Asientos 5",
+    title: "Piel con rojo",
+    price: "+1500€"
   },
 ];
 
 const itemColor = [
   {
     img: "/imgs/color/color_1.jpg",
-    title: "Asientos 1",
+    title: "Rojo Brillante",
+    price: "+0€"
   },
   {
     img: "/imgs/color/color_2.jpg",
-    title: "Asientos 2",
+    title: "Negro mate",
+    price: "+500€"
   },
   {
     img: "/imgs/color/color_3.jpg",
-    title: "Asientos 3",
+    title: "Gris plateado",
+    price: "+750€"
   },
   {
     img: "/imgs/color/color_4.jpg",
-    title: "Asientos 4",
+    title: "Azul marino",
+    price: "+1500€"
   },
   {
     img: "/imgs/color/color_5.jpg",
-    title: "Asientos 5",
+    title: "Verde jungla",
+    price: "+2000€"
   },
 ];
 
 const itemLlantas = [
   {
     img: "/imgs/llantas/llantas_1.jpg",
-    title: "Llantas 1",
+    title: "Llantas de serie",
+    price: "+0€"
   },
   {
     img: "/imgs/llantas/llantas_2.jpg",
-    title: "Llantas 2",
+    title: "Radios triangulares",
+    price: "+400€"
   },
   {
     img: "/imgs/llantas/llantas_3.jpg",
-    title: "Llantas 3",
+    title: "Aleacion",
+    price: "+700€"
   },
   {
     img: "/imgs/llantas/llantas_4.jpg",
-    title: "Llantas 4",
+    title: "Multirradio",
+    price: "+1000€"
   },
   {
     img: "/imgs/llantas/llantas_5.jpg",
-    title: "Llantas 5",
+    title: "Capa de carbono",
+    price: "+2000€"
   },
 ];
 
@@ -172,11 +189,11 @@ export default function Personalize() {
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <FormControl>
             <FormLabel id="demo-radio-buttons-group-label">
-              Tipo de motor
+              Tipo de faros
             </FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="hybrid"
+              defaultValue="LED"
               name="radio-buttons-group"
             >
               <FormControlLabel
@@ -210,7 +227,7 @@ export default function Personalize() {
           md={4}
           lg={4}
           padding={5}
-          onClick={()=>navigate("/payment")}
+          onClick={() => navigate("/payment/" + params.id)}
         >
           Comprar <ShoppingCartIcon />
         </Button>

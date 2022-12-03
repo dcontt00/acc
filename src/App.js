@@ -6,7 +6,10 @@ import Favorites from "./pages/Favorites";
 import History from "./pages/History";
 import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
-import Payment from "./pages/PaymentGateway";
+import Payment from "./pages/Payment/PaymentGateway";
+import PaymentMethod from "./pages/Payment/PaymentMethod";
+import Contact from "./pages/Contact";
+import Checkout from "./pages/Payment/Checkout";
 
 import {
   BrowserRouter as Router,
@@ -26,13 +29,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
+          <Route path="/catalog/:search" element={<Catalog />} />
+
           <Route path="/description/:id" element={<Description />} />
           <Route path="/personalize/:id" element={<Personalize />} />
-          <Route path="/favorites" element={<Favorites/>}/>
-          <Route path="/history" element={<History/>}/>
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/history" element={<History />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/login" element={<LogIn />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/payment/:id" element={<Payment />} />
+          <Route path="/payment/method" element={<PaymentMethod />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/payment/checkout" element={<Checkout />} />
         </Routes>
         <Footer />
       </Router>

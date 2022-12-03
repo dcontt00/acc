@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import { Paper, Button, Typography, Grid } from "@mui/material";
-import Cars from "../data/Cars.json";
+import { Typography, Grid } from "@mui/material";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
 
@@ -9,9 +9,9 @@ export default function Carousel_comp(props) {
   const navigate = useNavigate();
 
   return (
-    <Carousel autoPlay width={"100%"}>
+    <Carousel autoPlay showArrows>
       {props.cars.map((item, i) => (
-        <div onClick={() => navigate("description/" + item.id)}>
+        <div key={i} onClick={() => navigate("description/" + item.id)}>
           <Item key={i} item={item} />
         </div>
       ))}

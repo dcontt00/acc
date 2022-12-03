@@ -41,13 +41,6 @@ export default function SignUp() {
     {
       /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
     }
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-
     navigate("/");
   };
 
@@ -69,7 +62,7 @@ export default function SignUp() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Crear Cuenta
+              Comprar Vehiculo
             </Typography>
             <Box
               component="form"
@@ -81,121 +74,57 @@ export default function SignUp() {
                 margin="normal"
                 required
                 fullWidth
-                id="name"
-                label="Nombre"
-                name="name"
+                id="ccn"
+                label="Credit Card Number"
+                name="ccn"
                 autoFocus
                 onChange={(event) => {
-                  setName(event.target.value);
+                  
                 }}
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                id="surnames"
-                label="Apellidos"
-                name="surnames"
+                id="expdate"
+                label="Fecha de Caducidad"
+                name="expdate"
                 autoFocus
                 onChange={(event) => {
-                  setSurnames(event.target.value);
+               
                 }}
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                id="location"
-                label="Localizacion"
-                name="location"
+                id="ccholdername"
+                label="Nombre Completo del Titular"
+                name="ccholdername"
                 autoFocus
                 onChange={(event) => {
-                  setLocation(event.target.value);
+                  
                 }}
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                id="phoneNum"
-                label="Numero de Telefono"
-                name="phoneNum"
+                id="cvv"
+                label="Codigo Valor de Verificacion"
+                name="cvv"
                 autoFocus
                 onChange={(event) => {
-                  setPhoneNum(event.target.value);
+                 
                 }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Correo Electronico"
-                name="email"
-                autoFocus
-                onChange={(event) => {
-                  setEmail(event.target.value);
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Contraseña"
-                type="password"
-                id="password"
-                onChange={(event) => {
-                  setPassword(event.target.value);
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="bankAccount"
-                label="Numero de Cuenta Bancaria"
-                name="bankAccount"
-                autoFocus
-                onChange={(event) => {
-                  setBankAccount(event.target.value);
-                }}
-              />
-              <TextField
-                margin="normal"
-                fullWidth
-                id="imgLink"
-                label="Enlace Imagen Usuario"
-                name="imgLink"
-                autoFocus
-                onChange={(event) => {
-                  setUserImgLink(event.target.value);
-                }}
-              />
-              <FormGroup>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="Acepto los terminos y condiciones"
-                />
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="Acepto recibir ofertas"
-                />
-              </FormGroup>
-              <Grid container>
-                <Grid item>
-                  <Link href="/" variant="body2">
-                    {"Politica de privacidad"}
-                  </Link>
-                </Grid>
-              </Grid>
+              />            
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Crear Cuenta
+               Pagar
               </Button>
             </Box>
           </Box>

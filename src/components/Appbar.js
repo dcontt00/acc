@@ -1,19 +1,15 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+import { MenuItem, AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, InputBase } from '@mui/material'
 import AdbIcon from "@mui/icons-material/Adb";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import { styled, alpha } from '@mui/material/styles';
 import Cookie from "universal-cookie";
+import { motion } from "framer-motion";
+import AButton from "./AButton";
+
 const cookie = new Cookie();
 
 const pages = [
@@ -30,8 +26,53 @@ const settings = [
   "Logout",
 ];
 
+
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
+}));
+
 function ResponsiveAppBar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loged, setLoged] = React.useState(cookie.get("loged"));
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -46,6 +87,13 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  // Handle search when user press enter
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      navigate("/catalog/" + event.target.value);
+    }
   };
 
   // Handle logout
@@ -135,16 +183,18 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem
-                  key={page}
+              {pages.map((page, index) => (
+                <Button
+                  component={motion.div}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }} whileHover={{ scale: 1.080 }}
+                  key={index}
                   onClick={function (event) {
                     handleCloseNavMenu();
                     navigate(page.link);
                   }}
                 >
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>
+                  {page.name}
+                </Button>
               ))}
             </Menu>
           </Box>
@@ -168,19 +218,49 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
-                key={page}
+                size="small"
+                key={index}
+                component={motion.div}
+                whileHover={{
+                  scale: 1.10,
+                }}
                 onClick={function (event) {
                   handleCloseNavMenu();
                   navigate(page.link);
                 }}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  marginRight: 2,
+                  backgroundColor: location.pathname === page.link ? "white" : "transparent",
+                  color: location.pathname === page.link ? "black" : "white",
+                  "&:hover": {
+                    backgroundColor: "white",
+                    color: "black",
+                  },
+                }}
               >
                 {page.name}
               </Button>
-            ))}
+            ))
+
+            }
           </Box>
+
+
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Buscar..."
+              inputProps={{ 'aria-label': 'search' }}
+              onKeyDown={handleKeyDown}
+
+            />
+          </Search>
+
+
           {/*Hide menu if user is not loged*/}
           {loged ? (
             <Box sx={{ flexGrow: 0 }}>
@@ -208,7 +288,7 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting, index) => (
                   <MenuItem
-                    key={setting}
+                    key={index}
                     onClick={(event) => handleCloseUserMenu(event, index)}
                   >
                     <Typography textAlign="center">{setting}</Typography>
@@ -217,13 +297,11 @@ function ResponsiveAppBar() {
               </Menu>
             </Box>
           ) : (
-            <Button color="secondary" onClick={() => handleLogin()}>
-              Iniciar sesion
-            </Button>
+            <AButton onClick={handleLogin} text="Iniciar Sesion" />
           )}
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 }
 export default ResponsiveAppBar;

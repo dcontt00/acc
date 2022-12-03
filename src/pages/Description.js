@@ -9,6 +9,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Cars from "../data/Cars.json";
 import { useNavigate } from "react-router-dom";
 import ImageSliderComponent from "../components/ImageSlider";
+import { motion } from "framer-motion";
 
 function getCar(id) {
   return Cars.find((car) => car.id === id);
@@ -44,7 +45,8 @@ export default function Description() {
         <Grid item xs={4} sm={4} md={4} lg={4}>
           <Grid container spacing={2}>
             <Grid item lg={12} md={12} sm={12} xs={12}>
-              <Button
+              <Button component={motion.div} whileHover={{ scale: 1.080, }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 variant="contained"
                 onClick={() => navigate("/favourites")}
               >
@@ -52,7 +54,8 @@ export default function Description() {
               </Button>
             </Grid>
             <Grid item lg={12} md={12} sm={12} xs={12}>
-              <Button
+              <Button component={motion.div} whileHover={{ scale: 1.080, }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 variant="contained"
                 onClick={() => navigate("/personalize/" + car.id)}
               >
@@ -60,7 +63,8 @@ export default function Description() {
               </Button>
             </Grid>
             <Grid item lg={12} md={12} sm={12} xs={12}>
-              <Button variant="contained" onClick={() => navigate("/payment")}>
+              <Button component={motion.div} whileHover={{ scale: 1.080, }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }} variant="contained" onClick={() => navigate("/payment/" + car.id)}>
                 Comprar <ShoppingCartIcon />
               </Button>
             </Grid>
