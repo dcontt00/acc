@@ -8,6 +8,7 @@ import { Button, CardActionArea, CardActions, Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import AButton from "./AButton";
+import {dataName, getData, addData} from "../data/data";
 export default function MultiActionAreaCard(props) {
   var description = props.description;
   const navigate = useNavigate()
@@ -87,7 +88,10 @@ export default function MultiActionAreaCard(props) {
 
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <AButton color="primary" size="small" text={<FavoriteBorderIcon />} onClick={() => navigate("/favourites")} />
+            <AButton color="primary" size="small" text={<FavoriteBorderIcon />} 
+            onClick={() => {
+              addData(dataName.favcars, props.car)
+              navigate("/favorites")}} />
 
           </Grid>
         </Grid>

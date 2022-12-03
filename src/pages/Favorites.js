@@ -6,11 +6,11 @@ import {
 } from "@mui/material";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
-import Cars from "../data/FavCars.json";
+import {dataName, getData, addData} from "../data/data";
 
 
 export default function Favorites() {
-  const [selectedCars, setSelectedCars] = React.useState(Cars);
+  const [selectedCars, setSelectedCars] = React.useState(getData(dataName.favcars));
   return (
     <Container maxWidth="xl">
       <Grid container spacing={0}>
