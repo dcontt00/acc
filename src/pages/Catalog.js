@@ -160,7 +160,7 @@ export default function Catalog() {
       <br />
 
       {/* Filtros*/}
-      <Grid container sx={{ display: displayFilters }}>
+      <Grid container sx={{ display: displayFilters }} spacing={1}>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h4">Filtrar por:</Typography>
@@ -220,34 +220,36 @@ export default function Catalog() {
               <MenuItem value={"Diésel"}>Diésel</MenuItem>
               <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
             </Select>
+
           </FormControl>
-          <FormControl
-            sx={{ width: "25%", alignContent: "right" }}
-
-          >
-            <Typography sx={{ width: "100%", textAlign: "center" }}>
-              Precio: {formatPrice(price)}
-            </Typography>
-            <Slider
-              size="small"
-              valueLabelFormat={valuetext}
-              valueLabelDisplay="auto"
-              value={price}
-              min={10}
-              onChange={handleChangePrice}
-              step={10}
-              marks
-            />
-          </FormControl>
-
-        </Grid>
-
-
-        <Grid item xs={12} sm={12} md={12} lg={10}>
           <Button variant="contained" onClick={deleteFilters}>
             Borrar filtros
           </Button>
+
         </Grid>
+        <Grid item xs={2} sm={2} md={2} lg={10}>
+
+        </Grid>
+        <FormControl
+          sx={{ width: "25%", alignContent: "right" }}
+
+        >
+          <Typography sx={{ width: "100%", textAlign: "center" }}>
+            Precio: {formatPrice(price)}
+          </Typography>
+          <Slider
+            size="small"
+            valueLabelFormat={valuetext}
+            valueLabelDisplay="auto"
+            value={price}
+            min={10}
+            onChange={handleChangePrice}
+            step={10}
+            marks
+          />
+        </FormControl>
+
+
       </Grid>
 
 
