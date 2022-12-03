@@ -122,7 +122,7 @@ export default function Catalog() {
 
   return (
     <Container maxWidth="xl">
-      <Grid container spacing={0}>
+      <Grid container spacing={1}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h1">Catálogo</Typography>
         </Grid>
@@ -140,12 +140,10 @@ export default function Catalog() {
             onChange={handleSearch}
           />
         </Grid>
-        <Grid item xs={2} sm={2} md={2} lg={2} paddingLeft={2}>
-          <Button variant="contained">Buscar</Button>
-        </Grid>
+
 
         {/* Switch de filtros */}
-        <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Grid item xs={2} sm={2} md={2} lg={2}>
           <FormControlLabel
             control={
               <Switch
@@ -159,6 +157,7 @@ export default function Catalog() {
           />
         </Grid>
       </Grid>
+      <br />
 
       {/* Filtros*/}
       <Grid container sx={{ display: displayFilters }}>
