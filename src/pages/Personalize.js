@@ -108,7 +108,7 @@ export default function Personalize() {
   const navigate = useNavigate();
   const params = useParams();
   const car = getCar(params.id);
-  const myImage = "/" + car.img;
+  const myImage = car.img;
 
   return (
     <Container maxWidth="lg">
