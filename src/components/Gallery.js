@@ -18,6 +18,7 @@ export default function StandardImageList(props) {
             price={coche.price}
             inHistory={props.inHistory}
             car={coche}
+            year={coche.year}
           />
         </Grid>
       ))}

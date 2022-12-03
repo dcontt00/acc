@@ -8,10 +8,11 @@ import { Button, CardActionArea, CardActions, Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import AButton from "./AButton";
-import {dataName, getData, addData} from "../data/data";
+import { dataName, getData, addData } from "../data/data";
+
 export default function MultiActionAreaCard(props) {
   var description = props.description;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   var choices = props.car.choices;
   var brandImg =
     "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
@@ -51,9 +52,14 @@ export default function MultiActionAreaCard(props) {
                 }}
               />
             </Grid>
-            <Grid item xs={10} sm={10} md={10} lg={10}>
+            <Grid item xs={10} sm={10} md={10} lg={8}>
               <Typography gutterBottom variant="h5" component="div">
                 {props.title}
+              </Typography>
+            </Grid>
+            <Grid item xs={10} sm={10} md={10} lg={2}>
+              <Typography align="right" variant="h5">
+                {props.year}
               </Typography>
             </Grid>
           </Grid>
@@ -85,14 +91,17 @@ export default function MultiActionAreaCard(props) {
               text="Saber más"
               onClick={() => navigate("/description/" + props.car.id)}
             />
-
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <AButton color="primary" size="small" text={<FavoriteBorderIcon />} 
-            onClick={() => {
-              addData(dataName.favcars, props.car)
-              navigate("/favorites")}} />
-
+            <AButton
+              color="primary"
+              size="small"
+              text={<FavoriteBorderIcon />}
+              onClick={() => {
+                addData(dataName.favcars, props.car);
+                navigate("/favorites");
+              }}
+            />
           </Grid>
         </Grid>
       </CardActions>
