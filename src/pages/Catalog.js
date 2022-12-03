@@ -10,6 +10,7 @@ import {
   FormControlLabel,
   Switch,
   Slider,
+  Box
 } from "@mui/material";
 import Container from "@mui/material/Container";
 import Gallery from "../components/CatalogGallery";
@@ -128,7 +129,7 @@ export default function Catalog() {
         </Grid>
 
         {/* Barra búsqueda*/}
-        <Grid item xs={10} sm={10} md={10} lg={10}>
+        <Grid item xs={9} sm={10} md={10} lg={10}>
           <TextField
             id="standard-basic"
             label="Buscar por nombre de coche"
@@ -143,7 +144,7 @@ export default function Catalog() {
 
 
         {/* Switch de filtros */}
-        <Grid item xs={2} sm={2} md={2} lg={2}>
+        <Grid item xs={3} sm={2} md={2} lg={2}>
           <FormControlLabel
             control={
               <Switch
@@ -160,94 +161,110 @@ export default function Catalog() {
       <br />
 
       {/* Filtros*/}
-      <Grid container sx={{ display: displayFilters }} spacing={1}>
+      <Grid container sx={{ display: displayFilters }} spacing={2}>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h4">Filtrar por:</Typography>
         </Grid>
 
-
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <FormControl size="small"
-            sx={{ width: "25%" }}
 
-          >
-            <InputLabel id="demo-simple-select-label">Marca</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={brand}
-              label="Marca"
-              onChange={handleChangeBrand}
-            >
-              {Brands.map((item, i) => (
-                <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 1, sm: 1, md: 1, lg: 1 }}>
 
-          <FormControl size="small"
-            sx={{ width: "25%" }}
-          >
-            <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={type}
-              label="Tipo"
-              onChange={handleChangeType}
-            >
-              <MenuItem value={"SUV"}>SUV</MenuItem>
-              <MenuItem value={"Urbano"}>Urbano</MenuItem>
-            </Select>
-          </FormControl>
+              <FormControl size="small" fullWidth
 
-          <FormControl size="small"
+              >
+                <InputLabel id="demo-simple-select-label">Marca</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={brand}
+                  label="Marca"
+                  onChange={handleChangeBrand}
+                >
+                  {Brands.map((item, i) => (
+                    <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
 
-            sx={{ width: "25%" }}
-          >
-            <InputLabel id="demo-simple-select-label">
-              Combustible
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={fuel}
-              label="Combustible"
-              onChange={handleChangeFuel}
-            >
-              <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
-              <MenuItem value={"Diésel"}>Diésel</MenuItem>
-              <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
-            </Select>
+            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 2, sm: 2, md: 2, lg: 2 }}>
 
-          </FormControl>
-          <Button variant="contained" onClick={deleteFilters}>
-            Borrar filtros
-          </Button>
+              <FormControl size="small" fullWidth
+              >
+                <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={type}
+                  label="Tipo"
+                  onChange={handleChangeType}
+                >
+                  <MenuItem value={"SUV"}>SUV</MenuItem>
+                  <MenuItem value={"Urbano"}>Urbano</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 3, sm: 3, md: 3, lg: 3 }}>
 
+
+              <FormControl size="small" fullWidth
+
+              >
+                <InputLabel id="demo-simple-select-label">
+                  Combustible
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={fuel}
+                  label="Combustible"
+                  onChange={handleChangeFuel}
+                >
+                  <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
+                  <MenuItem value={"Diésel"}>Diésel</MenuItem>
+                  <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
+                </Select>
+
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} sm={4} md={3} lg={3} order={{ xs: 5, sm: 5, md: 5, lg: 4 }}>
+
+              <Button variant="contained" onClick={deleteFilters}>
+                Borrar filtros
+              </Button>
+
+            </Grid>
+            <Grid item xs={12} sm={8} md={9} lg={4} order={{ xs: 4, sm: 4, md: 4, lg: 5 }}>
+
+              <FormControl fullWidth
+                sx={{ alignContent: "right" }}
+
+              >
+                <Typography sx={{ width: "100%", textAlign: "center" }}>
+                  Precio: {formatPrice(price)}
+                </Typography>
+                <Slider
+                  size="small"
+                  valueLabelFormat={valuetext}
+                  valueLabelDisplay="auto"
+                  value={price}
+                  min={10}
+                  onChange={handleChangePrice}
+                  step={10}
+                  marks
+                />
+              </FormControl>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={2} sm={2} md={2} lg={10}>
 
-        </Grid>
-        <FormControl
-          sx={{ width: "25%", alignContent: "right" }}
 
-        >
-          <Typography sx={{ width: "100%", textAlign: "center" }}>
-            Precio: {formatPrice(price)}
-          </Typography>
-          <Slider
-            size="small"
-            valueLabelFormat={valuetext}
-            valueLabelDisplay="auto"
-            value={price}
-            min={10}
-            onChange={handleChangePrice}
-            step={10}
-            marks
-          />
-        </FormControl>
+
+
 
 
       </Grid>
