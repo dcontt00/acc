@@ -20,6 +20,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./Theme";
 import Appbar from "./components/Appbar";
 import Footer from "./components/Footer";
+import Comparator from "./pages/Comparator";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/payment/method" element={<PaymentMethod />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/payment/checkout" element={<Checkout />} />
+          <Route path="/comparator" element={<Comparator />}/>
         </Routes>
         <Footer />
       </Router>
