@@ -10,7 +10,12 @@ import {
   FormControlLabel,
   Switch,
   Slider,
-  Box
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Icon,
+  Alert
 } from "@mui/material";
 import Container from "@mui/material/Container";
 import Gallery from "../components/CatalogGallery";
@@ -79,15 +84,19 @@ export default function Catalog() {
 
   const handleChangeType = (event) => {
     setType(event.target.value);
-    setSelectedCars(filterByType(Cars, event.target.value));
+    setSelectedCars(filterByType(selectedCars, event.target.value));
   };
   const handleChangeBrand = (event) => {
     setBrand(event.target.value);
-    setSelectedCars(filterByBrand(Cars, event.target.value));
+    setSelectedCars(filterByBrand(selectedCars, event.target.value));
   };
   const handleChangeFuel = (event) => {
     setFuel(event.target.value);
-    setSelectedCars(filterByFuel(Cars, event.target.value));
+    setSelectedCars(filterByFuel(selectedCars, event.target.value));
+  };
+  const handleChangePrice = (event) => {
+    setPrice(event.target.value);
+    setSelectedCars(filterByPrice(selectedCars, event.target.value));
   };
 
   const handleDisplayFilters = (event) => {
@@ -98,10 +107,7 @@ export default function Catalog() {
     }
   };
 
-  const handleChangePrice = (event) => {
-    setPrice(event.target.value);
-    setSelectedCars(filterByPrice(Cars, event.target.value));
-  };
+
   function valuetext(value) {
     return `${value * 1000}€`;
   }
@@ -271,7 +277,22 @@ export default function Catalog() {
 
 
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Gallery cars={selectedCars} />
+
+        {selectedCars.length === 0 ?
+          <Grid
+            container
+            spacing={0}
+            alignItems="center"
+            justifyContent="center"
+            style={{ minHeight: '20vh' }}
+          >
+            <Grid item xs={12} sm={12} md={8} lg={8}>
+              <Alert variant="filled" severity="info">No hay coches con esos filtros. Borre los filtros o cámbielos</Alert>
+            </Grid>
+          </Grid>
+          :
+          <Gallery cars={selectedCars} />}
+
       </Grid>
     </Container >
   );

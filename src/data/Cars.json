@@ -4,7 +4,7 @@
     "name": "Seat León",
     "brand": "Seat",
     "description": "El SEAT León es un compacto, del segmento C, fabricado por SEAT desde 1998. Actualmente se comercializa la cuarta generación, presentada en 2020.",
-    "type": "compacto",
+    "type": "SUV",
     "img": "/imgs/cars/seat_leon/01.jpg",
     "imgs": [
       "/imgs/cars/seat_leon/01.jpg"
