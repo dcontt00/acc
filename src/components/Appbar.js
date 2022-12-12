@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem, AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, InputBase } from '@mui/material'
 import AdbIcon from "@mui/icons-material/Adb";
@@ -9,7 +8,6 @@ import { styled, alpha } from '@mui/material/styles';
 import Cookie from "universal-cookie";
 import { motion } from "framer-motion";
 import AButton from "./AButton";
-
 const cookie = new Cookie();
 
 const pages = [
@@ -100,6 +98,7 @@ function ResponsiveAppBar() {
   const handleLogout = () => {
     cookie.remove("loged");
     setLoged(false);
+    window.location.reload();
   };
 
   // Handle login
