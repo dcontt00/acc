@@ -4,13 +4,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Button, CardActionArea, CardActions, Grid, Box } from "@mui/material";
+import { Button, CardActionArea, CardActions, Grid, Box, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import AButton from "./AButton";
 import { dataName, getData, addData } from "../data/data";
+import Cookie from "universal-cookie";
+
+const cookie = new Cookie();
 
 export default function MultiActionAreaCard(props) {
+  const [loged, setLoged] = React.useState(cookie.get("loged"));
   var description = props.description;
   const navigate = useNavigate();
   var choices = props.car.choices;
@@ -27,6 +31,7 @@ export default function MultiActionAreaCard(props) {
     style: "currency",
     currency: "EUR",
   });
+
 
   return (
     <Card sx={{ maxWidth: 345, maxHeight: 400 }}>
@@ -86,23 +91,29 @@ export default function MultiActionAreaCard(props) {
               {price}
             </Typography>
           </Grid>
+
+          <Grid item xs={3} sm={3} md={3} lg={3} >
+            {loged ?
+              <AButton
+                color="primary"
+                size="small"
+                text={<FavoriteBorderIcon />}
+                onClick={() => {
+                  addData(dataName.favcars, props.car);
+                  navigate("/favorites");
+                }}
+              />
+              :
+              <div width={"100%"} />
+            }
+          </Grid>
           <Grid item xs={4} sm={4} md={4} lg={4}>
             <AButton
               text="Saber más"
               onClick={() => navigate("/description/" + props.car.id)}
             />
           </Grid>
-          <Grid item xs={1} sm={1} md={1} lg={1}>
-            <AButton
-              color="primary"
-              size="small"
-              text={<FavoriteBorderIcon />}
-              onClick={() => {
-                addData(dataName.favcars, props.car);
-                navigate("/favorites");
-              }}
-            />
-          </Grid>
+
         </Grid>
       </CardActions>
     </Card>
