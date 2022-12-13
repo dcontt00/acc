@@ -34,6 +34,28 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="phoneNum"
+            name="phoneNum"
+            label="Numero de teléfono"
+            fullWidth
+            autoComplete="family-name"
+            variant="standard"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="email"
+            name="email"
+            label="Direccion de correo electrónico"
+            fullWidth
+            autoComplete="family-name"
+            variant="standard"
+          />
+        </Grid>
         <Grid item xs={12}>
           <TextField
             required
