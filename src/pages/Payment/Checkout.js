@@ -20,8 +20,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Dream Car
+      <Link color="inherit" href="/contact">
+        DreamCar
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -75,7 +75,12 @@ export default function Checkout() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      {/* "md" de maxWidth es una constante de puntos de roptura que representa 
+          medium y tiene un valor de 900px (se puede ver en el apartado "Breackpoints"
+          de MUI) 
+          "mb" (de margin-bottom), es para añadir margen inferior, cuyo valor por defecto
+          es de 8px*/}
+      <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
         <Paper
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}

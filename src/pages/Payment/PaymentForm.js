@@ -5,7 +5,18 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 export default function PaymentForm() {
+  const [ccname, setCCName] = React.useState("");
+
+  const handleChange = (event) => {
+    setCCName(event.target.value);
+  };
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -13,14 +24,20 @@ export default function PaymentForm() {
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cardName"
-            label="Entidad Emisora de la Tarjeta"
-            fullWidth
-            autoComplete="cc-name"
-            variant="standard"
-          />
+          <FormControl fullWidth>
+            <InputLabel id="ccname_label">Nombre de la Tarjeta</InputLabel>
+            <Select
+              labelId="cc_name"
+              id="ccname_select"
+              value={ccname}
+              label="Nombre de la Tarjeta"
+              onChange={handleChange}
+            >
+              <MenuItem value={"MasterCard"}>MasterCard</MenuItem>
+              <MenuItem value={"Visa"}>Visa</MenuItem>
+              <MenuItem value={"AmericanExpress"}>AmericanExpress</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField

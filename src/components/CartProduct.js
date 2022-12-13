@@ -30,34 +30,55 @@ export default function CartGrid() {
           theme.palette.mode === "dark" ? "#1A2027" : "#fff",
       }}
     >
-      <Grid container spacing={2}>
-        <Grid item lg={6}>
-          <img src={"/" + car.img} width="100%" />
+      <Grid container>
+        <Grid item lg={5}>
+          <img src={"/" + car.img} height="70%" width="70%" />
         </Grid>
         <Grid item lg={6}>
           <Grid container direction="column" spacing={2}>
             <Grid item>
-              <Typography variant="body2">Marca: {car.brand}</Typography>
-              <Typography variant="body2">Modelo: {car.name}</Typography>
-              <Typography variant="body2">Año: 2022</Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="h5" sx={{ mb: 4 }}>
+                Resumen de las características del vehículo
+              </Typography>
+              <Typography variant="subtitle1">Marca: {car.brand}</Typography>
+              <Typography variant="subtitle1">Modelo: {car.name}</Typography>
+              <Typography variant="subtitle1">Año: 2022</Typography>
+              <Typography variant="body1" color="text.secondary">
                 Descripcion: {car.description}
               </Typography>
               <Box>
-                <Typography variant="body2">{car.price}</Typography>
+                <Typography variant="h6" color="#f01515">
+                  Precio Total: {car.price}€
+                </Typography>
               </Box>
             </Grid>
-            <Grid item lg={6} color="#bd1212">
-              <Link to="/payment/checkout">
-                <Button>
-                  <Typography variant="subtitle1" color="#bd1212">
-                    Comprar
+            <Grid item lg={6}>
+              <Box
+                display="flex"
+                justifyContent={"center"}
+                alignContent={"end"}
+              >
+                {/* Dos formas de navegar entre las paginas */}
+                <Link to="/payment/checkout">
+                  <Button
+                    variant="contained"
+                    sx={{ m: 1, height: 75, width: 150 }}
+                  >
+                    <Typography variant="subtitle1" color="#ffffff">
+                      Comprar
+                    </Typography>
+                  </Button>
+                </Link>
+                <Button
+                  variant="contained"
+                  sx={{ m: 1, height: 75, width: 150 }}
+                  onClick={() => navigate("/description/" + car.id)}
+                >
+                  <Typography variant="subtitle1" color="#ffffff">
+                    Cancelar
                   </Typography>
                 </Button>
-              </Link>
-              <Button onClick={() => navigate("/description/" + car.id)}>
-                Cancelar
-              </Button>
+              </Box>
             </Grid>
           </Grid>
         </Grid>
