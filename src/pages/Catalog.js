@@ -46,28 +46,6 @@ function filterByName(cars, name) {
   );
 }
 
-// filter array by car brand
-function filterByBrand(cars, brand) {
-  return cars.filter((car) => car.brand.toLowerCase() === brand.toLowerCase());
-}
-
-// filter array by car type
-function filterByType(cars, type) {
-  return cars.filter((car) => car.type.toLowerCase() === type.toLowerCase());
-}
-
-// filter array by fuel
-function filterByFuel(cars, fuel) {
-  return cars.filter((car) => car.fuel.toLowerCase() === fuel.toLowerCase());
-}
-
-// filter array by price
-function filterByPrice(cars, price) {
-  return cars.filter(
-    (car) => car.price >= price[0] * 1000 && car.price <= price[1] * 1000
-  );
-}
-
 export default function Catalog() {
   const params = useParams();
   const [price, setPrice] = React.useState([10, 100]);
@@ -82,22 +60,20 @@ export default function Catalog() {
 
   const [displayFilters, setDisplayFilters] = React.useState("none");
 
-  const handleChangeType = (event) => {
-    setType(event.target.value);
-    setSelectedCars(filterByType(selectedCars, event.target.value));
-  };
-  const handleChangeBrand = (event) => {
-    setBrand(event.target.value);
-    setSelectedCars(filterByBrand(selectedCars, event.target.value));
-  };
-  const handleChangeFuel = (event) => {
-    setFuel(event.target.value);
-    setSelectedCars(filterByFuel(selectedCars, event.target.value));
-  };
-  const handleChangePrice = (event) => {
-    setPrice(event.target.value);
-    setSelectedCars(filterByPrice(selectedCars, event.target.value));
-  };
+  const handleFilter = (array) => {
+    var tempCars = Cars;
+
+    for (let i in array) {
+      if (i !== "price" && array[i] !== "") {
+        tempCars = tempCars.filter((car) => car[i].toLowerCase() === array[i].toLowerCase());
+      } else {
+
+        tempCars = tempCars.filter((car) => car.price >= price[0] * 1000 && car.price <= price[1] * 1000);
+      }
+
+    }
+    setSelectedCars(tempCars)
+  }
 
   const handleDisplayFilters = (event) => {
     if (displayFilters === "none") {
@@ -166,7 +142,7 @@ export default function Catalog() {
           />
 
         </Grid>
-      </Grid>
+      </Grid >
       <br />
 
       {/* Filtros*/}
@@ -190,7 +166,11 @@ export default function Catalog() {
                   id="demo-simple-select"
                   value={brand}
                   label="Marca"
-                  onChange={handleChangeBrand}
+                  onChange={function (ev) {
+                    setBrand(ev.target.value)
+                    handleFilter({ "fuel": fuel, "brand": ev.target.value, "type": type, "price": price })
+                  }}
+                  name="marca"
                 >
                   {Brands.map((item, i) => (
                     <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
@@ -209,7 +189,13 @@ export default function Catalog() {
                   id="demo-simple-select"
                   value={type}
                   label="Tipo"
-                  onChange={handleChangeType}
+                  onChange={
+                    function (ev) {
+                      setType(ev.target.value)
+                      handleFilter({ "fuel": fuel, "brand": brand, "type": ev.target.value, "price": price })
+                    }
+                  }
+                  name="tipo"
                 >
                   <MenuItem value={"SUV"}>SUV</MenuItem>
                   <MenuItem value={"Urbano"}>Urbano</MenuItem>
@@ -230,10 +216,16 @@ export default function Catalog() {
                   id="demo-simple-select"
                   value={fuel}
                   label="Combustible"
-                  onChange={handleChangeFuel}
+                  onChange={
+                    function (ev) {
+                      setFuel(ev.target.value)
+                      handleFilter({ "fuel": ev.target.value, "brand": brand, "type": type, "price": price })
+                    }
+                  }
+                  name="fuel"
                 >
                   <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
-                  <MenuItem value={"Diésel"}>Diésel</MenuItem>
+                  <MenuItem value={"Diesel"}>Diésel</MenuItem>
                   <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
                 </Select>
 
@@ -262,8 +254,12 @@ export default function Catalog() {
                   valueLabelDisplay="auto"
                   value={price}
                   min={10}
-                  onChange={handleChangePrice}
+                  onChange={function (ev) {
+                    setPrice(ev.target.value)
+                    handleFilter({ "fuel": fuel, "brand": brand, "type": type, "price": ev.target.value })
+                  }}
                   step={10}
+                  name="price"
                   marks
                 />
               </FormControl>
