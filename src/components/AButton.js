@@ -12,6 +12,7 @@ export default function AButton(props) {
             color={props.color || "primary"}
             size={props.size || "small"}
             onClick={props.onClick}
+            sx={props.sx}
         >
             {props.text}
         </Button>

@@ -16,6 +16,7 @@ import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import Details from "./Details";
+import AButton from "../../components/AButton";
 
 function Copyright() {
   return (
@@ -92,20 +93,20 @@ export default function Checkout() {
               {getStepContent(activeStep)}
               <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                 {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                    Atrás
-                  </Button>
+                  <AButton onClick={handleBack} sx={{ mt: 3, ml: 1 }} text="Atrás">
+                  </AButton>
                 )}
 
-                <Button
+                <AButton
                   variant="contained"
                   onClick={handleNext}
                   sx={{ mt: 3, ml: 1 }}
-                >
-                  {activeStep === steps.length - 1
+                  text={activeStep === steps.length - 1
                     ? "Realizar Compra"
                     : "Continuar"}
-                </Button>
+                >
+
+                </AButton>
               </Box>
             </React.Fragment>
           )}
