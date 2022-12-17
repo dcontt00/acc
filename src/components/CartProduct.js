@@ -10,7 +10,7 @@ import Cars from "../data/Cars.json";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-
+import AButton from "./AButton";
 function getCar(id) {
   return Cars.find((car) => car.id === id);
 }
@@ -53,25 +53,10 @@ export default function CartGrid() {
               </Box>
             </Grid>
             <Grid item lg={6}>
-
-              {/* Dos formas de navegar entre las paginas */}
-              <Button
-                variant="contained"
-                onClick={() => navigate("/payment/checkout")}>
-                <Typography variant="subtitle1" color="#ffffff">
-                  Comprar
-                </Typography>
-              </Button>
+              <AButton onClick={() => navigate("/payment/checkout")} text="Comprar" />
             </Grid>
             <Grid item lg={6}>
-              <Button
-                variant="contained"
-                onClick={() => navigate("/description/" + car.id)}
-              >
-                <Typography variant="subtitle1" color="#ffffff">
-                  Cancelar
-                </Typography>
-              </Button>
+              <AButton onClick={() => navigate("/description/" + car.id)} text="Cancelar" />
             </Grid>
           </Grid>
         </Grid>
