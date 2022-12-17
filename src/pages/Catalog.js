@@ -154,14 +154,17 @@ export default function Catalog() {
           <FormControlLabel
             control={
               <Switch
+                size="medium"
                 sx={{ color: "#fff" }}
                 onChange={() => {
                   handleDisplayFilters();
                 }}
               />
             }
-            label="Filtrar"
+            label={<Typography variant="h6">Filtrar</Typography>}
+
           />
+
         </Grid>
       </Grid>
       <br />
@@ -170,7 +173,7 @@ export default function Catalog() {
       <Grid container sx={{ display: displayFilters }} spacing={2}>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography variant="h4">Filtrar por:</Typography>
+          <Typography variant="h2">Filtrar por:</Typography>
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
