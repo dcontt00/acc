@@ -14,7 +14,7 @@ export default function StandardImageList(props) {
   };
 
   return (
-    <List cols={5} item xs={12} sm={6} md={4} lg={3}>
+    <List sx={{display: "flex", flexDirection: "row"}} xs={12} sm={6} md={4} lg={3}>
       {props.data.map((item, key) => (
         <ListItemButton
           selected ={selected === key}
