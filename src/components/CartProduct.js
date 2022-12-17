@@ -30,14 +30,14 @@ export default function CartGrid() {
           theme.palette.mode === "dark" ? "#1A2027" : "#fff",
       }}
     >
-      <Grid container>
-        <Grid item lg={5}>
-          <img src={"/" + car.img} height="70%" width="70%" />
+      <Grid container spacing={2}>
+        <Grid item lg={6}>
+          <img src={car.img} height="auto" width="100%" />
         </Grid>
         <Grid item lg={6}>
           <Grid container direction="column" spacing={2}>
             <Grid item>
-              <Typography variant="h5" sx={{ mb: 4 }}>
+              <Typography variant="h5" >
                 Resumen de las características del vehículo
               </Typography>
               <Typography variant="subtitle1">Marca: {car.brand}</Typography>
@@ -53,32 +53,25 @@ export default function CartGrid() {
               </Box>
             </Grid>
             <Grid item lg={6}>
-              <Box
-                display="flex"
-                justifyContent={"center"}
-                alignContent={"end"}
+
+              {/* Dos formas de navegar entre las paginas */}
+              <Button
+                variant="contained"
+                onClick={() => navigate("/payment/checkout")}>
+                <Typography variant="subtitle1" color="#ffffff">
+                  Comprar
+                </Typography>
+              </Button>
+            </Grid>
+            <Grid item lg={6}>
+              <Button
+                variant="contained"
+                onClick={() => navigate("/description/" + car.id)}
               >
-                {/* Dos formas de navegar entre las paginas */}
-                <Link to="/payment/checkout">
-                  <Button
-                    variant="contained"
-                    sx={{ m: 1, height: 75, width: 150 }}
-                  >
-                    <Typography variant="subtitle1" color="#ffffff">
-                      Comprar
-                    </Typography>
-                  </Button>
-                </Link>
-                <Button
-                  variant="contained"
-                  sx={{ m: 1, height: 75, width: 150 }}
-                  onClick={() => navigate("/description/" + car.id)}
-                >
-                  <Typography variant="subtitle1" color="#ffffff">
-                    Cancelar
-                  </Typography>
-                </Button>
-              </Box>
+                <Typography variant="subtitle1" color="#ffffff">
+                  Cancelar
+                </Typography>
+              </Button>
             </Grid>
           </Grid>
         </Grid>
