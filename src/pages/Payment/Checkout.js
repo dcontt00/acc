@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
+import Details from "./Details";
 
 function Copyright() {
   return (
@@ -29,22 +30,23 @@ function Copyright() {
   );
 }
 
-const steps = ["Dirección de Envío", "Datos Bancarios", "Resumen del Pedido"];
+const steps = ["Detalles", "Dirección de Envío", "Datos Bancarios", "Resumen del Pedido"];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <Details />;
     case 1:
-      return <PaymentForm />;
+      return <AddressForm />;
     case 2:
+      return <PaymentForm />;
+    case 3:
       return <Review />;
     default:
       throw new Error("Paso Desconocido");
   }
 }
 
-const theme = createTheme();
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -58,81 +60,58 @@ export default function Checkout() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
+    <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
+      <Paper
+        variant="outlined"
+        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
       >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Validación de Datos
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      {/* "md" de maxWidth es una constante de puntos de roptura que representa 
-          medium y tiene un valor de 900px (se puede ver en el apartado "Breackpoints"
-          de MUI) 
-          "mb" (de margin-bottom), es para añadir margen inferior, cuyo valor por defecto
-          es de 8px*/}
-      <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
-        <Paper
-          variant="outlined"
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-        >
-          <Typography component="h1" variant="h4" align="center">
-            Verificación
-          </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Gracias por utilizar nuestros servicios.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Su numero de pedido es #2001539. Le hemos enviado un correo
-                  electronico de confirmación, y le enviaremos actualizaciones
-                  sobre el estado de su pedido.
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                      Atrás
-                    </Button>
-                  )}
-
-                  <Button
-                    variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 3, ml: 1 }}
-                  >
-                    {activeStep === steps.length - 1
-                      ? "Realizar Compra"
-                      : "Continuar"}
+        <Typography component="h1" variant="h4" align="center">
+          Verificación
+        </Typography>
+        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <React.Fragment>
+          {activeStep === steps.length ? (
+            <React.Fragment>
+              <Typography variant="h5" gutterBottom>
+                Gracias por utilizar nuestros servicios.
+              </Typography>
+              <Typography variant="subtitle1">
+                Su numero de pedido es #2001539. Le hemos enviado un correo
+                electronico de confirmación, y le enviaremos actualizaciones
+                sobre el estado de su pedido.
+              </Typography>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {getStepContent(activeStep)}
+              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                {activeStep !== 0 && (
+                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                    Atrás
                   </Button>
-                </Box>
-              </React.Fragment>
-            )}
-          </React.Fragment>
-        </Paper>
-        <Copyright />
-      </Container>
-    </ThemeProvider>
+                )}
+
+                <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  sx={{ mt: 3, ml: 1 }}
+                >
+                  {activeStep === steps.length - 1
+                    ? "Realizar Compra"
+                    : "Continuar"}
+                </Button>
+              </Box>
+            </React.Fragment>
+          )}
+        </React.Fragment>
+      </Paper>
+      <Copyright />
+    </Container>
   );
 }

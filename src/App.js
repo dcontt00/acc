@@ -38,11 +38,9 @@ function App() {
           <Route path="/history" element={<History />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/login" element={<LogIn />} />
-          <Route path="/payment/:id" element={<Payment />} />
-          <Route path="/payment/method" element={<PaymentMethod />} />
+          <Route path="/payment/:id" element={<Checkout />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/payment/checkout" element={<Checkout />} />
-          <Route path="/comparator" element={<Comparator />}/>
+          <Route path="/comparator" element={<Comparator />} />
         </Routes>
         <Footer />
       </Router>
