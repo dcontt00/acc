@@ -1,19 +1,26 @@
 import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { Button } from "@mui/material";
+import { List, ListItemButton, Button } from "@mui/material";
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 
 export default function StandardImageList(props) {
-  const [selected, setSelected] = React.useState(null)
+  const [selected, setSelected] = React.useState(0);
+
+  const handleListItemClick = (event,index) => {
+    setSelected(index);
+  };
+
   return (
-    <ImageList cols={5} item xs={12} sm={6} md={4} lg={3}>
+    <List cols={5} item xs={12} sm={6} md={4} lg={3}>
       {props.data.map((item, key) => (
-        <Button
+        <ListItemButton
+          selected ={selected === key}
           sx={{ backgroundColor: key === selected ? "blue" : "transparent" }}
-          onClick={() => setSelected(key)}
+          
+          onClick={(ev) => handleListItemClick(ev, key)}
         >
           <ImageListItem key={item.img}>
             <img
@@ -35,8 +42,8 @@ export default function StandardImageList(props) {
               </IconButton>
             }
           />
-        </Button>
+        </ListItemButton>
       ))}
-    </ImageList>
+    </List>
   );
 }
