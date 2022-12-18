@@ -1,11 +1,8 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
 import CarCard from "../components/CarCard";
-import { useNavigate } from "react-router-dom";
 
 export default function StandardImageList(props) {
-  const navigate = useNavigate();
-
   return (
     <Grid container spacing={2}>
       {props.cars.map((coche) => (

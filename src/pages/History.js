@@ -5,7 +5,7 @@ import {
   Grid
 } from "@mui/material";
 import Container from "@mui/material/Container";
-import Gallery from "../components/Gallery";
+import GalleryHistory from "../components/GalleryHistory";
 import Cars from "../data/History.json";
 
 
@@ -18,7 +18,7 @@ export default function History() {
           <Typography variant="h1">Historial de compras</Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Gallery cars={selectedCars} inHistory={true}/>
+          <GalleryHistory cars={selectedCars} inHistory={true}/>
         </Grid>
       </Grid>
     </Container>

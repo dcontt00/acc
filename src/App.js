@@ -6,11 +6,9 @@ import Favorites from "./pages/Favorites";
 import History from "./pages/History";
 import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
-import Payment from "./pages/Payment/PaymentGateway";
-import PaymentMethod from "./pages/Payment/PaymentMethod";
+import Claim from "./pages/Claim";
 import Contact from "./pages/Contact";
 import Checkout from "./pages/Payment/Checkout";
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -31,7 +29,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/:search" element={<Catalog />} />
-
           <Route path="/description/:id" element={<Description />} />
           <Route path="/personalize/:id" element={<Personalize />} />
           <Route path="/favorites" element={<Favorites />} />
@@ -41,6 +38,7 @@ function App() {
           <Route path="/payment/:id" element={<Checkout />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/comparator" element={<Comparator />} />
+          <Route path="/claim/:id" element={<Claim />} />
         </Routes>
         <Footer />
       </Router>
