@@ -72,7 +72,7 @@ export default function StandardImageList(props) {
           </ImageListItem>
           <ImageListItemBar
             title={item.title}
-            subtitle={item.price}
+            subtitle={item.price + "€"}
             actionIcon={
               <IconButton
                 sx={{ color: "rgba(255, 255, 255, 0.54)" }}
