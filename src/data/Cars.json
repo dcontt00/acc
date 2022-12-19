@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "name": "Seat León",
     "brand": "Seat",
     "description": "El SEAT León es un compacto, del segmento C, fabricado por SEAT desde 1998. Actualmente se comercializa la cuarta generación, presentada en 2020.",
@@ -18,7 +18,7 @@
     "year": "2020"
   },
   {
-    "id": "2",
+    "id": 2,
     "name": "BMW IX",
     "brand": "BMW",
     "description": "El BMW iX es un SUV 100% eléctrico -con tintes de monovolumen-, del segmento E, fabricado por BMW desde 2021. El BMW iX tiene un tamaño similar al de los BMW X5 y X6, y se caracteriza por contar con un diseño muy polémico, un interior de corte futurista y una autonomía eléctrica que puede alcanzar hasta 600 kilómetros con una sola carga.",
@@ -36,7 +36,7 @@
     "year": "2021"
   },
   {
-    "id": "3",
+    "id": 3,
     "name": "Dacia Sandero",
     "brand": "Dacia",
     "description": "El Dacia Sandero es un coche urbano y económico, del segmento B, fabricado por Dacia desde 2007. Actualmente, el Dacia Sandero ya va por su tercera generación, presentada en 2020",
@@ -54,7 +54,7 @@
     "year": "2020"
   },
   {
-    "id": "4",
+    "id": 4,
     "name": "Peugeot 208",
     "brand": "Peugeot",
     "description": "El Peugeot 208 es un vehículo utilitario generalista, del segmento B, fabricado por Peugeot desde 2012, como relevo del Peugeot 207. Actualmente se comercializa la segunda generación, presentada en 2019",
@@ -72,7 +72,7 @@
     "year": "2019"
   },
   {
-    "id": "5",
+    "id": 5,
     "name": "Honda Civic",
     "brand": "Honda",
     "description": "El Honda Civic es un vehículo compacto, del segmento C, fabricado por Honda desde 1972 y se trata del modelo más importante de Honda en Europa. Actualmente se comercializa la undécima generación, presentada en 2022, con un importante rediseño con respecto a la generación anterior, que mejora su diseño interior y añade importantes sistemas tecnológicos y de conectividad.",
@@ -90,7 +90,7 @@
     "year": "2022"
   },
   {
-    "id": "6",
+    "id": 6,
     "name": "Opel Corsa",
     "brand": "Opel",
     "description": "El Opel Corsa es un utilitario urbano, del segmento B, fabricado por Opel desde 1982. Actualmente se comercializa la sexta generación, presentada en 2019",
@@ -108,7 +108,7 @@
     "year": "2019"
   },
   {
-    "id": "7",
+    "id": 7,
     "name": "Audi A1",
     "brand": "Audi",
     "description": "El Audi A1 es un utilitario, un coche pequeño, un urbano de vocación premium, una alternativa al Volkswagen Polo, al Fiat 500, al DS3, al Alfa Romeo MiTo y sobre todo al MINI. No te pierdas nuestra guía de compra si estás pensando en adquirir un pequeño utilitario como el A1.El Audi A1 se fabrica en España, concretamente en la fábrica de SEAT en Martorell. Su primera generación llegó al mercado en 2010, y en 2018 se ha presentado su segunda edición, con un marcado carácter tecnológico.",

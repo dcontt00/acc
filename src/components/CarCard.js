@@ -7,7 +7,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Button, CardActionArea, CardActions, Grid, Box, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import AButton from "./AButton";
+import FavCars from "../data/FavCars";
 import { dataName, getData, addData } from "../data/data";
 import Cookie from "universal-cookie";
 
@@ -15,6 +17,13 @@ const cookie = new Cookie();
 
 export default function MultiActionAreaCard(props) {
   const [loged, setLoged] = React.useState(cookie.get("loged"));
+  var favorites = [];
+  if (cookie.get("favorites")) {
+    favorites = cookie.get("favorites");
+  }
+
+  const [favorite, setFavorite] = React.useState(favorites.includes(props.car.id));
+
   var description = props.description;
   const navigate = useNavigate();
   var choices = props.car.choices;
@@ -26,6 +35,7 @@ export default function MultiActionAreaCard(props) {
   if (description.length > 150) {
     description = description.substring(0, 150) + "...";
   }
+
 
   var price = parseFloat(props.price).toLocaleString("en-US", {
     style: "currency",
@@ -97,10 +107,28 @@ export default function MultiActionAreaCard(props) {
               <AButton
                 color="primary"
                 size="small"
-                text={<FavoriteBorderIcon />}
+                text={favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 onClick={() => {
                   addData(dataName.favcars, props.car);
-                  navigate("/favorites");
+                  var liked = []
+                  if (cookie.get("favorites")) {
+                    liked = cookie.get("favorites")
+                  }
+                  console.log(liked)
+                  if (!liked.includes(props.car.id)) {
+                    console.log("Añadido a favoritos")
+                    liked.push(props.car.id)
+                    setFavorite(true);
+
+                  } else {
+                    console.log("Eliminado de favoritos")
+                    liked = liked.filter((item) => item !== props.car.id)
+                    setFavorite(false);
+                  }
+
+                  cookie.set("favorites", liked);
+
+
                 }}
               />
               :
