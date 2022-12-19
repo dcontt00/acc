@@ -10,10 +10,10 @@ import Cars from "../data/Cars.json";
 import { useNavigate } from "react-router-dom";
 import ImageSliderComponent from "../components/ImageSlider";
 import { motion } from "framer-motion";
-import {dataName, getData, addData} from "../data/data";
+import { dataName, getData, addData } from "../data/data";
 
 function getCar(id) {
-  return Cars.find((car) => car.id === id);
+  return Cars.find((car) => car.id === parseInt(id));
 }
 
 export default function Description() {

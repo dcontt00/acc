@@ -5,7 +5,7 @@ import Cars from "../../data/Cars.json";
 import { useParams } from "react-router-dom";
 
 function getCar(id) {
-    return Cars.find((car) => car.id === id);
+    return Cars.find((car) => car.id === parseInt(id));
 }
 export default function Details() {
     const params = useParams();

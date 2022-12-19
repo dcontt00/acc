@@ -12,11 +12,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Cars from "../data/Cars.json";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+
 import Cookie from "universal-cookie";
 const cookie = new Cookie();
 
 function getCar(id) {
-  return Cars.find((car) => car.id === id);
+  return Cars.find((car) => car.id === parseInt(id));
 }
 
 const itemAsientos = [
