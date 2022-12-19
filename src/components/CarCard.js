@@ -11,9 +11,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import AButton from "./AButton";
 import FavCars from "../data/FavCars";
 import { dataName, getData, addData } from "../data/data";
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import Cookie from "universal-cookie";
 
 const cookie = new Cookie();
+
 
 export default function MultiActionAreaCard(props) {
   const [loged, setLoged] = React.useState(cookie.get("loged"));
@@ -23,6 +27,59 @@ export default function MultiActionAreaCard(props) {
   }
 
   const [favorite, setFavorite] = React.useState(favorites.includes(props.car.id));
+  const [snackbarMessage, setSnackbarMessage] = React.useState("Coche añadido a favoritos");
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
+
+  const handleFavorite = () => {
+    if (favorite) {
+      // Remove from favorites
+      var index = favorites.indexOf(props.car.id);
+      if (index > -1) {
+        favorites.splice(index, 1);
+      }
+      cookie.set("favorites", favorites, { path: "/" });
+      setFavorite(false);
+      setSnackbarMessage("Coche eliminado de favoritos");
+    } else {
+      // Add to favorites
+      favorites.push(props.car.id);
+      cookie.set("favorites", favorites, { path: "/" });
+      setFavorite(true);
+      setSnackbarMessage("Coche añadido a favoritos");
+    }
+    handleClick();
+  };
+
 
   var description = props.description;
   const navigate = useNavigate();
@@ -109,24 +166,7 @@ export default function MultiActionAreaCard(props) {
                 size="small"
                 text={favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 onClick={() => {
-                  addData(dataName.favcars, props.car);
-                  var liked = []
-                  if (cookie.get("favorites")) {
-                    liked = cookie.get("favorites")
-                  }
-                  console.log(liked)
-                  if (!liked.includes(props.car.id)) {
-                    console.log("Añadido a favoritos")
-                    liked.push(props.car.id)
-                    setFavorite(true);
-
-                  } else {
-                    console.log("Eliminado de favoritos")
-                    liked = liked.filter((item) => item !== props.car.id)
-                    setFavorite(false);
-                  }
-
-                  cookie.set("favorites", liked);
+                  handleFavorite();
 
 
                 }}
@@ -135,6 +175,13 @@ export default function MultiActionAreaCard(props) {
               <div width={"100%"} />
             }
           </Grid>
+          <Snackbar
+            open={open}
+            autoHideDuration={1500}
+            onClose={handleClose}
+            message={snackbarMessage}
+            action={action}
+          />
           <Grid item xs={4} sm={4} md={4} lg={4}>
             <AButton
               text="Saber más"
