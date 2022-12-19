@@ -30,6 +30,15 @@ export default function Personalize() {
   const car = getCar(params.id);
   const myImage = car.img;
 
+  const handleClickBuy = () => {
+    navigate("/payment/" + params.id)
+  };
+
+  const handleClickCancel = () => {
+    cookie.remove("personalization")
+    navigate("/description/" + params.id)
+  };
+
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2}>
@@ -58,7 +67,7 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={Colores} />
+          <ImageList data={Colores} part="colors" />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -66,7 +75,7 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={Llantas} />
+          <ImageList data={Llantas} part="tire" />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -139,7 +148,13 @@ export default function Personalize() {
           variant="contained"
           text={<><ShoppingCartIcon /><Typography>Comprar</Typography></>}
 
-          onClick={() => navigate("/payment/" + params.id)}
+          onClick={handleClickBuy}
+        />
+        <AButton
+          variant="contained"
+          text={<><Typography>Cancelar</Typography></>}
+
+          onClick={handleClickCancel}
         />
 
 

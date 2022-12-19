@@ -17,7 +17,9 @@ import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import Details from "./Details";
 import AButton from "../../components/AButton";
+import Cookies from "universal-cookie";
 
+const cookie = new Cookies();
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -59,6 +61,8 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  console.log(cookie.get("personalization"));
 
   return (
     <Container component="main" maxWidth="md" sx={{ mb: 4 }}>

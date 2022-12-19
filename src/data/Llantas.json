@@ -3,30 +3,30 @@
         "id": 0,
         "img": "/imgs/llantas/llantas_1.jpg",
         "title": "Llantas de serie",
-        "price": "+0€"
+        "price": 0
     },
     {
         "id": 1,
         "img": "/imgs/llantas/llantas_2.jpg",
         "title": "Radios triangulares",
-        "price": "+400€"
+        "price": 400
     },
     {
         "id": 2,
         "img": "/imgs/llantas/llantas_3.jpg",
         "title": "Aleacion",
-        "price": "+700€"
+        "price": 700
     },
     {
         "id": 3,
         "img": "/imgs/llantas/llantas_4.jpg",
         "title": "Multirradio",
-        "price": "+1000€"
+        "price": 1000
     },
     {
         "id": 4,
         "img": "/imgs/llantas/llantas_5.jpg",
         "title": "Capa de carbono",
-        "price": "+2000€"
+        "price": 2000
     }
 ]

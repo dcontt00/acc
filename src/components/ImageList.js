@@ -6,7 +6,9 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import { styled } from "@mui/material/styles";
+import Cookies from "universal-cookie";
 
+const cookie = new Cookies();
 const StyledList = styled(List)({
   // selected and (selected + hover) states
   "&& .Mui-selected, && .Mui-selected:hover": {
@@ -28,7 +30,22 @@ export default function StandardImageList(props) {
   const [selectedIndex, setSelected] = React.useState(0);
 
   const handleListItemClick = (event, index) => {
+    var part = props.part;
+    var id = props.data[index].id
+    console.log("Part: " + part + " ID: " + id);
+    if (cookie.get("personalization") === undefined) {
+      console.log("Cookie not exists")
+
+      cookie.set("personalization", { [part]: id });
+    } else {
+      console.log("Cookie exists")
+      var personalization = cookie.get("personalization");
+      personalization[part] = id;
+      cookie.set("personalization", personalization);
+    }
+    console.log(cookie.get("personalization"))
     setSelected(index);
+    //console.log(cookie.get("personalization"))
   };
 
   return (
