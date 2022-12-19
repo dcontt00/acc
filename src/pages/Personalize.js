@@ -12,7 +12,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Cars from "../data/Cars.json";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
+import AButton from "../components/AButton";
 import Cookie from "universal-cookie";
 const cookie = new Cookie();
 
@@ -215,18 +215,14 @@ export default function Personalize() {
           Precio: {car.price}€
         </Typography>
 
-        <Button
+        <AButton
           variant="contained"
-          item
-          xs={4}
-          sm={4}
-          md={4}
-          lg={4}
-          padding={5}
+          text={<><ShoppingCartIcon /><Typography>Comprar</Typography></>}
+
           onClick={() => navigate("/payment/" + params.id)}
-        >
-          Comprar <ShoppingCartIcon />
-        </Button>
+        />
+
+
       </Grid>
     </Container>
   );
