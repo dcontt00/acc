@@ -4,31 +4,17 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
+import { useParams } from "react-router-dom";
+import Llantas from "../../data/Llantas.json";
+import Colores from "../../data/Colores.json";
+import Asientos from "../../data/Asientos.json";
+import Cars from "../../data/Cars.json";
+import Cookies from "universal-cookie";
 
-const products = [
-  {
-    name: "Producto 1",
-    desc: "El vehiculo más ecológico",
-    price: "79.000,00 €",
-  },
-  {
-    name: "Producto 2",
-    desc: "El deportivo más excentrico",
-    price: "67.500,75€",
-  },
-  {
-    name: "Producto 3",
-    desc: "Confort, elegancia, potencia y belleza unidos en uno",
-    price: "108.777,99€",
-  },
-  {
-    name: "Producto 4",
-    desc: "Uno de los mejores vehiculos",
-    price: "54.995,88 €",
-  },
-  { name: "Envio", desc: "", price: "Gratis" },
-];
-
+function getCar(id) {
+  return Cars.find((car) => car.id === parseInt(id));
+}
+const cookie = new Cookies();
 const cars = [
   {
     brand: "BMW",
@@ -47,28 +33,35 @@ const payments = [
 ];
 
 export default function Review() {
+  const params = useParams();
+  const car = getCar(params.id);
+
+  var personalization = [];
+  var total = car.price;
+  if (cookie.get("personalization") !== undefined) {
+    personalization = cookie.get("personalization");
+    var llantas = Llantas.find((llanta) => llanta.id === parseInt(personalization["tire"]));
+    var color = Colores.find((color) => color.id === parseInt(personalization["colors"]));
+    var asiento = Asientos.find((asiento) => asiento.id === parseInt(personalization["seats"]));
+    total += llantas.price;
+    total += color.price;
+    total += asiento.price;
+
+  }
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Resumen de la compra
       </Typography>
       <List disablePadding>
-        {cars.map((car) => (
-          <ListItem key={car.brand} sx={{ py: 1, px: 0 }}>
-            <ListItemText
-              primary={car.brand + " " + car.model}
-              secondary={car.desc}
-            />
-            <Typography variant="body2">{car.price}</Typography>
-          </ListItem>
-        ))}
-
-        <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Total" />
-          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            85.000,00 €
-          </Typography>
+        <ListItem key={car.brand} sx={{ py: 1, px: 0 }}>
+          <ListItemText
+            primary={car.name}
+            secondary={car.desc}
+          />
+          <Typography variant="body2">{total}€</Typography>
         </ListItem>
+
       </List>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
