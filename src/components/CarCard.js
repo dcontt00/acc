@@ -39,16 +39,11 @@ export default function MultiActionAreaCard(props) {
       return;
     }
 
-
-
     setOpen(false);
   };
 
   const action = (
     <React.Fragment>
-      <Button color="secondary" size="small" onClick={handleClose}>
-        UNDO
-      </Button>
       <IconButton
         size="small"
         aria-label="close"
@@ -67,13 +62,13 @@ export default function MultiActionAreaCard(props) {
       if (index > -1) {
         favorites.splice(index, 1);
       }
-      cookie.set("favorites", favorites, { path: "/" });
+      cookie.set("favorites", favorites);
       setFavorite(false);
       setSnackbarMessage("Coche eliminado de favoritos");
     } else {
       // Add to favorites
       favorites.push(props.car.id);
-      cookie.set("favorites", favorites, { path: "/" });
+      cookie.set("favorites", favorites);
       setFavorite(true);
       setSnackbarMessage("Coche añadido a favoritos");
     }
