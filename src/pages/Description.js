@@ -11,7 +11,9 @@ import { useNavigate } from "react-router-dom";
 import ImageSliderComponent from "../components/ImageSlider";
 import { motion } from "framer-motion";
 import { dataName, getData, addData } from "../data/data";
+import Cookies from "universal-cookie";
 
+const cookie = new Cookies();
 function getCar(id) {
   return Cars.find((car) => car.id === parseInt(id));
 }
@@ -20,6 +22,10 @@ export default function Description() {
   const navigate = useNavigate();
   const params = useParams();
   const car = getCar(params.id);
+  const handlePersonalizeClick = () => {
+    navigate("/personalize/" + params.id);
+    cookie.set("personalization", { "seats": 0, "colors": 0, "tire": 0 },);
+  };
 
   return (
     <Container maxWidth="lg">
@@ -61,7 +67,7 @@ export default function Description() {
               <Button component={motion.div} whileHover={{ scale: 1.080, }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 variant="contained"
-                onClick={() => navigate("/personalize/" + car.id)}
+                onClick={handlePersonalizeClick}
               >
                 Personalizar <EditIcon />
               </Button>
