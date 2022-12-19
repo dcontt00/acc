@@ -1,0 +1,27 @@
+[
+    {
+        "img": "/imgs/color/color_1.jpg",
+        "title": "Rojo Brillante",
+        "price": "+0€"
+    },
+    {
+        "img": "/imgs/color/color_2.jpg",
+        "title": "Negro mate",
+        "price": "+500€"
+    },
+    {
+        "img": "/imgs/color/color_3.jpg",
+        "title": "Gris plateado",
+        "price": "+750€"
+    },
+    {
+        "img": "/imgs/color/color_4.jpg",
+        "title": "Azul marino",
+        "price": "+1500€"
+    },
+    {
+        "img": "/imgs/color/color_5.jpg",
+        "title": "Verde jungla",
+        "price": "+2000€"
+    }
+]

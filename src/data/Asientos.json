@@ -1,0 +1,27 @@
+[
+    {
+        "img": "/imgs/asientos/asientos_1.jpg",
+        "title": "Asientos de serie",
+        "price": "+0€"
+    },
+    {
+        "img": "/imgs/asientos/asientos_2.jpg",
+        "title": "Polipiel",
+        "price": "+500€"
+    },
+    {
+        "img": "/imgs/asientos/asientos_3.jpg",
+        "title": "Alcantara",
+        "price": "+1000€"
+    },
+    {
+        "img": "/imgs/asientos/asientos_4.jpg",
+        "title": "Piel con negro",
+        "price": "+1500€"
+    },
+    {
+        "img": "/imgs/asientos/asientos_5.jpg",
+        "title": "Piel con rojo",
+        "price": "+1500€"
+    }
+]

@@ -14,95 +14,15 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AButton from "../components/AButton";
 import Cookie from "universal-cookie";
+import Llantas from "../data/Llantas.json";
+import Colores from "../data/Colores.json";
+import Asientos from "../data/Asientos.json";
 const cookie = new Cookie();
 
 function getCar(id) {
   return Cars.find((car) => car.id === parseInt(id));
 }
 
-const itemAsientos = [
-  {
-    img: "/imgs/asientos/asientos_1.jpg",
-    title: "Asientos de serie",
-    price: "+0€",
-  },
-  {
-    img: "/imgs/asientos/asientos_2.jpg",
-    title: "Polipiel",
-    price: "+500€",
-  },
-  {
-    img: "/imgs/asientos/asientos_3.jpg",
-    title: "Alcantara",
-    price: "+1000€",
-  },
-  {
-    img: "/imgs/asientos/asientos_4.jpg",
-    title: "Piel con negro",
-    price: "+1500€",
-  },
-  {
-    img: "/imgs/asientos/asientos_5.jpg",
-    title: "Piel con rojo",
-    price: "+1500€",
-  },
-];
-
-const itemColor = [
-  {
-    img: "/imgs/color/color_1.jpg",
-    title: "Rojo Brillante",
-    price: "+0€",
-  },
-  {
-    img: "/imgs/color/color_2.jpg",
-    title: "Negro mate",
-    price: "+500€",
-  },
-  {
-    img: "/imgs/color/color_3.jpg",
-    title: "Gris plateado",
-    price: "+750€",
-  },
-  {
-    img: "/imgs/color/color_4.jpg",
-    title: "Azul marino",
-    price: "+1500€",
-  },
-  {
-    img: "/imgs/color/color_5.jpg",
-    title: "Verde jungla",
-    price: "+2000€",
-  },
-];
-
-const itemLlantas = [
-  {
-    img: "/imgs/llantas/llantas_1.jpg",
-    title: "Llantas de serie",
-    price: "+0€",
-  },
-  {
-    img: "/imgs/llantas/llantas_2.jpg",
-    title: "Radios triangulares",
-    price: "+400€",
-  },
-  {
-    img: "/imgs/llantas/llantas_3.jpg",
-    title: "Aleacion",
-    price: "+700€",
-  },
-  {
-    img: "/imgs/llantas/llantas_4.jpg",
-    title: "Multirradio",
-    price: "+1000€",
-  },
-  {
-    img: "/imgs/llantas/llantas_5.jpg",
-    title: "Capa de carbono",
-    price: "+2000€",
-  },
-];
 
 export default function Personalize() {
   const navigate = useNavigate();
@@ -130,7 +50,7 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={itemAsientos} />
+          <ImageList data={Asientos} part="seats" />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -138,7 +58,7 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={itemColor} />
+          <ImageList data={Colores} />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -146,7 +66,7 @@ export default function Personalize() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ImageList data={itemLlantas} />
+          <ImageList data={Llantas} />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
