@@ -1,7 +1,6 @@
 import * as React from "react";
-import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { List, ListItemButton, Button } from "@mui/material";
+import { List, ListItemButton } from "@mui/material";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
@@ -12,7 +11,7 @@ const cookie = new Cookies();
 const StyledList = styled(List)({
   // selected and (selected + hover) states
   "&& .Mui-selected, && .Mui-selected:hover": {
-    backgroundColor: "red",
+    backgroundColor: "orange",
     "&, & .MuiListItemIcon-root": {
       color: "pink",
     },

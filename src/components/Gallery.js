@@ -3,8 +3,6 @@ import Grid from "@mui/material/Grid";
 import CarCard from "../components/CarCard";
 
 export default function StandardImageList(props) {
-
-
   if (props.cars.length === 0) {
     return (
       <Grid container spacing={2}>
@@ -14,8 +12,6 @@ export default function StandardImageList(props) {
       </Grid>
     );
   } else {
-
-
 
     return (
       <Grid container spacing={2}>

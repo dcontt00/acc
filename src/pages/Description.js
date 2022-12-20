@@ -33,6 +33,7 @@ export default function Description() {
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h2">{car.name}</Typography>
         </Grid>
+
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <ImageSliderComponent imgs={car.imgs} />
         </Grid>
@@ -63,6 +64,7 @@ export default function Description() {
                 Favoritos <FavoriteBorderIcon />
               </Button>
             </Grid>
+
             <Grid item lg={12} md={12} sm={12} xs={12}>
               <Button component={motion.div} whileHover={{ scale: 1.080, }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
@@ -72,6 +74,7 @@ export default function Description() {
                 Personalizar <EditIcon />
               </Button>
             </Grid>
+            
             <Grid item lg={12} md={12} sm={12} xs={12}>
               <Button component={motion.div} whileHover={{ scale: 1.080, }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }} variant="contained" onClick={() => navigate("/payment/" + car.id)}>

@@ -53,6 +53,7 @@ export default function Review() {
       <Typography variant="h6" gutterBottom>
         Resumen de la compra
       </Typography>
+
       <List disablePadding>
         <ListItem key={car.brand} sx={{ py: 1, px: 0 }}>
           <ListItemText
@@ -61,20 +62,24 @@ export default function Review() {
           />
           <Typography variant="body2">{total}€</Typography>
         </ListItem>
-
       </List>
+
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Envio
           </Typography>
+
           <Typography gutterBottom>John Smith</Typography>
+
           <Typography gutterBottom>{addresses.join(", ")}</Typography>
         </Grid>
+
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Detalles del pago
           </Typography>
+
           <Grid container>
             {payments.map((payment) => (
               <React.Fragment key={payment.name}>

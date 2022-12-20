@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Cars from "../../data/Cars.json";
@@ -19,12 +18,12 @@ function createData(part, model, price) {
     return { part, model, price };
 }
 
-
-
 const cookie = new Cookies();
+
 function getCar(id) {
     return Cars.find((car) => car.id === parseInt(id));
 }
+
 export default function Details() {
     const params = useParams();
     const car = getCar(params.id);
@@ -65,32 +64,27 @@ export default function Details() {
                                 <TableCell >Precio</TableCell>
                             </TableRow>
                         </TableHead>
+
                         <TableBody>
                             <TableRow>
                                 <TableCell >Base</TableCell>
                                 <TableCell >{car.name}</TableCell>
                                 <TableCell >{car.price}€</TableCell>
                             </TableRow>
+
                             {rows.map((row) => (
-                                <TableRow
-                                    key={row.name}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
+                                <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
                                     <TableCell >{row.part}</TableCell>
                                     <TableCell >{row.model}</TableCell>
                                     <TableCell >{row.price}€</TableCell>
                                 </TableRow>
                             ))}
 
-                            <TableRow
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
+                            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                 <TableCell >Total</TableCell>
                                 <TableCell ></TableCell>
                                 <TableCell >{total}€</TableCell>
                             </TableRow>
-
-
 
                         </TableBody>
                     </Table>
@@ -107,10 +101,11 @@ export default function Details() {
                     Detalles del pedido
                 </Typography>
             </Grid>
-            <Grid item xs={6}>
 
+            <Grid item xs={6}>
                 <img src={car.img} alt={car.name} width="100%" />
             </Grid>
+
             <Grid item xs={6}>
                 <Grid container>
                     <Grid item xs={12}>
@@ -118,29 +113,28 @@ export default function Details() {
                             {car.name}
                         </Typography>
                     </Grid>
+
                     <Grid item xs={12}>
                         <Typography variant="h6" component="h3" gutterBottom>
                             {car.type}
                         </Typography>
                     </Grid>
+
                     <Grid item xs={12}>
                         <Typography variant="h6" component="h3" gutterBottom>
                             {car.year}
                         </Typography>
                     </Grid>
                 </Grid>
-
             </Grid>
-            <Grid item xs={12}>
 
+            <Grid item xs={12}>
                 <Typography variant="h2">Desglose</Typography>
             </Grid>
-            <Grid item xs={12}>
 
+            <Grid item xs={12}>
                 {desglose()}
             </Grid>
-
         </Grid>
-
     )
 }

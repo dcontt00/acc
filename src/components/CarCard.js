@@ -4,20 +4,16 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Button, CardActionArea, CardActions, Grid, Box, Divider } from "@mui/material";
+import { CardActionArea, CardActions, Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AButton from "./AButton";
-import FavCars from "../data/FavCars";
-import { dataName, getData, addData } from "../data/data";
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Cookie from "universal-cookie";
 
 const cookie = new Cookie();
-
 
 export default function MultiActionAreaCard(props) {
   const [loged, setLoged] = React.useState(cookie.get("loged"));

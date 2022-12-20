@@ -16,6 +16,7 @@ function DescriptionList(props) {
           <Typography sx={{ fontWeight: "bold" }}>{props.title}</Typography>
         </Card>
       </Grid>
+
       <Grid item xs={6}>
         {/*First Car Description*/}
         <Card
@@ -29,6 +30,7 @@ function DescriptionList(props) {
           )}
         </Card>
       </Grid>
+      
       <Grid item xs={6}>
         {/*Second Car Description*/}
         <Card

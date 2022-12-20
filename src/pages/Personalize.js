@@ -1,5 +1,5 @@
 import "../App.css";
-import { Button, Grid, Typography } from "@mui/material";
+import { Grid, Paper, Typography } from "@mui/material";
 import Container from "@mui/material/Container";
 import ImageList from "../components/ImageList";
 import * as React from "react";
@@ -120,6 +120,7 @@ export default function Personalize() {
             <FormLabel id="demo-radio-buttons-group-label">
               Tipo de faros
             </FormLabel>
+            
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="LED"
@@ -139,26 +140,30 @@ export default function Personalize() {
             </RadioGroup>
           </FormControl>
         </Grid>
-
-        <Typography variant="h4" item xs={8} sm={8} md={8} lg={8} padding={5}>
-          Precio: {car.price}€
-        </Typography>
-
-        <AButton
-          variant="contained"
-          text={<><ShoppingCartIcon /><Typography>Comprar</Typography></>}
-
-          onClick={handleClickBuy}
-        />
-        <AButton
-          variant="contained"
-          text={<><Typography>Cancelar</Typography></>}
-
-          onClick={handleClickCancel}
-        />
-
-
       </Grid>
+
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+          <Typography variant="h3">
+            Precio: {car.price}€ SE PUEDE PONER AQUI EL DESGLOSE TAMBIEN, ESTO SON LOS NUEVOS COMENTARIOS DE JAVASCRIPT XD
+          </Typography>
+
+          <Grid align={"right"} mr={5}>
+            <AButton
+              variant="contained"
+              text={<><ShoppingCartIcon /> <Typography>Comprar</Typography></>}
+              onClick={handleClickBuy}
+              align={"right"}
+            />
+
+            <Typography variant="h4" padding={2}></Typography>
+
+            <AButton
+              variant="contained"
+              text={<Typography>Cancelar</Typography>}
+              onClick={handleClickCancel}
+            />
+          </Grid>
+        </Paper>
     </Container>
   );
 }

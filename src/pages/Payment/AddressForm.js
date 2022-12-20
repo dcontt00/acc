@@ -11,7 +11,9 @@ export default function AddressForm() {
       <Typography variant="h6" gutterBottom>
         Direccion de Envío
       </Typography>
+
       <Grid container spacing={3}>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -23,6 +25,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -34,6 +37,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -45,6 +49,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -56,6 +61,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12}>
           <TextField
             required
@@ -67,6 +73,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12}>
           <TextField
             id="address2"
@@ -77,6 +84,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -88,6 +96,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             id="province"
@@ -97,6 +106,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -108,6 +118,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -119,6 +130,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12}>
           <FormControlLabel
             control={
@@ -127,6 +139,7 @@ export default function AddressForm() {
             label="Usa esa direccion para añadir detalles sobre el metodo de pago"
           />
         </Grid>
+        
       </Grid>
     </React.Fragment>
   );

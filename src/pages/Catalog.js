@@ -1,22 +1,6 @@
 import "../App.css";
 import * as React from "react";
-import {
-  Button,
-  Typography,
-  Grid,
-  TextField,
-  Select,
-  MenuItem,
-  FormControlLabel,
-  Switch,
-  Slider,
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Icon,
-  Alert
-} from "@mui/material";
+import { Button, Typography, Grid, TextField, Select, MenuItem, FormControlLabel, Switch, Slider, Alert } from "@mui/material";
 import Container from "@mui/material/Container";
 import Gallery from "../components/CatalogGallery";
 import Brands from "../data/Brands.json";
@@ -24,7 +8,6 @@ import Cars from "../data/Cars.json";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { useParams } from "react-router-dom";
-
 
 // format price
 function formatPrice(price) {
@@ -140,7 +123,6 @@ export default function Catalog() {
             label={<Typography variant="h6">Filtrar</Typography>}
 
           />
-
         </Grid>
       </Grid >
       <br />
@@ -157,10 +139,9 @@ export default function Catalog() {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 1, sm: 1, md: 1, lg: 1 }}>
 
-              <FormControl size="small" fullWidth
-
-              >
+              <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">Marca</InputLabel>
+
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -176,14 +157,15 @@ export default function Catalog() {
                     <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
                   ))}
                 </Select>
+
               </FormControl>
             </Grid>
 
             <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 2, sm: 2, md: 2, lg: 2 }}>
 
-              <FormControl size="small" fullWidth
-              >
+              <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
+
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -200,17 +182,16 @@ export default function Catalog() {
                   <MenuItem value={"SUV"}>SUV</MenuItem>
                   <MenuItem value={"Urbano"}>Urbano</MenuItem>
                 </Select>
+
               </FormControl>
             </Grid>
+
             <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 3, sm: 3, md: 3, lg: 3 }}>
-
-
-              <FormControl size="small" fullWidth
-
-              >
+              <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">
                   Combustible
                 </InputLabel>
+
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -233,21 +214,17 @@ export default function Catalog() {
             </Grid>
 
             <Grid item xs={12} sm={4} md={3} lg={3} order={{ xs: 5, sm: 5, md: 5, lg: 4 }}>
-
               <Button variant="contained" onClick={deleteFilters}>
                 Borrar filtros
               </Button>
-
             </Grid>
+
             <Grid item xs={12} sm={8} md={9} lg={4} order={{ xs: 4, sm: 4, md: 4, lg: 5 }}>
-
-              <FormControl fullWidth
-                sx={{ alignContent: "right" }}
-
-              >
+              <FormControl fullWidth sx={{ alignContent: "right" }}>
                 <Typography sx={{ width: "100%", textAlign: "center" }}>
                   Precio: {formatPrice(price)}
                 </Typography>
+
                 <Slider
                   size="small"
                   valueLabelFormat={valuetext}
@@ -262,21 +239,14 @@ export default function Catalog() {
                   name="price"
                   marks
                 />
+
               </FormControl>
             </Grid>
           </Grid>
         </Grid>
-
-
-
-
-
-
       </Grid>
 
-
       <Grid item xs={12} sm={12} md={12} lg={12}>
-
         {selectedCars.length === 0 ?
           <Grid
             container
@@ -291,7 +261,6 @@ export default function Catalog() {
           </Grid>
           :
           <Gallery cars={selectedCars} />}
-
       </Grid>
     </Container >
   );

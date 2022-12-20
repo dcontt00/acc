@@ -49,9 +49,11 @@ export default function LogIn() {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
+
           <Typography component="h1" variant="h5">
             Iniciar Sesion
           </Typography>
+
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -78,10 +80,9 @@ export default function LogIn() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+            
+            <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+
             <Button
               type="submit"
               fullWidth
@@ -90,6 +91,7 @@ export default function LogIn() {
             >
               Iniciar Sesion
             </Button>
+
             <Grid container>
               <Grid item>
                 <Link href="signin" variant="body2">
@@ -97,6 +99,7 @@ export default function LogIn() {
                 </Link>
               </Grid>
             </Grid>
+            
           </Box>
         </Box>
       </Container>

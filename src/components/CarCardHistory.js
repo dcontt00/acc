@@ -3,11 +3,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { CardActionArea, CardActions, Grid, Box, Divider } from "@mui/material";
+import { CardActionArea, CardActions, Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AButton from "./AButton";
-import { dataName, getData, addData } from "../data/data";
 import Cookie from "universal-cookie";
 
 const cookie = new Cookie();

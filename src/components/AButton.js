@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 export default function AButton(props) {
     return (
-
         <Button
             variant="contained"
             component={motion.div}

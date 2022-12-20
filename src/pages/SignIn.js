@@ -68,9 +68,11 @@ export default function SignUp() {
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
+
             <Typography component="h1" variant="h5">
               Crear Cuenta
             </Typography>
+
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -89,6 +91,7 @@ export default function SignUp() {
                   setName(event.target.value);
                 }}
               />
+
               <TextField
                 margin="normal"
                 required
@@ -101,6 +104,7 @@ export default function SignUp() {
                   setSurnames(event.target.value);
                 }}
               />
+
               <TextField
                 margin="normal"
                 required
@@ -113,6 +117,7 @@ export default function SignUp() {
                   setLocation(event.target.value);
                 }}
               />
+
               <TextField
                 margin="normal"
                 required
@@ -125,6 +130,7 @@ export default function SignUp() {
                   setPhoneNum(event.target.value);
                 }}
               />
+
               <TextField
                 margin="normal"
                 required
@@ -137,6 +143,7 @@ export default function SignUp() {
                   setEmail(event.target.value);
                 }}
               />
+
               <TextField
                 margin="normal"
                 required
@@ -149,6 +156,7 @@ export default function SignUp() {
                   setPassword(event.target.value);
                 }}
               />
+
               <TextField
                 margin="normal"
                 required
@@ -161,6 +169,7 @@ export default function SignUp() {
                   setBankAccount(event.target.value);
                 }}
               />
+
               <TextField
                 margin="normal"
                 fullWidth
@@ -172,6 +181,7 @@ export default function SignUp() {
                   setUserImgLink(event.target.value);
                 }}
               />
+
               <FormGroup>
                 <FormControlLabel
                   control={<Checkbox />}
@@ -182,6 +192,7 @@ export default function SignUp() {
                   label="Acepto recibir ofertas"
                 />
               </FormGroup>
+
               <Grid container>
                 <Grid item>
                   <Link href="/" variant="body2">
@@ -189,6 +200,7 @@ export default function SignUp() {
                   </Link>
                 </Grid>
               </Grid>
+              
               <Button
                 type="submit"
                 fullWidth

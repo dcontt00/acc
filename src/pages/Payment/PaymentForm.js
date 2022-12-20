@@ -21,10 +21,12 @@ export default function PaymentForm() {
       <Typography variant="h6" gutterBottom>
         Metodo de Pago
       </Typography>
+
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
             <InputLabel id="ccname_label">Nombre de la Tarjeta</InputLabel>
+
             <Select
               labelId="cc_name"
               id="ccname_select"
@@ -36,8 +38,10 @@ export default function PaymentForm() {
               <MenuItem value={"Visa"}>Visa</MenuItem>
               <MenuItem value={"AmericanExpress"}>AmericanExpress</MenuItem>
             </Select>
+
           </FormControl>
         </Grid>
+
         <Grid item xs={12} md={6}>
           <TextField
             required
@@ -48,6 +52,7 @@ export default function PaymentForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} md={6}>
           <TextField
             required
@@ -58,6 +63,7 @@ export default function PaymentForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12} md={6}>
           <TextField
             required
@@ -69,12 +75,14 @@ export default function PaymentForm() {
             variant="standard"
           />
         </Grid>
+
         <Grid item xs={12}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveCard" value="yes" />}
             label="Recordar datos bancarios para compras futuras"
           />
         </Grid>
+        
       </Grid>
     </React.Fragment>
   );

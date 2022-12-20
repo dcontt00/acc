@@ -6,9 +6,6 @@ import Divider from "@mui/material/Divider";
 import CartProduct from "../../components/CartProduct";
 
 function Payment() {
-
-  let product = [];
-
   return (
     <div>
       <Grid container>
