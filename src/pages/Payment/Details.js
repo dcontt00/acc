@@ -16,6 +16,7 @@ import { Grid } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import TablaPrecio from "../../components/TablaPrecio"
 
+const cookie = new Cookies();
 
 
 function getCar(id) {
@@ -25,6 +26,22 @@ function getCar(id) {
 export default function Details() {
     const params = useParams();
     const car = getCar(params.id);
+    const [tire, setTire] = React.useState(null);
+    const [colors, setColors] = React.useState(null);
+    const [seats, setSeats] = React.useState(null);
+
+    React.useEffect(() => {
+
+        var personalization = [];
+        if (cookie.get("personalization")) {
+            personalization = cookie.get("personalization");
+            setTire(personalization.tire);
+            setColors(personalization.colors);
+            setSeats(personalization.seats);
+
+        }
+
+    }, []);
 
     return (
         <Grid container spacing={2}>
@@ -65,7 +82,7 @@ export default function Details() {
             </Grid>
 
             <Grid item xs={12}>
-                <TablaPrecio />
+                <TablaPrecio tire={tire} seats={seats} colors={colors} />
             </Grid>
         </Grid>
     )

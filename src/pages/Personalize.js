@@ -20,6 +20,7 @@ import Asientos from "../data/Asientos.json";
 import Details from "./Payment/Details";
 import TablaPrecio from "../components/TablaPrecio";
 import { Stack } from "@mui/material";
+
 const cookie = new Cookie();
 
 function getCar(id) {
@@ -31,9 +32,20 @@ export default function Personalize() {
   const navigate = useNavigate();
   const params = useParams();
   const car = getCar(params.id);
-  const myImage = car.img;
+
+  const [tire, setTire] = React.useState(0);
+  const [colors, setColors] = React.useState(0);
+  const [seats, setSeats] = React.useState(0);
+
 
   const handleClickBuy = () => {
+    console.log(seats)
+    console.log(colors)
+    console.log(tire)
+    var llantas = Llantas.find((llanta) => llanta.id === parseInt(tire));
+    var color = Colores.find((color) => color.id === parseInt(colors));
+    var asiento = Asientos.find((asiento) => asiento.id === parseInt(seats));
+    cookie.set("personalization", { seats: asiento, colors: color, tire: llantas });
     navigate("/payment/" + params.id)
   };
 
@@ -52,21 +64,21 @@ export default function Personalize() {
           <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={12}>
 
-              <img src={myImage} style={{ width: "100%" }} />
+              <img src={car.img} style={{ width: "100%" }} />
 
               <Typography variant="h1">Personalizar vehiculo</Typography>
 
               <Typography variant="h3">Asientos</Typography>
 
-              <ImageList data={Asientos} part="seats" />
+              <ImageList data={Asientos} part="seats" setItem={setSeats} />
 
               <Typography variant="h3">Color</Typography>
 
-              <ImageList data={Colores} part="colors" />
+              <ImageList data={Colores} part="colors" setItem={setColors} />
 
               <Typography variant="h3">Llantas</Typography>
 
-              <ImageList data={Llantas} part="tire" />
+              <ImageList data={Llantas} part="tire" setItem={setTire} />
 
               <Typography variant="h3">Motor</Typography>
               <FormControl>
@@ -129,7 +141,7 @@ export default function Personalize() {
             <Typography variant="h3">
               Detalles
             </Typography>
-            <TablaPrecio />
+            {/* <TablaPrecio /> */}
             <br />
             <Stack direction="row" spacing={2} justifyContent="flex-end">
 

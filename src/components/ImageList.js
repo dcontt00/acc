@@ -29,8 +29,8 @@ export default function StandardImageList(props) {
   const [selectedIndex, setSelected] = React.useState(0);
 
   const handleListItemClick = (event, index) => {
-    var part = props.part;
-    var id = props.data[index].id
+    props.setItem(index);
+    /* var id = props.data[index].id
     console.log("Part: " + part + " ID: " + id);
     if (cookie.get("personalization") === undefined) {
       console.log("Cookie not exists")
@@ -43,8 +43,8 @@ export default function StandardImageList(props) {
       cookie.set("personalization", personalization);
     }
     console.log(cookie.get("personalization"))
+    //console.log(cookie.get("personalization")) */
     setSelected(index);
-    //console.log(cookie.get("personalization"))
   };
 
   return (
