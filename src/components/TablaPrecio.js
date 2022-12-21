@@ -26,12 +26,19 @@ function getCar(id) {
 export default function Details(props) {
     const params = useParams();
     const car = getCar(params.id);
-    var total = props.tire.price + props.colors.price + props.seats.price + car.price;
-    var rows = [
-        createData("Llantas", props.tire.title, props.tire.price),
-        createData("Color", props.colors.title, props.colors.price),
-        createData("Asiento", props.seats.title, props.seats.price),
-    ];
+
+    // If there is a personalization
+    var rows = []
+    var total = car.price;
+    if (props.tire) {
+        total += props.tire.price + props.colors.price + props.seats.price;
+        rows = [
+            createData("Llantas", props.tire.title, props.tire.price),
+            createData("Color", props.colors.title, props.colors.price),
+            createData("Asiento", props.seats.title, props.seats.price),
+        ];
+    }
+
 
 
     return (

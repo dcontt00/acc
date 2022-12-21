@@ -28,6 +28,11 @@ export default function Description() {
     cookie.set("personalization", { "seats": 0, "colors": 0, "tire": 0 },);
   };
 
+  function handleBuyButton() {
+    cookie.remove("personalization")
+    navigate("/payment/" + params.id);
+  }
+
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2}>
@@ -75,10 +80,11 @@ export default function Description() {
                 Personalizar <EditIcon />
               </Button>
             </Grid>
-            
+
             <Grid item lg={12} md={12} sm={12} xs={12}>
               <Button component={motion.div} whileHover={{ scale: 1.080, }}
-                transition={{ type: "spring", stiffness: 400, damping: 20 }} variant="contained" onClick={() => navigate("/payment/" + car.id)}>
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                variant="contained" onClick={() => handleBuyButton()}>
                 Comprar <ShoppingCartIcon />
               </Button>
             </Grid>
