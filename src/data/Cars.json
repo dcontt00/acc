@@ -129,5 +129,26 @@
     "power": "136 CV",
     "consumption": "4,1-5,9 l/100 km",
     "year": "2018"
+  },
+  {
+    "id": 8,
+    "name": "BMW X6",
+    "brand": "BMW",
+    "description": "El BMW X6 es un SUV coupé, del segmento E, fabricado por la marca alemana BMW desde 2008. Actualmente se comercializa la tercera generación. ",
+    "type": "SUV",
+    "img": "/imgs/cars/bmw_x6/01.jpg",
+    "imgs": [
+      "/imgs/cars/bmw_x6/01.jpg",
+      "/imgs/cars/bmw_x6/02.jpg",
+      "/imgs/cars/bmw_x6/03.jpg",
+      "/imgs/cars/bmw_x6/04.jpg"
+    ],
+    "price": 84900,
+    "seats": 5,
+    "fuel": "Gasolina",
+    "traction": "Delantera",
+    "power": "340 CV",
+    "consumption": "8,9-9,3 l/100 km",
+    "year": "2019"
   }
 ]
