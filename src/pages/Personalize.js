@@ -40,13 +40,10 @@ export default function Personalize() {
   const [tire, setTire] = React.useState(null);
   const [colors, setColors] = React.useState(null);
   const [seats, setSeats] = React.useState(null);
-  const [total, setTotal] = React.useState(car.price);
 
   function tireData(id) {
     if (id != null) {
       var llantas = Llantas.find((llanta) => llanta.id === parseInt(id));
-      console.log(llantas)
-      //setTotal(total + llantas.price)
       return (
         <TableRow key={llantas.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Llantas</TableCell>
@@ -59,8 +56,6 @@ export default function Personalize() {
   function colorsData(id) {
     if (id != null) {
       var colores = Colores.find((color) => color.id === parseInt(id));
-      console.log(colores)
-      //setTotal(total + colores.price)
       return (
         <TableRow key={colores.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Color</TableCell>
@@ -74,8 +69,6 @@ export default function Personalize() {
   function seatsData(id) {
     if (id != null) {
       var asientos = Asientos.find((asiento) => asiento.id === parseInt(id));
-      console.log(asientos)
-      //setTotal(total + asientos.price)
       return (
         <TableRow key={asientos.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Asientos</TableCell>
@@ -84,6 +77,23 @@ export default function Personalize() {
         </TableRow>
       );
     }
+  }
+
+  function totalPrice() {
+    var total = car.price;
+    if (tire != null) {
+      var llantas = Llantas.find((llanta) => llanta.id === parseInt(tire));
+      total = total + llantas.price;
+    }
+    if (colors != null) {
+      var colores = Colores.find((color) => color.id === parseInt(colors));
+      total = total + colores.price;
+    }
+    if (seats != null) {
+      var asientos = Asientos.find((asiento) => asiento.id === parseInt(seats));
+      total = total + asientos.price;
+    }
+    return total;
   }
 
 
@@ -212,7 +222,7 @@ export default function Personalize() {
                   <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell >Total</TableCell>
                     <TableCell ></TableCell>
-                    <TableCell >{total}€</TableCell>
+                    <TableCell >{totalPrice()}€</TableCell>
                   </TableRow>
 
                 </TableBody>
