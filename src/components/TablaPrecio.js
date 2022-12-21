@@ -26,18 +26,31 @@ function getCar(id) {
 export default function Details(props) {
     const params = useParams();
     const car = getCar(params.id);
+    const [data, setData] = React.useState([]);
 
     // If there is a personalization
     var rows = []
     var total = car.price;
-    if (props.tire) {
-        total += props.tire.price + props.colors.price + props.seats.price;
-        rows = [
-            createData("Llantas", props.tire.title, props.tire.price),
-            createData("Color", props.colors.title, props.colors.price),
-            createData("Asiento", props.seats.title, props.seats.price),
-        ];
-    }
+    React.useEffect(() => {
+
+        if (props.tire) {
+            var llantas = Llantas.find((llanta) => llanta.id === parseInt(props.tire));
+            total += llantas.price
+            // Append to data
+            setData([...data, createData("Llantas", llantas.title, llantas.price)])
+
+
+        } else if (props.colors) {
+            var colores = Colores.find((color) => color.id === parseInt(props.colors));
+            total += colores.price
+            setData([...data, createData("Colores", colores.title, colores.price)])
+        } else if (props.seats) {
+            var asientos = Asientos.find((asiento) => asiento.id === parseInt(props.seats));
+            total += asientos.price
+            setData([...data, createData("Asientos", asientos.title, asientos.price)])
+        }
+
+    }, [setData, data, props.tire, props.colors, props.seats]);
 
 
 
@@ -59,7 +72,7 @@ export default function Details(props) {
                         <TableCell >{car.price}€</TableCell>
                     </TableRow>
 
-                    {rows.map((row) => (
+                    {data.map((row) => (
                         <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
                             <TableCell >{row.part}</TableCell>
                             <TableCell >{row.model}</TableCell>

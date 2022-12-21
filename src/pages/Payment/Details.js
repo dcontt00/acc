@@ -14,10 +14,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Grid } from "@mui/material";
 import Paper from '@mui/material/Paper';
-import TablaPrecio from "../../components/TablaPrecio"
+function createData(part, model, price) {
+    return { part, model, price };
+}
 
 const cookie = new Cookies();
-
 
 function getCar(id) {
     return Cars.find((car) => car.id === parseInt(id));
@@ -26,22 +27,72 @@ function getCar(id) {
 export default function Details() {
     const params = useParams();
     const car = getCar(params.id);
-    const [tire, setTire] = React.useState(null);
-    const [colors, setColors] = React.useState(null);
-    const [seats, setSeats] = React.useState(null);
+    var personalization = [];
+    var rows = []
+    if (cookie.get("personalization")) {
+        personalization = cookie.get("personalization");
+        var llantas = Llantas.find((llanta) => llanta.id === parseInt(personalization["tire"]));
+        var color = Colores.find((color) => color.id === parseInt(personalization["colors"]));
+        var asiento = Asientos.find((asiento) => asiento.id === parseInt(personalization["seats"]));
+        rows = [
+            createData("Llantas", llantas.title, llantas.price),
+            createData("Color", color.title, color.price),
+            createData("Asiento", asiento.title, asiento.price),
+        ];
 
-    React.useEffect(() => {
+    }
 
-        var personalization = [];
-        if (cookie.get("personalization")) {
-            personalization = cookie.get("personalization");
-            setTire(personalization.tire);
-            setColors(personalization.colors);
-            setSeats(personalization.seats);
-
+    const desglose = () => {
+        var total = car.price;
+        if (llantas) {
+            total += llantas.price;
         }
+        if (color) {
+            total += color.price;
+        }
+        if (asiento) {
+            total += asiento.price;
+        }
+        return (
+            <div>
+                <TableContainer component={Paper} >
+                    <Table sx={{ width: "100%" }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell >Concepto</TableCell>
+                                <TableCell >Modelo</TableCell>
+                                <TableCell >Precio</TableCell>
+                            </TableRow>
+                        </TableHead>
 
-    }, []);
+                        <TableBody>
+                            <TableRow>
+                                <TableCell >Base</TableCell>
+                                <TableCell >{car.name}</TableCell>
+                                <TableCell >{car.price}€</TableCell>
+                            </TableRow>
+
+                            {rows.map((row) => (
+                                <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                                    <TableCell >{row.part}</TableCell>
+                                    <TableCell >{row.model}</TableCell>
+                                    <TableCell >{row.price}€</TableCell>
+                                </TableRow>
+                            ))}
+
+                            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                <TableCell >Total</TableCell>
+                                <TableCell ></TableCell>
+                                <TableCell >{total}€</TableCell>
+                            </TableRow>
+
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
+
+        );
+    }
 
     return (
         <Grid container spacing={2}>
@@ -82,7 +133,7 @@ export default function Details() {
             </Grid>
 
             <Grid item xs={12}>
-                <TablaPrecio tire={tire} seats={seats} colors={colors} />
+                {desglose()}
             </Grid>
         </Grid>
     )

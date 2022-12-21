@@ -17,6 +17,12 @@ import Cookie from "universal-cookie";
 import Llantas from "../data/Llantas.json";
 import Colores from "../data/Colores.json";
 import Asientos from "../data/Asientos.json";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 import Details from "./Payment/Details";
 import TablaPrecio from "../components/TablaPrecio";
 import { Stack } from "@mui/material";
@@ -33,19 +39,58 @@ export default function Personalize() {
   const params = useParams();
   const car = getCar(params.id);
 
-  const [tire, setTire] = React.useState(0);
-  const [colors, setColors] = React.useState(0);
-  const [seats, setSeats] = React.useState(0);
+  const [tire, setTire] = React.useState(null);
+  const [colors, setColors] = React.useState(null);
+  const [seats, setSeats] = React.useState(null);
+  const [total, setTotal] = React.useState(car.price);
+
+  function tireData(id) {
+    if (id != null) {
+      var llantas = Llantas.find((llanta) => llanta.id === parseInt(id));
+      console.log(llantas)
+      //setTotal(total + llantas.price)
+      return (
+        <TableRow key={llantas.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+          <TableCell >Llantas</TableCell>
+          <TableCell >{llantas.title}</TableCell>
+          <TableCell >{llantas.price}€</TableCell>
+        </TableRow>
+      );
+    }
+  }
+  function colorsData(id) {
+    if (id != null) {
+      var colores = Colores.find((color) => color.id === parseInt(id));
+      console.log(colores)
+      //setTotal(total + colores.price)
+      return (
+        <TableRow key={colores.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+          <TableCell >Color</TableCell>
+          <TableCell >{colores.title}</TableCell>
+          <TableCell >{colores.price}€</TableCell>
+        </TableRow>
+      );
+    }
+  }
+
+  function seatsData(id) {
+    if (id != null) {
+      var asientos = Asientos.find((asiento) => asiento.id === parseInt(id));
+      console.log(asientos)
+      //setTotal(total + asientos.price)
+      return (
+        <TableRow key={asientos.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+          <TableCell >Asientos</TableCell>
+          <TableCell >{asientos.title}</TableCell>
+          <TableCell >{asientos.price}€</TableCell>
+        </TableRow>
+      );
+    }
+  }
 
 
   const handleClickBuy = () => {
-    console.log(seats)
-    console.log(colors)
-    console.log(tire)
-    var llantas = Llantas.find((llanta) => llanta.id === parseInt(tire));
-    var color = Colores.find((color) => color.id === parseInt(colors));
-    var asiento = Asientos.find((asiento) => asiento.id === parseInt(seats));
-    cookie.set("personalization", { seats: asiento, colors: color, tire: llantas });
+    cookie.set("personalization", { seats: seats, colors: colors, tire: tire });
     navigate("/payment/" + params.id)
   };
 
@@ -141,7 +186,41 @@ export default function Personalize() {
             <Typography variant="h3">
               Detalles
             </Typography>
-            {/* <TablaPrecio /> */}
+            {/* <TablaPrecio tire={tire} seats={seats} colors={colors} /> */}
+            <TableContainer component={Paper} >
+              <Table sx={{ width: "100%" }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell >Concepto</TableCell>
+                    <TableCell >Modelo</TableCell>
+                    <TableCell >Precio</TableCell>
+                  </TableRow>
+                </TableHead>
+
+                <TableBody>
+                  <TableRow>
+                    <TableCell >Base</TableCell>
+                    <TableCell >{car.name}</TableCell>
+                    <TableCell >{car.price}€</TableCell>
+                  </TableRow>
+
+                  {tireData(tire)}
+                  {seatsData(seats)}
+                  {colorsData(colors)}
+
+
+
+
+                  <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    <TableCell >Total</TableCell>
+                    <TableCell ></TableCell>
+                    <TableCell >{total}€</TableCell>
+                  </TableRow>
+
+                </TableBody>
+              </Table>
+            </TableContainer>
+
             <br />
             <Stack direction="row" spacing={2} justifyContent="flex-end">
 
