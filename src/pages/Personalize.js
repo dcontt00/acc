@@ -23,8 +23,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Details from "./Payment/Details";
-import TablaPrecio from "../components/TablaPrecio";
 import { Stack } from "@mui/material";
 
 const cookie = new Cookie();
