@@ -29,7 +29,7 @@ function Item(props) {
         <Typography variant="p">{props.item.description}</Typography>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <img src={props.item.img} alt="coche" width={"70%"} />
+        <img src={process.env.PUBLIC_URL + props.item.img} alt="coche" width={"70%"} />
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}></Grid>
     </Grid>

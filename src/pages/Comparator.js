@@ -6,7 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 
 const cookie = new Cookie();
 
-function AddButton(props) {}
+function AddButton(props) { }
 
 function DescriptionList(props) {
   return (
@@ -30,7 +30,7 @@ function DescriptionList(props) {
           )}
         </Card>
       </Grid>
-      
+
       <Grid item xs={6}>
         {/*Second Car Description*/}
         <Card
@@ -80,7 +80,7 @@ export default function Comparator(props) {
               sx={{ margin: 2, width: "100%", textAlign: "center" }}
             >
               <img
-                src={firstCar.img}
+                src={process.env.PUBLIC_URL + firstCar.img}
                 alt={firstCar.name + " image"}
                 style={{
                   objectFit: "cover",
@@ -102,7 +102,7 @@ export default function Comparator(props) {
               sx={{ margin: 2, width: "100%", textAlign: "center" }}
             >
               <img
-                src={firstCar.img}
+                src={process.env.PUBLIC_URL + firstCar.img}
                 alt={firstCar.name + " image"}
                 style={{
                   objectFit: "cover",

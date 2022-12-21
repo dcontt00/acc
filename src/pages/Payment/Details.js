@@ -103,7 +103,7 @@ export default function Details() {
             </Grid>
 
             <Grid item xs={6}>
-                <img src={car.img} alt={car.name} width="100%" />
+                <img src={process.env.PUBLIC_URL + car.img} alt={car.name} width="100%" />
             </Grid>
 
             <Grid item xs={6}>

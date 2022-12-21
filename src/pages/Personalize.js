@@ -117,7 +117,7 @@ export default function Personalize() {
           <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={12}>
 
-              <img src={car.img} style={{ width: "100%" }} />
+              <img src={process.env.PUBLIC_URL + car.img} style={{ width: "100%" }} />
 
               <Typography variant="h1">Personalizar vehiculo</Typography>
 

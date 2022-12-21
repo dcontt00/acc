@@ -19,29 +19,28 @@ import Theme from "./Theme";
 import Appbar from "./components/Appbar";
 import Footer from "./components/Footer";
 import Comparator from "./pages/Comparator";
+console.log(process.env.PUBLIC_URL)
 
 function App() {
   return (
     <ThemeProvider theme={Theme}>
-      <Router>
-        <Appbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/catalog/:search" element={<Catalog />} />
-          <Route path="/description/:id" element={<Description />} />
-          <Route path="/personalize/:id" element={<Personalize />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/payment/:id" element={<Checkout />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/comparator" element={<Comparator />} />
-          <Route path="/claim/:id" element={<Claim />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <Appbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/catalog/:search" element={<Catalog />} />
+        <Route path="/description/:id" element={<Description />} />
+        <Route path="/personalize/:id" element={<Personalize />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/payment/:id" element={<Checkout />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/comparator" element={<Comparator />} />
+        <Route path="/claim/:id" element={<Claim />} />
+      </Routes>
+      <Footer />
     </ThemeProvider>
   );
 }

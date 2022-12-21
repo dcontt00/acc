@@ -36,7 +36,7 @@ export default function MultiActionAreaCard(props) {
         <CardMedia
           component="img"
           height="140"
-          image={props.img}
+          image={process.env.PUBLIC_URL + props.img}
           alt="green iguana"
           sx={{ objectFit: "cover" }}
         />

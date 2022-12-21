@@ -28,7 +28,7 @@ export default function CartGrid() {
     >
       <Grid container spacing={2}>
         <Grid item lg={6}>
-          <img src={car.img} height="auto" width="100%" />
+          <img src={process.env.PUBLIC_URL + car.img} height="auto" width="100%" />
         </Grid>
         <Grid item lg={6}>
           <Grid container direction="column" spacing={2}>
