@@ -88,7 +88,7 @@ export default function Catalog() {
 
   return (
     <Container maxWidth="xl">
-      <Grid container spacing={1}>
+      <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h1">Catálogo</Typography>
         </Grid>
@@ -245,23 +245,23 @@ export default function Catalog() {
           </Grid>
         </Grid>
       </Grid>
+      <br />
 
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-        {selectedCars.length === 0 ?
-          <Grid
-            container
-            spacing={0}
-            alignItems="center"
-            justifyContent="center"
-            style={{ minHeight: '20vh' }}
-          >
-            <Grid item xs={12} sm={12} md={8} lg={8}>
-              <Alert variant="filled" severity="info">No hay coches con esos filtros. Borre los filtros o cámbielos</Alert>
-            </Grid>
+
+      {selectedCars.length === 0 ?
+        <Grid
+          container
+          spacing={0}
+          alignItems="center"
+          justifyContent="center"
+          style={{ minHeight: '20vh' }}
+        >
+          <Grid item xs={12} sm={12} md={8} lg={8}>
+            <Alert variant="filled" severity="info">No hay coches con esos filtros. Borre los filtros o cámbielos</Alert>
           </Grid>
-          :
-          <Gallery cars={selectedCars} />}
-      </Grid>
+        </Grid>
+        :
+        <Gallery cars={selectedCars} />}
     </Container >
   );
 }

@@ -132,6 +132,9 @@ export default function Personalize() {
               <Typography variant="h3">Llantas</Typography>
 
               <ImageList data={Llantas} part="tire" setItem={setTire} />
+            </Grid>
+
+            <Grid item xs={5} sm={3} md={3} lg={3}>
 
               <Typography variant="h3">Motor</Typography>
               <FormControl>
@@ -160,6 +163,8 @@ export default function Personalize() {
                   />
                 </RadioGroup>
               </FormControl>
+            </Grid>
+            <Grid item xs={5} sm={3} md={3} lg={3}>
               <Typography variant="h3">Faros</Typography>
               <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">

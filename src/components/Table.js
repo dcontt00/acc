@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 export default function BasicTable(props) {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 200 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>{props.car.name}</TableCell>
@@ -23,7 +23,7 @@ export default function BasicTable(props) {
             <TableCell component="th" scope="row">Tipo</TableCell>
             <TableCell align="right">{props.car.type}</TableCell>
           </TableRow>
-          
+
           <TableRow>
             <TableCell component="th" scope="row">Asientos</TableCell>
             <TableCell align="right">{props.car.seats}</TableCell>
