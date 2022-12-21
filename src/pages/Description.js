@@ -14,6 +14,7 @@ import { dataName, getData, addData } from "../data/data";
 import Cookies from "universal-cookie";
 
 const cookie = new Cookies();
+
 function getCar(id) {
   return Cars.find((car) => car.id === parseInt(id));
 }

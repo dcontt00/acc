@@ -89,9 +89,9 @@ export default function MultiActionAreaCard(props) {
             </Typography>
           </Grid>
 
-          <Grid item xs={7} sm={7} md={7} lg={7}>
+          <Grid item xs={7} sm={7} md={7} lg={7} align={"right"}>
             <AButton
-              text="Gestionar reclamación"
+              text="reclamación"
               onClick={() => navigate("/claim/" + props.car.id)}
             />
           </Grid>

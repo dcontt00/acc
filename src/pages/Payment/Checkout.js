@@ -103,9 +103,7 @@ export default function Checkout() {
                   text={activeStep === steps.length - 1
                     ? "Realizar Compra"
                     : "Continuar"}
-                >
-
-                </AButton>
+                />
               </Box>
             </React.Fragment>
           )}

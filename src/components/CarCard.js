@@ -158,8 +158,6 @@ export default function MultiActionAreaCard(props) {
                 text={favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 onClick={() => {
                   handleFavorite();
-
-
                 }}
               />
               :

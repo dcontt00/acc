@@ -6,14 +6,31 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import AButton from "../components/AButton";
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export default function Contact() {
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
     return (
         <Container maxWidth="lg">
-            <br />
-            <br />
             <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
                     <Typography variant="h2">Teléfono de contacto</Typography>
                     <Typography variant="h7">666 555 444</Typography>
@@ -64,7 +81,13 @@ export default function Contact() {
                             label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
                         />
 
-                        <AButton variant="contained" sx={{ ml: 5}} text={"Enviar"} />
+                        <AButton variant="contained" sx={{ ml: 5}} text={"Enviar"} onClick={handleClick} />
+                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                                ¡Mensaje enviado!
+                            </Alert>
+                        </Snackbar>
+                        
                     </Grid>
                 </Grid>
             </Paper>
