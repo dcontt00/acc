@@ -42,6 +42,14 @@ export default function Carousel_comp(props) {
 }
 
 function Item(props) {
+
+  function truncateDescription() {
+    var output = props.item.description;
+    if (output.length > 150) {
+      output = output.substring(0, 150) + "...";
+    }
+    return output;
+  }
   return (
     <Paper sx={{ p: 2 }}>
 
@@ -50,7 +58,8 @@ function Item(props) {
           <Typography variant="h2">{props.item.name}</Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography variant="p">{props.item.description}</Typography>
+          <Typography variant="p" sx={{ WebkitLineClamp: 3, display: "-webkit-flex" }}
+          >{truncateDescription()}</Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <img src={process.env.PUBLIC_URL + props.item.img} alt="coche" width={"100%"} />
