@@ -18,7 +18,7 @@ function Footer() {
           }}
         >
           <div>
-            <img priority src="/Logo.svg" width={75} height={30} alt="Logo" />
+            <img priority src={process.env.PUBLIC_URL + "/car.ico"} width={25} height={"auto"} alt="Logo" />
           </div>
         </Box>
 
