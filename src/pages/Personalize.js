@@ -189,7 +189,7 @@ export default function Personalize() {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={4}>
-          <Paper variant="outlined" sx={{}}>
+          <Paper variant="outlined" sx={{ p: 2 }}>
 
             <Typography variant="h3">
               Detalles
