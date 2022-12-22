@@ -128,13 +128,8 @@ export default function Description() {
           <Table car={car} />
         </Grid>
 
-
-
         <Grid item xs={12} sm={4} md={4} lg={2} order={{ xs: 1, lg: 3 }}>
           <Stack spacing={2} direction={largeScreen ? "column" : "row"}>
-
-
-
             {loged ?
               <AButton
                 color="primary"

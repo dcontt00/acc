@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -6,7 +7,6 @@ import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -20,23 +20,22 @@ import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 export default function SignUp() {
-  const [name, setName] = React.useState("");
-  const [surnames, setSurnames] = React.useState("");
-  const [location, setLocation] = React.useState("");
-  const [type, setType] = React.useState("");
-  const [phoneNum, setPhoneNum] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [bankAccount, setBankAccount] = React.useState("");
-  const [userImgLink, setUserImgLink] = React.useState("");
+  const [disabled, setDisabled] = React.useState(false);
+
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    location: "",
+    phoneNum: "",
+    email: "",
+    password: ""
+  })
   // Funcion que responde al click del login (hanglesubmit)
   // Tengo que utilizar el hook del use navigate
   // lo vamos a renombrar para hacerlo mas facil
   // Para que no de problemas, se debe declarar fuera de la funcion "handleSubmit"
   const navigate = useNavigate();
   const handleSubmit = (event) => {
-    // Asigno el tipo de usuario que en este caso seria siempre "user"
-    setType("user");
 
     {
       /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
@@ -50,6 +49,20 @@ export default function SignUp() {
 
     //navigate("/");
   };
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+  useEffect(() => {
+    if (data.email !== "" && data.password !== "") {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [data]);
 
   return (
     <div>
@@ -87,7 +100,7 @@ export default function SignUp() {
                 name="name"
                 autoFocus
                 onChange={(event) => {
-                  setName(event.target.value);
+                  handleChange(event)
                 }}
               />
 
@@ -100,7 +113,7 @@ export default function SignUp() {
                 name="surnames"
                 autoFocus
                 onChange={(event) => {
-                  setSurnames(event.target.value);
+                  handleChange(event)
                 }}
               />
 
@@ -113,7 +126,7 @@ export default function SignUp() {
                 name="location"
                 autoFocus
                 onChange={(event) => {
-                  setLocation(event.target.value);
+                  handleChange(event)
                 }}
               />
 
@@ -126,7 +139,7 @@ export default function SignUp() {
                 name="phoneNum"
                 autoFocus
                 onChange={(event) => {
-                  setPhoneNum(event.target.value);
+                  handleChange(event)
                 }}
               />
 
@@ -139,7 +152,7 @@ export default function SignUp() {
                 name="email"
                 autoFocus
                 onChange={(event) => {
-                  setEmail(event.target.value);
+                  handleChange(event)
                 }}
               />
 
@@ -152,7 +165,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 onChange={(event) => {
-                  setPassword(event.target.value);
+                  handleChange(event)
                 }}
               />
 
@@ -191,6 +204,7 @@ export default function SignUp() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onClick={() => navigate("/signup/confirmation")}
+                disabled={disabled}
 
               >
                 Crear Cuenta
