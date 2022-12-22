@@ -143,7 +143,7 @@ export default function MultiActionAreaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Grid container>
+        <Grid container spacing={2}>
           <Grid item xs={4} sm={4} md={4} lg={4}>
             <Typography variant="h6" color="text.secondary">
               {price}
@@ -154,6 +154,8 @@ export default function MultiActionAreaCard(props) {
             {loged ?
               <AButton
                 color="primary"
+                sx={{ width: "100%" }}
+
                 size="medium"
                 icon={favorite ? <FavoriteIcon height="80%" /> : <FavoriteBorderIcon height="80%" />}
                 onClick={() => {
@@ -174,6 +176,7 @@ export default function MultiActionAreaCard(props) {
           <Grid item xs={5} sm={5} md={5} lg={5}>
             <AButton
               text="Saber más"
+              sx={{ width: "100%" }}
               onClick={() => navigate("/description/" + props.car.id)}
             />
           </Grid>
