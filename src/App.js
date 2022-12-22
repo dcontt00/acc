@@ -4,22 +4,18 @@ import Description from "./pages/Description";
 import Personalize from "./pages/Personalize";
 import Favorites from "./pages/Favorites";
 import History from "./pages/History";
-import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import Claim from "./pages/Claim";
 import Contact from "./pages/Contact";
 import Checkout from "./pages/Payment/Checkout";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./Theme";
 import Appbar from "./components/Appbar";
 import Footer from "./components/Footer";
 import Comparator from "./pages/Comparator";
-console.log(process.env.PUBLIC_URL)
+console.log(process.env.PUBLIC_URL);
 
 function App() {
   return (
@@ -33,7 +29,7 @@ function App() {
         <Route path="/personalize/:id" element={<Personalize />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/history" element={<History />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/payment/:id" element={<Checkout />} />
         <Route path="/contact" element={<Contact />} />

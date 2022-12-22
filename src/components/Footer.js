@@ -4,21 +4,32 @@ import { Paper, Box, Container, Typography } from "@mui/material";
 
 function Footer() {
   return (
-    <Paper sx={{
-      marginTop: 'calc(10% + 60px)',
-      width: '100%'
-    }} component="footer" square variant="outlined">
+    <Paper
+      sx={{
+        marginTop: "calc(10% + 60px)",
+        width: "100%",
+      }}
+      component="footer"
+      square
+      variant="outlined"
+    >
       <Container maxWidth="lg">
         <Box
           sx={{
             flexGrow: 1,
             justifyContent: "center",
             display: "flex",
-            my: 1
+            my: 1,
           }}
         >
           <div>
-            <img priority src={process.env.PUBLIC_URL + "/car.ico"} width={25} height={"auto"} alt="Logo" />
+            <img
+              priority
+              src={process.env.PUBLIC_URL + "/imgs/logo/DreamCarLogo.png"}
+              width={120}
+              height={"auto"}
+              alt="Logo"
+            />
           </div>
         </Box>
 
@@ -31,7 +42,7 @@ function Footer() {
           }}
         >
           <Typography variant="caption" color="initial">
-            DreamCar 2022
+            Copyright © 2022
           </Typography>
         </Box>
       </Container>

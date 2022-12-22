@@ -37,7 +37,7 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     // Asigno el tipo de usuario que en este caso seria siempre "user"
     setType("user");
-    
+
     {
       /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
     }
@@ -51,7 +51,6 @@ export default function SignUp() {
     navigate("/");
   };
 
-  
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -200,7 +199,7 @@ export default function SignUp() {
                   </Link>
                 </Grid>
               </Grid>
-              
+
               <Button
                 type="submit"
                 fullWidth

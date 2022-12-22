@@ -27,7 +27,7 @@ export default function LogIn() {
   // Para que no de problemas, se debe declarar fuera de la funcion "handleSubmit"
   const navigate = useNavigate();
   const handleSubmit = (event) => {
-      /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
+    /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
     event.preventDefault();
     cookie.set("loged", true);
     navigate(cookie.get("pagePreLogin"));
@@ -80,8 +80,11 @@ export default function LogIn() {
               id="password"
               autoComplete="current-password"
             />
-            
-            <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
 
             <Button
               type="submit"
@@ -94,12 +97,11 @@ export default function LogIn() {
 
             <Grid container>
               <Grid item>
-                <Link href="signin" variant="body2">
-                  {"¿No tienes cuenta? Registrarse."}
+                <Link href="signup" variant="body2">
+                  {"¿No tienes cuenta? ¡Registrate!"}
                 </Link>
               </Grid>
             </Grid>
-            
           </Box>
         </Box>
       </Container>
