@@ -193,8 +193,8 @@ export default function Personalize() {
 
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={4}>
-          <Paper variant="outlined" sx={{ p: 2 }}>
+        <Grid item xs={12} sm={12} md={12} lg={4} sx={{}}>
+          <Paper variant="outlined" sx={{ p: 2, position:"sticky", top: 20}}>
 
             <Typography variant="h3">
               Detalles
