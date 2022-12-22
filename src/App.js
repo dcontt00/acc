@@ -13,6 +13,7 @@ import Checkout from "./pages/Payment/Checkout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./Theme";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Appbar from "./components/Appbar";
 import Footer from "./components/Footer";
 import Comparator from "./pages/Comparator";
@@ -38,6 +39,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/comparator" element={<Comparator />} />
         <Route path="/claim/:id" element={<Claim />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+
       </Routes>
       <Footer />
     </ThemeProvider>

@@ -11,7 +11,7 @@ import MuiAlert from '@mui/material/Alert';
 import AButton from "../components/AButton";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export default function Contact() {
@@ -30,21 +30,21 @@ export default function Contact() {
     };
 
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
             <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-                    <Typography variant="h2">Teléfono de contacto</Typography>
-                    <Typography variant="h7">666 555 444</Typography>
+                <Typography variant="h2">Teléfono de contacto</Typography>
+                <Typography variant="h7">666 555 444</Typography>
             </Paper>
 
             <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-                    <Typography variant="h2">Dirección de correo</Typography>
-                    <Typography variant="h7">dreamcar@concesionario.com</Typography>
+                <Typography variant="h2">Dirección de correo</Typography>
+                <Typography variant="h7">dreamcar@concesionario.com</Typography>
             </Paper>
 
             <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
                 <Typography variant="h2">Formulario de contacto</Typography>
 
-                <Grid container spacing={3}>         
+                <Grid container spacing={3}>
                     <Grid item xs={12} md={12}>
                         <TextField
                             id="name"
@@ -56,7 +56,7 @@ export default function Contact() {
                     </Grid>
 
                     <Grid item xs={12} md={12}>
-                        <TextField 
+                        <TextField
                             id="email"
                             label="Tu dirección de correo"
                             fullWidth
@@ -81,13 +81,13 @@ export default function Contact() {
                             label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
                         />
 
-                        <AButton variant="contained" sx={{ ml: 5}} text={"Enviar"} onClick={handleClick} />
+                        <AButton variant="contained" sx={{ ml: 5 }} text={"Enviar"} onClick={handleClick} />
                         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                             <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                                 ¡Mensaje enviado!
                             </Alert>
                         </Snackbar>
-                        
+
                     </Grid>
                 </Grid>
             </Paper>

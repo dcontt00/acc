@@ -170,9 +170,18 @@ export default function SignUp() {
 
               <Grid container>
                 <Grid item>
-                  <Link href="/" variant="body2">
-                    {"Politica de privacidad"}
-                  </Link>
+                  <Typography
+                    sx={{
+                      color: "#1976d2", cursor: "pointer",
+                      "&:hover": { textDecoration: "underline" }
+                    }}
+                    onClick={() => {
+                      navigate("/privacy")
+                    }}
+
+                  >
+                    Política de privacidad
+                  </Typography>
                 </Grid>
               </Grid>
 

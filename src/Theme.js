@@ -51,6 +51,10 @@ Theme.typography.h3 = {
     paddingTop: "0.4rem",
   },
 };
+Theme.typography.body1 = {
+  textAlign: "justify",
+
+};
 
 Theme.typography.body2 = {
   fontSize: "1rem",
