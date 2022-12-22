@@ -16,6 +16,13 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export default function Contact() {
     const [open, setOpen] = React.useState(false);
+    const [disabled, setDisabled] = React.useState(false);
+
+    const [data, setData] = React.useState({
+        name: "",
+        email: "",
+        message: ""
+    })
 
     const handleClick = () => {
         setOpen(true);
@@ -28,6 +35,20 @@ export default function Contact() {
 
         setOpen(false);
     };
+    const handleChange = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    React.useEffect(() => {
+        if (data.name !== "" && data.email !== "" && data.message !== "") {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
+    }, [data]);
 
     return (
         <Container maxWidth="xl">
@@ -49,9 +70,13 @@ export default function Contact() {
                         <TextField
                             id="name"
                             label="Tu nombre"
+                            name="name"
                             fullWidth
                             autoComplete="cc-number"
                             variant="standard"
+                            onChange={(event) => {
+                                handleChange(event)
+                            }}
                         />
                     </Grid>
 
@@ -61,7 +86,11 @@ export default function Contact() {
                             label="Tu dirección de correo"
                             fullWidth
                             autoComplete="cc-exp"
+                            name="email"
                             variant="standard"
+                            onChange={(event) => {
+                                handleChange(event)
+                            }}
                         />
                     </Grid>
 
@@ -71,7 +100,11 @@ export default function Contact() {
                             label="Mensaje"
                             fullWidth
                             autoComplete="cc-csc"
+                            name="message"
                             variant="standard"
+                            onChange={(event) => {
+                                handleChange(event)
+                            }}
                         />
                     </Grid>
 
@@ -81,7 +114,7 @@ export default function Contact() {
                             label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
                         />
 
-                        <AButton variant="contained" sx={{ ml: 5 }} text={"Enviar"} onClick={handleClick} />
+                        <AButton variant="contained" sx={{ ml: 5 }} text={"Enviar"} onClick={handleClick} disabled={disabled} />
                         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                             <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                                 ¡Mensaje enviado!
