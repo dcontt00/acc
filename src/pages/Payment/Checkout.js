@@ -13,6 +13,7 @@ import Review from "./Review";
 import Details from "./Details";
 import AButton from "../../components/AButton";
 import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 
 const cookie = new Cookies();
 function Copyright() {
@@ -31,6 +32,7 @@ function Copyright() {
 const steps = ["Detalles", "Dirección de Envío", "Datos Bancarios", "Resumen del Pedido"];
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const navigate = useNavigate()
   const [data, setData] = React.useState({
     Address: {
       firstName: "",
@@ -94,6 +96,8 @@ export default function Checkout() {
                 electronico de confirmación, y le enviaremos actualizaciones
                 sobre el estado de su pedido.
               </Typography>
+              <br />
+              <AButton text="Volver a inicio" onClick={() => navigate("/")} />
             </React.Fragment>
           ) : (
             <React.Fragment>
