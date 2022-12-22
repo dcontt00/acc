@@ -29,7 +29,8 @@ export default function SignUp() {
     location: "",
     phoneNum: "",
     email: "",
-    password: ""
+    password: "",
+    terms: ""
   })
   // Funcion que responde al click del login (hanglesubmit)
   // Tengo que utilizar el hook del use navigate
@@ -175,6 +176,7 @@ export default function SignUp() {
                 <FormControlLabel
                   control={<Checkbox />}
                   label="Acepto los terminos y condiciones"
+                  name="terms"
                 />
                 <FormControlLabel
                   control={<Checkbox />}
