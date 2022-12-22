@@ -156,30 +156,6 @@ export default function SignUp() {
                 }}
               />
 
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="bankAccount"
-                label="Numero de Cuenta Bancaria"
-                name="bankAccount"
-                autoFocus
-                onChange={(event) => {
-                  setBankAccount(event.target.value);
-                }}
-              />
-
-              <TextField
-                margin="normal"
-                fullWidth
-                id="imgLink"
-                label="Enlace Imagen Usuario"
-                name="imgLink"
-                autoFocus
-                onChange={(event) => {
-                  setUserImgLink(event.target.value);
-                }}
-              />
 
               <FormGroup>
                 <FormControlLabel
