@@ -11,14 +11,14 @@ const cookie = new Cookies();
 const StyledList = styled(List)({
   // selected and (selected + hover) states
   "&& .Mui-selected, && .Mui-selected:hover": {
-    backgroundColor: "orange",
+    border: "5px solid #000",
     "&, & .MuiListItemIcon-root": {
       color: "pink",
     },
   },
   // hover states
   "& .MuiListItemButton-root:hover": {
-    backgroundColor: "orange",
+    backgroundColor: "#cccccc",
     "&, & .MuiListItemIcon-root": {
       color: "yellow",
     },
