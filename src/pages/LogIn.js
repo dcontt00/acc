@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -33,6 +34,27 @@ export default function LogIn() {
     navigate(cookie.get("pagePreLogin"));
     window.location.reload();
   };
+
+  const [disabled, setDisabled] = React.useState(false);
+  const [data, setData] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  useEffect(() => {
+    if (data.email !== "" && data.password !== "") {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [data]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -69,6 +91,7 @@ export default function LogIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={handleChange}
             />
             <TextField
               margin="normal"
@@ -79,6 +102,7 @@ export default function LogIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleChange}
             />
 
             <FormControlLabel
@@ -91,6 +115,7 @@ export default function LogIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={disabled}
             >
               Iniciar Sesion
             </Button>
