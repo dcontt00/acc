@@ -30,24 +30,14 @@ function Copyright() {
 
 const steps = ["Detalles", "Dirección de Envío", "Datos Bancarios", "Resumen del Pedido"];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <Details />;
-    case 1:
-      return <AddressForm />;
-    case 2:
-      return <PaymentForm />;
-    case 3:
-      return <Review />;
-    default:
-      throw new Error("Paso Desconocido");
-  }
-}
+
 
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [state, setState] = React.useState(true)
+
+  const [address, setAddress] = React.useState(null)
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -58,6 +48,21 @@ export default function Checkout() {
   };
 
   console.log(cookie.get("personalization"));
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <Details setActiveStep={setActiveStep} activeStep={activeStep} />;
+      case 1:
+        return <AddressForm setActiveStep={setActiveStep} activeStep={activeStep} />;
+      case 2:
+        return <PaymentForm />;
+      case 3:
+        return <Review />;
+      default:
+        throw new Error("Paso Desconocido");
+    }
+  }
 
   return (
     <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
@@ -100,6 +105,7 @@ export default function Checkout() {
                   variant="contained"
                   onClick={handleNext}
                   sx={{ mt: 3, ml: 1 }}
+                  disabled={state}
                   text={activeStep === steps.length - 1
                     ? "Realizar Compra"
                     : "Continuar"}

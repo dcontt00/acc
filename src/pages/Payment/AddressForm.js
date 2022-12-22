@@ -1,11 +1,57 @@
 import * as React from "react";
+import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import AButton from "../../components/AButton";
+export default function AddressForm(props) {
 
-export default function AddressForm() {
+  const [data, setData] = React.useState({
+    firstName: "",
+    lastName: "",
+    phoneNum: "",
+    email: "",
+    address1: "",
+    address2: "",
+    doorNum: "",
+    province: "",
+    zip: "",
+    country: "",
+  });
+
+  const [disable, setDisable] = React.useState(true);
+
+
+
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+
+  }
+
+  // If first name is empty, disable button
+  // If first name is not empty, enable button
+
+  useEffect(() => {
+    console.log(data)
+    if (data.firstName !== "" && data.lastName !== "" && data.phoneNum !== "" && data.email !== "" && data.address1 !== "" && data.address2 !== "" && data.doorNum !== "" && data.province !== "" && data.zip !== "" && data.country !== "") {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [data]);
+
+
+
+
+
+
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -21,8 +67,9 @@ export default function AddressForm() {
             name="firstName"
             label="Nombre"
             fullWidth
-            autoComplete="given-name"
             variant="standard"
+            onChange={handleChange}
+
           />
         </Grid>
 
@@ -35,6 +82,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            onChange={handleChange}
           />
         </Grid>
 
@@ -47,6 +95,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            onChange={handleChange}
           />
         </Grid>
 
@@ -59,6 +108,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            onChange={handleChange}
           />
         </Grid>
 
@@ -71,6 +121,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
+            onChange={handleChange}
           />
         </Grid>
 
@@ -82,6 +133,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-line2"
             variant="standard"
+            onChange={handleChange}
           />
         </Grid>
 
@@ -94,6 +146,8 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-level2"
             variant="standard"
+            onChange={handleChange}
+
           />
         </Grid>
 
@@ -104,6 +158,7 @@ export default function AddressForm() {
             label="Provincia"
             fullWidth
             variant="standard"
+            onChange={handleChange}
           />
         </Grid>
 
@@ -116,6 +171,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
+            onChange={handleChange}
           />
         </Grid>
 
@@ -128,6 +184,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping country"
             variant="standard"
+            onChange={handleChange}
           />
         </Grid>
 
@@ -139,7 +196,14 @@ export default function AddressForm() {
             label="Usa esa direccion para añadir detalles sobre el metodo de pago"
           />
         </Grid>
-        
+        <AButton
+          variant="contained"
+          onClick={() => props.setActiveStep(props.activeStep + 1)}
+          sx={{ mt: 3, ml: 1 }}
+          text="Continuar"
+          disabled={disable}
+        />
+
       </Grid>
     </React.Fragment>
   );

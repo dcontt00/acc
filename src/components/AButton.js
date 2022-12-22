@@ -34,6 +34,7 @@ export default function AButton(props) {
       size={props.size || "small"}
       onClick={props.onClick}
       sx={props.sx}
+      {...props}
 
     >
 

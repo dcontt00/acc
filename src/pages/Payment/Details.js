@@ -14,6 +14,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Grid } from "@mui/material";
 import Paper from '@mui/material/Paper';
+import AButton from "../../components/AButton";
 function createData(part, model, price) {
     return { part, model, price };
 }
@@ -24,7 +25,7 @@ function getCar(id) {
     return Cars.find((car) => car.id === parseInt(id));
 }
 
-export default function Details() {
+export default function Details(props) {
     const params = useParams();
     const car = getCar(params.id);
     var personalization = [];
@@ -135,6 +136,12 @@ export default function Details() {
             <Grid item xs={12}>
                 {desglose()}
             </Grid>
+            <AButton
+                variant="contained"
+                onClick={() => props.setActiveStep(props.activeStep + 1)}
+                sx={{ mt: 3, ml: 1 }}
+                text="Continuar"
+            />
         </Grid>
     )
 }
