@@ -31,11 +31,8 @@ const pages = [
   { name: "Contacto", link: "/contact" },
 ];
 const settings = [
-  "Profile",
-  "Account",
   "Favorites",
   "Order List",
-  "Dashboard",
   "Logout",
 ];
 
