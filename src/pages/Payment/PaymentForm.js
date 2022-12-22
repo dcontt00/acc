@@ -13,13 +13,12 @@ import AButton from "../../components/AButton";
 
 export default function PaymentForm(props) {
   const [data, setData] = React.useState({
-    ccname: "",
-    cardNumber: "",
-    expDate: "",
-    cvv: "",
+    ccname: props.data.Payment.ccname || "",
+    cardNumber: props.data.Payment.cardNumber || "",
+    expDate: props.data.Payment.expDate || "",
+    cvv: props.data.Payment.ccv || "",
   });
 
-  const [ccname, setCCName] = React.useState("");
   const [disable, setDisable] = React.useState(true);
 
   const handleChange = (e) => {
@@ -31,13 +30,18 @@ export default function PaymentForm(props) {
   }
 
   useEffect(() => {
-    console.log(data)
     if (data.ccname !== "" && data.cardNumber !== "" && data.expDate !== "" && data.cvv !== "") {
       setDisable(false);
     } else {
       setDisable(true);
     }
   }, [data]);
+  const handleContinue = () => {
+    var dataTemp = props.data;
+    dataTemp["Payment"] = data;
+    props.setData(dataTemp);
+    props.setActiveStep(props.activeStep + 1)
+  }
 
   return (
     <React.Fragment>
@@ -76,6 +80,7 @@ export default function PaymentForm(props) {
             autoComplete="cc-number"
             variant="standard"
             onChange={handleChange}
+            value={data.cardNumber}
 
           />
         </Grid>
@@ -90,6 +95,7 @@ export default function PaymentForm(props) {
             autoComplete="cc-exp"
             variant="standard"
             onChange={handleChange}
+            value={data.expDate}
 
           />
         </Grid>
@@ -105,6 +111,7 @@ export default function PaymentForm(props) {
             autoComplete="cc-csc"
             variant="standard"
             onChange={handleChange}
+            value={data.cvv}
 
           />
         </Grid>
@@ -117,7 +124,7 @@ export default function PaymentForm(props) {
         </Grid>
         <AButton
           variant="contained"
-          onClick={() => props.setActiveStep(props.activeStep + 1)}
+          onClick={() => handleContinue()}
           sx={{ mt: 3, ml: 1 }}
           text="Continuar"
           disabled={disable}

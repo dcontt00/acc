@@ -29,34 +29,37 @@ function Copyright() {
 }
 
 const steps = ["Detalles", "Dirección de Envío", "Datos Bancarios", "Resumen del Pedido"];
-
-
-
-
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [state, setState] = React.useState(true)
-
-  const [address, setAddress] = React.useState(null)
-
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
-
-  console.log(cookie.get("personalization"));
+  const [data, setData] = React.useState({
+    Address: {
+      firstName: "",
+      lastName: "",
+      phoneNum: "",
+      email: "",
+      address1: "",
+      address2: "",
+      doorNum: "",
+      province: "",
+      zip: "",
+      country: "",
+    },
+    Payment: {
+      cardName: "",
+      cardNumber: "",
+      expDate: "",
+      cvv: "",
+    },
+  });
 
   function getStepContent(step) {
     switch (step) {
       case 0:
         return <Details setActiveStep={setActiveStep} activeStep={activeStep} />;
       case 1:
-        return <AddressForm setActiveStep={setActiveStep} activeStep={activeStep} />;
+        return <AddressForm setActiveStep={setActiveStep} activeStep={activeStep} data={data} setData={setData} />;
       case 2:
-        return <PaymentForm setActiveStep={setActiveStep} activeStep={activeStep} />;
+        return <PaymentForm setActiveStep={setActiveStep} activeStep={activeStep} data={data} setData={setData} />;
       case 3:
         return <Review setActiveStep={setActiveStep} activeStep={activeStep} />;
       default:

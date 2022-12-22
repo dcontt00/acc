@@ -9,23 +9,19 @@ import AButton from "../../components/AButton";
 export default function AddressForm(props) {
 
   const [data, setData] = React.useState({
-    firstName: "",
-    lastName: "",
-    phoneNum: "",
-    email: "",
-    address1: "",
-    address2: "",
-    doorNum: "",
-    province: "",
-    zip: "",
-    country: "",
+    firstName: props.data.Address.firstName || "",
+    lastName: props.data.Address.lastName || "",
+    phoneNum: props.data.Address.phoneNum || "",
+    email: props.data.Address.email || "",
+    address1: props.data.Address.address1 || "",
+    address2: props.data.Address.address2 || "",
+    doorNum: props.data.Address.doorNum || "",
+    province: props.data.Address.province || "",
+    zip: props.data.Address.zip || "",
+    country: props.data.Address.country || "",
   });
 
   const [disable, setDisable] = React.useState(true);
-
-
-
-
 
 
   const handleChange = (e) => {
@@ -38,7 +34,6 @@ export default function AddressForm(props) {
 
 
   useEffect(() => {
-    console.log(data)
     if (data.firstName !== "" && data.lastName !== "" && data.phoneNum !== "" && data.email !== "" && data.address1 !== "" && data.address2 !== "" && data.doorNum !== "" && data.province !== "" && data.zip !== "" && data.country !== "") {
       setDisable(false);
     } else {
@@ -47,7 +42,12 @@ export default function AddressForm(props) {
   }, [data]);
 
 
-
+  const handleContinue = () => {
+    var dataTemp = props.data;
+    dataTemp["Address"] = data;
+    props.setData(dataTemp);
+    props.setActiveStep(props.activeStep + 1)
+  }
 
 
 
@@ -65,6 +65,7 @@ export default function AddressForm(props) {
             required
             id="firstName"
             name="firstName"
+            value={data.firstName}
             label="Nombre"
             fullWidth
             variant="standard"
@@ -80,6 +81,7 @@ export default function AddressForm(props) {
             name="lastName"
             label="Apellidos"
             fullWidth
+            value={data.lastName}
             autoComplete="family-name"
             variant="standard"
             onChange={handleChange}
@@ -96,6 +98,7 @@ export default function AddressForm(props) {
             autoComplete="family-name"
             variant="standard"
             onChange={handleChange}
+            value={data.phoneNum}
           />
         </Grid>
 
@@ -109,6 +112,7 @@ export default function AddressForm(props) {
             autoComplete="family-name"
             variant="standard"
             onChange={handleChange}
+            value={data.email}
           />
         </Grid>
 
@@ -121,6 +125,7 @@ export default function AddressForm(props) {
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
+            value={data.address1}
             onChange={handleChange}
           />
         </Grid>
@@ -134,6 +139,7 @@ export default function AddressForm(props) {
             autoComplete="shipping address-line2"
             variant="standard"
             onChange={handleChange}
+            value={data.address2}
           />
         </Grid>
 
@@ -147,6 +153,7 @@ export default function AddressForm(props) {
             autoComplete="shipping address-level2"
             variant="standard"
             onChange={handleChange}
+            value={data.doorNum}
 
           />
         </Grid>
@@ -159,6 +166,7 @@ export default function AddressForm(props) {
             fullWidth
             variant="standard"
             onChange={handleChange}
+            value={data.province}
           />
         </Grid>
 
@@ -172,6 +180,7 @@ export default function AddressForm(props) {
             autoComplete="shipping postal-code"
             variant="standard"
             onChange={handleChange}
+            value={data.zip}
           />
         </Grid>
 
@@ -185,6 +194,7 @@ export default function AddressForm(props) {
             autoComplete="shipping country"
             variant="standard"
             onChange={handleChange}
+            value={data.country}
           />
         </Grid>
 
@@ -198,7 +208,7 @@ export default function AddressForm(props) {
         </Grid>
         <AButton
           variant="contained"
-          onClick={() => props.setActiveStep(props.activeStep + 1)}
+          onClick={() => handleContinue()}
           sx={{ mt: 3, ml: 1 }}
           text="Continuar"
           disabled={disable}
