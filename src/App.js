@@ -4,8 +4,9 @@ import Description from "./pages/Description";
 import Personalize from "./pages/Personalize";
 import Favorites from "./pages/Favorites";
 import History from "./pages/History";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/Signup/SignUp";
 import LogIn from "./pages/LogIn";
+import Confirmation from "./pages/Signup/Confirmation";
 import Claim from "./pages/Claim";
 import Contact from "./pages/Contact";
 import Checkout from "./pages/Payment/Checkout";
@@ -30,6 +31,8 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/history" element={<History />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup/confirmation" element={<Confirmation />} />
+
         <Route path="/login" element={<LogIn />} />
         <Route path="/payment/:id" element={<Checkout />} />
         <Route path="/contact" element={<Contact />} />
