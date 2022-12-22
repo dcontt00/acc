@@ -56,9 +56,9 @@ export default function Checkout() {
       case 1:
         return <AddressForm setActiveStep={setActiveStep} activeStep={activeStep} />;
       case 2:
-        return <PaymentForm />;
+        return <PaymentForm setActiveStep={setActiveStep} activeStep={activeStep} />;
       case 3:
-        return <Review />;
+        return <Review setActiveStep={setActiveStep} activeStep={activeStep} />;
       default:
         throw new Error("Paso Desconocido");
     }
@@ -95,22 +95,6 @@ export default function Checkout() {
           ) : (
             <React.Fragment>
               {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <AButton onClick={handleBack} sx={{ mt: 3, ml: 1 }} text="Atrás">
-                  </AButton>
-                )}
-
-                <AButton
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
-                  disabled={state}
-                  text={activeStep === steps.length - 1
-                    ? "Realizar Compra"
-                    : "Continuar"}
-                />
-              </Box>
             </React.Fragment>
           )}
         </React.Fragment>

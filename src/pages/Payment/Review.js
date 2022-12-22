@@ -10,19 +10,13 @@ import Colores from "../../data/Colores.json";
 import Asientos from "../../data/Asientos.json";
 import Cars from "../../data/Cars.json";
 import Cookies from "universal-cookie";
+import AButton from "../../components/AButton";
 
 function getCar(id) {
   return Cars.find((car) => car.id === parseInt(id));
 }
 const cookie = new Cookies();
-const cars = [
-  {
-    brand: "BMW",
-    model: "iX",
-    desc: "El BMW iX es un SUV 100% eléctrico, fabricado por BMW desde 2021, ofrece 306CV de potencia.",
-    price: "85.000,00 €",
-  },
-];
+
 
 const addresses = ["Valencia de Don Juan", "Mayor", "41", "24200", "ES"];
 const payments = [
@@ -32,7 +26,7 @@ const payments = [
   { name: "Fecha de Caducidad", detail: "04/2024" },
 ];
 
-export default function Review() {
+export default function Review(props) {
   const params = useParams();
   const car = getCar(params.id);
 
@@ -93,6 +87,13 @@ export default function Review() {
             ))}
           </Grid>
         </Grid>
+        <AButton
+          variant="contained"
+          onClick={() => props.setActiveStep(props.activeStep + 1)}
+          sx={{ mt: 3, ml: 1 }}
+          text="Completar compra"
+        />
+        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
       </Grid>
     </React.Fragment>
   );

@@ -26,6 +26,8 @@ export default function AddressForm(props) {
 
 
 
+
+
   const handleChange = (e) => {
     setData({
       ...data,
@@ -34,8 +36,6 @@ export default function AddressForm(props) {
 
   }
 
-  // If first name is empty, disable button
-  // If first name is not empty, enable button
 
   useEffect(() => {
     console.log(data)
@@ -203,6 +203,7 @@ export default function AddressForm(props) {
           text="Continuar"
           disabled={disable}
         />
+        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
 
       </Grid>
     </React.Fragment>
