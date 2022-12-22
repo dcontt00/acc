@@ -145,165 +145,167 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static">
-      <Toolbar disableGutters>
-        <Button sx={{ height: 100, width: 200 }}>
-          <img
-            style={{ height: 95, width: "auto" }}
-            src={Logo.path}
-            alt="LogoImg"
-          />
-        </Button>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Button sx={{ height: 100, width: 200 }}>
+            <img
+              style={{ height: 95, width: "auto" }}
+              src={Logo.path}
+              alt="LogoImg"
+            />
+          </Button>
 
-        <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            sx={{
-              display: { xs: "block", md: "none" },
-            }}
-          >
-            {pages.map((page, index) => (
-              <Button
-                component={motion.div}
-                transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                whileHover={{ scale: 1.08 }}
-                key={index}
-                onClick={function (event) {
-                  handleCloseNavMenu();
-                  navigate(page.link);
-                }}
-              >
-                {page.name}
-              </Button>
-            ))}
-          </Menu>
-        </Box>
-        <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-        <Typography
-          variant="h5"
-          noWrap
-          component="a"
-          href=""
-          sx={{
-            mr: 2,
-            display: { xs: "flex", md: "none" },
-            flexGrow: 1,
-            fontFamily: "monospace",
-            fontWeight: 700,
-            letterSpacing: ".3rem",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          LOGO
-        </Typography>
-        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-          {pages.map((page, index) => (
-            <Button
-              size="small"
-              key={index}
-              component={motion.div}
-              whileHover={{
-                scale: 1.1,
-              }}
-              onClick={function (event) {
-                handleCloseNavMenu();
-                navigate(page.link);
-              }}
-              sx={{
-                marginRight: 2,
-                backgroundColor:
-                  location.pathname === page.link ? "white" : "transparent",
-                color: location.pathname === page.link ? "black" : "white",
-                "&:hover": {
-                  backgroundColor: "white",
-                  color: "black",
-                },
-                height: 70,
-                width: 110,
-                my: 2,
-              }}
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
             >
-              <Typography variant="subtitle1">{page.name}</Typography>
-            </Button>
-          ))}
-        </Box>
-
-        <Search sx={{ width: { xs: "30%", lg: "30%" } }}>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Buscar..."
-            inputProps={{ "aria-label": "search" }}
-            onKeyDown={handleKeyDown}
-          />
-        </Search>
-
-        {/*Hide menu if user is not loged*/}
-        {loged ? (
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-
+              <MenuIcon />
+            </IconButton>
             <Menu
-              sx={{ mt: "45px" }}
               id="menu-appbar"
-              anchorEl={anchorElUser}
+              anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
                 vertical: "top",
-                horizontal: "right",
+                horizontal: "left",
               }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
             >
-              {settings.map((setting, index) => (
-                <MenuItem
+              {pages.map((page, index) => (
+                <Button
+                  component={motion.div}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  whileHover={{ scale: 1.08 }}
                   key={index}
-                  onClick={(event) => handleCloseUserMenu(event, index)}
+                  onClick={function (event) {
+                    handleCloseNavMenu();
+                    navigate(page.link);
+                  }}
                 >
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                  {page.name}
+                </Button>
               ))}
             </Menu>
           </Box>
-        ) : (
-          <AButton
-            sx={{ height: 70, width: 150, my: 2 }}
-            onClick={handleLogin}
-            text="Iniciar Sesion"
-          />
-        )}
-      </Toolbar>
+          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            LOGO
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {pages.map((page, index) => (
+              <Button
+                size="small"
+                key={index}
+                component={motion.div}
+                whileHover={{
+                  scale: 1.1,
+                }}
+                onClick={function (event) {
+                  handleCloseNavMenu();
+                  navigate(page.link);
+                }}
+                sx={{
+                  marginRight: 2,
+                  backgroundColor:
+                    location.pathname === page.link ? "white" : "transparent",
+                  color: location.pathname === page.link ? "black" : "white",
+                  "&:hover": {
+                    backgroundColor: "white",
+                    color: "black",
+                  },
+                  height: 70,
+                  width: 110,
+                  my: 2,
+                }}
+              >
+                <Typography variant="subtitle1">{page.name}</Typography>
+              </Button>
+            ))}
+          </Box>
+
+          <Search sx={{ width: { xs: "30%", lg: "30%" } }}>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Buscar..."
+              inputProps={{ "aria-label": "search" }}
+              onKeyDown={handleKeyDown}
+            />
+          </Search>
+
+          {/*Hide menu if user is not loged*/}
+          {loged ? (
+            <Box sx={{ flexGrow: 0, paddingLeft: 2 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting, index) => (
+                  <MenuItem
+                    key={index}
+                    onClick={(event) => handleCloseUserMenu(event, index)}
+                  >
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          ) : (
+            <AButton
+              sx={{ height: 70, width: 150, my: 2 }}
+              onClick={handleLogin}
+              text="Iniciar Sesion"
+            />
+          )}
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 }
