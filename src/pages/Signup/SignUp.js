@@ -12,6 +12,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import AButton from "../../components/AButton";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // Importo el hook del use navigate para cambiar de vistas
@@ -198,17 +199,14 @@ export default function SignUp() {
                 </Grid>
               </Grid>
 
-              <Button
-                type="submit"
+              <AButton
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
                 onClick={() => navigate("/signup/confirmation")}
                 disabled={disabled}
+                text="Crear cuenta"
 
-              >
-                Crear Cuenta
-              </Button>
+              />
             </Box>
           </Box>
         </Container>
