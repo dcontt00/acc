@@ -240,7 +240,8 @@ export default function Personalize() {
 
               <AButton
                 variant="contained"
-                text={<><ShoppingCartIcon /> <Typography>Comprar</Typography></>}
+                text="Comprar"
+                icon={<ShoppingCartIcon />}
                 onClick={handleClickBuy}
                 align={"right"}
               />
