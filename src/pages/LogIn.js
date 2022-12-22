@@ -97,14 +97,24 @@ export default function LogIn() {
 
             <Grid container>
               <Grid item>
-                <Link href="signup" variant="body2">
-                  {"¿No tienes cuenta? ¡Registrate!"}
-                </Link>
+
+                <Typography
+                  sx={{
+                    color: "#1976d2", cursor: "pointer",
+                    "&:hover": { textDecoration: "underline" }
+                  }}
+                  onClick={() => {
+                    navigate("/signup")
+                  }}
+
+                >
+                  ¿No tienes cuenta? ¡Registrate!
+                </Typography>
               </Grid>
             </Grid>
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }

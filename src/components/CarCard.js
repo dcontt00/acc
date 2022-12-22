@@ -144,7 +144,7 @@ export default function MultiActionAreaCard(props) {
       </CardActionArea>
       <CardActions>
         <Grid container>
-          <Grid item xs={5} sm={5} md={5} lg={5}>
+          <Grid item xs={4} sm={4} md={4} lg={4}>
             <Typography variant="h6" color="text.secondary">
               {price}
             </Typography>
@@ -171,7 +171,7 @@ export default function MultiActionAreaCard(props) {
             message={snackbarMessage}
             action={action}
           />
-          <Grid item xs={4} sm={4} md={4} lg={4}>
+          <Grid item xs={5} sm={5} md={5} lg={5}>
             <AButton
               text="Saber más"
               onClick={() => navigate("/description/" + props.car.id)}
