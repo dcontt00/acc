@@ -154,8 +154,8 @@ export default function MultiActionAreaCard(props) {
             {loged ?
               <AButton
                 color="primary"
-                size="small"
-                text={favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                size="medium"
+                icon={favorite ? <FavoriteIcon height="80%" /> : <FavoriteBorderIcon height="80%" />}
                 onClick={() => {
                   handleFavorite();
                 }}
