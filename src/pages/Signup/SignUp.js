@@ -58,7 +58,7 @@ export default function SignUp() {
     });
   };
   useEffect(() => {
-    if (data.email !== "" && data.password !== "") {
+    if (data.firstName !== "" && data.lastName !== "" && data.location !== "" && data.phoneNum !== "" && data.email !== "" && data.password !== "") {
       setDisabled(false);
     } else {
       setDisabled(true);
@@ -98,7 +98,7 @@ export default function SignUp() {
                 fullWidth
                 id="name"
                 label="Nombre"
-                name="name"
+                name="firstName"
                 autoFocus
                 onChange={(event) => {
                   handleChange(event)
@@ -111,7 +111,7 @@ export default function SignUp() {
                 fullWidth
                 id="surnames"
                 label="Apellidos"
-                name="surnames"
+                name="lastName"
                 autoFocus
                 onChange={(event) => {
                   handleChange(event)
