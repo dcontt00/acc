@@ -122,6 +122,7 @@ export default function LogIn() {
             sx={{ mt: 3, mb: 2 }}
             disabled={disabled}
             text="Iniciar Sesion"
+            onClick={(e) => handleSubmit(e)}
           />
 
           <Grid container>
