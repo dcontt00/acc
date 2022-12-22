@@ -10,16 +10,19 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { Paper, Icon } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Cookie from "universal-cookie";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import AButton from "../components/AButton";
+
 
 // Importo el hook del use navigate para cambiar de vistas
 import { useNavigate } from "react-router-dom";
 
 const cookie = new Cookie();
-const theme = createTheme();
 
 export default function LogIn() {
   // Funcion que responde al click del login (hanglesubmit)
@@ -27,6 +30,15 @@ export default function LogIn() {
   // lo vamos a renombrar para hacerlo mas facil
   // Para que no de problemas, se debe declarar fuera de la funcion "handleSubmit"
   const navigate = useNavigate();
+
+
+  const [disabled, setDisabled] = React.useState(false);
+  const [data, setData] = React.useState({
+    email: "",
+    password: "",
+  });
+
+
   const handleSubmit = (event) => {
     /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
     event.preventDefault();
@@ -34,12 +46,6 @@ export default function LogIn() {
     navigate(cookie.get("pagePreLogin"));
     window.location.reload();
   };
-
-  const [disabled, setDisabled] = React.useState(false);
-  const [data, setData] = React.useState({
-    email: "",
-    password: "",
-  });
 
   const handleChange = (e) => {
     setData({
@@ -57,89 +63,86 @@ export default function LogIn() {
   }, [data]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
+    <Container component="main" maxWidth="xs">
+
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+
+        <Typography component="h1" variant="h5">
+          Iniciar Sesion
+        </Typography>
+
         <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 1 }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            onChange={handleChange}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={handleChange}
+          />
 
-          <Typography component="h1" variant="h5">
-            Iniciar Sesion
-          </Typography>
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
 
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={handleChange}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={handleChange}
-            />
+          <AButton
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={disabled}
+            text="Iniciar Sesion"
+          />
 
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+          <Grid container>
+            <Grid item>
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              disabled={disabled}
-            >
-              Iniciar Sesion
-            </Button>
+              <Typography
+                sx={{
+                  color: "#1976d2", cursor: "pointer",
+                  "&:hover": { textDecoration: "underline" }
+                }}
+                onClick={() => {
+                  navigate("/signup")
+                }}
 
-            <Grid container>
-              <Grid item>
-
-                <Typography
-                  sx={{
-                    color: "#1976d2", cursor: "pointer",
-                    "&:hover": { textDecoration: "underline" }
-                  }}
-                  onClick={() => {
-                    navigate("/signup")
-                  }}
-
-                >
-                  ¿No tienes cuenta? ¡Registrate!
-                </Typography>
-              </Grid>
+              >
+                ¿No tienes cuenta? ¡Registrate!
+              </Typography>
             </Grid>
-          </Box>
+          </Grid>
         </Box>
-      </Container>
-    </ThemeProvider >
+      </Box>
+    </Container>
   );
 }
