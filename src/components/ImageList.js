@@ -4,26 +4,11 @@ import { List, ListItemButton, Grid } from "@mui/material";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
-import { styled } from "@mui/material/styles";
 import Cookies from "universal-cookie";
+import {StyledList} from './StyledList';
 
 const cookie = new Cookies();
-const StyledList = styled(List)({
-  // selected and (selected + hover) states
-  "&& .Mui-selected, && .Mui-selected:hover": {
-    border: "5px solid #000",
-    "&, & .MuiListItemIcon-root": {
-      color: "pink",
-    },
-  },
-  // hover states
-  "& .MuiListItemButton-root:hover": {
-    backgroundColor: "#cccccc",
-    "&, & .MuiListItemIcon-root": {
-      color: "yellow",
-    },
-  },
-});
+
 
 export default function StandardImageList(props) {
   const [selectedIndex, setSelected] = React.useState(0);
