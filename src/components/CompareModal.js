@@ -8,6 +8,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+  width: "80%",
+  height: "80%",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -16,8 +18,13 @@ const style = {
 
 export default function CompareModal(props) {
   const handleClose = props.hClose;
-  const handleSelect = () => {props.hSelect(select)};
+  const handleSelect = () => {
+    console.log(select)
+    props.hSelect(select);
+    handleClose();
+  };
   const [select, setSelect] = React.useState(0);
+  
 
   return (
     <div>
@@ -31,7 +38,7 @@ export default function CompareModal(props) {
           <Typography variant="h2">Selecciona un coche</Typography>
           <Divider />
           <StyledList>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{overflow: "scroll"}}>
               {props.cars.map((coche, key) => (
                 <Grid item key={key} xs={6} sm={6} md={4} lg={3}>
                   <CarCardSelect
@@ -39,7 +46,7 @@ export default function CompareModal(props) {
                     title={coche.name}
                     brand={coche.brand}
                     year={coche.year}
-                    setSelect={setSelect}
+                    setSelect={(index)=>setSelect(index)}
                     selectedIndex={select}
                     index={key}
                   />
@@ -49,8 +56,8 @@ export default function CompareModal(props) {
           </StyledList>
           <Divider />
           <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <Button variant="contained" onClick={handleSelect}>Seleccionar</Button>
-            <Button variant="outlined" onClick={handleClose}>Outlined</Button>
+            <Button variant="contained" sx={{margin: 1}} onClick={handleSelect}>Seleccionar</Button>
+            <Button variant="outlined" sx={{margin: 1}} onClick={handleClose}>Cancelar</Button>
           </Box>
         </Box>
       </Modal>

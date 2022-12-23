@@ -28,6 +28,7 @@ const cookie = new Cookie();
 const pages = [
   { name: "Inicio", link: "/" },
   { name: "Catálogo", link: "/catalog" },
+  { name: "Comparador", link: "/comparator" },
   { name: "Contacto", link: "/contact" },
 ];
 const settings = [
