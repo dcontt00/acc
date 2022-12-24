@@ -13,18 +13,18 @@ const style = {
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  p: 2,
+  overflowY: "auto"
 };
 
 export default function CompareModal(props) {
   const handleClose = props.hClose;
   const handleSelect = () => {
-    console.log(select)
+    console.log(select);
     props.hSelect(select);
     handleClose();
   };
   const [select, setSelect] = React.useState(0);
-  
 
   return (
     <div>
@@ -35,29 +35,49 @@ export default function CompareModal(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography variant="h2">Selecciona un coche</Typography>
-          <Divider />
-          <StyledList>
-            <Grid container spacing={2} sx={{overflow: "scroll"}}>
-              {props.cars.map((coche, key) => (
-                <Grid item key={key} xs={6} sm={6} md={4} lg={3}>
-                  <CarCardSelect
-                    img={coche.img}
-                    title={coche.name}
-                    brand={coche.brand}
-                    year={coche.year}
-                    setSelect={(index)=>setSelect(index)}
-                    selectedIndex={select}
-                    index={key}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </StyledList>
-          <Divider />
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <Button variant="contained" sx={{margin: 1}} onClick={handleSelect}>Seleccionar</Button>
-            <Button variant="outlined" sx={{margin: 1}} onClick={handleClose}>Cancelar</Button>
+          <Box>
+            <Typography variant="h2">Selecciona un coche</Typography>
+            <Divider />
+          </Box>
+          <Box sx={{ position: "absolute", overflowY: "auto" }}>
+            <StyledList>
+              <Grid container spacing={2}>
+                {props.cars.map((coche, key) => (
+                  <Grid item key={key} xs={6} sm={6} md={4} lg={3}>
+                    <CarCardSelect
+                      img={coche.img}
+                      title={coche.name}
+                      brand={coche.brand}
+                      year={coche.year}
+                      setSelect={(index) => setSelect(index)}
+                      selectedIndex={select}
+                      index={key}
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            </StyledList>
+            <Box>
+              <Divider></Divider>
+            <Box sx={{ display: "flex", flexDirection: "row", justifyContent:"flex-end"}}>
+              <Divider/>
+              <Button
+                variant="contained"
+                sx={{ margin: 1 }}
+                onClick={handleSelect}
+              >
+                Seleccionar
+              </Button>
+              <Button
+                variant="outlined"
+                sx={{ margin: 1 }}
+                onClick={handleClose}
+              >
+                Cancelar
+              </Button>
+            </Box>
+            </Box>
+            
           </Box>
         </Box>
       </Modal>
