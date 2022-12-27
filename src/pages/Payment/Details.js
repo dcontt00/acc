@@ -33,13 +33,18 @@ export default function Details(props) {
     if (cookie.get("personalization")) {
         personalization = cookie.get("personalization");
         var llantas = Llantas.find((llanta) => llanta.id === parseInt(personalization["tire"]));
+        if (llantas !== undefined) {
+            rows.push(createData("Llantas", llantas.title, llantas.price))
+        }
         var color = Colores.find((color) => color.id === parseInt(personalization["colors"]));
+        if (color !== undefined) {
+            rows.push(createData("Color", color.title, color.price),)
+        }
         var asiento = Asientos.find((asiento) => asiento.id === parseInt(personalization["seats"]));
-        rows = [
-            createData("Llantas", llantas.title, llantas.price),
-            createData("Color", color.title, color.price),
-            createData("Asiento", asiento.title, asiento.price),
-        ];
+        if (asiento !== undefined) {
+            rows.push(createData("Asiento", asiento.title, asiento.price))
+        }
+
 
     }
 
