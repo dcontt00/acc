@@ -22,6 +22,7 @@ import Cookie from "universal-cookie";
 import { motion } from "framer-motion";
 import AButton from "./AButton";
 import Logo from "../data/Logo.json";
+import { display } from "@mui/system";
 
 const cookie = new Cookie();
 
@@ -82,6 +83,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function ResponsiveAppBar() {
   const navigate = useNavigate();
   const location = useLocation();
+
   const [loged, setLoged] = React.useState(cookie.get("loged"));
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -249,16 +251,26 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          <Search sx={{ width: { xs: "30%", lg: "30%" } }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Buscar..."
-              inputProps={{ "aria-label": "search" }}
-              onKeyDown={handleKeyDown}
-            />
-          </Search>
+          {location.pathname === "/catalog" ?
+            <div></div>
+
+            :
+            <Search sx={{ width: { xs: "30%", lg: "30%" } }}>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Buscar..."
+                inputProps={{ "aria-label": "search" }}
+                onKeyDown={handleKeyDown}
+              />
+            </Search>
+
+          }
+
+
+
+
 
           {/*Hide menu if user is not loged*/}
           {loged ? (

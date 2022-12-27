@@ -10,7 +10,6 @@ export default function Home() {
     <Container maxWidth="xl">
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography variant="h1">Destacados</Typography>
           <Carousel cars={Cars} />
         </Grid>
 
