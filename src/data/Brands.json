@@ -18,5 +18,17 @@
   {
     "id": 5,
     "name": "BMW"
+  },
+  {
+    "id": 6,
+    "name": "Mercedes-Benz"
+  },
+  {
+    "id": 7,
+    "name": "Renault"
+  },
+  {
+    "id": 8,
+    "name": "Toyota"
   }
 ]

@@ -4,7 +4,7 @@
     "name": "Seat León",
     "brand": "Seat",
     "description": "El SEAT León es un compacto, del segmento C, fabricado por SEAT desde 1998. Actualmente se comercializa la cuarta generación, presentada en 2020.",
-    "type": "SUV",
+    "type": "Urbano",
     "img": "/imgs/cars/seat_leon/01.jpg",
     "imgs": [
       "/imgs/cars/seat_leon/01.jpg"
@@ -76,7 +76,7 @@
     "name": "Honda Civic",
     "brand": "Honda",
     "description": "El Honda Civic es un vehículo compacto, del segmento C, fabricado por Honda desde 1972 y se trata del modelo más importante de Honda en Europa. Actualmente se comercializa la undécima generación, presentada en 2022, con un importante rediseño con respecto a la generación anterior, que mejora su diseño interior y añade importantes sistemas tecnológicos y de conectividad.",
-    "type": "Urbano",
+    "type": "Coupé",
     "img": "/imgs/cars/honda_civic/01.jpg",
     "imgs": [
       "/imgs/cars/honda_civic/01.jpg"
@@ -150,5 +150,89 @@
     "power": "340 CV",
     "consumption": "8,9-9,3 l/100 km",
     "year": "2019"
+  },
+  {
+    "id": 9,
+    "name": "Mercedes CLA",
+    "brand": "Mercedes-Benz",
+    "description": "El Mercedes CLA es un coche que cuenta con 5 plazas, ideales para viajes largo con la máxima comodidad, el diseño busca ser lo más elegante posible ante sus competidores. ",
+    "type": "Coupé",
+    "img": "/imgs/cars/mercedes_cla/01.jpg",
+    "imgs": [
+      "/imgs/cars/mercedes_cla/01.jpg",
+      "/imgs/cars/mercedes_cla/02.jpg",
+      "/imgs/cars/mercedes_cla/03.jpg",
+      "/imgs/cars/mercedes_cla/04.jpg"
+    ],
+    "price": 34000,
+    "seats": 5,
+    "fuel": "Diesel",
+    "traction": "Integral",
+    "power": "310 CV",
+    "consumption": "4,9-5,5 l/100 km",
+    "year": "2022"
+  },
+  {
+    "id": 10,
+    "name": "Renault Clio",
+    "brand": "Renault",
+    "description": "Clio te presenta una nueva versión E-Tech engineered full hybrid con un estilo cautivador, disponible exclusivamente con el motor E-Tech full hybrid de 145CV. Destaca jugando con los contrastes: su color de lanzamiento gris pizarra combina con los acabados warm titanium de su deflector F1, con el diseño de las llantas y con los adornos de la carrocería.",
+    "type": "Urbano",
+    "img": "/imgs/cars/renault_clio/01.jpg",
+    "imgs": [
+      "/imgs/cars/renault_clio/01.jpg",
+      "/imgs/cars/renault_clio/02.jpg",
+      "/imgs/cars/renault_clio/03.jpg",
+      "/imgs/cars/renault_clio/04.jpg"
+    ],
+    "price": 22000,
+    "seats": 5,
+    "fuel": "Diesel",
+    "traction": "Delantera",
+    "power": "145 CV",
+    "consumption": "4,2-5,3 l/100 km",
+    "year": "2021"
+  },
+  {
+    "id": 11,
+    "name": "Toyota LandCruiser",
+    "brand": "Toyota",
+    "description": "El Toyota LandCruiser es el lider de su categoría, indiscutiblemente uno de los todoterrenos más emblematicos, cómodo y fiable ante cualquier tipo de camino y situación.",
+    "type": "Todoterreno",
+    "img": "/imgs/cars/toyota_land/01.jpg",
+    "imgs": [
+      "/imgs/cars/toyota_land/01.jpg",
+      "/imgs/cars/toyota_land/02.jpg",
+      "/imgs/cars/toyota_land/03.jpg",
+      "/imgs/cars/toyota_land/04.jpg"
+    ],
+    "price": 50000,
+    "seats": 5,
+    "fuel": "Gasolina",
+    "traction": "Integral",
+    "power": "210 CV",
+    "consumption": "9,2-10,3 l/100 km",
+    "year": "2022"
+  },
+  {
+    "id": 12,
+    "name": "Ford Ranger",
+    "brand": "Ford",
+    "description": "La Ford Ranger es la pick-up mejor valorada en su segmento, su gran caja le permite ser usada como coche de trabajo tanto en ámbitos de campo o de la construcción.",
+    "type": "Todoterreno",
+    "img": "/imgs/cars/ford_ranger/01.jpg",
+    "imgs": [
+      "/imgs/cars/ford_ranger/01.jpg",
+      "/imgs/cars/ford_ranger/02.jpg",
+      "/imgs/cars/ford_ranger/03.jpg",
+      "/imgs/cars/ford_ranger/04.jpg"
+    ],
+    "price": 39000,
+    "seats": 5,
+    "fuel": "Diesel",
+    "traction": "Integral",
+    "power": "170 CV",
+    "consumption": "8,7-9,5 l/100 km",
+    "year": "2022"
   }
 ]

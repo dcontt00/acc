@@ -180,6 +180,8 @@ export default function Catalog() {
                   name="tipo"
                 >
                   <MenuItem value={"SUV"}>SUV</MenuItem>
+                  <MenuItem value={"Coupé"}>Coupé</MenuItem>
+                  <MenuItem value={"Todoterreno"}>Todoterreno</MenuItem>
                   <MenuItem value={"Urbano"}>Urbano</MenuItem>
                 </Select>
 
