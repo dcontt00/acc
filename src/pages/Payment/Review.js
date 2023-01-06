@@ -17,7 +17,6 @@ function getCar(id) {
 }
 const cookie = new Cookies();
 
-
 const addresses = ["Valencia de Don Juan", "Mayor", "41", "24200", "ES"];
 const payments = [
   { name: "Tipo de Tarjeta", detail: "Visa" },
@@ -34,13 +33,18 @@ export default function Review(props) {
   var total = car.price;
   if (cookie.get("personalization") !== undefined) {
     personalization = cookie.get("personalization");
-    var llantas = Llantas.find((llanta) => llanta.id === parseInt(personalization["tire"]));
-    var color = Colores.find((color) => color.id === parseInt(personalization["colors"]));
-    var asiento = Asientos.find((asiento) => asiento.id === parseInt(personalization["seats"]));
+    var llantas = Llantas.find(
+      (llanta) => llanta.id === parseInt(personalization["tire"])
+    );
+    var color = Colores.find(
+      (color) => color.id === parseInt(personalization["colors"])
+    );
+    var asiento = Asientos.find(
+      (asiento) => asiento.id === parseInt(personalization["seats"])
+    );
     total += llantas.price;
     total += color.price;
     total += asiento.price;
-
   }
   return (
     <React.Fragment>
@@ -50,10 +54,7 @@ export default function Review(props) {
 
       <List disablePadding>
         <ListItem key={car.brand} sx={{ py: 1, px: 0 }}>
-          <ListItemText
-            primary={car.name}
-            secondary={car.desc}
-          />
+          <ListItemText primary={car.name} secondary={car.desc} />
           <Typography variant="body2">{total}€</Typography>
         </ListItem>
       </List>
@@ -87,13 +88,6 @@ export default function Review(props) {
             ))}
           </Grid>
         </Grid>
-        <AButton
-          variant="contained"
-          onClick={() => props.setActiveStep(props.activeStep + 1)}
-          sx={{ mt: 3, ml: 1 }}
-          text="Completar compra"
-        />
-        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
       </Grid>
     </React.Fragment>
   );

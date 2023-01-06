@@ -7,7 +7,7 @@ import History from "./pages/History";
 import SignUp from "./pages/Signup/SignUp";
 import LogIn from "./pages/LogIn";
 import Confirmation from "./pages/Signup/Confirmation";
-import Claim from "./pages/Claim";
+import Claim from "./pages/Claims/Claim";
 import Contact from "./pages/Contact";
 import Checkout from "./pages/Payment/Checkout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -40,7 +40,6 @@ function App() {
         <Route path="/comparator" element={<Comparator />} />
         <Route path="/claim/:id" element={<Claim />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
-
       </Routes>
       <Footer />
     </ThemeProvider>
