@@ -32,11 +32,7 @@ const pages = [
   { name: "Comparador", link: "/comparator" },
   { name: "Contacto", link: "/contact" },
 ];
-const settings = [
-  "Favorites",
-  "Order List",
-  "Logout",
-];
+const settings = ["Favorites", "Order List", "Logout"];
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -147,7 +143,10 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Button sx={{ height: 100, width: 200 }}>
+          <Button
+            sx={{ height: 100, width: 200 }}
+            onClick={() => navigate("/")}
+          >
             <img
               style={{ height: 95, width: "auto" }}
               src={Logo.path}
@@ -242,7 +241,7 @@ function ResponsiveAppBar() {
                     color: "black",
                   },
                   height: 70,
-                  width: 110,
+                  width: 120,
                   my: 2,
                 }}
               >
@@ -251,10 +250,9 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          {location.pathname === "/catalog" ?
+          {location.pathname === "/catalog" ? (
             <div></div>
-
-            :
+          ) : (
             <Search sx={{ width: { xs: "30%", lg: "30%" } }}>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -265,12 +263,7 @@ function ResponsiveAppBar() {
                 onKeyDown={handleKeyDown}
               />
             </Search>
-
-          }
-
-
-
-
+          )}
 
           {/*Hide menu if user is not loged*/}
           {loged ? (
@@ -309,7 +302,7 @@ function ResponsiveAppBar() {
             </Box>
           ) : (
             <AButton
-              sx={{ height: 70, width: 150, my: 2 }}
+              sx={{ height: 70, width: 150, my: 2, ml: 2 }}
               onClick={handleLogin}
               text="Iniciar Sesion"
             />
