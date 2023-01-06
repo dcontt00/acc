@@ -234,5 +234,89 @@
     "power": "170 CV",
     "consumption": "8,7-9,5 l/100 km",
     "year": "2022"
+  },
+  {
+    "id": 13,
+    "name": "Lamborghini SVJ",
+    "brand": "Lamborghini",
+    "description": "Materiales ultraligeros, orientados a alcanzar las máximas prestaciones, al servicio de un diseño imponente. Perfiles aerodinámicos acentuados, la parte delantera totalmente rediseñada, los faldones laterales más extensos, el ala trasera con forma de omega y un sistema de escape más ligero y alto, todo ello integrado en una carrocería de ligerísima fibra de carbono.",
+    "type": "Superdeportivo",
+    "img": "/imgs/cars/lamborghini_svj/01.jpg",
+    "imgs": [
+      "/imgs/cars/lamborghini_svj/01.jpg",
+      "/imgs/cars/lamborghini_svj/02.jpg",
+      "/imgs/cars/lamborghini_svj/03.jpg",
+      "/imgs/cars/lamborghini_svj/04.jpg"
+    ],
+    "price": 525.362,
+    "seats": 2,
+    "fuel": "Gasolina",
+    "traction": "Integral",
+    "power": "770 CV",
+    "consumption": "18,0 l/100 km",
+    "year": "2018"
+  },
+  {
+    "id": 14,
+    "name": "Ferrari SF90",
+    "brand": "Ferrari",
+    "description": "El SF90 Stradale  es el primer Ferrari con arquitectura PHEV (vehículo eléctrico híbrido enchufable) que ve su motor de combustión interno integrado con tres motores eléctricos, dos de los cuales son independientes y están ubicados en el eje delantero, con el tercero en la parte trasera, entre el motor y la caja de cambios.",
+    "type": "Superdeportivo",
+    "img": "/imgs/cars/ferrari_sf90/01.jpg",
+    "imgs": [
+      "/imgs/cars/ferrari_sf90/01.jpg",
+      "/imgs/cars/ferrari_sf90/02.jpg",
+      "/imgs/cars/ferrari_sf90/03.jpg",
+      "/imgs/cars/ferrari_sf90/04.jpg"
+    ],
+    "price": 489.725,
+    "seats": 2,
+    "fuel": "Hibrido",
+    "traction": "Integral",
+    "power": "780 CV",
+    "consumption": "6,1 l/100 km",
+    "year": "2019"
+  },
+  {
+    "id": 15,
+    "name": "Audi S4",
+    "brand": "Audi",
+    "description": "Acelera las sensaciones con el Audi S4. Con un diseño lleno de puro carácter y numerosos detalles deportivos S tanto en el exterior como en el interior, no hay límites para el disfrute. De una belleza deportiva superior y unas prestaciones emocionantes, cada aspecto del Audi S4 te llevará a vivir experiencias emocionantes. ¿Estás preparado para sentir más?",
+    "type": "Deportivo",
+    "img": "/imgs/cars/audi_s4/01.jpg",
+    "imgs": [
+      "/imgs/cars/audi_s4/01.jpg",
+      "/imgs/cars/audi_s4/02.jpg",
+      "/imgs/cars/audi_s4/03.jpg",
+      "/imgs/cars/audi_s4/04.jpg"
+    ],
+    "price": 75.750,
+    "seats": 5,
+    "fuel": "Diesel",
+    "traction": "Integral",
+    "power": "347 CV",
+    "consumption": "7,1-7,3 l/100 km",
+    "year": "2022"
+  },
+  {
+    "id": 16,
+    "name": "Mercedes CLS 400 d 4Matic Coupe",
+    "brand": "Mercedes-Benz",
+    "description": "El nuevo CLS entusiasma con una combinación equilibrada de deportividad refinada y un innovador canon estético. En el exterior dominan la emblemática silueta y las proporciones perfectas. En el interior, el nuevo CLS brilla con un acabado lujoso y opciones individuales de equipamiento.",
+    "type": "Coupe",
+    "img": "/imgs/cars/mercedes_cls_400_coupe/01.jpg",
+    "imgs": [
+      "/imgs/cars/mercedes_cls_400_coupe/01.jpg",
+      "/imgs/cars/mercedes_cls_400_coupe/02.jpg",
+      "/imgs/cars/mercedes_cls_400_coupe/03.jpg",
+      "/imgs/cars/mercedes_cls_400_coupe/04.jpg"
+    ],
+    "price": 102.341,
+    "seats": 5,
+    "fuel": "Diesel",
+    "traction": "Integral",
+    "power": "330 CV",
+    "consumption": "6,7-7,4 l/100 km",
+    "year": "2021"
   }
 ]
