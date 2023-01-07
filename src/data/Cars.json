@@ -6,9 +6,7 @@
     "description": "El SEAT León es un compacto, del segmento C, fabricado por SEAT desde 1998. Actualmente se comercializa la cuarta generación, presentada en 2020.",
     "type": "Urbano",
     "img": "/imgs/cars/seat_leon/01.jpg",
-    "imgs": [
-      "/imgs/cars/seat_leon/01.jpg"
-    ],
+    "imgs": ["/imgs/cars/seat_leon/01.jpg"],
     "price": 20000,
     "seats": 5,
     "fuel": "Diesel",
@@ -24,9 +22,7 @@
     "description": "El BMW iX es un SUV 100% eléctrico -con tintes de monovolumen-, del segmento E, fabricado por BMW desde 2021. El BMW iX tiene un tamaño similar al de los BMW X5 y X6, y se caracteriza por contar con un diseño muy polémico, un interior de corte futurista y una autonomía eléctrica que puede alcanzar hasta 600 kilómetros con una sola carga.",
     "type": "SUV",
     "img": "/imgs/cars/bmw_ix/01.jpg",
-    "imgs": [
-      "/imgs/cars/bmw_ix/01.jpg"
-    ],
+    "imgs": ["/imgs/cars/bmw_ix/01.jpg"],
     "price": 85000,
     "seats": 5,
     "fuel": "Eléctrico",
@@ -42,9 +38,7 @@
     "description": "El Dacia Sandero es un coche urbano y económico, del segmento B, fabricado por Dacia desde 2007. Actualmente, el Dacia Sandero ya va por su tercera generación, presentada en 2020",
     "type": "Urbano",
     "img": "/imgs/cars/dacia_sandero/01.jpg",
-    "imgs": [
-      "/imgs/cars/dacia_sandero/01.jpg"
-    ],
+    "imgs": ["/imgs/cars/dacia_sandero/01.jpg"],
     "price": 12000,
     "seats": 5,
     "fuel": "Gasolina",
@@ -60,9 +54,7 @@
     "description": "El Peugeot 208 es un vehículo utilitario generalista, del segmento B, fabricado por Peugeot desde 2012, como relevo del Peugeot 207. Actualmente se comercializa la segunda generación, presentada en 2019",
     "type": "Urbano",
     "img": "/imgs/cars/peugeot_208/01.jpg",
-    "imgs": [
-      "/imgs/cars/peugeot_208/01.jpg"
-    ],
+    "imgs": ["/imgs/cars/peugeot_208/01.jpg"],
     "price": 16000,
     "seats": 5,
     "fuel": "Gasolina",
@@ -78,9 +70,7 @@
     "description": "El Honda Civic es un vehículo compacto, del segmento C, fabricado por Honda desde 1972 y se trata del modelo más importante de Honda en Europa. Actualmente se comercializa la undécima generación, presentada en 2022, con un importante rediseño con respecto a la generación anterior, que mejora su diseño interior y añade importantes sistemas tecnológicos y de conectividad.",
     "type": "Coupé",
     "img": "/imgs/cars/honda_civic/01.jpg",
-    "imgs": [
-      "/imgs/cars/honda_civic/01.jpg"
-    ],
+    "imgs": ["/imgs/cars/honda_civic/01.jpg"],
     "price": 32100,
     "seats": 5,
     "fuel": "Gasolina",
@@ -96,9 +86,7 @@
     "description": "El Opel Corsa es un utilitario urbano, del segmento B, fabricado por Opel desde 1982. Actualmente se comercializa la sexta generación, presentada en 2019",
     "type": "Urbano",
     "img": "/imgs/cars/opel_corsa/01.jpg",
-    "imgs": [
-      "/imgs/cars/opel_corsa/01.jpg"
-    ],
+    "imgs": ["/imgs/cars/opel_corsa/01.jpg"],
     "price": 17299,
     "seats": 5,
     "fuel": "Gasolina",
@@ -290,7 +278,7 @@
       "/imgs/cars/audi_s4/03.jpg",
       "/imgs/cars/audi_s4/04.jpg"
     ],
-    "price": 75.750,
+    "price": 75.75,
     "seats": 5,
     "fuel": "Diesel",
     "traction": "Integral",
@@ -318,5 +306,89 @@
     "power": "330 CV",
     "consumption": "6,7-7,4 l/100 km",
     "year": "2021"
+  },
+  {
+    "id": 17,
+    "name": "Ford Focus ST-Line",
+    "brand": "Ford",
+    "description": "El nuevo Ford Focus ST-Line es una fusión de estilo ultracontemporáneo, tecnología intuitiva y unas prestaciones sorprendentes.Cada detalle del Focus ST-Line está diseñado para destacar y su suspensión deportiva de precisión, líneas esculpidas aerodinámicamente y el gran alerón trasero ayudan a mejorar el rendimiento de conducción, así como el aspecto del coche.",
+    "type": "Berlina",
+    "img": "/imgs/cars/ford_focus_stline/01.jpg",
+    "imgs": [
+      "/imgs/cars/ford_focus_stline/01.jpg",
+      "/imgs/cars/ford_focus_stline/02.jpg",
+      "/imgs/cars/ford_focus_stline/03.jpg",
+      "/imgs/cars/ford_focus_stline/04.jpg"
+    ],
+    "price": 30536,
+    "seats": 5,
+    "fuel": "Gasolina",
+    "traction": "Delantera",
+    "power": "125 CV",
+    "consumption": "5,50 l/100km",
+    "year": "2022"
+  },
+  {
+    "id": 18,
+    "name": "Mercedes-AMG EQS 53 4MATIC+",
+    "brand": "Mercedes-Benz",
+    "description": "El Mercedes EQS es una oda a la irracionalidad. Y desde este prisma debemos enfrentarnos a su prueba. Es algo que también sucede con el Mercedes Clase S de combustión. Ambos son excesivos y únicos. Pero también ambos enamoran a partes iguales. Tiene la elegancia de un coupé unida a la espaciosidad de una berlina",
+    "type": "Berlina",
+    "img": "/imgs/cars/mercedes_amg_eqs_53/01.jpg",
+    "imgs": [
+      "/imgs/cars/mercedes_amg_eqs_53/01.jpg",
+      "/imgs/cars/mercedes_amg_eqs_53/02.jpg",
+      "/imgs/cars/mercedes_amg_eqs_53/03.jpg",
+      "/imgs/cars/mercedes_amg_eqs_53/04.jpg"
+    ],
+    "price": 181033.76,
+    "seats": 5,
+    "fuel": "Eléctrico",
+    "traction": "Integral",
+    "power": "658 CV",
+    "consumption": "24,3-22,3 kWh/100km",
+    "year": "2022"
+  },
+  {
+    "id": 19,
+    "name": "Ford Mustang",
+    "brand": "Ford",
+    "description": "El nuevo Mustang va más allá del rendimiento. Desde mejoras bajo el capó hasta una optimización en la aerodinámica, el Mustang está diseñado para ofrecer una conducción estimulante cada vez que te pones al volante, ya sea para dar una vuelta el fin de semana o durante un largo viaje en carretera. Aunque sabemos que la conducción es lo más importante, no es lo único que nos preocupa. Tanto el GT como el Mach 1 incorporan tecnologías para que estés informado, conectado y no te falte el entretenimiento. Además, su sistema de frenado de alto rendimiento, su diseño ergonómico y los materiales de primera calidad te garantizan una conducción cómoda y segura.",
+    "type": "Coupe",
+    "img": "/imgs/cars/ford_mustang/01.jpg",
+    "imgs": [
+      "/imgs/cars/ford_mustang/01.jpg",
+      "/imgs/cars/ford_mustang/02.jpg",
+      "/imgs/cars/ford_mustang/03.jpg",
+      "/imgs/cars/ford_mustang/04.jpg"
+    ],
+    "price": 56731,
+    "seats": 5,
+    "fuel": "Gasolina",
+    "traction": "Trasera",
+    "power": "450 CV",
+    "consumption": "11,2-12,4 l/100 km",
+    "year": "2022"
+  },
+  {
+    "id": 20,
+    "name": "Audi Q5",
+    "brand": "Audi",
+    "description": "El Audi Q5 fascina por su potente combinación de elegancia y deportividad. Sus líneas laterales fluyen suavemente a la vez que muestran su carácter SUV gracias a los anchos pasos de rueda. La parte frontal impresiona gracias a sus tomas de aire elevadas y una renovada parrilla Audi Singleframe más ancha y tridimensional. Y el nuevo diseño de los embellecedores de los faldones crea una gran ligereza visual y revela su extraordinaria distancia con respecto al suelo.",
+    "type": "SUV",
+    "img": "/imgs/cars/audi_q5/01.jpg",
+    "imgs": [
+      "/imgs/cars/audi_q5/01.jpg",
+      "/imgs/cars/audi_q5/02.jpg",
+      "/imgs/cars/audi_q5/03.jpg",
+      "/imgs/cars/audi_q5/04.jpg"
+    ],
+    "price": 55400,
+    "seats": 5,
+    "fuel": "Diesel",
+    "traction": "Delantera",
+    "power": "163 CV",
+    "consumption": "6,1-5,6 l/100 km",
+    "year": "2022"
   }
 ]
