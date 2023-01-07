@@ -108,12 +108,12 @@ export default function Personalize() {
   };
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h2">{car.name}</Typography>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={8}>
+        <Grid item xs={12} sm={12} md={12} lg={9}>
           <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={12}>
 
@@ -193,8 +193,8 @@ export default function Personalize() {
 
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={4} sx={{}}>
-          <Paper variant="outlined" sx={{ p: 2, position:"sticky", top: 20}}>
+        <Grid item xs={12} sm={12} md={12} lg={3} sx={{}}>
+          <Paper variant="outlined" sx={{ p: 2, position: "sticky", top: 20 }}>
 
             <Typography variant="h3">
               Detalles
