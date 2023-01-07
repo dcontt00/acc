@@ -250,7 +250,7 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          {location.pathname === "/catalog" ? (
+          {location.pathname.includes("catalog") ? (
             <div></div>
           ) : (
             <Search sx={{ width: { xs: "30%", lg: "30%" } }}>
