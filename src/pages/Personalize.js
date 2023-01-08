@@ -164,6 +164,7 @@ export default function Personalize() {
                 </RadioGroup>
               </FormControl>
             </Grid>
+
             <Grid item xs={5} sm={3} md={3} lg={3}>
               <Typography variant="h3">Faros</Typography>
               <FormControl>
@@ -191,6 +192,59 @@ export default function Personalize() {
               </FormControl>
             </Grid>
 
+            <Grid item xs={5} sm={3} md={3} lg={3}>
+              <Typography variant="h3">Asistencia</Typography>
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">
+                  Sistemas de asistencia
+                </FormLabel>
+
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="Asistencia de aparcamiento"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel value="Asistencia de aparcamiento" control={<Radio />} label="Asistencia de aparcamiento" />
+                  <FormControlLabel
+                    value="Sistema de camaras de video frontales y traseras"
+                    control={<Radio />}
+                    label="Sistema de camaras de video frontales y traseras"
+                  />
+                  <FormControlLabel
+                    value="Sistema de sensores de proximidad"
+                    control={<Radio />}
+                    label="Sistema de sensores de proximidad"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={5} sm={3} md={3} lg={3}>
+              <Typography variant="h3">Entretenimiento</Typography>
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">
+                  Sistemas de entretenimiento
+                </FormLabel>
+
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="Sistema de altavoces"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel value="Sistema de altavoces" control={<Radio />} label="Sistema de altavoces" />
+                  <FormControlLabel
+                    value="Sistema de pantallas de entretenimiento"
+                    control={<Radio />}
+                    label="Sistema de pantallas de entretenimiento"
+                  />
+                  <FormControlLabel
+                    value="Pantalla principal y HUD"
+                    control={<Radio />}
+                    label="Pantalla principal y HUD"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={3} sx={{}}>
