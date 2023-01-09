@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import AButton from "../../components/AButton";
+import { Alert } from "@mui/material";
+
 export default function AddressForm(props) {
 
   const [data, setData] = React.useState({
@@ -22,6 +24,9 @@ export default function AddressForm(props) {
   });
 
   const [disable, setDisable] = React.useState(true);
+
+  const [error, setError] = React.useState(false);
+  const [errorMessages, setErrorMessages] = React.useState([])
 
 
   const handleChange = (e) => {
@@ -43,6 +48,37 @@ export default function AddressForm(props) {
 
 
   const handleContinue = () => {
+
+    var temp = []
+
+
+
+    // Check if email is valid with regex
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!emailRegex.test(data.email)) {
+      temp.push("Introduce un email valido")
+    }
+
+    // Check if phone num without regional code is valid with regex 
+    const phoneRegex = /^([0-9]{9})$/;
+    if (!phoneRegex.test(data.phoneNum)) {
+      temp.push("Introduce un número de teléfono valido. Sin prefijo regional")
+    }
+
+    // Check if zip is valid with regex
+    const zipRegex = /^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/;
+    if (!zipRegex.test(data.zip)) {
+      temp.push("Introduce un código postal valido")
+    }
+
+    if (temp.length > 0) {
+      setErrorMessages(temp)
+      setError(true)
+      return;
+    }
+
+    setError(false)
+
     var dataTemp = props.data;
     dataTemp["Address"] = data;
     props.setData(dataTemp);
@@ -58,7 +94,26 @@ export default function AddressForm(props) {
         Direccion de Envío
       </Typography>
 
-      <Grid container spacing={3}>
+
+
+      <Grid container spacing={2}>
+
+
+        {error ?
+
+
+          errorMessages.map((item) => {
+            return (
+
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Alert severity="error">{item}</Alert>
+              </Grid>
+            )
+
+          })
+
+
+          : ""}
 
         <Grid item xs={12} sm={6}>
           <TextField

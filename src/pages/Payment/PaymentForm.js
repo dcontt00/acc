@@ -10,7 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import AButton from "../../components/AButton";
-
+import { Alert } from "@mui/material";
 export default function PaymentForm(props) {
   const [data, setData] = React.useState({
     ccname: props.data.Payment.ccname || "",
@@ -20,6 +20,8 @@ export default function PaymentForm(props) {
   });
 
   const [disable, setDisable] = React.useState(true);
+  const [error, setError] = React.useState(false);
+  const [errorMessages, setErrorMessages] = React.useState([])
 
   const handleChange = (e) => {
     setData({
@@ -37,6 +39,32 @@ export default function PaymentForm(props) {
     }
   }, [data]);
   const handleContinue = () => {
+    var temp = []
+
+
+
+    // Check if card number has 16 numbers with regex
+    const cardNumberRegex = /^[0-9]{16}$/;
+    if (!cardNumberRegex.test(data.cardNumber)) {
+      temp.push("El numero de tarjeta no es correcto. Debe tener 16 digitos")
+
+    }
+
+    // Check if expiration date is correct with regex
+    const expDateRegex = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;
+    if (!expDateRegex.test(data.expDate)) {
+      temp.push("La fecha de caducidad no es correcta")
+    }
+
+
+
+    if (temp.length > 0) {
+      setErrorMessages(temp)
+      setError(true)
+      return;
+    }
+
+    setError(false)
     var dataTemp = props.data;
     dataTemp["Payment"] = data;
     props.setData(dataTemp);
@@ -49,7 +77,26 @@ export default function PaymentForm(props) {
         Metodo de Pago
       </Typography>
 
-      <Grid container spacing={3}>
+
+
+      <Grid container spacing={2}>
+
+
+        {error ?
+
+
+          errorMessages.map((item) => {
+            return (
+
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Alert severity="error">{item}</Alert>
+              </Grid>
+            )
+
+          })
+
+
+          : ""}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
             <InputLabel id="ccname_label">Nombre de la Tarjeta</InputLabel>
