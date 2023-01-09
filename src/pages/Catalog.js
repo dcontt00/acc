@@ -9,18 +9,7 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { useParams } from "react-router-dom";
 
-// format price
-function formatPrice(price) {
-  var min = (price[0] * 1000).toLocaleString("en-US", {
-    style: "currency",
-    currency: "EUR",
-  });
-  var max = (price[1] * 1000).toLocaleString("en-US", {
-    style: "currency",
-    currency: "EUR",
-  });
-  return min + " - " + max;
-}
+
 
 // filter array by car name
 function filterByName(cars, name) {
@@ -51,8 +40,13 @@ export default function Catalog() {
       if (i !== "price" && array[i] !== "") {
         tempCars = tempCars.filter((car) => car[i].toLowerCase() === array[i].toLowerCase());
       } else {
+        var min = price[0] * 1000
+        var max = price[1] * 1000
+        if (price[1] === 100) {
+          max = 1000000
+        }
 
-        tempCars = tempCars.filter((car) => car.price >= price[0] * 1000 && car.price <= price[1] * 1000);
+        tempCars = tempCars.filter((car) => car.price >= min && car.price <= max);
       }
 
     }
@@ -68,8 +62,43 @@ export default function Catalog() {
   };
 
 
+  // format price
+  function formatPrice(price) {
+    var min = (price[0] * 1000).toLocaleString("en-US", {
+      style: "currency",
+      currency: "EUR",
+    });
+
+    if (price[1] === 100) {
+      return min + " - " + "Más de 100.000€";
+    } else {
+      var max = (price[1] * 1000).toLocaleString("en-US", {
+        style: "currency",
+        currency: "EUR",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+
+      });
+      return min + " - " + max;
+    }
+
+
+  }
+  // Format labels from slider
   function valuetext(value) {
-    return `${value * 1000}€`;
+    if (value === 100) {
+      return "Más de 100.000€";
+    }
+
+    value = value * 1000;
+    value = parseFloat(value).toLocaleString("en-US", {
+
+      style: "currency",
+      currency: "EUR",
+    }
+    )
+
+    return value;
   }
 
 
