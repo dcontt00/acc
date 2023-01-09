@@ -56,7 +56,9 @@ export default function PaymentForm(props) {
   }, [data]);
   const handleContinue = () => {
     var temp = false;
-
+    setCardNumberError(false)
+    setExpirationDateError(false)
+    setCvvError(false)
     // Check if card number has 16 numbers with regex
     const cardNumberRegex = /^[0-9]{16}$/;
     if (!cardNumberRegex.test(data.cardNumber)) {
@@ -83,9 +85,7 @@ export default function PaymentForm(props) {
       return;
     }
 
-    setCardNumberError(false)
-    setExpirationDateError(false)
-    setCvvError(false)
+
     var dataTemp = props.data;
     dataTemp["Payment"] = data;
     props.setData(dataTemp);

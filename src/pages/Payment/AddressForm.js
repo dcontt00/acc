@@ -52,7 +52,9 @@ export default function AddressForm(props) {
 
     var temp = false;
 
-
+    setPhoneError(false)
+    setEmailError(false)
+    setZipError(false)
 
     // Check if email is valid with regex
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -81,9 +83,7 @@ export default function AddressForm(props) {
       return
     }
 
-    setPhoneError(false)
-    setEmailError(false)
-    setZipError(false)
+
 
     var dataTemp = props.data;
     dataTemp["Address"] = data;

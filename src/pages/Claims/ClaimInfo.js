@@ -21,7 +21,9 @@ export default function ClaimInfo(props) {
     });
 
     const [disable, setDisable] = React.useState(true);
-
+    const [emailError, setEmailError] = React.useState(false);
+    const [phoneError, setPhoneError] = React.useState(false);
+    const [zipError, setZipError] = React.useState(false);
 
     const handleChange = (e) => {
         setData({
@@ -41,6 +43,41 @@ export default function ClaimInfo(props) {
     }, [data]);
 
     const handleContinue = () => {
+        var temp = false;
+        setPhoneError(false)
+        setEmailError(false)
+        setZipError(false)
+
+
+        // Check if email is valid with regex
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailRegex.test(data.email)) {
+            temp = true;
+            setEmailError(true)
+        }
+
+        // Check if phone num without regional code is valid with regex 
+        const phoneRegex = /^([0-9]{9})$/;
+        if (!phoneRegex.test(data.phoneNum)) {
+            temp = true;
+
+            setPhoneError(true)
+        }
+
+        // Check if zip is valid with regex
+        const zipRegex = /^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/;
+        if (!zipRegex.test(data.zip)) {
+            temp = true;
+
+            setZipError(true)
+        }
+
+        if (temp) {
+            return
+        }
+
+
+
         var dataTemp = props.data;
         dataTemp["Address"] = data;
         props.setData(dataTemp);
@@ -93,6 +130,9 @@ export default function ClaimInfo(props) {
                         variant="standard"
                         onChange={handleChange}
                         value={data.phoneNum}
+                        error={phoneError}
+                        helperText={phoneError ? "El número de teléfono debe tener 9 dígitos" : ""}
+                        inputProps={{ maxLength: 9 }}
                     />
                 </Grid>
 
@@ -107,6 +147,8 @@ export default function ClaimInfo(props) {
                         variant="standard"
                         onChange={handleChange}
                         value={data.email}
+                        error={emailError}
+                        helperText={emailError ? "El correo electrónico no es válido" : ""}
                     />
                 </Grid>
 
@@ -175,6 +217,9 @@ export default function ClaimInfo(props) {
                         variant="standard"
                         onChange={handleChange}
                         value={data.zip}
+                        error={zipError}
+                        helperText={zipError ? "El código postal debe tener 5 dígitos" : ""}
+                        inputProps={{ maxLength: 5 }}
                     />
                 </Grid>
 
