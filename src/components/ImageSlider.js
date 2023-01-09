@@ -18,7 +18,6 @@ class ImageSliderComponent extends React.Component {
         thumbnail: process.env.PUBLIC_URL + img,
       };
     });
-    console.log(this.images);
   }
 
   onFullscreen() {
@@ -36,7 +35,6 @@ class ImageSliderComponent extends React.Component {
   }
 
   onEventTrigger(eventName) {
-    console.log("Event Name ", eventName);
   }
 
   render() {

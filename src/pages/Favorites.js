@@ -16,7 +16,6 @@ export default function Favorites() {
   var favorites = [];
   if (cookie.get("favorites")) {
     favorites = cookie.get("favorites");
-    console.log(favorites)
     // Get cars info from the id
     favorites = favorites.map((id) => getCar(id));
 

@@ -20,7 +20,6 @@ export default function ClaimReason(props) {
       ...data,
       [e.target.name]: e.target.value,
     });
-    console.log(data)
   }
 
   useEffect(() => {

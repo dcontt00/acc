@@ -20,7 +20,6 @@ const style = {
 export default function CompareModal(props) {
   const handleClose = props.hClose;
   const handleSelect = () => {
-    console.log(select);
     props.hSelect(select);
     handleClose();
   };
@@ -59,25 +58,25 @@ export default function CompareModal(props) {
             </StyledList>
             <Box>
               <Divider></Divider>
-            <Box sx={{ display: "flex", flexDirection: "row", justifyContent:"flex-end"}}>
-              <Divider/>
-              <Button
-                variant="contained"
-                sx={{ margin: 1 }}
-                onClick={handleSelect}
-              >
-                Seleccionar
-              </Button>
-              <Button
-                variant="outlined"
-                sx={{ margin: 1 }}
-                onClick={handleClose}
-              >
-                Cancelar
-              </Button>
+              <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "flex-end" }}>
+                <Divider />
+                <Button
+                  variant="contained"
+                  sx={{ margin: 1 }}
+                  onClick={handleSelect}
+                >
+                  Seleccionar
+                </Button>
+                <Button
+                  variant="outlined"
+                  sx={{ margin: 1 }}
+                  onClick={handleClose}
+                >
+                  Cancelar
+                </Button>
+              </Box>
             </Box>
-            </Box>
-            
+
           </Box>
         </Box>
       </Modal>

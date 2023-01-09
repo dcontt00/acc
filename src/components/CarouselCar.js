@@ -2,7 +2,6 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Typography, Grid } from "@mui/material";
 import Cars from "../data/Audi.json";
-console.log(Cars["highlights"]);
 
 export default function Carousel_comp(props) {
   return (
