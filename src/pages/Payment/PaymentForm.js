@@ -20,8 +20,6 @@ export default function PaymentForm(props) {
   });
 
   const [disable, setDisable] = React.useState(true);
-  const [error, setError] = React.useState(false);
-  const [errorMessages, setErrorMessages] = React.useState([])
 
   const [cardNumberError, setCardNumberError] = React.useState(false);
   const [expirationDateError, setExpirationDateError] = React.useState(false);
@@ -82,11 +80,9 @@ export default function PaymentForm(props) {
     }
 
     if (temp) {
-      setError(true)
       return;
     }
 
-    setError(false)
     setCardNumberError(false)
     setExpirationDateError(false)
     var dataTemp = props.data;
