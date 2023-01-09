@@ -14,18 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const steps = ["Detalles de compra", "Datos personales", "Motivos"];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <Details />;
-    case 1:
-      return <ClaimInfo />;
-    case 2:
-      return <ClaimReason />;
-    default:
-      throw new Error("Paso Desconocido");
-  }
-}
+
 
 export default function Claim() {
   const navigate = useNavigate();
@@ -39,6 +28,38 @@ export default function Claim() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const [data, setData] = React.useState({
+    Address: {
+      firstName: "",
+      lastName: "",
+      phoneNum: "",
+      email: "",
+      address1: "",
+      address2: "",
+      doorNum: "",
+      province: "",
+      zip: "",
+      country: "",
+    },
+    Reason: {
+      reason: "",
+      comments: "",
+    },
+  });
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <Details setActiveStep={setActiveStep} activeStep={activeStep} />;
+      case 1:
+        return <ClaimInfo setActiveStep={setActiveStep} activeStep={activeStep} data={data} setData={setData} />;
+      case 2:
+        return <ClaimReason setActiveStep={setActiveStep} activeStep={activeStep} data={data} setData={setData} />;
+      default:
+        throw new Error("Paso Desconocido");
+    }
+  }
 
   return (
     <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
@@ -78,24 +99,7 @@ export default function Claim() {
           ) : (
             <React.Fragment>
               {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <AButton
-                    onClick={handleBack}
-                    sx={{ mt: 3, ml: 1 }}
-                    text="Atrás"
-                  ></AButton>
-                )}
 
-                <AButton
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
-                  text={
-                    activeStep === steps.length - 1 ? "Finalizar" : "Continuar"
-                  }
-                />
-              </Box>
             </React.Fragment>
           )}
         </React.Fragment>
