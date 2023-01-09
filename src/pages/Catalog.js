@@ -30,6 +30,7 @@ function filterByName(cars, name) {
 }
 
 export default function Catalog() {
+
   const params = useParams();
   const [price, setPrice] = React.useState([10, 100]);
   const [type, setType] = React.useState("");
@@ -148,11 +149,19 @@ export default function Catalog() {
                   value={brand}
                   label="Marca"
                   onChange={function (ev) {
-                    setBrand(ev.target.value)
-                    handleFilter({ "fuel": fuel, "brand": ev.target.value, "type": type, "price": price })
+                    var temp;
+                    if (ev.target.value === "Marca") {
+                      temp = "";
+                      setBrand("");
+                    } else {
+                      temp = ev.target.value;
+                      setBrand(ev.target.value)
+                    }
+                    handleFilter({ "fuel": fuel, "brand": temp, "type": type, "price": price })
                   }}
                   name="marca"
                 >
+                  <MenuItem value="Marca">Marca</MenuItem>
                   {Brands.map((item, i) => (
                     <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
                   ))}
@@ -173,12 +182,22 @@ export default function Catalog() {
                   label="Tipo"
                   onChange={
                     function (ev) {
-                      setType(ev.target.value)
-                      handleFilter({ "fuel": fuel, "brand": brand, "type": ev.target.value, "price": price })
+                      var temp;
+                      if (ev.target.value === "Tipo") {
+                        temp = ""
+                        setType("")
+
+                      } else {
+                        temp = ev.target.value
+                        setType(ev.target.value)
+
+                      }
+                      handleFilter({ "fuel": fuel, "brand": brand, "type": temp, "price": price })
                     }
                   }
                   name="tipo"
                 >
+                  <MenuItem value={"Tipo"}>Tipo</MenuItem>
                   <MenuItem value={"SUV"}>SUV</MenuItem>
                   <MenuItem value={"Coupé"}>Coupé</MenuItem>
                   <MenuItem value={"Todoterreno"}>Todoterreno</MenuItem>
@@ -201,12 +220,20 @@ export default function Catalog() {
                   label="Combustible"
                   onChange={
                     function (ev) {
-                      setFuel(ev.target.value)
-                      handleFilter({ "fuel": ev.target.value, "brand": brand, "type": type, "price": price })
+                      var temp;
+                      if (ev.target.value === "Combustible") {
+                        temp = ""
+                        setFuel("")
+                      } else {
+                        temp = ev.target.value
+                        setFuel(ev.target.value)
+                      }
+                      handleFilter({ "fuel": temp, "brand": brand, "type": type, "price": price })
                     }
                   }
                   name="fuel"
                 >
+                  <MenuItem value={"Combustible"}>Combustible</MenuItem>
                   <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
                   <MenuItem value={"Diesel"}>Diésel</MenuItem>
                   <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
