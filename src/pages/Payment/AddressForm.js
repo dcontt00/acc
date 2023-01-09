@@ -25,8 +25,9 @@ export default function AddressForm(props) {
 
   const [disable, setDisable] = React.useState(true);
 
-  const [error, setError] = React.useState(false);
-  const [errorMessages, setErrorMessages] = React.useState([])
+  const [emailError, setEmailError] = React.useState(false);
+  const [phoneError, setPhoneError] = React.useState(false);
+  const [zipError, setZipError] = React.useState(false);
 
 
   const handleChange = (e) => {
@@ -49,35 +50,40 @@ export default function AddressForm(props) {
 
   const handleContinue = () => {
 
-    var temp = []
+    var temp = false;
 
 
 
     // Check if email is valid with regex
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailRegex.test(data.email)) {
-      temp.push("Introduce un email valido")
+      temp = true;
+      setEmailError(true)
     }
 
     // Check if phone num without regional code is valid with regex 
     const phoneRegex = /^([0-9]{9})$/;
     if (!phoneRegex.test(data.phoneNum)) {
-      temp.push("Introduce un número de teléfono valido. Sin prefijo regional")
+      temp = true;
+
+      setPhoneError(true)
     }
 
     // Check if zip is valid with regex
     const zipRegex = /^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/;
     if (!zipRegex.test(data.zip)) {
-      temp.push("Introduce un código postal valido")
+      temp = true;
+
+      setZipError(true)
     }
 
-    if (temp.length > 0) {
-      setErrorMessages(temp)
-      setError(true)
-      return;
+    if (temp) {
+      return
     }
 
-    setError(false)
+    setPhoneError(false)
+    setEmailError(false)
+    setZipError(false)
 
     var dataTemp = props.data;
     dataTemp["Address"] = data;
@@ -94,26 +100,7 @@ export default function AddressForm(props) {
         Direccion de Envío
       </Typography>
 
-
-
       <Grid container spacing={2}>
-
-
-        {error ?
-
-
-          errorMessages.map((item) => {
-            return (
-
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <Alert severity="error">{item}</Alert>
-              </Grid>
-            )
-
-          })
-
-
-          : ""}
 
         <Grid item xs={12} sm={6}>
           <TextField
@@ -154,6 +141,9 @@ export default function AddressForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.phoneNum}
+            error={phoneError}
+            inputProps={{ maxLength: 9 }}
+            helperText={phoneError ? "Introduce un número de teléfono valido. Sin prefijo regional" : ""}
           />
         </Grid>
 
@@ -168,6 +158,8 @@ export default function AddressForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.email}
+            error={emailError}
+            helperText={emailError ? "Introduce un email valido" : ""}
           />
         </Grid>
 
@@ -236,6 +228,9 @@ export default function AddressForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.zip}
+            error={zipError}
+            inputProps={{ maxLength: 5 }}
+            helperText={zipError ? "Introduce un código postal valido" : ""}
           />
         </Grid>
 

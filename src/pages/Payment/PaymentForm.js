@@ -85,6 +85,7 @@ export default function PaymentForm(props) {
 
     setCardNumberError(false)
     setExpirationDateError(false)
+    setCvvError(false)
     var dataTemp = props.data;
     dataTemp["Payment"] = data;
     props.setData(dataTemp);
@@ -136,8 +137,6 @@ export default function PaymentForm(props) {
             error={cardNumberError}
             inputProps={{ maxLength: 16 }}
             helperText={cardNumberError ? "El numero de tarjeta no es correcto. Debe tener 16 digitos" : ""}
-
-
           />
         </Grid>
 
@@ -154,7 +153,7 @@ export default function PaymentForm(props) {
             value={data.expDate}
             inputProps={{ maxLength: 5 }}
             error={expirationDateError}
-            helperText={expirationDateError ? "La fecha de caducidad no es correcta" : ""}
+            helperText={expirationDateError ? "La fecha de caducidad no es correcta. Debe tener formato dd/mm" : ""}
 
           />
         </Grid>
