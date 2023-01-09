@@ -8,7 +8,7 @@ import Cars from "../data/Cars.json";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { useParams } from "react-router-dom";
-
+import AButton from "../components/AButton";
 
 
 // filter array by car name
@@ -166,8 +166,8 @@ export default function Catalog() {
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
 
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 1, sm: 1, md: 1, lg: 1 }}>
+          <Grid container columns={14} spacing={2}>
+            <Grid item xs={14} sm={14} md={14} lg={4} order={{ xs: 1, sm: 1, md: 1, lg: 1 }}>
 
               <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">Marca</InputLabel>
@@ -199,7 +199,7 @@ export default function Catalog() {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 2, sm: 2, md: 2, lg: 2 }}>
+            <Grid item xs={14} sm={14} md={14} lg={4} order={{ xs: 2, sm: 2, md: 2, lg: 2 }}>
 
               <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
@@ -236,7 +236,7 @@ export default function Catalog() {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 3, sm: 3, md: 3, lg: 3 }}>
+            <Grid item xs={14} sm={14} md={14} lg={4} order={{ xs: 3, sm: 3, md: 3, lg: 3 }}>
               <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">
                   Combustible
@@ -271,13 +271,11 @@ export default function Catalog() {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={4} md={3} lg={3} order={{ xs: 5, sm: 5, md: 5, lg: 4 }}>
-              <Button variant="contained" onClick={deleteFilters}>
-                Borrar filtros
-              </Button>
+            <Grid item xs={14} sm={4} md={3} lg={2} order={{ xs: 5, sm: 5, md: 5, lg: 4 }}>
+              <AButton variant="contained" onClick={deleteFilters} text="Borrar Filtros" sx={{ width: "100%" }} />
             </Grid>
 
-            <Grid item xs={12} sm={8} md={9} lg={4} order={{ xs: 4, sm: 4, md: 4, lg: 5 }}>
+            <Grid item xs={14} sm={8} md={9} lg={4} order={{ xs: 4, sm: 4, md: 4, lg: 5 }}>
               <FormControl fullWidth sx={{ alignContent: "right" }}>
                 <Typography sx={{ width: "100%", textAlign: "center" }}>
                   Precio: {formatPrice(price)}
