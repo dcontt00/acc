@@ -37,9 +37,9 @@ export default function Personalize() {
   const params = useParams();
   const car = getCar(params.id);
 
-  const [tire, setTire] = React.useState(null);
-  const [colors, setColors] = React.useState(null);
-  const [seats, setSeats] = React.useState(null);
+  const [tire, setTire] = React.useState(0);
+  const [colors, setColors] = React.useState(0);
+  const [seats, setSeats] = React.useState(0);
 
   function tireData(id) {
     if (id != null) {
