@@ -5,8 +5,9 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-
+import AButton from "../../components/AButton";
 export default function AddressForm(props) {
+
   const [data, setData] = React.useState({
     firstName: props.data.Address.firstName || "",
     lastName: props.data.Address.lastName || "",
@@ -22,38 +23,34 @@ export default function AddressForm(props) {
 
   const [disable, setDisable] = React.useState(true);
 
+
   const handleChange = (e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
-  };
+
+  }
+
 
   useEffect(() => {
-    if (
-      data.firstName !== "" &&
-      data.lastName !== "" &&
-      data.phoneNum !== "" &&
-      data.email !== "" &&
-      data.address1 !== "" &&
-      data.address2 !== "" &&
-      data.doorNum !== "" &&
-      data.province !== "" &&
-      data.zip !== "" &&
-      data.country !== ""
-    ) {
+    if (data.firstName !== "" && data.lastName !== "" && data.phoneNum !== "" && data.email !== "" && data.address1 !== "" && data.address2 !== "" && data.doorNum !== "" && data.province !== "" && data.zip !== "" && data.country !== "") {
       setDisable(false);
     } else {
       setDisable(true);
     }
   }, [data]);
 
+
   const handleContinue = () => {
     var dataTemp = props.data;
     dataTemp["Address"] = data;
     props.setData(dataTemp);
-    props.setActiveStep(props.activeStep + 1);
-  };
+    props.setActiveStep(props.activeStep + 1)
+  }
+
+
+
 
   return (
     <React.Fragment>
@@ -62,6 +59,7 @@ export default function AddressForm(props) {
       </Typography>
 
       <Grid container spacing={3}>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -72,6 +70,7 @@ export default function AddressForm(props) {
             fullWidth
             variant="standard"
             onChange={handleChange}
+
           />
         </Grid>
 
@@ -155,6 +154,7 @@ export default function AddressForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.doorNum}
+
           />
         </Grid>
 
@@ -206,6 +206,15 @@ export default function AddressForm(props) {
             label="Usa esa direccion para añadir detalles sobre el metodo de pago"
           />
         </Grid>
+        <AButton
+          variant="contained"
+          onClick={() => handleContinue()}
+          sx={{ mt: 3, ml: 1 }}
+          text="Continuar"
+          disabled={disable}
+        />
+        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+
       </Grid>
     </React.Fragment>
   );

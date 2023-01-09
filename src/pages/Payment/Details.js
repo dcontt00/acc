@@ -6,14 +6,14 @@ import Cookies from "universal-cookie";
 import Llantas from "../../data/Llantas.json";
 import Colores from "../../data/Colores.json";
 import Asientos from "../../data/Asientos.json";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 import { Grid } from "@mui/material";
-import Paper from "@mui/material/Paper";
+import Paper from '@mui/material/Paper';
 import AButton from "../../components/AButton";
 function createData(part, model, price) {
   return { part, model, price };
@@ -29,27 +29,18 @@ export default function Details(props) {
   const params = useParams();
   const car = getCar(params.id);
   var personalization = [];
-  var rows = [];
+  var rows = []
   if (cookie.get("personalization")) {
     personalization = cookie.get("personalization");
-    var llantas = Llantas.find(
-      (llanta) => llanta.id === parseInt(personalization["tire"])
-    );
-    if (llantas !== undefined) {
-      rows.push(createData("Llantas", llantas.title, llantas.price));
-    }
-    var color = Colores.find(
-      (color) => color.id === parseInt(personalization["colors"])
-    );
-    if (color !== undefined) {
-      rows.push(createData("Color", color.title, color.price));
-    }
-    var asiento = Asientos.find(
-      (asiento) => asiento.id === parseInt(personalization["seats"])
-    );
-    if (asiento !== undefined) {
-      rows.push(createData("Asiento", asiento.title, asiento.price));
-    }
+    var llantas = Llantas.find((llanta) => llanta.id === parseInt(personalization["tire"]));
+    var color = Colores.find((color) => color.id === parseInt(personalization["colors"]));
+    var asiento = Asientos.find((asiento) => asiento.id === parseInt(personalization["seats"]));
+    rows = [
+      createData("Llantas", llantas.title, llantas.price),
+      createData("Color", color.title, color.price),
+      createData("Asiento", asiento.title, asiento.price),
+    ];
+
   }
 
   const desglose = () => {
@@ -65,47 +56,44 @@ export default function Details(props) {
     }
     return (
       <div>
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} >
           <Table sx={{ width: "100%" }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Concepto</TableCell>
-                <TableCell>Modelo</TableCell>
-                <TableCell>Precio</TableCell>
+                <TableCell >Concepto</TableCell>
+                <TableCell >Modelo</TableCell>
+                <TableCell >Precio</TableCell>
               </TableRow>
             </TableHead>
 
             <TableBody>
               <TableRow>
-                <TableCell>Base</TableCell>
-                <TableCell>{car.name}</TableCell>
-                <TableCell>{car.price}€</TableCell>
+                <TableCell >Base</TableCell>
+                <TableCell >{car.name}</TableCell>
+                <TableCell >{car.price}€</TableCell>
               </TableRow>
 
               {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell>{row.part}</TableCell>
-                  <TableCell>{row.model}</TableCell>
-                  <TableCell>{row.price}€</TableCell>
+                <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                  <TableCell >{row.part}</TableCell>
+                  <TableCell >{row.model}</TableCell>
+                  <TableCell >{row.price}€</TableCell>
                 </TableRow>
               ))}
 
-              <TableRow
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell>Total</TableCell>
-                <TableCell></TableCell>
-                <TableCell>{total}€</TableCell>
+              <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell >Total</TableCell>
+                <TableCell ></TableCell>
+                <TableCell >{total}€</TableCell>
               </TableRow>
+
             </TableBody>
           </Table>
         </TableContainer>
       </div>
+
     );
-  };
+  }
 
   return (
     <Grid container spacing={2}>
@@ -116,11 +104,7 @@ export default function Details(props) {
       </Grid>
 
       <Grid item xs={6}>
-        <img
-          src={process.env.PUBLIC_URL + car.img}
-          alt={car.name}
-          width="100%"
-        />
+        <img src={process.env.PUBLIC_URL + car.img} alt={car.name} width="100%" />
       </Grid>
 
       <Grid item xs={6}>
@@ -152,6 +136,12 @@ export default function Details(props) {
       <Grid item xs={12}>
         {desglose()}
       </Grid>
+      <AButton
+        variant="contained"
+        onClick={() => props.setActiveStep(props.activeStep + 1)}
+        sx={{ mt: 3, ml: 1 }}
+        text="Continuar"
+      />
     </Grid>
-  );
+  )
 }

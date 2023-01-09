@@ -26,15 +26,11 @@ export default function PaymentForm(props) {
       ...data,
       [e.target.name]: e.target.value,
     });
-  };
+
+  }
 
   useEffect(() => {
-    if (
-      data.ccname !== "" &&
-      data.cardNumber !== "" &&
-      data.expDate !== "" &&
-      data.cvv !== ""
-    ) {
+    if (data.ccname !== "" && data.cardNumber !== "" && data.expDate !== "" && data.cvv !== "") {
       setDisable(false);
     } else {
       setDisable(true);
@@ -44,8 +40,8 @@ export default function PaymentForm(props) {
     var dataTemp = props.data;
     dataTemp["Payment"] = data;
     props.setData(dataTemp);
-    props.setActiveStep(props.activeStep + 1);
-  };
+    props.setActiveStep(props.activeStep + 1)
+  }
 
   return (
     <React.Fragment>
@@ -70,6 +66,7 @@ export default function PaymentForm(props) {
               <MenuItem value={"Visa"}>Visa</MenuItem>
               <MenuItem value={"AmericanExpress"}>AmericanExpress</MenuItem>
             </Select>
+
           </FormControl>
         </Grid>
 
@@ -84,6 +81,7 @@ export default function PaymentForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.cardNumber}
+
           />
         </Grid>
 
@@ -98,6 +96,7 @@ export default function PaymentForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.expDate}
+
           />
         </Grid>
 
@@ -113,6 +112,7 @@ export default function PaymentForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.cvv}
+
           />
         </Grid>
 
@@ -122,7 +122,6 @@ export default function PaymentForm(props) {
             label="Recordar datos bancarios para compras futuras"
           />
         </Grid>
-        {/*}
         <AButton
           variant="contained"
           onClick={() => handleContinue()}
@@ -130,7 +129,7 @@ export default function PaymentForm(props) {
           text="Continuar"
           disabled={disable}
         />
-  <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />*/}
+        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
       </Grid>
     </React.Fragment>
   );
