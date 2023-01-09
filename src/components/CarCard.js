@@ -52,19 +52,23 @@ export default function MultiActionAreaCard(props) {
   );
 
   const handleFavorite = () => {
+    var favoritesTemp = []
+    if (cookie.get("favorites")) {
+      favoritesTemp = cookie.get("favorites")
+    }
     if (favorite) {
       // Remove from favorites
-      var index = favorites.indexOf(props.car.id);
+      var index = favoritesTemp.indexOf(props.car.id);
       if (index > -1) {
-        favorites.splice(index, 1);
+        favoritesTemp.splice(index, 1);
       }
-      cookie.set("favorites", favorites);
+      cookie.set("favorites", favoritesTemp);
       setFavorite(false);
       setSnackbarMessage("Coche eliminado de favoritos");
     } else {
       // Add to favorites
-      favorites.push(props.car.id);
-      cookie.set("favorites", favorites);
+      favoritesTemp.push(props.car.id);
+      cookie.set("favorites", favoritesTemp);
       setFavorite(true);
       setSnackbarMessage("Coche añadido a favoritos");
     }
