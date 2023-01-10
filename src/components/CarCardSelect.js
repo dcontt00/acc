@@ -16,7 +16,6 @@ export default function MultiActionAreaCard(props) {
 
   return (
     <ListItemButton
-      selected={props.selectedIndex === props.index}
       onClick={(ev) => handleClick(props.index)}
     >
       <Card sx={{ maxWidth: 345, maxHeight: 400 }}>

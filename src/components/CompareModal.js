@@ -19,9 +19,8 @@ const style = {
 
 export default function CompareModal(props) {
   const handleClose = props.hClose;
-  const handleSelect = () => {
-    console.log(select);
-    props.hSelect(select);
+  const handleSelect = (index) => { 
+    props.hSelect(index);
     handleClose();
   };
   const [select, setSelect] = React.useState(0);
@@ -49,8 +48,7 @@ export default function CompareModal(props) {
                       title={coche.name}
                       brand={coche.brand}
                       year={coche.year}
-                      setSelect={(index) => setSelect(index)}
-                      selectedIndex={select}
+                      setSelect={(index) => handleSelect(index)}
                       index={key}
                     />
                   </Grid>
@@ -58,26 +56,7 @@ export default function CompareModal(props) {
               </Grid>
             </StyledList>
             <Box>
-              <Divider></Divider>
-            <Box sx={{ display: "flex", flexDirection: "row", justifyContent:"flex-end"}}>
-              <Divider/>
-              <Button
-                variant="contained"
-                sx={{ margin: 1 }}
-                onClick={handleSelect}
-              >
-                Seleccionar
-              </Button>
-              <Button
-                variant="outlined"
-                sx={{ margin: 1 }}
-                onClick={handleClose}
-              >
-                Cancelar
-              </Button>
             </Box>
-            </Box>
-            
           </Box>
         </Box>
       </Modal>
