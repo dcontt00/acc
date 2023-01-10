@@ -52,19 +52,23 @@ export default function MultiActionAreaCard(props) {
   );
 
   const handleFavorite = () => {
+    var favoritesTemp = []
+    if (cookie.get("favorites")) {
+      favoritesTemp = cookie.get("favorites")
+    }
     if (favorite) {
       // Remove from favorites
-      var index = favorites.indexOf(props.car.id);
+      var index = favoritesTemp.indexOf(props.car.id);
       if (index > -1) {
-        favorites.splice(index, 1);
+        favoritesTemp.splice(index, 1);
       }
-      cookie.set("favorites", favorites);
+      cookie.set("favorites", favoritesTemp);
       setFavorite(false);
       setSnackbarMessage("Coche eliminado de favoritos");
     } else {
       // Add to favorites
-      favorites.push(props.car.id);
-      cookie.set("favorites", favorites);
+      favoritesTemp.push(props.car.id);
+      cookie.set("favorites", favoritesTemp);
       setFavorite(true);
       setSnackbarMessage("Coche añadido a favoritos");
     }
@@ -144,7 +148,7 @@ export default function MultiActionAreaCard(props) {
       </CardActionArea>
       <CardActions>
         <Grid container spacing={2}>
-          <Grid item xs={4} sm={4} md={4} lg={4}>
+          <Grid item xs={5} sm={5} md={5} lg={5}>
             <Typography variant="h6" color="text.secondary">
               {price}
             </Typography>
@@ -173,9 +177,9 @@ export default function MultiActionAreaCard(props) {
             message={snackbarMessage}
             action={action}
           />
-          <Grid item xs={5} sm={5} md={5} lg={5}>
+          <Grid item xs={4} sm={4} md={4} lg={4}>
             <AButton
-              text="Saber más"
+              text="Más"
               sx={{ width: "100%" }}
               onClick={() => navigate("/description/" + props.car.id)}
             />

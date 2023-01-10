@@ -29,26 +29,10 @@ function Copyright() {
   );
 }
 
-const steps = [
-  "Detalles",
-  "Dirección de Envío",
-  "Datos Bancarios",
-  "Resumen del Pedido",
-];
-
+const steps = ["Detalles", "Dirección de Envío", "Datos Bancarios", "Resumen del Pedido"];
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
-
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
-
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
   const [data, setData] = React.useState({
     Address: {
       firstName: "",
@@ -73,11 +57,11 @@ export default function Checkout() {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <Details />;
+        return <Details setActiveStep={setActiveStep} activeStep={activeStep} />;
       case 1:
-        return <AddressForm data={data} setData={setData} />;
+        return <AddressForm setActiveStep={setActiveStep} activeStep={activeStep} data={data} setData={setData} />;
       case 2:
-        return <PaymentForm data={data} setData={setData} />;
+        return <PaymentForm setActiveStep={setActiveStep} activeStep={activeStep} data={data} setData={setData} />;
       case 3:
         return <Review setActiveStep={setActiveStep} activeStep={activeStep} />;
       default:
@@ -113,31 +97,11 @@ export default function Checkout() {
                 sobre el estado de su pedido.
               </Typography>
               <br />
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                <AButton text="Volver a inicio" onClick={() => navigate("/")} />
-              </Box>
+              <AButton text="Volver a inicio" onClick={() => navigate("/")} />
             </React.Fragment>
           ) : (
             <React.Fragment>
               {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <AButton
-                    onClick={handleBack}
-                    sx={{ mt: 3, ml: 1 }}
-                    text="Atrás"
-                  ></AButton>
-                )}
-
-                <AButton
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
-                  text={
-                    activeStep === steps.length - 1 ? "Finalizar" : "Continuar"
-                  }
-                />
-              </Box>
             </React.Fragment>
           )}
         </React.Fragment>

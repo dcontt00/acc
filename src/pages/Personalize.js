@@ -37,9 +37,9 @@ export default function Personalize() {
   const params = useParams();
   const car = getCar(params.id);
 
-  const [tire, setTire] = React.useState(null);
-  const [colors, setColors] = React.useState(null);
-  const [seats, setSeats] = React.useState(null);
+  const [tire, setTire] = React.useState(0);
+  const [colors, setColors] = React.useState(0);
+  const [seats, setSeats] = React.useState(0);
 
   function tireData(id) {
     if (id != null) {
@@ -108,12 +108,12 @@ export default function Personalize() {
   };
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h2">{car.name}</Typography>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={8}>
+        <Grid item xs={12} sm={12} md={12} lg={9}>
           <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={12}>
 
@@ -164,6 +164,7 @@ export default function Personalize() {
                 </RadioGroup>
               </FormControl>
             </Grid>
+
             <Grid item xs={5} sm={3} md={3} lg={3}>
               <Typography variant="h3">Faros</Typography>
               <FormControl>
@@ -191,10 +192,63 @@ export default function Personalize() {
               </FormControl>
             </Grid>
 
+            <Grid item xs={5} sm={3} md={3} lg={3}>
+              <Typography variant="h3">Asistencia</Typography>
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">
+                  Sistemas de asistencia
+                </FormLabel>
+
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="Asistencia de aparcamiento"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel value="Asistencia de aparcamiento" control={<Radio />} label="Asistencia de aparcamiento" />
+                  <FormControlLabel
+                    value="Sistema de camaras de video frontales y traseras"
+                    control={<Radio />}
+                    label="Sistema de camaras de video frontales y traseras"
+                  />
+                  <FormControlLabel
+                    value="Sistema de sensores de proximidad"
+                    control={<Radio />}
+                    label="Sistema de sensores de proximidad"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={5} sm={3} md={3} lg={3}>
+              <Typography variant="h3">Entretenimiento</Typography>
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">
+                  Sistemas de entretenimiento
+                </FormLabel>
+
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="Sistema de altavoces"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel value="Sistema de altavoces" control={<Radio />} label="Sistema de altavoces" />
+                  <FormControlLabel
+                    value="Sistema de pantallas de entretenimiento"
+                    control={<Radio />}
+                    label="Sistema de pantallas de entretenimiento"
+                  />
+                  <FormControlLabel
+                    value="Pantalla principal y HUD"
+                    control={<Radio />}
+                    label="Pantalla principal y HUD"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={4} sx={{}}>
-          <Paper variant="outlined" sx={{ p: 2, position:"sticky", top: 20}}>
+        <Grid item xs={12} sm={12} md={12} lg={3} sx={{}}>
+          <Paper variant="outlined" sx={{ p: 2, position: "sticky", top: 20 }}>
 
             <Typography variant="h3">
               Detalles

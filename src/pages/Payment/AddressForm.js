@@ -5,8 +5,11 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import AButton from "../../components/AButton";
+import { Alert } from "@mui/material";
 
 export default function AddressForm(props) {
+
   const [data, setData] = React.useState({
     firstName: props.data.Address.firstName || "",
     lastName: props.data.Address.lastName || "",
@@ -22,38 +25,74 @@ export default function AddressForm(props) {
 
   const [disable, setDisable] = React.useState(true);
 
+  const [emailError, setEmailError] = React.useState(false);
+  const [phoneError, setPhoneError] = React.useState(false);
+  const [zipError, setZipError] = React.useState(false);
+
+
   const handleChange = (e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
-  };
+
+  }
+
 
   useEffect(() => {
-    if (
-      data.firstName !== "" &&
-      data.lastName !== "" &&
-      data.phoneNum !== "" &&
-      data.email !== "" &&
-      data.address1 !== "" &&
-      data.address2 !== "" &&
-      data.doorNum !== "" &&
-      data.province !== "" &&
-      data.zip !== "" &&
-      data.country !== ""
-    ) {
+    if (data.firstName !== "" && data.lastName !== "" && data.phoneNum !== "" && data.email !== "" && data.address1 !== "" && data.address2 !== "" && data.doorNum !== "" && data.province !== "" && data.zip !== "" && data.country !== "") {
       setDisable(false);
     } else {
       setDisable(true);
     }
   }, [data]);
 
+
   const handleContinue = () => {
+
+    var temp = false;
+
+    setPhoneError(false)
+    setEmailError(false)
+    setZipError(false)
+
+    // Check if email is valid with regex
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!emailRegex.test(data.email)) {
+      temp = true;
+      setEmailError(true)
+    }
+
+    // Check if phone num without regional code is valid with regex 
+    const phoneRegex = /^([0-9]{9})$/;
+    if (!phoneRegex.test(data.phoneNum)) {
+      temp = true;
+
+      setPhoneError(true)
+    }
+
+    // Check if zip is valid with regex
+    const zipRegex = /^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/;
+    if (!zipRegex.test(data.zip)) {
+      temp = true;
+
+      setZipError(true)
+    }
+
+    if (temp) {
+      return
+    }
+
+
+
     var dataTemp = props.data;
     dataTemp["Address"] = data;
     props.setData(dataTemp);
-    props.setActiveStep(props.activeStep + 1);
-  };
+    props.setActiveStep(props.activeStep + 1)
+  }
+
+
+
 
   return (
     <React.Fragment>
@@ -61,7 +100,8 @@ export default function AddressForm(props) {
         Direccion de Envío
       </Typography>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -72,6 +112,7 @@ export default function AddressForm(props) {
             fullWidth
             variant="standard"
             onChange={handleChange}
+
           />
         </Grid>
 
@@ -100,6 +141,9 @@ export default function AddressForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.phoneNum}
+            error={phoneError}
+            inputProps={{ maxLength: 9 }}
+            helperText={phoneError ? "Introduce un número de teléfono valido. Sin prefijo regional" : ""}
           />
         </Grid>
 
@@ -114,6 +158,8 @@ export default function AddressForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.email}
+            error={emailError}
+            helperText={emailError ? "Introduce un email valido" : ""}
           />
         </Grid>
 
@@ -155,6 +201,7 @@ export default function AddressForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.doorNum}
+
           />
         </Grid>
 
@@ -181,6 +228,9 @@ export default function AddressForm(props) {
             variant="standard"
             onChange={handleChange}
             value={data.zip}
+            error={zipError}
+            inputProps={{ maxLength: 5 }}
+            helperText={zipError ? "Introduce un código postal valido" : ""}
           />
         </Grid>
 
@@ -206,6 +256,15 @@ export default function AddressForm(props) {
             label="Usa esa direccion para añadir detalles sobre el metodo de pago"
           />
         </Grid>
+        <AButton
+          variant="contained"
+          onClick={() => handleContinue()}
+          sx={{ mt: 3, ml: 1 }}
+          text="Continuar"
+          disabled={disable}
+        />
+        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+
       </Grid>
     </React.Fragment>
   );

@@ -6,13 +6,36 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useEffect } from "react";
+import AButton from "../../components/AButton";
+export default function ClaimReason(props) {
+  const [data, setData] = React.useState({
+    reason: props.data.Reason.reason || "",
+    comments: props.data.Reason.comments || "",
+  });
+  const [disable, setDisable] = React.useState(true);
 
-export default function ClaimReason() {
-  const [ccname, setCCName] = React.useState("");
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  }
 
-  const handleChange = (event) => {
-    setCCName(event.target.value);
-  };
+  useEffect(() => {
+    if (data.reason !== "" && data.comments !== "") {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [data]);
+  const handleContinue = () => {
+    var dataTemp = props.data;
+    dataTemp["Reason"] = data;
+    props.setData(dataTemp);
+    props.setActiveStep(props.activeStep + 1)
+  }
+
 
   return (
     <React.Fragment>
@@ -25,9 +48,10 @@ export default function ClaimReason() {
           <FormControl fullWidth>
             <InputLabel id="ccname_label">Motivo de la reclamación</InputLabel>
             <Select
-              labelId="cc_name"
-              id="ccname_select"
-              value={ccname}
+              labelId="reason"
+              id="reason"
+              name="reason"
+              value={data.reason}
               label="Motivo de la reclamación"
               onChange={handleChange}
             >
@@ -60,8 +84,18 @@ export default function ClaimReason() {
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
+            onChange={handleChange}
+            value={data.comments}
           />
         </Grid>
+        <AButton
+          variant="contained"
+          onClick={() => handleContinue()}
+          sx={{ mt: 3, ml: 1 }}
+          text="Continuar"
+          disabled={disable}
+        />
+        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
       </Grid>
     </React.Fragment>
   );

@@ -236,7 +236,7 @@
       "/imgs/cars/lamborghini_svj/03.jpg",
       "/imgs/cars/lamborghini_svj/04.jpg"
     ],
-    "price": 525.362,
+    "price": 525362,
     "seats": 2,
     "fuel": "Gasolina",
     "traction": "Integral",
@@ -257,7 +257,7 @@
       "/imgs/cars/ferrari_sf90/03.jpg",
       "/imgs/cars/ferrari_sf90/04.jpg"
     ],
-    "price": 489.725,
+    "price": 489725,
     "seats": 2,
     "fuel": "Hibrido",
     "traction": "Integral",
@@ -278,7 +278,7 @@
       "/imgs/cars/audi_s4/03.jpg",
       "/imgs/cars/audi_s4/04.jpg"
     ],
-    "price": 75.75,
+    "price": 75750,
     "seats": 5,
     "fuel": "Diesel",
     "traction": "Integral",
@@ -299,7 +299,7 @@
       "/imgs/cars/mercedes_cls_400_coupe/03.jpg",
       "/imgs/cars/mercedes_cls_400_coupe/04.jpg"
     ],
-    "price": 102.341,
+    "price": 102341,
     "seats": 5,
     "fuel": "Diesel",
     "traction": "Integral",

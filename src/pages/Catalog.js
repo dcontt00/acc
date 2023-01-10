@@ -8,19 +8,8 @@ import Cars from "../data/Cars.json";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { useParams } from "react-router-dom";
+import AButton from "../components/AButton";
 
-// format price
-function formatPrice(price) {
-  var min = (price[0] * 1000).toLocaleString("en-US", {
-    style: "currency",
-    currency: "EUR",
-  });
-  var max = (price[1] * 1000).toLocaleString("en-US", {
-    style: "currency",
-    currency: "EUR",
-  });
-  return min + " - " + max;
-}
 
 // filter array by car name
 function filterByName(cars, name) {
@@ -30,6 +19,7 @@ function filterByName(cars, name) {
 }
 
 export default function Catalog() {
+
   const params = useParams();
   const [price, setPrice] = React.useState([10, 100]);
   const [type, setType] = React.useState("");
@@ -50,8 +40,13 @@ export default function Catalog() {
       if (i !== "price" && array[i] !== "") {
         tempCars = tempCars.filter((car) => car[i].toLowerCase() === array[i].toLowerCase());
       } else {
+        var min = price[0] * 1000
+        var max = price[1] * 1000
+        if (price[1] === 100) {
+          max = 1000000
+        }
 
-        tempCars = tempCars.filter((car) => car.price >= price[0] * 1000 && car.price <= price[1] * 1000);
+        tempCars = tempCars.filter((car) => car.price >= min && car.price <= max);
       }
 
     }
@@ -67,8 +62,43 @@ export default function Catalog() {
   };
 
 
+  // format price
+  function formatPrice(price) {
+    var min = (price[0] * 1000).toLocaleString("en-US", {
+      style: "currency",
+      currency: "EUR",
+    });
+
+    if (price[1] === 100) {
+      return min + " - " + "Más de 100.000€";
+    } else {
+      var max = (price[1] * 1000).toLocaleString("en-US", {
+        style: "currency",
+        currency: "EUR",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+
+      });
+      return min + " - " + max;
+    }
+
+
+  }
+  // Format labels from slider
   function valuetext(value) {
-    return `${value * 1000}€`;
+    if (value === 100) {
+      return "Más de 100.000€";
+    }
+
+    value = value * 1000;
+    value = parseFloat(value).toLocaleString("en-US", {
+
+      style: "currency",
+      currency: "EUR",
+    }
+    )
+
+    return value;
   }
 
 
@@ -136,8 +166,8 @@ export default function Catalog() {
 
         <Grid item xs={12} sm={12} md={12} lg={12}>
 
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 1, sm: 1, md: 1, lg: 1 }}>
+          <Grid container columns={14} spacing={2}>
+            <Grid item xs={14} sm={14} md={14} lg={4} order={{ xs: 1, sm: 1, md: 1, lg: 1 }}>
 
               <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">Marca</InputLabel>
@@ -148,11 +178,19 @@ export default function Catalog() {
                   value={brand}
                   label="Marca"
                   onChange={function (ev) {
-                    setBrand(ev.target.value)
-                    handleFilter({ "fuel": fuel, "brand": ev.target.value, "type": type, "price": price })
+                    var temp;
+                    if (ev.target.value === "Marca") {
+                      temp = "";
+                      setBrand("");
+                    } else {
+                      temp = ev.target.value;
+                      setBrand(ev.target.value)
+                    }
+                    handleFilter({ "fuel": fuel, "brand": temp, "type": type, "price": price })
                   }}
                   name="marca"
                 >
+                  <MenuItem value="Marca">Marca</MenuItem>
                   {Brands.map((item, i) => (
                     <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
                   ))}
@@ -161,7 +199,7 @@ export default function Catalog() {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 2, sm: 2, md: 2, lg: 2 }}>
+            <Grid item xs={14} sm={14} md={14} lg={4} order={{ xs: 2, sm: 2, md: 2, lg: 2 }}>
 
               <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
@@ -173,12 +211,22 @@ export default function Catalog() {
                   label="Tipo"
                   onChange={
                     function (ev) {
-                      setType(ev.target.value)
-                      handleFilter({ "fuel": fuel, "brand": brand, "type": ev.target.value, "price": price })
+                      var temp;
+                      if (ev.target.value === "Tipo") {
+                        temp = ""
+                        setType("")
+
+                      } else {
+                        temp = ev.target.value
+                        setType(ev.target.value)
+
+                      }
+                      handleFilter({ "fuel": fuel, "brand": brand, "type": temp, "price": price })
                     }
                   }
                   name="tipo"
                 >
+                  <MenuItem value={"Tipo"}>Tipo</MenuItem>
                   <MenuItem value={"SUV"}>SUV</MenuItem>
                   <MenuItem value={"Coupé"}>Coupé</MenuItem>
                   <MenuItem value={"Todoterreno"}>Todoterreno</MenuItem>
@@ -188,7 +236,7 @@ export default function Catalog() {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={12} md={12} lg={3} order={{ xs: 3, sm: 3, md: 3, lg: 3 }}>
+            <Grid item xs={14} sm={14} md={14} lg={4} order={{ xs: 3, sm: 3, md: 3, lg: 3 }}>
               <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">
                   Combustible
@@ -201,12 +249,20 @@ export default function Catalog() {
                   label="Combustible"
                   onChange={
                     function (ev) {
-                      setFuel(ev.target.value)
-                      handleFilter({ "fuel": ev.target.value, "brand": brand, "type": type, "price": price })
+                      var temp;
+                      if (ev.target.value === "Combustible") {
+                        temp = ""
+                        setFuel("")
+                      } else {
+                        temp = ev.target.value
+                        setFuel(ev.target.value)
+                      }
+                      handleFilter({ "fuel": temp, "brand": brand, "type": type, "price": price })
                     }
                   }
                   name="fuel"
                 >
+                  <MenuItem value={"Combustible"}>Combustible</MenuItem>
                   <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
                   <MenuItem value={"Diesel"}>Diésel</MenuItem>
                   <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
@@ -215,13 +271,11 @@ export default function Catalog() {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={4} md={3} lg={3} order={{ xs: 5, sm: 5, md: 5, lg: 4 }}>
-              <Button variant="contained" onClick={deleteFilters}>
-                Borrar filtros
-              </Button>
+            <Grid item xs={14} sm={4} md={3} lg={2} order={{ xs: 5, sm: 5, md: 5, lg: 4 }}>
+              <AButton variant="contained" onClick={deleteFilters} text="Borrar Filtros" sx={{ width: "100%" }} />
             </Grid>
 
-            <Grid item xs={12} sm={8} md={9} lg={4} order={{ xs: 4, sm: 4, md: 4, lg: 5 }}>
+            <Grid item xs={14} sm={8} md={9} lg={4} order={{ xs: 4, sm: 4, md: 4, lg: 5 }}>
               <FormControl fullWidth sx={{ alignContent: "right" }}>
                 <Typography sx={{ width: "100%", textAlign: "center" }}>
                   Precio: {formatPrice(price)}
