@@ -296,6 +296,7 @@ function ResponsiveAppBar() {
           ) : (
             <AButton
               sx={{ height: 70, width: 150, my: 2, ml: 2, backgroundColor: "white", color: "black" }}
+              whileHover={{ color: "white", scale: 1.08 }}
               onClick={handleLogin}
               text="Iniciar Sesion"
 
