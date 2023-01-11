@@ -195,7 +195,10 @@ export default function Catalog() {
                 >
                   <MenuItem value="Marca">Marca</MenuItem>
                   {brands.map((item, i) => (
-                    <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
+                    <MenuItem key={i} value={item.name}>
+                      <img src={process.env.PUBLIC_URL + "/imgs/brands/" + item.name.toLowerCase() + ".png"} alt={item.name} style={{ width: "30px", height: "30px", marginRight: "10px" }} />
+                      {item.name}
+                    </MenuItem>
                   ))}
                 </Select>
 
