@@ -5,12 +5,9 @@ import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
 import Cars from "../data/Cars.json";
 import Cookie from "universal-cookie";
-
+import getCar from "../utils/GetCar";
 const cookie = new Cookie();
 
-function getCar(id) {
-  return Cars.find((car) => car.id === id);
-}
 
 export default function Favorites() {
   var favorites = [];

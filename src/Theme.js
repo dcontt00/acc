@@ -1,22 +1,46 @@
 import { createTheme } from "@mui/material/styles";
 
-const Theme = createTheme({
-  palette: {
-    primary: {
-      main: "#000000",
+const Theme = createTheme(
+  {
+    palette: {
+      mode: "light",
+      primary: {
+        main: "#1976D2",
+      },
+      secondary: {
+        main: "#FF9800",
+      },
+      background: {
+        main: "#121212",
+        paper: "#BBDEFB",
+      },
+      text: {
+        main: "#000000",
+      },
+      success: {
+        main: "#4caf50",
+
+      }
+
+
     },
-    secondary: {
-      main: "#ffffff",
+    components: {
+      MuiAlert: {
+        styleOverrides: {
+          standardInfo: {
+            backgroundColor: "#1976D2",
+            color: "#FFFFFF",
+          },
+        },
+      },
     },
-    background: {
-      default: "#121212",
-      paper: "#BCBCBC",
+
+
+    typography: {
+      fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
     },
-  },
-  typography: {
-    fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
-  },
-});
+  }
+);
 
 Theme.typography.h1 = {
   fontSize: "2.5rem",

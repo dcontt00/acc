@@ -4,15 +4,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Grid, ListItemButton } from "@mui/material";
-
+import formatPrice from "../utils/FormatPrice";
 export default function MultiActionAreaCard(props) {
   const handleClick = (index) => {
     props.setSelect(index);
   };
-  var brandImg =
-    "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
-    props.brand.toLowerCase() +
-    ".png";
+  var brandImg = process.env.PUBLIC_URL + "/imgs/brands/" + props.brand.toLowerCase() + ".png";
+
 
   return (
     <ListItemButton
@@ -49,6 +47,11 @@ export default function MultiActionAreaCard(props) {
               <Grid item xs={10} sm={10} md={10} lg={2}>
                 <Typography align="right" variant="h5">
                   {props.year}
+                </Typography>
+              </Grid>
+              <Grid item xs={10} sm={10} md={10} lg={2}>
+                <Typography align="right" variant="h5">
+                  {formatPrice(props.price)}
                 </Typography>
               </Grid>
             </Grid>

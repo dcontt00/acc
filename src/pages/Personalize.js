@@ -24,12 +24,56 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Stack } from "@mui/material";
+import Checkbox from '@mui/material/Checkbox';
+import Luces from "../data/Luces.json";
+import formatPrice from "../utils/FormatPrice";
+import getCar from "../utils/GetCar";
+
 
 const cookie = new Cookie();
 
-function getCar(id) {
-  return Cars.find((car) => car.id === parseInt(id));
-}
+
+
+
+const Assistencies = [
+  {
+    "id": 0,
+    "name": "Asistencia de aparcamiento",
+    "price": 100
+  },
+  {
+    "id": 1,
+    "name": "Sensores proximidad",
+    "price": 100
+  },
+  {
+    "id": 2,
+    "name": "Cámaras de visión frontales y traseras",
+    "price": 100
+  },
+
+]
+
+
+const Extras = [
+  {
+    "id": 0,
+    "name": "Sistema de altavoces",
+    "price": 200
+
+  },
+  {
+    "id": 1,
+    "name": "Sistema de pantallas de entretenimiento",
+    "price": 500,
+  },
+  {
+    "id": 2,
+    "name": "Pantalla Principal y HUD",
+    "price": 1500
+  }
+]
+
 
 
 export default function Personalize() {
@@ -40,6 +84,9 @@ export default function Personalize() {
   const [tire, setTire] = React.useState(0);
   const [colors, setColors] = React.useState(0);
   const [seats, setSeats] = React.useState(0);
+  const [light, setLight] = React.useState(0);
+  const [assistencie, setAssistencie] = React.useState([]);
+  const [extra, setExtra] = React.useState([]);
 
   function tireData(id) {
     if (id != null) {
@@ -48,7 +95,7 @@ export default function Personalize() {
         <TableRow key={llantas.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Llantas</TableCell>
           <TableCell >{llantas.title}</TableCell>
-          <TableCell >{llantas.price}€</TableCell>
+          <TableCell >{formatPrice(llantas.price)}</TableCell>
         </TableRow>
       );
     }
@@ -60,7 +107,7 @@ export default function Personalize() {
         <TableRow key={colores.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Color</TableCell>
           <TableCell >{colores.title}</TableCell>
-          <TableCell >{colores.price}€</TableCell>
+          <TableCell >{formatPrice(colores.price)}</TableCell>
         </TableRow>
       );
     }
@@ -73,11 +120,22 @@ export default function Personalize() {
         <TableRow key={asientos.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Asientos</TableCell>
           <TableCell >{asientos.title}</TableCell>
-          <TableCell >{asientos.price}€</TableCell>
+          <TableCell >{formatPrice(asientos.price)}</TableCell>
         </TableRow>
       );
     }
   }
+
+  function lightData() {
+    return (
+      <TableRow key={"lights"} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+        <TableCell >Faros</TableCell>
+        <TableCell >{Luces[light].name}</TableCell>
+        <TableCell >{formatPrice(Luces[light].price)}</TableCell>
+      </TableRow>
+    )
+  }
+
 
   function totalPrice() {
     var total = car.price;
@@ -93,12 +151,29 @@ export default function Personalize() {
       var asientos = Asientos.find((asiento) => asiento.id === parseInt(seats));
       total = total + asientos.price;
     }
-    return total;
+    if (light != null) {
+      total = total + Luces[light].price;
+    }
+    if (assistencie != null) {
+      assistencie.forEach(element => {
+
+        var assistencia = Assistencies.find((assistencia) => assistencia.id === parseInt(element));
+        total = total + assistencia.price;
+      });
+    }
+
+    if (extra != null) {
+      extra.forEach(element => {
+        var extra = Extras.find((extra) => extra.id === parseInt(element));
+        total = total + extra.price;
+      });
+    }
+    return formatPrice(total);
   }
 
 
   const handleClickBuy = () => {
-    cookie.set("personalization", { seats: seats, colors: colors, tire: tire });
+    cookie.set("personalization", { seats: seats, colors: colors, tire: tire, lights: light, assistencies: assistencie, extras: extra });
     navigate("/payment/" + params.id)
   };
 
@@ -108,7 +183,7 @@ export default function Personalize() {
   };
 
   return (
-    <Container maxWidth>
+    <Container maxWidth="xl">
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h2">{car.name}</Typography>
@@ -132,117 +207,74 @@ export default function Personalize() {
               <Typography variant="h3">Llantas</Typography>
 
               <ImageList data={Llantas} part="tire" setItem={setTire} />
-            </Grid>
 
-            <Grid item xs={5} sm={3} md={3} lg={3}>
-
-              <Typography variant="h3">Motor</Typography>
-              <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">
-                  Tipo de motor
-                </FormLabel>
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="hybrid"
-                  name="radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="hybrid"
-                    control={<Radio />}
-                    label="Híbrido"
-                  />
-                  <FormControlLabel
-                    value="gas"
-                    control={<Radio />}
-                    label="Gasolina"
-                  />
-                  <FormControlLabel
-                    value="diesel"
-                    control={<Radio />}
-                    label="Diesel"
-                  />
-                </RadioGroup>
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={5} sm={3} md={3} lg={3}>
               <Typography variant="h3">Faros</Typography>
-              <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">
-                  Tipo de faros
-                </FormLabel>
 
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="LED"
-                  name="radio-buttons-group"
-                >
-                  <FormControlLabel value="LED" control={<Radio />} label="LED" />
-                  <FormControlLabel
-                    value="Xenón"
-                    control={<Radio />}
-                    label="Xenón"
-                  />
-                  <FormControlLabel
-                    value="Halógenos"
-                    control={<Radio />}
-                    label="Halógenos"
-                  />
-                </RadioGroup>
-              </FormControl>
+              <ImageList data={Luces} part="tire" setItem={setLight} />
             </Grid>
 
-            <Grid item xs={5} sm={3} md={3} lg={3}>
+
+            <Grid item xs={5} sm={5} md={5} lg={5}>
               <Typography variant="h3">Asistencia</Typography>
               <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">
                   Sistemas de asistencia
                 </FormLabel>
 
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="Asistencia de aparcamiento"
-                  name="radio-buttons-group"
-                >
-                  <FormControlLabel value="Asistencia de aparcamiento" control={<Radio />} label="Asistencia de aparcamiento" />
+                {Assistencies.map((item) => (
                   <FormControlLabel
-                    value="Sistema de camaras de video frontales y traseras"
-                    control={<Radio />}
-                    label="Sistema de camaras de video frontales y traseras"
+                    control={
+                      <Checkbox
+                        checked={assistencie.includes(item.id)}
+                        onChange={(ev) => {
+                          if (ev.target.checked) {
+                            setAssistencie(assistencie.concat(item.id))
+                          } else {
+                            setAssistencie(assistencie.filter((id) => id != item.id))
+                          }
+                        }}
+                      />}
+
+
+                    label={
+                      "+ " + item.price + "€" + " - " + item.name
+
+                    }
+
                   />
-                  <FormControlLabel
-                    value="Sistema de sensores de proximidad"
-                    control={<Radio />}
-                    label="Sistema de sensores de proximidad"
-                  />
-                </RadioGroup>
+                )
+                )}
               </FormControl>
             </Grid>
 
-            <Grid item xs={5} sm={3} md={3} lg={3}>
-              <Typography variant="h3">Entretenimiento</Typography>
+            <Grid item xs={5} sm={5} md={5} lg={5}>
+              <Typography variant="h3">Extras</Typography>
               <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">
-                  Sistemas de entretenimiento
+                  Sistemas extra
                 </FormLabel>
 
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="Sistema de altavoces"
-                  name="radio-buttons-group"
-                >
-                  <FormControlLabel value="Sistema de altavoces" control={<Radio />} label="Sistema de altavoces" />
+                {Extras.map((item) => (
                   <FormControlLabel
-                    value="Sistema de pantallas de entretenimiento"
-                    control={<Radio />}
-                    label="Sistema de pantallas de entretenimiento"
+                    control={
+                      <Checkbox
+
+                        checked={extra.includes(item.id)}
+                        onChange={(ev) => {
+                          if (ev.target.checked) {
+                            setExtra(extra.concat(item.id))
+                          } else {
+                            setExtra(extra.filter((id) => id != item.id))
+                          }
+                        }}
+                      />}
+
+
+                    label={"+ " + item.price + "€" + " - " + item.name
+                    }
                   />
-                  <FormControlLabel
-                    value="Pantalla principal y HUD"
-                    control={<Radio />}
-                    label="Pantalla principal y HUD"
-                  />
-                </RadioGroup>
+                )
+                )}
               </FormControl>
             </Grid>
           </Grid>
@@ -268,12 +300,35 @@ export default function Personalize() {
                   <TableRow>
                     <TableCell >Base</TableCell>
                     <TableCell >{car.name}</TableCell>
-                    <TableCell >{car.price}€</TableCell>
+                    <TableCell >{formatPrice(car.price)}</TableCell>
                   </TableRow>
 
                   {tireData(tire)}
                   {seatsData(seats)}
                   {colorsData(colors)}
+                  {lightData()}
+                  {
+                    assistencie.map((assistencie) => (
+                      <TableRow key={assistencie} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+
+                        <TableCell >Asistencia</TableCell>
+                        <TableCell >{Assistencies[assistencie].name}</TableCell>
+                        <TableCell >{Assistencies[assistencie].price}€</TableCell>
+                      </TableRow>
+
+                    ))
+                  }
+                  {
+                    extra.map((item) => (
+                      <TableRow key={item} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+
+                        <TableCell >Extra</TableCell>
+                        <TableCell >{Extras[item].name}</TableCell>
+                        <TableCell >{Extras[item].price}€</TableCell>
+                      </TableRow>
+
+                    ))
+                  }
 
 
 
@@ -281,7 +336,7 @@ export default function Personalize() {
                   <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell >Total</TableCell>
                     <TableCell ></TableCell>
-                    <TableCell >{totalPrice()}€</TableCell>
+                    <TableCell >{totalPrice()}</TableCell>
                   </TableRow>
 
                 </TableBody>

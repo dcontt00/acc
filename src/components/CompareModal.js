@@ -19,7 +19,7 @@ const style = {
 
 export default function CompareModal(props) {
   const handleClose = props.hClose;
-  const handleSelect = (index) => { 
+  const handleSelect = (index) => {
     props.hSelect(index);
     handleClose();
   };
@@ -45,6 +45,7 @@ export default function CompareModal(props) {
                   <Grid item key={key} xs={6} sm={6} md={4} lg={3}>
                     <CarCardSelect
                       img={coche.img}
+                      price={coche.price}
                       title={coche.name}
                       brand={coche.brand}
                       year={coche.year}

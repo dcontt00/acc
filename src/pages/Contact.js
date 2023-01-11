@@ -53,78 +53,89 @@ export default function Contact() {
 
     return (
         <Container maxWidth="xl">
-            <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-                <Typography variant="h2">Teléfono de contacto</Typography>
-                <Typography variant="h7">666 555 444</Typography>
-            </Paper>
+            <Grid container spacing={2}>
+                <Grid item lg={8}>
+                    <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+                        <Typography variant="h2">Formulario de contacto</Typography>
 
-            <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-                <Typography variant="h2">Dirección de correo</Typography>
-                <Typography variant="h7">dreamcar@concesionario.com</Typography>
-            </Paper>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} md={12}>
+                                <TextField
+                                    id="name"
+                                    label="Tu nombre"
+                                    name="name"
+                                    fullWidth
+                                    autoComplete="cc-number"
+                                    variant="standard"
+                                    onChange={(event) => {
+                                        handleChange(event)
+                                    }}
+                                />
+                            </Grid>
 
-            <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-                <Typography variant="h2">Formulario de contacto</Typography>
+                            <Grid item xs={12} md={12}>
+                                <TextField
+                                    id="email"
+                                    label="Tu dirección de correo"
+                                    fullWidth
+                                    autoComplete="cc-exp"
+                                    name="email"
+                                    variant="standard"
+                                    onChange={(event) => {
+                                        handleChange(event)
+                                    }}
+                                />
+                            </Grid>
 
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={12}>
-                        <TextField
-                            id="name"
-                            label="Tu nombre"
-                            name="name"
-                            fullWidth
-                            autoComplete="cc-number"
-                            variant="standard"
-                            onChange={(event) => {
-                                handleChange(event)
-                            }}
-                        />
-                    </Grid>
+                            <Grid item xs={12} md={12}>
+                                <TextField
+                                    id="message"
+                                    label="Mensaje"
+                                    fullWidth
+                                    autoComplete="cc-csc"
+                                    name="message"
+                                    variant="standard"
+                                    onChange={(event) => {
+                                        handleChange(event)
+                                    }}
+                                />
+                            </Grid>
 
-                    <Grid item xs={12} md={12}>
-                        <TextField
-                            id="email"
-                            label="Tu dirección de correo"
-                            fullWidth
-                            autoComplete="cc-exp"
-                            name="email"
-                            variant="standard"
-                            onChange={(event) => {
-                                handleChange(event)
-                            }}
-                        />
-                    </Grid>
+                            <Grid item xs={12} md={12} lg={12}>
 
-                    <Grid item xs={12} md={12}>
-                        <TextField
-                            id="message"
-                            label="Mensaje"
-                            fullWidth
-                            autoComplete="cc-csc"
-                            name="message"
-                            variant="standard"
-                            onChange={(event) => {
-                                handleChange(event)
-                            }}
-                        />
-                    </Grid>
+                                <FormControlLabel
+                                    control={<Checkbox color="secondary" name="acceptRgpd" value="yes" onChange={() => setDisabled(!disabled)} />}
+                                    label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
+                                />
 
-                    <Grid item xs={12} md={12}>
-                        <FormControlLabel
-                            control={<Checkbox color="secondary" name="acceptRgpd" value={false} onChange={(e) => handleChange(e)}/>}
-                            label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
-                        />
 
-                        <AButton variant="contained" sx={{ ml: 5 }} text={"Enviar"} onClick={handleClick} disabled={disabled} />
-                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                                ¡Mensaje enviado!
-                            </Alert>
-                        </Snackbar>
+                                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                                        ¡Mensaje enviado!
+                                    </Alert>
+                                </Snackbar>
 
-                    </Grid>
+                            </Grid>
+                            <Grid item xs={12} md={12} lg={12}>
+                                <AButton variant="contained" text={"Enviar"} onClick={handleClick} disabled={disabled} />
+                            </Grid>
+                        </Grid>
+                    </Paper>
                 </Grid>
-            </Paper>
+
+                <Grid item lg={4}>
+                    <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+                        <Typography variant="h2">Teléfono de contacto</Typography>
+                        <Typography variant="h7">666 555 444</Typography>
+                        <Typography variant="h2">Dirección de correo</Typography>
+                        <Typography variant="h7">contacto@dreamcar.com</Typography>
+                    </Paper>
+
+                </Grid>
+            </Grid>
+
+
+
         </Container>
     );
 }

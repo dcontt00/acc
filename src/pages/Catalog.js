@@ -9,6 +9,10 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { useParams } from "react-router-dom";
 import AButton from "../components/AButton";
+import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
+import OilBarrelIcon from '@mui/icons-material/OilBarrel';
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
+import formatPrice from "../utils/FormatPrice";
 
 
 // filter array by car name
@@ -63,22 +67,14 @@ export default function Catalog() {
 
 
   // format price
-  function formatPrice(price) {
-    var min = (price[0] * 1000).toLocaleString("en-US", {
-      style: "currency",
-      currency: "EUR",
-    });
+  function formatMinMaxPrice(price) {
+    var min = formatPrice(price[0] * 1000);
 
     if (price[1] === 100) {
       return min + " - " + "Más de 100.000€";
     } else {
-      var max = (price[1] * 1000).toLocaleString("en-US", {
-        style: "currency",
-        currency: "EUR",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
+      var max = formatPrice(price[1] * 1000);
 
-      });
       return min + " - " + max;
     }
 
@@ -91,10 +87,12 @@ export default function Catalog() {
     }
 
     value = value * 1000;
-    value = parseFloat(value).toLocaleString("en-US", {
+    value = parseFloat(value).toLocaleString("es-ES", {
 
       style: "currency",
       currency: "EUR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     }
     )
 
@@ -116,6 +114,9 @@ export default function Catalog() {
     setFuel("");
   };
 
+
+  // Constant with all brands sorted alphabetically
+  const brands = Brands.sort((a, b) => a.name.localeCompare(b.name));
   return (
     <Container maxWidth="xl">
       <Grid container spacing={2}>
@@ -124,7 +125,7 @@ export default function Catalog() {
         </Grid>
 
         {/* Barra búsqueda*/}
-        <Grid item xs={9} sm={10} md={10} lg={10}>
+        <Grid item xs={8} sm={9} md={10} lg={11}>
           <TextField
             id="standard-basic"
             label="Buscar por nombre de coche"
@@ -139,8 +140,9 @@ export default function Catalog() {
 
 
         {/* Switch de filtros */}
-        <Grid item xs={3} sm={2} md={2} lg={2}>
+        <Grid item xs={4} sm={3} md={2} lg={1}>
           <FormControlLabel
+            sx={{ display: "flex", justifyContent: "flex-end" }}
             control={
               <Switch
                 size="medium"
@@ -191,8 +193,11 @@ export default function Catalog() {
                   name="marca"
                 >
                   <MenuItem value="Marca">Marca</MenuItem>
-                  {Brands.map((item, i) => (
-                    <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
+                  {brands.map((item, i) => (
+                    <MenuItem key={i} value={item.name}>
+                      <img src={process.env.PUBLIC_URL + "/imgs/brands/" + item.name.toLowerCase() + ".png"} alt={item.name} style={{ width: "30px", height: "30px", marginRight: "10px" }} />
+                      {item.name}
+                    </MenuItem>
                   ))}
                 </Select>
 
@@ -231,6 +236,9 @@ export default function Catalog() {
                   <MenuItem value={"Coupé"}>Coupé</MenuItem>
                   <MenuItem value={"Todoterreno"}>Todoterreno</MenuItem>
                   <MenuItem value={"Urbano"}>Urbano</MenuItem>
+                  <MenuItem value={"Superdeportivo"}>Superdeportivo</MenuItem>
+
+
                 </Select>
 
               </FormControl>
@@ -263,9 +271,18 @@ export default function Catalog() {
                   name="fuel"
                 >
                   <MenuItem value={"Combustible"}>Combustible</MenuItem>
-                  <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
-                  <MenuItem value={"Diesel"}>Diésel</MenuItem>
-                  <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
+                  <MenuItem value={"Gasolina"}>
+                    <LocalGasStationIcon />
+                    Gasolina
+                  </MenuItem>
+                  <MenuItem value={"Diesel"}>
+                    <OilBarrelIcon />
+                    Diésel
+                  </MenuItem>
+                  <MenuItem value={"Eléctrico"}>
+                    <ElectricBoltIcon />
+                    Eléctrico
+                  </MenuItem>
                 </Select>
 
               </FormControl>
@@ -278,7 +295,7 @@ export default function Catalog() {
             <Grid item xs={14} sm={8} md={9} lg={4} order={{ xs: 4, sm: 4, md: 4, lg: 5 }}>
               <FormControl fullWidth sx={{ alignContent: "right" }}>
                 <Typography sx={{ width: "100%", textAlign: "center" }}>
-                  Precio: {formatPrice(price)}
+                  Precio: {formatMinMaxPrice(price)}
                 </Typography>
 
                 <Slider

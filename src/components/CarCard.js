@@ -6,13 +6,13 @@ import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { CardActionArea, CardActions, Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import AButton from "./AButton";
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import Cookie from "universal-cookie";
-
+import { Alert } from "@mui/material";
 const cookie = new Cookie();
 
 export default function MultiActionAreaCard(props) {
@@ -22,8 +22,12 @@ export default function MultiActionAreaCard(props) {
     favorites = cookie.get("favorites");
   }
 
-  const [favorite, setFavorite] = React.useState(favorites.includes(props.car.id));
-  const [snackbarMessage, setSnackbarMessage] = React.useState("Coche añadido a favoritos");
+  const [favorite, setFavorite] = React.useState(
+    favorites.includes(props.car.id)
+  );
+  const [snackbarMessage, setSnackbarMessage] = React.useState(
+    "Coche añadido a favoritos"
+  );
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
@@ -31,7 +35,7 @@ export default function MultiActionAreaCard(props) {
   };
 
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -52,9 +56,9 @@ export default function MultiActionAreaCard(props) {
   );
 
   const handleFavorite = () => {
-    var favoritesTemp = []
+    var favoritesTemp = [];
     if (cookie.get("favorites")) {
-      favoritesTemp = cookie.get("favorites")
+      favoritesTemp = cookie.get("favorites");
     }
     if (favorite) {
       // Remove from favorites
@@ -75,12 +79,12 @@ export default function MultiActionAreaCard(props) {
     handleClick();
   };
 
-
   var description = props.description;
   const navigate = useNavigate();
   var choices = props.car.choices;
   var brandImg =
-    "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
+    process.env.PUBLIC_URL +
+    "/imgs/brands/" +
     props.brand.toLowerCase() +
     ".png";
 
@@ -88,15 +92,15 @@ export default function MultiActionAreaCard(props) {
     description = description.substring(0, 150) + "...";
   }
 
-
-  var price = parseFloat(props.price).toLocaleString("en-US", {
+  var price = parseFloat(props.price).toLocaleString("es-ES", {
     style: "currency",
     currency: "EUR",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   });
 
-
   return (
-    <Card sx={{ maxWidth: 345, maxHeight: 400 }}>
+    <Card sx={{ width: "100%", maxHeight: 400 }}>
       <CardActionArea onClick={() => navigate("/description/" + props.car.id)}>
         <CardMedia
           component="img"
@@ -154,29 +158,35 @@ export default function MultiActionAreaCard(props) {
             </Typography>
           </Grid>
 
-          <Grid item xs={3} sm={3} md={3} lg={3} >
-            {loged ?
+          <Grid item xs={3} sm={3} md={3} lg={3}>
+            {loged ? (
               <AButton
                 color="primary"
                 sx={{ width: "100%" }}
-
                 size="medium"
-                icon={favorite ? <FavoriteIcon height="80%" /> : <FavoriteBorderIcon height="80%" />}
+                icon={
+                  favorite ? (
+                    <FavoriteIcon height="80%" />
+                  ) : (
+                    <FavoriteBorderIcon height="80%" />
+                  )
+                }
                 onClick={() => {
                   handleFavorite();
                 }}
               />
-              :
+            ) : (
               <div width={"100%"} />
-            }
+            )}
           </Grid>
           <Snackbar
             open={open}
             autoHideDuration={1500}
             onClose={handleClose}
-            message={snackbarMessage}
             action={action}
-          />
+          >
+            <Alert color="info">{snackbarMessage}</Alert>
+          </Snackbar>
           <Grid item xs={4} sm={4} md={4} lg={4}>
             <AButton
               text="Más"
@@ -184,7 +194,6 @@ export default function MultiActionAreaCard(props) {
               onClick={() => navigate("/description/" + props.car.id)}
             />
           </Grid>
-
         </Grid>
       </CardActions>
     </Card>

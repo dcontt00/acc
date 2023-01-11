@@ -143,18 +143,10 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Button
-            sx={{ height: 100, width: 200 }}
-            onClick={() => navigate("/")}
-          >
-            <img
-              style={{ height: 95, width: "auto" }}
-              src={Logo.path}
-              alt="LogoImg"
-            />
-          </Button>
+
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -184,41 +176,40 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page, index) => (
-                <Button
-                  component={motion.div}
-                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                  whileHover={{ scale: 1.08 }}
-                  key={index}
+                <MenuItem
                   onClick={function (event) {
                     handleCloseNavMenu();
                     navigate(page.link);
                   }}
                 >
                   {page.name}
-                </Button>
+                </MenuItem>
               ))}
             </Menu>
+            <Button
+              sx={{ height: 100, width: 200 }}
+              onClick={() => navigate("/")}
+            >
+              <img
+                style={{ height: 95, width: "auto" }}
+                src={Logo.path}
+                alt="LogoImg"
+              />
+            </Button>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+          {/*Vista movil */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+
+            <Button
+              sx={{ height: 100, width: 200 }}
+              onClick={() => navigate("/")}
+            >
+              <img
+                style={{ height: 95, width: "auto" }}
+                src={Logo.path}
+                alt="LogoImg"
+              />
+            </Button>
             {pages.map((page, index) => (
               <Button
                 size="small"
@@ -248,6 +239,7 @@ function ResponsiveAppBar() {
                 <Typography variant="subtitle1">{page.name}</Typography>
               </Button>
             ))}
+
           </Box>
 
           {location.pathname.includes("catalog") ? (
@@ -264,6 +256,7 @@ function ResponsiveAppBar() {
               />
             </Search>
           )}
+
 
           {/*Hide menu if user is not loged*/}
           {loged ? (
@@ -302,9 +295,10 @@ function ResponsiveAppBar() {
             </Box>
           ) : (
             <AButton
-              sx={{ height: 70, width: 150, my: 2, ml: 2 }}
+              sx={{ height: 70, width: 150, my: 2, ml: 2, backgroundColor: "white", color: "black" }}
               onClick={handleLogin}
               text="Iniciar Sesion"
+
             />
           )}
         </Toolbar>
