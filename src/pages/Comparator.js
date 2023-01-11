@@ -168,13 +168,10 @@ export default function Comparator(props) {
               </CardContent>
             </Card>
           ) : (
-            <Button onClick={() => handleOpen(true)} variant="contained">
+            <Button onClick={() => handleOpen(true)} variant="contained" sx={{width:"100%", minHeight:"500px"}}>
               <Grid container>
                 <Grid item align="center" xs={12}>
-                  <AddIcon fontSize="Large"></AddIcon>
-                </Grid>
-                <Grid item align="center" xs={12}>
-                  <Typography>Añadir</Typography>
+                  <AddIcon fontSize="large"></AddIcon>
                 </Grid>
               </Grid>
             </Button>
@@ -239,13 +236,10 @@ export default function Comparator(props) {
               </CardActionArea>
             </Card>
           ) : (
-            <Button onClick={() => handleOpen(false)} variant="contained">
+            <Button onClick={() => handleOpen(false)} variant="contained" sx={{width:"100%", minHeight:"500px"}}>
               <Grid container>
                 <Grid item align="center" xs={12}>
-                  <AddIcon fontSize="Large"></AddIcon>
-                </Grid>
-                <Grid item align="center" xs={12}>
-                  <Typography>Añadir</Typography>
+                  <AddIcon fontSize="large"></AddIcon>
                 </Grid>
               </Grid>
             </Button>
