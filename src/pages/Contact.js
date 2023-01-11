@@ -17,12 +17,12 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export default function Contact() {
     const [open, setOpen] = React.useState(false);
     const [disabled, setDisabled] = React.useState(false);
+    const [checked, setChecked] = React.useState(false);
 
     const [data, setData] = React.useState({
         name: "",
         email: "",
         message: "",
-        acceptRgpd: false
     })
 
     const handleClick = () => {
@@ -36,6 +36,11 @@ export default function Contact() {
 
         setOpen(false);
     };
+
+    const handleCheckbox = (e) => {
+        setChecked(!checked);
+    }
+
     const handleChange = (e) => {
         setData({
             ...data,
@@ -44,12 +49,12 @@ export default function Contact() {
     };
 
     React.useEffect(() => {
-        if (data.name !== "" && data.email !== "" && data.message !== "" && data.acceptRgpd) {
+        if (data.name !== "" && data.email !== "" && data.message !== "" && checked) {
             setDisabled(false);
         } else {
             setDisabled(true);
         }
-    }, [data]);
+    }, [data, checked]);
 
     return (
         <Container maxWidth="xl">
@@ -104,7 +109,7 @@ export default function Contact() {
                             <Grid item xs={12} md={12} lg={12}>
 
                                 <FormControlLabel
-                                    control={<Checkbox color="secondary" name="acceptRgpd" value="yes" onChange={() => setDisabled(!disabled)} />}
+                                    control={<Checkbox color="secondary" name="acceptRgpd" checked={checked} onChange={(e) => handleCheckbox(e)} />}
                                     label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
                                 />
 
