@@ -118,7 +118,7 @@ export default function Comparator(props) {
         <Divider />
         <Grid
           container
-          spacing={4}
+          spacing={{ xs: 1, lg: 4 }}
           sx={{ marginBottom: "5%", marginTop: "5px" }}
         >
           <Grid item xs={6}>
