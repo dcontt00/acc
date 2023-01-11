@@ -26,6 +26,7 @@ import TableRow from '@mui/material/TableRow';
 import { Stack } from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import Luces from "../data/Luces.json";
+import formatPrice from "../utils/FormatPrice";
 const cookie = new Cookie();
 
 function getCar(id) {
@@ -73,14 +74,7 @@ const Extras = [
   }
 ]
 
-function formatPrice(price) {
-  return price.toLocaleString("es-ES", {
-    style: "currency",
-    currency: "EUR",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
-}
+
 
 export default function Personalize() {
   const navigate = useNavigate();

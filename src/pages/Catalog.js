@@ -12,7 +12,7 @@ import AButton from "../components/AButton";
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import OilBarrelIcon from '@mui/icons-material/OilBarrel';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
-
+import formatPrice from "../utils/FormatPrice";
 
 
 // filter array by car name
@@ -67,24 +67,14 @@ export default function Catalog() {
 
 
   // format price
-  function formatPrice(price) {
-    var min = (price[0] * 1000).toLocaleString("es-ES", {
-      style: "currency",
-      currency: "EUR",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
+  function formatMinMaxPrice(price) {
+    var min = formatPrice(price[0] * 1000);
 
     if (price[1] === 100) {
       return min + " - " + "Más de 100.000€";
     } else {
-      var max = (price[1] * 1000).toLocaleString("es-ES", {
-        style: "currency",
-        currency: "EUR",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
+      var max = formatPrice(price[1] * 1000);
 
-      });
       return min + " - " + max;
     }
 
@@ -304,7 +294,7 @@ export default function Catalog() {
             <Grid item xs={14} sm={8} md={9} lg={4} order={{ xs: 4, sm: 4, md: 4, lg: 5 }}>
               <FormControl fullWidth sx={{ alignContent: "right" }}>
                 <Typography sx={{ width: "100%", textAlign: "center" }}>
-                  Precio: {formatPrice(price)}
+                  Precio: {formatMinMaxPrice(price)}
                 </Typography>
 
                 <Slider

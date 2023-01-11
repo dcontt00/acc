@@ -4,14 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Grid, ListItemButton } from "@mui/material";
-function formatPrice(price) {
-  return price.toLocaleString("es-ES", {
-    style: "currency",
-    currency: "EUR",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
-}
+import formatPrice from "../utils/FormatPrice";
 export default function MultiActionAreaCard(props) {
   const handleClick = (index) => {
     props.setSelect(index);
