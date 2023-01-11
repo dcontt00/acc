@@ -57,10 +57,10 @@ export default function Contact() {
     }, [data, checked]);
 
     return (
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ paddingTop: 2 }}>
             <Grid container spacing={2}>
-                <Grid item lg={8}>
-                    <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+                <Grid item xs={12} lg={8} order={{ xs: 2, lg: 1 }}>
+                    <Paper variant="outlined" sx={{ p: 2 }}>
                         <Typography variant="h2">Formulario de contacto</Typography>
 
                         <Grid container spacing={3}>
@@ -128,8 +128,8 @@ export default function Contact() {
                     </Paper>
                 </Grid>
 
-                <Grid item lg={4}>
-                    <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+                <Grid item xs={12} lg={4} order={{ xs: 1, lg: 2 }}>
+                    <Paper variant="outlined" sx={{ p: 2 }}>
                         <Typography variant="h2">Teléfono de contacto</Typography>
                         <Typography variant="h7">666 555 444</Typography>
                         <Typography variant="h2">Dirección de correo</Typography>
