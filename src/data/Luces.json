@@ -1,20 +1,20 @@
 [
     {
         "id": 0,
-        "name": "LED",
+        "title": "Halógenos",
         "price": 0,
-        "img": "/imgs/lights/led.png"
+        "img": "/imgs/lights/halogen.png"
     },
     {
         "id": 1,
-        "name": "Xenon",
-        "price": 100,
-        "img": "/imgs/lights/xenon.png"
+        "title": "LED",
+        "price": 50,
+        "img": "/imgs/lights/led.png"
     },
     {
         "id": 2,
-        "name": "Halógenos",
-        "price": 50,
-        "img": "/imgs/lights/halogen.png"
+        "title": "Xenon",
+        "price": 100,
+        "img": "/imgs/lights/xenon.png"
     }
 ]

@@ -20,8 +20,9 @@ import { dataName, getData } from "../data/data";
 import Cookie from "universal-cookie";
 import AddIcon from "@mui/icons-material/Add";
 import CompareModal from "../components/CompareModal";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import { Container } from "@mui/system";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 
 const cookie = new Cookie();
 function DescriptionList(props) {
@@ -107,18 +108,31 @@ export default function Comparator(props) {
 
   return (
     <Container maxWidth="xl">
-
       <Grid container>
         <Grid item xs={12}>
           <Typography variant="h2">Comparador</Typography>
-          <Typography variant="body1">Elige dos coches para ver y comparar sus características</Typography>
+          <Typography variant="body1">
+            Elige dos coches para ver y comparar sus características
+          </Typography>
         </Grid>
         <Divider />
-        <Grid container spacing={4} sx={{ marginBottom: "5%", marginTop: "5px" }}>
+        <Grid
+          container
+          spacing={4}
+          sx={{ marginBottom: "5%", marginTop: "5px" }}
+        >
           <Grid item xs={6}>
             {/*First Car image*/}
             {firstCar ? (
-              <Card sx={{ width: "100%", height: "100%", textAlign: "center", position: "relative" }} onClick={() => handleOpen(true)}>
+              <Card
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  textAlign: "center",
+                  position: "relative",
+                }}
+                onClick={() => handleOpen(true)}
+              >
                 <Fab sx={{ position: "absolute", top: "25px", right: "25px" }}>
                   <EditIcon fontSize="large" />
                 </Fab>
@@ -172,10 +186,17 @@ export default function Comparator(props) {
                 </CardContent>
               </Card>
             ) : (
-              <Button onClick={() => handleOpen(true)} variant="contained" sx={{ width: "100%", minHeight: "500px" }}>
+              <Button
+                onClick={() => handleOpen(true)}
+                variant="contained"
+                sx={{ width: "100%", minHeight: "500px" }}
+              >
                 <Grid container>
                   <Grid item align="center" xs={12}>
                     <AddIcon fontSize="large"></AddIcon>
+                    <DirectionsCarIcon
+                      sx={{ fontSize: 50 }}
+                    ></DirectionsCarIcon>
                   </Grid>
                 </Grid>
               </Button>
@@ -184,7 +205,15 @@ export default function Comparator(props) {
           <Grid item xs={6}>
             {/*Second Car image*/}
             {secondCar ? (
-              <Card sx={{ width: "100%", height: "100%", textAlign: "center", position: "relative" }} onClick={() => handleOpen(false)}>
+              <Card
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  textAlign: "center",
+                  position: "relative",
+                }}
+                onClick={() => handleOpen(false)}
+              >
                 <Fab sx={{ position: "absolute", top: "25px", right: "25px" }}>
                   <EditIcon fontSize="large" />
                 </Fab>
@@ -240,18 +269,24 @@ export default function Comparator(props) {
                 </CardActionArea>
               </Card>
             ) : (
-              <Button onClick={() => handleOpen(false)} variant="contained" sx={{ width: "100%", minHeight: "500px" }}>
+              <Button
+                onClick={() => handleOpen(false)}
+                variant="contained"
+                sx={{ width: "100%", minHeight: "500px" }}
+              >
                 <Grid container>
                   <Grid item align="center" xs={12}>
                     <AddIcon fontSize="large"></AddIcon>
+                    <DirectionsCarIcon
+                      sx={{ fontSize: 50 }}
+                    ></DirectionsCarIcon>
                   </Grid>
                 </Grid>
               </Button>
             )}
           </Grid>
 
-
-          <Grid item xs={6} >
+          <Grid item xs={6}>
             {charList.map((it) => (
               <DescriptionList
                 key={it}
@@ -271,7 +306,6 @@ export default function Comparator(props) {
               />
             ))}
           </Grid>
-
         </Grid>
         <CompareModal
           open={open}
@@ -281,6 +315,5 @@ export default function Comparator(props) {
         />
       </Grid>
     </Container>
-
   );
 }
