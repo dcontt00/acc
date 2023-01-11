@@ -20,36 +20,53 @@ export default function BasicTable(props) {
 
         <TableBody>
           <TableRow>
-            <TableCell component="th" scope="row">Tipo</TableCell>
+            <TableCell component="th" scope="row">
+              Precio
+            </TableCell>
+            <TableCell align="right">{props.car.price}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component="th" scope="row">
+              Tipo
+            </TableCell>
             <TableCell align="right">{props.car.type}</TableCell>
           </TableRow>
 
           <TableRow>
-            <TableCell component="th" scope="row">Asientos</TableCell>
+            <TableCell component="th" scope="row">
+              Asientos
+            </TableCell>
             <TableCell align="right">{props.car.seats}</TableCell>
           </TableRow>
 
           <TableRow>
-            <TableCell component="th" scope="row">Combustible</TableCell>
+            <TableCell component="th" scope="row">
+              Combustible
+            </TableCell>
             <TableCell align="right">{props.car.fuel}</TableCell>
           </TableRow>
 
           <TableRow>
-            <TableCell component="th" scope="row">Traccion</TableCell>
+            <TableCell component="th" scope="row">
+              Traccion
+            </TableCell>
             <TableCell align="right">{props.car.traction}</TableCell>
           </TableRow>
 
           <TableRow>
-            <TableCell component="th" scope="row">Potencia</TableCell>
+            <TableCell component="th" scope="row">
+              Potencia
+            </TableCell>
             <TableCell align="right">{props.car.power}</TableCell>
           </TableRow>
 
           <TableRow>
-            <TableCell component="th" scope="row">Consumo</TableCell>
+            <TableCell component="th" scope="row">
+              Consumo
+            </TableCell>
             <TableCell align="right">{props.car.consumption}</TableCell>
           </TableRow>
         </TableBody>
-
       </Table>
     </TableContainer>
   );
