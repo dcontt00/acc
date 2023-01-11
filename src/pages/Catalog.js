@@ -9,6 +9,10 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { useParams } from "react-router-dom";
 import AButton from "../components/AButton";
+import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
+import OilBarrelIcon from '@mui/icons-material/OilBarrel';
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
+
 
 
 // filter array by car name
@@ -269,9 +273,18 @@ export default function Catalog() {
                   name="fuel"
                 >
                   <MenuItem value={"Combustible"}>Combustible</MenuItem>
-                  <MenuItem value={"Gasolina"}>Gasolina</MenuItem>
-                  <MenuItem value={"Diesel"}>Diésel</MenuItem>
-                  <MenuItem value={"Eléctrico"}>Eléctrico</MenuItem>
+                  <MenuItem value={"Gasolina"}>
+                    <LocalGasStationIcon />
+                    Gasolina
+                  </MenuItem>
+                  <MenuItem value={"Diesel"}>
+                    <OilBarrelIcon />
+                    Diésel
+                  </MenuItem>
+                  <MenuItem value={"Eléctrico"}>
+                    <ElectricBoltIcon />
+                    Eléctrico
+                  </MenuItem>
                 </Select>
 
               </FormControl>
