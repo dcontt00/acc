@@ -12,7 +12,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import AButton from "../../components/AButton";
 function createData(part, model, price) {
@@ -236,12 +236,23 @@ export default function Details(props) {
       <Grid item xs={12}>
         {desglose()}
       </Grid>
-      <AButton
-        variant="contained"
-        onClick={() => props.setActiveStep(props.activeStep + 1)}
-        sx={{ mt: 3, ml: 1 }}
-        text="Continuar"
-      />
+      <Grid item xs={12}>
+
+        <Box
+          m={1}
+          display={"flex"}
+          justifyContent="flex-end"
+          alignItems="flex-end"
+        >
+
+          <AButton
+            variant="contained"
+            onClick={() => props.setActiveStep(props.activeStep + 1)}
+            sx={{ mt: 3, ml: 1 }}
+            text="Continuar"
+          />
+        </Box>
+      </Grid>
     </Grid>
   )
 }

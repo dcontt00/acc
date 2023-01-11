@@ -7,6 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import AButton from "../../components/AButton";
 import { Alert } from "@mui/material";
+import { Box } from "@mui/system";
 
 export default function AddressForm(props) {
 
@@ -256,14 +257,23 @@ export default function AddressForm(props) {
             label="Usa esa direccion para añadir detalles sobre el metodo de pago"
           />
         </Grid>
-        <AButton
-          variant="contained"
-          onClick={() => handleContinue()}
-          sx={{ mt: 3, ml: 1 }}
-          text="Continuar"
-          disabled={disable}
-        />
-        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+        <Grid item xs={12}>
+          <Box
+            m={1}
+            display={"flex"}
+            justifyContent="flex-end"
+            alignItems="flex-end"
+          >
+            <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+            <AButton
+              variant="contained"
+              onClick={() => handleContinue()}
+              sx={{ mt: 3, ml: 1 }}
+              text="Continuar"
+              disabled={disable}
+            />
+          </Box>
+        </Grid>
 
       </Grid>
     </React.Fragment>

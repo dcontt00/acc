@@ -11,6 +11,7 @@ import Asientos from "../../data/Asientos.json";
 import Cars from "../../data/Cars.json";
 import Cookies from "universal-cookie";
 import AButton from "../../components/AButton";
+import { Box } from "@mui/material";
 
 function getCar(id) {
   return Cars.find((car) => car.id === parseInt(id));
@@ -87,13 +88,22 @@ export default function Review(props) {
             ))}
           </Grid>
         </Grid>
-        <AButton
-          variant="contained"
-          onClick={() => props.setActiveStep(props.activeStep + 1)}
-          sx={{ mt: 3, ml: 1 }}
-          text="Completar compra"
-        />
-        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+        <Grid item xs={12}>
+          <Box
+            m={1}
+            display={"flex"}
+            justifyContent="flex-end"
+            alignItems="flex-end"
+          >
+            <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+            <AButton
+              variant="contained"
+              onClick={() => props.setActiveStep(props.activeStep + 1)}
+              sx={{ mt: 3, ml: 1 }}
+              text="Completar compra"
+            />
+          </Box>
+        </Grid>
       </Grid>
     </React.Fragment>
   );

@@ -97,7 +97,15 @@ export default function Checkout() {
                 sobre el estado de su pedido.
               </Typography>
               <br />
-              <AButton text="Volver a inicio" onClick={() => navigate("/")} />
+              <Box
+                m={1}
+                display={"flex"}
+                justifyContent="flex-end"
+                alignItems="flex-end"
+              >
+
+                <AButton text="Volver a inicio" onClick={() => navigate("/")} />
+              </Box>
             </React.Fragment>
           ) : (
             <React.Fragment>

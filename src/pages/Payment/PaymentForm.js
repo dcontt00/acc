@@ -10,7 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import AButton from "../../components/AButton";
-import { Alert } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 export default function PaymentForm(props) {
   const [data, setData] = React.useState({
     ccname: props.data.Payment.ccname || "",
@@ -181,14 +181,23 @@ export default function PaymentForm(props) {
             label="Recordar datos bancarios para compras futuras"
           />
         </Grid>
-        <AButton
-          variant="contained"
-          onClick={() => handleContinue()}
-          sx={{ mt: 3, ml: 1 }}
-          text="Continuar"
-          disabled={disable}
-        />
-        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+        <Grid item xs={12}>
+          <Box
+            m={1}
+            display={"flex"}
+            justifyContent="flex-end"
+            alignItems="flex-end"
+          >
+            <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+            <AButton
+              variant="contained"
+              onClick={() => handleContinue()}
+              sx={{ mt: 3, ml: 1 }}
+              text="Continuar"
+              disabled={disable}
+            />
+          </Box>
+        </Grid>
       </Grid>
     </React.Fragment>
   );
