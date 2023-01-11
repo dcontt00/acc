@@ -108,7 +108,7 @@ export default function Comparator(props) {
   return (
     <Container maxWidth="xl">
 
-      <Grid container sx={{ padding: 5 }}>
+      <Grid container>
         <Grid item xs={12}>
           <Typography variant="h2">Comparador</Typography>
           <Typography variant="body1">Elige dos coches para ver y comparar sus características</Typography>
