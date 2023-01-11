@@ -21,7 +21,8 @@ export default function Contact() {
     const [data, setData] = React.useState({
         name: "",
         email: "",
-        message: ""
+        message: "",
+        acceptRgpd: false
     })
 
     const handleClick = () => {
@@ -43,7 +44,7 @@ export default function Contact() {
     };
 
     React.useEffect(() => {
-        if (data.name !== "" && data.email !== "" && data.message !== "") {
+        if (data.name !== "" && data.email !== "" && data.message !== "" && data.acceptRgpd) {
             setDisabled(false);
         } else {
             setDisabled(true);
@@ -110,7 +111,7 @@ export default function Contact() {
 
                     <Grid item xs={12} md={12}>
                         <FormControlLabel
-                            control={<Checkbox color="secondary" name="acceptRgpd" value="yes" />}
+                            control={<Checkbox color="secondary" name="acceptRgpd" value={false} onChange={(e) => handleChange(e)}/>}
                             label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
                         />
 
