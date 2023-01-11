@@ -125,7 +125,7 @@ export default function Catalog() {
         </Grid>
 
         {/* Barra búsqueda*/}
-        <Grid item xs={9} sm={10} md={10} lg={10}>
+        <Grid item xs={8} sm={9} md={10} lg={11}>
           <TextField
             id="standard-basic"
             label="Buscar por nombre de coche"
@@ -140,8 +140,9 @@ export default function Catalog() {
 
 
         {/* Switch de filtros */}
-        <Grid item xs={3} sm={2} md={2} lg={2}>
+        <Grid item xs={4} sm={3} md={2} lg={1}>
           <FormControlLabel
+            sx={{ display: "flex", justifyContent: "flex-end" }}
             control={
               <Switch
                 size="medium"

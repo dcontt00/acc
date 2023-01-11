@@ -95,7 +95,7 @@ export default function MultiActionAreaCard(props) {
 
 
   return (
-    <Card sx={{ maxWidth: 345, maxHeight: 400 }}>
+    <Card sx={{ width: "100%", maxHeight: 400 }}>
       <CardActionArea onClick={() => navigate("/description/" + props.car.id)}>
         <CardMedia
           component="img"
