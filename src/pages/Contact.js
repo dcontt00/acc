@@ -108,19 +108,23 @@ export default function Contact() {
                         />
                     </Grid>
 
-                    <Grid item xs={12} md={12}>
+                    <Grid item xs={12} md={12} lg={12}>
+
                         <FormControlLabel
                             control={<Checkbox color="secondary" name="acceptRgpd" value="yes" onChange={() => setDisabled(!disabled)} />}
                             label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
                         />
 
-                        <AButton variant="contained" sx={{ ml: 5 }} text={"Enviar"} onClick={handleClick} disabled={disabled} />
+
                         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                             <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                                 ¡Mensaje enviado!
                             </Alert>
                         </Snackbar>
 
+                    </Grid>
+                    <Grid item xs={12} md={12} lg={12}>
+                        <AButton variant="contained" text={"Enviar"} onClick={handleClick} disabled={disabled} />
                     </Grid>
                 </Grid>
             </Paper>
