@@ -17,17 +17,16 @@ import { Stack } from "@mui/system";
 import { useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import Snackbar from '@mui/material/Snackbar';
-
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
 import CloseIcon from '@mui/icons-material/Close';
 import AButton from "../components/AButton"
+import getCar from "../utils/GetCar";
+
+
 const cookie = new Cookies();
 
-function getCar(id) {
-  return Cars.find((car) => car.id === parseInt(id));
-}
+
 
 export default function Description() {
   const params = useParams();

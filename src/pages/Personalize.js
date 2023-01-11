@@ -27,11 +27,11 @@ import { Stack } from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import Luces from "../data/Luces.json";
 import formatPrice from "../utils/FormatPrice";
+import getCar from "../utils/GetCar";
+
+
 const cookie = new Cookie();
 
-function getCar(id) {
-  return Cars.find((car) => car.id === parseInt(id));
-}
 
 
 

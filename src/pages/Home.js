@@ -4,12 +4,12 @@ import Carousel from "../components/Carousel";
 import Container from "@mui/material/Container";
 import Gallery from "../components/Gallery";
 import Cars from "../data/Cars.json";
-
+import getCar from "../utils/GetCar";
 
 function getCars(ids) {
   var list = []
   ids.forEach(id => {
-    var car = Cars.find((car) => car.id === parseInt(id));
+    var car = getCar(id)
     list.push(car)
   });
   return list

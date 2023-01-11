@@ -16,6 +16,9 @@ import { Box, Grid } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import AButton from "../../components/AButton";
 import Luces from "../../data/Luces.json";
+import getCar from "../../utils/GetCar";
+
+
 function createData(part, model, price) {
   return { part, model, price };
 }
@@ -61,9 +64,7 @@ const Extras = [
     "price": 1500
   }
 ]
-function getCar(id) {
-  return Cars.find((car) => car.id === parseInt(id));
-}
+
 
 export default function Details(props) {
   const params = useParams();

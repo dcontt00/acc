@@ -12,10 +12,7 @@ import Cars from "../../data/Cars.json";
 import Cookies from "universal-cookie";
 import AButton from "../../components/AButton";
 import { Box } from "@mui/material";
-
-function getCar(id) {
-  return Cars.find((car) => car.id === parseInt(id));
-}
+import getCar from "../../utils/GetCar";
 const cookie = new Cookies();
 
 
