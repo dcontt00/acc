@@ -7,18 +7,17 @@ import Cars from "../data/Cars.json";
 import getCar from "../utils/GetCar";
 
 function getCars(ids) {
-  var list = []
-  ids.forEach(id => {
-    var car = getCar(id)
-    list.push(car)
+  var list = [];
+  ids.forEach((id) => {
+    var car = getCar(id);
+    list.push(car);
   });
-  return list
+  return list;
 }
 
 export default function Home() {
-
-  const mostSelled = getCars([1, 3, 5, 7])
-  const carrouselCars = getCars([2, 4, 6])
+  const mostSelled = getCars([1, 3, 5, 7]);
+  const carrouselCars = getCars([1, 2, 9, 13, 14]);
 
   return (
     <Container maxWidth="xl">
