@@ -110,7 +110,7 @@ export default function Contact() {
 
                     <Grid item xs={12} md={12}>
                         <FormControlLabel
-                            control={<Checkbox color="secondary" name="acceptRgpd" value="yes" />}
+                            control={<Checkbox color="secondary" name="acceptRgpd" value="yes" onChange={() => setDisabled(!disabled)} />}
                             label="Acepto que se lleve a cabo el tratamiento de mis datos tal y como se detalla en el Reglamento General de Protección de Datos"
                         />
 
