@@ -212,7 +212,7 @@ export default function Personalize() {
             </Grid>
 
 
-            <Grid item xs={5} sm={3} md={3} lg={3}>
+            <Grid item xs={5} sm={5} md={5} lg={5}>
               <Typography variant="h3">Asistencia</Typography>
               <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">
@@ -223,7 +223,6 @@ export default function Personalize() {
                   <FormControlLabel
                     control={
                       <Checkbox
-
                         checked={assistencie.includes(item.id)}
                         onChange={(ev) => {
                           if (ev.target.checked) {
@@ -235,14 +234,18 @@ export default function Personalize() {
                       />}
 
 
-                    label={item.name}
+                    label={
+                      "+ " + item.price + "€" + " - " + item.name
+
+                    }
+
                   />
                 )
                 )}
               </FormControl>
             </Grid>
 
-            <Grid item xs={5} sm={3} md={3} lg={3}>
+            <Grid item xs={5} sm={5} md={5} lg={5}>
               <Typography variant="h3">Extras</Typography>
               <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">
@@ -265,7 +268,8 @@ export default function Personalize() {
                       />}
 
 
-                    label={item.name}
+                    label={"+ " + item.price + "€" + " - " + item.name
+                    }
                   />
                 )
                 )}
