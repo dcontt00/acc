@@ -68,15 +68,17 @@ export default function Catalog() {
 
   // format price
   function formatPrice(price) {
-    var min = (price[0] * 1000).toLocaleString("en-US", {
+    var min = (price[0] * 1000).toLocaleString("es-ES", {
       style: "currency",
       currency: "EUR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     });
 
     if (price[1] === 100) {
       return min + " - " + "Más de 100.000€";
     } else {
-      var max = (price[1] * 1000).toLocaleString("en-US", {
+      var max = (price[1] * 1000).toLocaleString("es-ES", {
         style: "currency",
         currency: "EUR",
         minimumFractionDigits: 0,
@@ -95,10 +97,12 @@ export default function Catalog() {
     }
 
     value = value * 1000;
-    value = parseFloat(value).toLocaleString("en-US", {
+    value = parseFloat(value).toLocaleString("es-ES", {
 
       style: "currency",
       currency: "EUR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     }
     )
 

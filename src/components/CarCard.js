@@ -86,9 +86,11 @@ export default function MultiActionAreaCard(props) {
   }
 
 
-  var price = parseFloat(props.price).toLocaleString("en-US", {
+  var price = parseFloat(props.price).toLocaleString("es-ES", {
     style: "currency",
     currency: "EUR",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   });
 
 

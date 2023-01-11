@@ -73,6 +73,14 @@ const Extras = [
   }
 ]
 
+function formatPrice(price) {
+  return price.toLocaleString("es-ES", {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+}
 
 export default function Personalize() {
   const navigate = useNavigate();
@@ -93,7 +101,7 @@ export default function Personalize() {
         <TableRow key={llantas.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Llantas</TableCell>
           <TableCell >{llantas.title}</TableCell>
-          <TableCell >{llantas.price}€</TableCell>
+          <TableCell >{formatPrice(llantas.price)}</TableCell>
         </TableRow>
       );
     }
@@ -105,7 +113,7 @@ export default function Personalize() {
         <TableRow key={colores.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Color</TableCell>
           <TableCell >{colores.title}</TableCell>
-          <TableCell >{colores.price}€</TableCell>
+          <TableCell >{formatPrice(colores.price)}</TableCell>
         </TableRow>
       );
     }
@@ -118,7 +126,7 @@ export default function Personalize() {
         <TableRow key={asientos.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
           <TableCell >Asientos</TableCell>
           <TableCell >{asientos.title}</TableCell>
-          <TableCell >{asientos.price}€</TableCell>
+          <TableCell >{formatPrice(asientos.price)}</TableCell>
         </TableRow>
       );
     }
@@ -129,7 +137,7 @@ export default function Personalize() {
       <TableRow key={"lights"} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
         <TableCell >Faros</TableCell>
         <TableCell >{Luces[light].name}</TableCell>
-        <TableCell >{Luces[light].price}€</TableCell>
+        <TableCell >{formatPrice(Luces[light].price)}</TableCell>
       </TableRow>
     )
   }
@@ -166,7 +174,7 @@ export default function Personalize() {
         total = total + extra.price;
       });
     }
-    return total;
+    return formatPrice(total);
   }
 
 
@@ -181,7 +189,7 @@ export default function Personalize() {
   };
 
   return (
-    <Container maxWidth>
+    <Container maxWidth="xl">
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h2">{car.name}</Typography>
@@ -298,7 +306,7 @@ export default function Personalize() {
                   <TableRow>
                     <TableCell >Base</TableCell>
                     <TableCell >{car.name}</TableCell>
-                    <TableCell >{car.price}€</TableCell>
+                    <TableCell >{formatPrice(car.price)}</TableCell>
                   </TableRow>
 
                   {tireData(tire)}
@@ -334,7 +342,7 @@ export default function Personalize() {
                   <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell >Total</TableCell>
                     <TableCell ></TableCell>
-                    <TableCell >{totalPrice()}€</TableCell>
+                    <TableCell >{totalPrice()}</TableCell>
                   </TableRow>
 
                 </TableBody>
