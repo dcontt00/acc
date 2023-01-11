@@ -79,10 +79,7 @@ export default function MultiActionAreaCard(props) {
   var description = props.description;
   const navigate = useNavigate();
   var choices = props.car.choices;
-  var brandImg =
-    "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
-    props.brand.toLowerCase() +
-    ".png";
+  var brandImg = process.env.PUBLIC_URL + "/imgs/brands/" + props.brand.toLowerCase() + ".png";
 
   if (description.length > 150) {
     description = description.substring(0, 150) + "...";
