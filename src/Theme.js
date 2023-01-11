@@ -33,6 +33,13 @@ const Theme = createTheme(
           },
         },
       },
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            backgroundColor: "#000000",
+          },
+        },
+      }
     },
 
 
