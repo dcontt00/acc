@@ -241,6 +241,9 @@ export default function Catalog() {
                   <MenuItem value={"Coupé"}>Coupé</MenuItem>
                   <MenuItem value={"Todoterreno"}>Todoterreno</MenuItem>
                   <MenuItem value={"Urbano"}>Urbano</MenuItem>
+                  <MenuItem value={"Superdeportivo"}>Superdeportivo</MenuItem>
+
+
                 </Select>
 
               </FormControl>
