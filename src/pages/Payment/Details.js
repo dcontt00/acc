@@ -15,29 +15,13 @@ import TableRow from '@mui/material/TableRow';
 import { Box, Grid } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import AButton from "../../components/AButton";
+import Luces from "../../data/Luces.json";
 function createData(part, model, price) {
   return { part, model, price };
 }
 
 const cookie = new Cookies();
 
-const Lights = [
-  {
-    "id": 0,
-    "name": "LED",
-    "price": 0
-  },
-  {
-    "id": 1,
-    "name": "Xenon",
-    "price": 100
-  },
-  {
-    "id": 2,
-    "name": "Halógenos",
-    "price": 50
-  }
-]
 
 const Assistencies = [
   {
@@ -91,7 +75,7 @@ export default function Details(props) {
     var llantas = Llantas.find((llanta) => llanta.id === parseInt(personalization["tire"]));
     var color = Colores.find((color) => color.id === parseInt(personalization["colors"]));
     var asiento = Asientos.find((asiento) => asiento.id === parseInt(personalization["seats"]));
-    var lights = Lights.find((light) => light.id === parseInt(personalization["lights"]));
+    var lights = Luces.find((light) => light.id === parseInt(personalization["lights"]));
     var assistencies = []
     var extras = []
 

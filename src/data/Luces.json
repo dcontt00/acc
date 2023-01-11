@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "name": "LED",
+        "price": 0,
+        "img": "/imgs/lights/led.png"
+    },
+    {
+        "id": 1,
+        "name": "Xenon",
+        "price": 100,
+        "img": "/imgs/lights/xenon.png"
+    },
+    {
+        "id": 2,
+        "name": "Halógenos",
+        "price": 50,
+        "img": "/imgs/lights/halogen.png"
+    }
+]

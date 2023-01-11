@@ -25,29 +25,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Stack } from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
+import Luces from "../data/Luces.json";
 const cookie = new Cookie();
 
 function getCar(id) {
   return Cars.find((car) => car.id === parseInt(id));
 }
 
-const Lights = [
-  {
-    "id": 0,
-    "name": "LED",
-    "price": 0
-  },
-  {
-    "id": 1,
-    "name": "Xenon",
-    "price": 100
-  },
-  {
-    "id": 2,
-    "name": "Halógenos",
-    "price": 50
-  }
-]
+
 
 const Assistencies = [
   {
@@ -143,8 +128,8 @@ export default function Personalize() {
     return (
       <TableRow key={"lights"} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
         <TableCell >Faros</TableCell>
-        <TableCell >{Lights[light].name}</TableCell>
-        <TableCell >{Lights[light].price}€</TableCell>
+        <TableCell >{Luces[light].name}</TableCell>
+        <TableCell >{Luces[light].price}€</TableCell>
       </TableRow>
     )
   }
@@ -165,7 +150,7 @@ export default function Personalize() {
       total = total + asientos.price;
     }
     if (light != null) {
-      total = total + Lights[light].price;
+      total = total + Luces[light].price;
     }
     if (assistencie != null) {
       assistencie.forEach(element => {
@@ -220,31 +205,12 @@ export default function Personalize() {
               <Typography variant="h3">Llantas</Typography>
 
               <ImageList data={Llantas} part="tire" setItem={setTire} />
+
+              <Typography variant="h3">Faros</Typography>
+
+              <ImageList data={Luces} part="tire" setItem={setLight} />
             </Grid>
 
-            <Grid item xs={5} sm={3} md={3} lg={3}>
-              <Typography variant="h3">Faros</Typography>
-              <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">
-                  Tipo de faros
-                </FormLabel>
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue={0}
-                  name="radio-buttons-group"
-                  onChange={(ev) => setLight(ev.target.value)}
-                >
-                  {Lights.map((light) => (
-                    <FormControlLabel
-                      value={light.id}
-                      control={<Radio />}
-                      label={light.name}
-                    />
-                  )
-                  )}
-                </RadioGroup>
-              </FormControl>
-            </Grid>
 
             <Grid item xs={5} sm={3} md={3} lg={3}>
               <Typography variant="h3">Asistencia</Typography>
