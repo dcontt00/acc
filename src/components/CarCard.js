@@ -12,7 +12,7 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Cookie from "universal-cookie";
-
+import { Alert } from "@mui/material";
 const cookie = new Cookie();
 
 export default function MultiActionAreaCard(props) {
@@ -171,9 +171,10 @@ export default function MultiActionAreaCard(props) {
             open={open}
             autoHideDuration={1500}
             onClose={handleClose}
-            message={snackbarMessage}
             action={action}
-          />
+          >
+            <Alert color="info">{snackbarMessage}</Alert>
+          </Snackbar>
           <Grid item xs={4} sm={4} md={4} lg={4}>
             <AButton
               text="Más"
