@@ -116,6 +116,9 @@ export default function Catalog() {
     setFuel("");
   };
 
+
+  // Constant with all brands sorted alphabetically
+  const brands = Brands.sort((a, b) => a.name.localeCompare(b.name));
   return (
     <Container maxWidth="xl">
       <Grid container spacing={2}>
@@ -191,7 +194,7 @@ export default function Catalog() {
                   name="marca"
                 >
                   <MenuItem value="Marca">Marca</MenuItem>
-                  {Brands.map((item, i) => (
+                  {brands.map((item, i) => (
                     <MenuItem key={i} value={item.name}>{item.name}</MenuItem>
                   ))}
                 </Select>
