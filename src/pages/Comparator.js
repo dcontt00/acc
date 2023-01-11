@@ -3,56 +3,44 @@ import {
   Card,
   Divider,
   Grid,
-  List,
-  ListItem,
+  CardActionArea,
+  CardContent,
   Typography,
+  TableContainer,
+  Table,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableHead,
+  Paper,
+  Fab,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { dataName, getData, addData } from "../data/data";
+import { dataName, getData } from "../data/data";
 import Cookie from "universal-cookie";
 import AddIcon from "@mui/icons-material/Add";
 import CompareModal from "../components/CompareModal";
-import { SettingsPowerRounded } from "@mui/icons-material";
+import EditIcon from '@mui/icons-material/Edit';
 
 const cookie = new Cookie();
-
 function DescriptionList(props) {
   return (
-    <Grid container>
-      <Grid item xs={12} sx={{ textAlign: "center" }}>
-        <Card variant="outlined" sx={{ padding: 2, width: "100%" }}>
-          <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>{props.title}</Typography>
-        </Card>
-      </Grid>
-
-      <Grid item xs={6}>
-        {/*First Car Description*/}
-        <Card
-          variant="outlined"
-          sx={{ padding: 1, width: "100%", height:"100%", textAlign: "center" }}
-        >
-          {props.firstCar ? (
-            <Typography>{props.firstCar[props.item]}</Typography>
-          ) : (
-            <div></div>
-          )}
-        </Card>
-      </Grid>
-
-      <Grid item xs={6}>
-        {/*Second Car Description*/}
-        <Card
-          variant="outlined"
-          sx={{ padding: 1, width: "100%",height:"100%", textAlign: "center" }}
-        >
-          {props.secondCar ? (
-            <Typography>{props.secondCar[props.item]}</Typography>
-          ) : (
-            <div></div>
-          )}
-        </Card>
-      </Grid>
-    </Grid>
+    <TableContainer component={Paper}>
+      <Table sx={{ width: "100%" }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">{props.title}</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell align="center">
+              {props.car ? props.car[props.item] : ""}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
 
@@ -62,6 +50,15 @@ export default function Comparator(props) {
   const [secondCar, setSecondCar] = useState();
   const [charList, setCharList] = useState([]);
   const [open, setOpen] = useState(false);
+  const compareFilter = [
+    "img",
+    "imgs",
+    "name",
+    "description",
+    "id",
+    "brand",
+    "year",
+  ];
 
   useEffect(() => {
     var index = cookie.get("compareIndex");
@@ -71,14 +68,20 @@ export default function Comparator(props) {
   }, []);
 
   useEffect(() => {
-    if (firstCar != undefined) {
-      var list = Object.keys(firstCar)
-        .filter((item) => item !== "img" && item !== "imgs")
+    var list = [];
+    if (firstCar !== undefined) {
+      list = Object.keys(firstCar)
+        .filter((item) => !compareFilter.includes(item))
         .map((item) => item.substring(0, 1).toUpperCase() + item.substring(1));
 
       setCharList(list);
+    } else if (secondCar !== undefined) {
+      list = Object.keys(secondCar)
+        .filter((item) => !compareFilter.includes(item))
+        .map((item) => item.substring(0, 1).toUpperCase() + item.substring(1));
     }
-  }, [firstCar]);
+    setCharList(list);
+  }, [firstCar, secondCar]);
 
   const selectFirstCar = (index) => {
     setFirstCar(carList.at(index));
@@ -93,34 +96,76 @@ export default function Comparator(props) {
     setSelection(type);
     setOpen(true);
   };
-
-
-  
+  const getBrandImg = (brand) => {
+    var brandImg =
+      "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/" +
+      brand.toLowerCase() +
+      ".png";
+    return brandImg;
+  };
 
   return (
-    <Grid container sx={{padding:5}}>
+    <Grid container sx={{ padding: 5 }}>
       <Grid item xs={12}>
         <Typography variant="h2">Comparador</Typography>
       </Grid>
       <Divider />
-      <Grid container spacing={4}>
+      <Grid container spacing={4} sx={{ marginBottom: "5%", marginTop:"5px" }}>
         <Grid item xs={6}>
           {/*First Car image*/}
           {firstCar ? (
-            <Card
-              variant="outlined"
-              sx={{ margin: 2, width: "100%", textAlign: "center" }}
-            >
-              <img
-                src={process.env.PUBLIC_URL + firstCar.img}
-                alt={firstCar.name + " image"}
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  width: "80%",
-                  height: "auto",
-                }}
-              />
+            <Card sx={{ width: "100%", height: "100%", textAlign: "center", position:"relative" }} onClick={() => handleOpen(true)}>
+              <Fab sx={{position: "absolute", top: "25px", right: "25px"}}>
+                <EditIcon fontSize="large"/>
+              </Fab>
+              <CardContent>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <img
+                      src={process.env.PUBLIC_URL + firstCar.img}
+                      alt="First car"
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center",
+                        width: "100%",
+                        height: "auto",
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={2} sm={2} md={2} lg={2}>
+                    <img
+                      src={getBrandImg(firstCar.brand)}
+                      alt="brand"
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center",
+                        width: "80%",
+                        height: "auto",
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={5}>
+                    <Typography
+                      gutterBottom
+                      variant="h3"
+                      align="left"
+                      component="div"
+                    >
+                      {firstCar.name}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={5}>
+                    <Typography align="right" variant="h3">
+                      {firstCar.year}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography align="left" variant="h5" color="">
+                      {firstCar.description}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </CardContent>
             </Card>
           ) : (
             <Button onClick={() => handleOpen(true)} variant="contained">
@@ -138,20 +183,60 @@ export default function Comparator(props) {
         <Grid item xs={6}>
           {/*Second Car image*/}
           {secondCar ? (
-            <Card
-              variant="outlined"
-              sx={{ margin: 2, width: "100%", textAlign: "center" }}
-            >
-              <img
-                src={process.env.PUBLIC_URL + secondCar.img}
-                alt={secondCar.name + " image"}
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  width: "80%",
-                  height: "auto",
-                }}
-              />
+            <Card sx={{ width: "100%", height: "100%", textAlign: "center", position: "relative"}} onClick={() => handleOpen(false)}>
+              <Fab sx={{position: "absolute", top: "25px", right: "25px"}}>
+                <EditIcon fontSize="large"/>
+              </Fab>
+              <CardActionArea>
+                <CardContent>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                      <img
+                        src={process.env.PUBLIC_URL + secondCar.img}
+                        alt="First car"
+                        style={{
+                          objectFit: "cover",
+                          objectPosition: "center",
+                          width: "100%",
+                          height: "auto",
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={2} sm={2} md={2} lg={2}>
+                      <img
+                        src={getBrandImg(secondCar.brand)}
+                        alt="brand"
+                        style={{
+                          objectFit: "cover",
+                          objectPosition: "center",
+                          width: "80%",
+                          height: "auto",
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={5}>
+                      <Typography
+                        gutterBottom
+                        variant="h3"
+                        align="left"
+                        component="div"
+                      >
+                        {secondCar.name}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={5}>
+                      <Typography align="right" variant="h3">
+                        {secondCar.year}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography align="left" variant="h5">
+                        {secondCar.description}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </CardActionArea>
             </Card>
           ) : (
             <Button onClick={() => handleOpen(false)} variant="contained">
@@ -167,15 +252,26 @@ export default function Comparator(props) {
           )}
         </Grid>
       </Grid>
-      {charList.map((it) => (
-        <DescriptionList
-          key={it}
-          title={it}
-          item={it.toLowerCase()}
-          firstCar={firstCar}
-          secondCar={secondCar}
-        />
-      ))}
+      <Grid item xs={6} >
+        {charList.map((it) => (
+          <DescriptionList
+            key={it}
+            title={it}
+            item={it.toLowerCase()}
+            car={firstCar}
+          />
+        ))}
+      </Grid>
+      <Grid item xs={6}>
+        {charList.map((it) => (
+          <DescriptionList
+            key={it}
+            title={it}
+            item={it.toLowerCase()}
+            car={secondCar}
+          />
+        ))}
+      </Grid>
       <CompareModal
         open={open}
         hClose={() => setOpen(false)}
