@@ -7,6 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useEffect } from "react";
+import { Box } from "@mui/material";
 import AButton from "../../components/AButton";
 export default function ClaimReason(props) {
   const [data, setData] = React.useState({
@@ -88,14 +89,24 @@ export default function ClaimReason(props) {
             value={data.comments}
           />
         </Grid>
-        <AButton
-          variant="contained"
-          onClick={() => handleContinue()}
-          sx={{ mt: 3, ml: 1 }}
-          text="Continuar"
-          disabled={disable}
-        />
-        <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+        <Grid item xs={12}>
+          <Box
+            m={1}
+            display={"flex"}
+            justifyContent="flex-end"
+            alignItems="flex-end"
+          >
+
+            <AButton onClick={() => props.setActiveStep(props.activeStep - 1)} sx={{ mt: 3, ml: 1 }} text="Atrás" />
+            <AButton
+              variant="contained"
+              onClick={() => handleContinue()}
+              sx={{ mt: 3, ml: 1 }}
+              text="Continuar"
+              disabled={disable}
+            />
+          </Box>
+        </Grid>
       </Grid>
     </React.Fragment>
   );
