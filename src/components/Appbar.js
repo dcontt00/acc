@@ -295,9 +295,10 @@ function ResponsiveAppBar() {
             </Box>
           ) : (
             <AButton
-              sx={{ height: 70, width: 150, my: 2, ml: 2 }}
+              sx={{ height: 70, width: 150, my: 2, ml: 2, backgroundColor: "white", color: "black" }}
               onClick={handleLogin}
               text="Iniciar Sesion"
+
             />
           )}
         </Toolbar>
