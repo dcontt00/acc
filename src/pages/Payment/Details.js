@@ -21,6 +21,62 @@ function createData(part, model, price) {
 
 const cookie = new Cookies();
 
+const Lights = [
+  {
+    "id": 0,
+    "name": "LED",
+    "price": 0
+  },
+  {
+    "id": 1,
+    "name": "Xenon",
+    "price": 100
+  },
+  {
+    "id": 2,
+    "name": "Halógenos",
+    "price": 50
+  }
+]
+
+const Assistencies = [
+  {
+    "id": 0,
+    "name": "Asistencia de aparcamiento",
+    "price": 100
+  },
+  {
+    "id": 1,
+    "name": "Sensores proximidad",
+    "price": 100
+  },
+  {
+    "id": 2,
+    "name": "Cámaras de visión frontales y traseras",
+    "price": 100
+  },
+
+]
+
+
+const Extras = [
+  {
+    "id": 0,
+    "name": "Sistema de altavoces",
+    "price": 200
+
+  },
+  {
+    "id": 1,
+    "name": "Sistema de pantallas de entretenimiento",
+    "price": 500,
+  },
+  {
+    "id": 2,
+    "name": "Pantalla Principal y HUD",
+    "price": 1500
+  }
+]
 function getCar(id) {
   return Cars.find((car) => car.id === parseInt(id));
 }
@@ -35,11 +91,42 @@ export default function Details(props) {
     var llantas = Llantas.find((llanta) => llanta.id === parseInt(personalization["tire"]));
     var color = Colores.find((color) => color.id === parseInt(personalization["colors"]));
     var asiento = Asientos.find((asiento) => asiento.id === parseInt(personalization["seats"]));
+    var lights = Lights.find((light) => light.id === parseInt(personalization["lights"]));
+    var assistencies = []
+    var extras = []
+
     rows = [
       createData("Llantas", llantas.title, llantas.price),
       createData("Color", color.title, color.price),
       createData("Asiento", asiento.title, asiento.price),
+      createData("Luces", lights.name, lights.price)
     ];
+
+    if (personalization["assistencies"]) {
+      var temp = personalization["assistencies"];
+      if (temp.length > 1) {
+        for (var i = 0; i < temp.length; i++) {
+          assistencies.push(Assistencies.find((assistencies) => assistencies.id === parseInt(temp[i])));
+        }
+      } else {
+        assistencies.push(Assistencies.find((assistencies) => assistencies.id === parseInt(temp)));
+      }
+      rows.push(createData("Asistencias", assistencies.map((assistencies) => assistencies.name), assistencies.map((assistencies) => assistencies.price).reduce((a, b) => a + b, 0)));
+    }
+    if (personalization["extras"]) {
+      var temp2 = personalization["extras"];
+      if (temp2.length > 1) {
+        for (var i = 0; i < temp2.length; i++) {
+          extras.push(Extras.find((extras) => extras.id === parseInt(temp2[i])));
+        }
+      } else {
+        extras.push(Extras.find((extras) => extras.id === parseInt(temp2)));
+
+      }
+      rows.push(createData("Extras", extras.map((extras) => extras.name), extras.map((extras) => extras.price).reduce((a, b) => a + b, 0)));
+    }
+
+
 
   }
 
@@ -53,6 +140,19 @@ export default function Details(props) {
     }
     if (asiento) {
       total += asiento.price;
+    }
+    if (lights) {
+      total += lights.price;
+    }
+    if (assistencies) {
+      for (var i = 0; i < assistencies.length; i++) {
+        total += assistencies[i].price;
+      }
+    }
+    if (extras) {
+      for (var i = 0; i < extras.length; i++) {
+        total += extras[i].price;
+      }
     }
     return (
       <div>
