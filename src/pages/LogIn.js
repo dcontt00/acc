@@ -43,9 +43,9 @@ export default function LogIn() {
     /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
     event.preventDefault();
     cookie.set("loged", true);
-    console.log("/" + cookie.get("pagePreLogin"))
-    navigate("/" + cookie.get("pagePreLogin"));
-    window.location.reload();
+    navigate(-1);
+    setTimeout(() => {  window.location.reload(); }, 250);
+    
   };
 
   const handleChange = (e) => {
@@ -54,6 +54,8 @@ export default function LogIn() {
       [e.target.name]: e.target.value,
     });
   };
+
+  
 
   useEffect(() => {
     if (data.email !== "" && data.password !== "") {

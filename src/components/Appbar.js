@@ -112,7 +112,6 @@ function ResponsiveAppBar() {
 
   // Handle login
   const handleLogin = () => {
-    cookie.set("pagePreLogin", window.location.pathname);
     navigate("/login");
   };
 
