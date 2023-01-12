@@ -43,6 +43,7 @@ export default function LogIn() {
     /* Esto se coloca para que la informacion no aparezca en la cabcera del mensaje */
     event.preventDefault();
     cookie.set("loged", true);
+    console.log("/" + cookie.get("pagePreLogin"))
     navigate(cookie.get("pagePreLogin"));
     window.location.reload();
   };
