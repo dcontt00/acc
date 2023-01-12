@@ -44,7 +44,7 @@ export default function LogIn() {
     event.preventDefault();
     cookie.set("loged", true);
     console.log("/" + cookie.get("pagePreLogin"))
-    navigate(cookie.get("pagePreLogin"));
+    navigate("/" + cookie.get("pagePreLogin"));
     window.location.reload();
   };
 
