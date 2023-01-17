@@ -1,0 +1,2 @@
+Para ejecutar la aplicación es necesatio abrir un terminal que se posicione en el directorio principal.
+Se usa el comando npm -install seguido del comando npm start y se abra ejecutado la aplicación.
